@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Obligation_allergy.dart';
-import 'ChooseUser.dart';
+import 'ui/ChooseUser.dart';
 import 'package:sotsuken2/Data/AllUserData.dart';
 
 void main() {
@@ -86,7 +85,7 @@ class Home_Page extends State<Home_Page_State>{
                         width: 250,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              primary: Colors.indigo
+                              backgroundColor: Colors.indigo
                           ),
                           child: const Text('食品',style: TextStyle(fontSize: 35),),
                           onPressed: (){
@@ -97,7 +96,6 @@ class Home_Page extends State<Home_Page_State>{
                             );
                             setState(() {
                               AllUserData aud = AllUserData();
-                              ChooseUser_Page cup =ChooseUser_Page();
                               switch (aud.getUserNames().length) {
                                 case 5 :
                                   valueName5 = aud.getUserNames()[4];
@@ -123,7 +121,7 @@ class Home_Page extends State<Home_Page_State>{
                           width: 250,
                           child:ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                primary: Colors.indigo
+                                backgroundColor: Colors.indigo
                             ),
                             onPressed: (){},
                             child: const Text('美容',style: TextStyle(fontSize: 35),),
