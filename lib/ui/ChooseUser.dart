@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'CreateUser1.dart';
 import 'Obligation_allergy.dart';
+import 'SettingUser1.dart';
+
 import 'package:sotsuken2/Data/AllUserData.dart';
 
 class StateChooseUser extends StatefulWidget{
@@ -172,9 +175,9 @@ class ChooseUser_Page extends State<StateChooseUser>{
                   },
                   child: const Text('新しいユーザを登録',
                     style:TextStyle(
-                        fontSize: 25,
-                        color:Colors.indigo,
-                        fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                      color:Colors.indigo,
+                      fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -194,13 +197,17 @@ class ChooseUser_Page extends State<StateChooseUser>{
                         ),
                       ),
                       onPressed: (){
-                        valueName1 = valueName1;
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context){
+                              return const StateUserSettings1();
+                            })
+                        );
                       },
                       child: const Text('設定',
                         style:TextStyle(
-                            fontSize: 25,
-                            color:Colors.deepOrange,
-                            fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                          color:Colors.deepOrange,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
@@ -217,9 +224,9 @@ class ChooseUser_Page extends State<StateChooseUser>{
                         ),
                         child: const Text('SKIP',
                           style:TextStyle(
-                              fontSize: 25,
-                              color:Colors.indigo,
-                              fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                            color:Colors.indigo,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         onPressed: (){

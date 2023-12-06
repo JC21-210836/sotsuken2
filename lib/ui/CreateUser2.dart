@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:sotsuken2/Data/AllRecommendationData.dart';
+import 'package:sotsuken2/ui/CreateUserCheck.dart';
 
 import 'Obligation_allergy.dart';
 import 'ChooseUser.dart';
+import 'CreateUserCheck.dart';
 
 import 'package:sotsuken2/Data/AllUserData.dart';
+import 'package:sotsuken2/Data/AllObligationData.dart';
 
 class StateCreateUser2 extends StatefulWidget{
   const StateCreateUser2({super.key});
@@ -84,10 +88,16 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                       ),
                       onPressed: (){
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context){
-                            return CheckBoxT(PageFlag : 1);
-                          })
+                            MaterialPageRoute(builder: (context){
+                              return CheckBoxT(PageFlag : 1);
+                            })
                         );
+                        AllObligationData aod = AllObligationData();
+                        AllRecommendationData ard = AllRecommendationData();
+                        setState(() {
+                          aod.AllResetObligation();
+                          ard.AllResetRecommendation();
+                        });
                       },
                     )
                 ),
@@ -132,12 +142,17 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                       ),
                       child:const Text('登録内容を確認',style: TextStyle(fontSize: 28)),
                       onPressed: (){
-                        AllUserData aud = AllUserData();
+                        AllObligationData aod = AllObligationData();
+                        AllRecommendationData ard = AllRecommendationData();
                         setState(() {
-                          aud.setUserNameFinal();
+                          CreateUserCheck.HObligation = aod.getCheckValue();
+                          CreateUserCheck.HRecommendation = ard.getCheckValue2();
                         });
-                        Navigator.pop(context);
-                        Navigator.of(context).pop();
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context){
+                              return const StateCreateUserCheck();
+                            })
+                        );
                       },
                     )
                 )

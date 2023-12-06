@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/ui/AllergyDetection.dart';
 import 'Recommendation_allergy.dart';
+
 import 'package:sotsuken2/Data/AllObligationData.dart';
 //臨時
 import 'AllergyDetection.dart';
@@ -234,24 +234,30 @@ class Obligation_allergy_Page extends State<CheckBoxT>{
             child:OutlinedButton(
               style: OutlinedButton.styleFrom(
                   foregroundColor: Colors.indigo, side: const BorderSide(
-                    color: Colors.indigoAccent,
-                    width: 1.5,
-                  )
+                color: Colors.indigoAccent,
+                width: 1.5,
+              )
               ),
               onPressed:(){
+                AllObligationData aod = AllObligationData();
+                aod.setObligationBool([cEbi,cKani,cKurumi,cKomugi,cSoba,cTamago,cNyuu,cRakkasei]);
+                aod.HanteiObligation();
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context){
                       return CheckBoxT2(PageFlag: widget.PageFlag);
                     })
                 );
-                AllObligationData aod = AllObligationData();
-                aod.setObligationBool([cEbi,cKani,cKurumi,cKomugi,cSoba,cTamago,cNyuu,cRakkasei]);
-                aod.HanteiObligation();
+                /*
+                setState(() {
+                  aod.AllResetObligation();
+                });
+
+                 */
               },
               child: const Text('表示推奨アレルギーを\n選択する',
                   style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center
               ),
@@ -264,9 +270,9 @@ class Obligation_allergy_Page extends State<CheckBoxT>{
             child:OutlinedButton(
               style: OutlinedButton.styleFrom(
                   foregroundColor: Colors.indigo, side: const BorderSide(
-                    color: Colors.indigoAccent,
-                    width: 1.5,
-                  )
+                color: Colors.indigoAccent,
+                width: 1.5,
+              )
               ),
               onPressed:(){
 
@@ -286,9 +292,9 @@ class Obligation_allergy_Page extends State<CheckBoxT>{
             child:  OutlinedButton(
               style: OutlinedButton.styleFrom(
                   foregroundColor: Colors.deepOrange, side: const BorderSide(
-                    color: Colors.deepOrange,
-                    width: 1.5,
-                  )
+                color: Colors.deepOrange,
+                width: 1.5,
+              )
               ),
               onPressed:(){
                 if(widget.PageFlag == 0){
@@ -297,6 +303,7 @@ class Obligation_allergy_Page extends State<CheckBoxT>{
                         return const StateAllergyDetection();
                       })
                   );
+
                 }else if(widget.PageFlag == 1){
                   Navigator.of(context).pop();
                 }
@@ -304,7 +311,6 @@ class Obligation_allergy_Page extends State<CheckBoxT>{
                 AllObligationData aod = AllObligationData();
                 aod.setObligationBool([cEbi,cKani,cKurumi,cKomugi,cSoba,cTamago,cNyuu,cRakkasei]);
                 aod.HanteiObligation();
-
               },
               child: const Text('決定',style: TextStyle(
                 fontSize: 25,
