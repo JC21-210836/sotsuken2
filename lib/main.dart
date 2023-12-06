@@ -72,7 +72,7 @@ class Home_Page extends State<Home_Page_State>{
                           ),
                           child: const Text('成分チェッカー',
                             style: TextStyle(
-                                fontSize: 35,
+                                fontSize: 30,
                                 color: Colors.indigo,
                                 fontWeight: FontWeight.bold
                             ),

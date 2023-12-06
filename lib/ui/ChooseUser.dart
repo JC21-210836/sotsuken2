@@ -61,13 +61,15 @@ class ChooseUser_Page extends State<StateChooseUser>{
             mainAxisAlignment: MainAxisAlignment.center,
             children:<Widget>[
               Container(
-                padding:const EdgeInsets.fromLTRB(28, 5, 28, 5),
+                width:250,
+                height: 60,
+                padding:const EdgeInsets.fromLTRB(28, 10, 28, 10),
                 margin: const EdgeInsets.fromLTRB(0, 0, 0, 15),
                 color:Colors.indigo,
 
-                child: const Text('登録された情報を\n利用しますか？',
+                child: const Text('ユーザーの選択',
                   style: TextStyle(
-                    fontSize: 28,
+                    fontSize: 26,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),

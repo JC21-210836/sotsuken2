@@ -26,7 +26,7 @@ class CreateUser1_Page extends State<StateCreateUser1>{
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:[
                   Container(
-                    margin:const EdgeInsets.fromLTRB(0, 10, 0, 40),
+                    margin:const EdgeInsets.fromLTRB(0, 10, 0, 30),
                     padding:const EdgeInsets.fromLTRB(40, 10, 40, 10),
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -36,16 +36,16 @@ class CreateUser1_Page extends State<StateCreateUser1>{
                     ),
                     child:const Text('ユーザー登録',
                       style: TextStyle(
-                          fontSize: 35,
+                          fontSize: 30,
                           color:Colors.indigo,
                           fontWeight: FontWeight.bold
                       ),
                     ),
                   ),
                   Container(
-                    margin:const EdgeInsets.all(40),
+                    margin:const EdgeInsets.all(20),
                     child:const Text('ユーザー名を\n入力してください',
-                      style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -70,7 +70,7 @@ class CreateUser1_Page extends State<StateCreateUser1>{
                   Container(
                       width: 200,
                       height:60,
-                      margin: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                      margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
                       child:ElevatedButton(
                         style:ElevatedButton.styleFrom(
                           backgroundColor: Colors.indigo,

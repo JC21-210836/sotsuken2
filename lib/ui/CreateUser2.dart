@@ -43,7 +43,7 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                   ),
                   child:const Text('ユーザー登録',
                     style: TextStyle(
-                        fontSize: 35,
+                        fontSize: 30,
                         color:Colors.indigo,
                         fontWeight: FontWeight.bold
                     ),

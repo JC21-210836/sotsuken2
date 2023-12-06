@@ -96,11 +96,11 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                     ),
                   ),
                   Container(
-                      width:280,
-                      height:70,
+                      width:230,
+                      height:60,
                       margin:const EdgeInsets.fromLTRB(15, 0, 15, 40),
                       child:ElevatedButton(
-                          child:const Text('登録',style:TextStyle(fontSize:30)),
+                          child:const Text('登録',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold)),
                           onPressed:(){
                             AllUserData aud = AllUserData();
                             AllObligationData aod = AllObligationData();

@@ -24,7 +24,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      margin:const EdgeInsets.fromLTRB(0, 10, 0, 25),
+                      margin:const EdgeInsets.fromLTRB(0, 10, 0, 15),
                       padding:const EdgeInsets.fromLTRB(40, 10, 40, 10),
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -34,19 +34,13 @@ class UserSettings2 extends State<StateUserSettings2> {
                       ),
                       child:const Text('ユーザー設定',
                         style: TextStyle(
-                            fontSize: 35,
+                            fontSize: 30,
                             color:Colors.deepOrange,
                             fontWeight: FontWeight.bold
                         ),
                       ),
                     ),
-                    Container(
-                      margin:const EdgeInsets.all(20),
-                      child:const Text('登録内容を変更する項目を\n選択してください',
-                        style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+
                     Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,7 +51,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                             ),
                             child:Container(
                                 width: 170,
-                                height: 80,
+                                height: 70,
                                 margin: const EdgeInsets.all(5),
                                 alignment:Alignment.center,
                                 decoration: BoxDecoration(
@@ -80,13 +74,13 @@ class UserSettings2 extends State<StateUserSettings2> {
                             ),
                             child:Container(
                               width: 140,
-                              height: 80,
+                              height: 70,
                               margin: const EdgeInsets.all(5),
                               alignment:Alignment.center,
                               decoration: BoxDecoration(
                                 border: Border.all(color:Colors.deepOrangeAccent),
                               ),
-                              child:Text(widget.UserName,style: const TextStyle(fontSize: 28),textAlign: TextAlign.center,),
+                              child:Text(widget.UserName,style: const TextStyle(fontSize: 25),textAlign: TextAlign.center,),
                             ),
                           ),
                         ]
@@ -94,14 +88,66 @@ class UserSettings2 extends State<StateUserSettings2> {
 
                     Container(
                       width:270,
-                      height:60,
-                      margin: EdgeInsets.fromLTRB(20, 25, 20, 25),
+                      height:50,
+                      margin: EdgeInsets.fromLTRB(20, 25, 20, 20),
                       child:ElevatedButton(
                         style:ElevatedButton.styleFrom(
                             backgroundColor: Colors.deepOrange
                         ),
-                        child: const Text('ユーザー名の変更',style: TextStyle(fontSize: 28),),
+                        child: const Text('ユーザー名の変更',style: TextStyle(fontSize: 28,fontWeight: FontWeight.bold),),
                         onPressed: (){},
+                      ),
+
+                    ),
+                    Container(
+                      width:270,
+                      height:50,
+                      margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+                      child:ElevatedButton(
+                        style:ElevatedButton.styleFrom(
+                            backgroundColor: Colors.deepOrange
+                        ),
+                        child: const Text('アレルゲンの変更',style: TextStyle(fontSize: 28,fontWeight: FontWeight.bold),),
+                        onPressed: (){},
+                      ),
+
+                    ),
+                    Container(
+                      width:270,
+                      height:50,
+                      margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+                      child:ElevatedButton(
+                        style:ElevatedButton.styleFrom(
+                            backgroundColor: Colors.pink
+                        ),
+                        child: const Text('ユーザーの削除',style: TextStyle(fontSize: 28,fontWeight: FontWeight.bold),),
+                        onPressed: (){},
+                      ),
+
+                    ),
+
+                    Container(
+                      width:290,
+                      height:90,
+                      margin: EdgeInsets.fromLTRB(20, 10, 20, 25),
+                      child:OutlinedButton(
+                        style:OutlinedButton.styleFrom(
+                            side: const BorderSide(
+                                color: Colors.deepOrange
+                            ),
+                        ),
+                        child: const Text('ユーザー選択画面に\n戻る',
+                          style: TextStyle(
+                              color:Colors.deepOrange,
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        onPressed: (){
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
+                        },
                       ),
 
                     ),
