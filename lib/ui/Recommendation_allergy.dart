@@ -58,7 +58,7 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                 ),
                 child: const Text('表示推奨アレルギー',
                     style: TextStyle(
-                        fontSize: 33,
+                        fontSize: 30,
                         color:Colors.indigo,
                         fontWeight: FontWeight.bold
                     )
@@ -542,7 +542,7 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                   },
                   child: const Text('登録済み成分を選択',
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 23,
                         fontWeight: FontWeight.bold,
                       ),
                       textAlign: TextAlign.center),
@@ -579,7 +579,7 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                     ard.HanteiRecommendation();
                   },
                   child: const Text('決定',style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 23,
                     fontWeight: FontWeight.bold,
                   ),
                       textAlign: TextAlign.center),

@@ -30,11 +30,11 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                   ),
                   child: Container(
                     margin: const EdgeInsets.all(5),
-                    padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                    padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
                     color: Colors.indigo,
                     child:const Text('読み込み結果',
                       style: TextStyle(
-                          fontSize: 33,
+                          fontSize: 26,
                           color:Colors.white,
                           fontWeight: FontWeight.bold
                       ),
@@ -42,11 +42,11 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.fromLTRB(20, 60, 20, 20),
+                  margin: const EdgeInsets.fromLTRB(20, 40, 20, 0),
                   child:const Text('指定されたアレルゲンは\n見つかりませんでした。',
                       style: TextStyle(
                           color:Colors.indigo,
-                          fontSize: 27,
+                          fontSize: 23,
                           fontWeight: FontWeight.bold
                       ),
                       textAlign: TextAlign.center,
@@ -55,13 +55,13 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
 
                 Container(
                   width: 280,
-                  margin:const EdgeInsets.fromLTRB(0, 0, 0, 30),
+                  margin:const EdgeInsets.fromLTRB(0, 0, 0, 20),
                   child:Image.asset('images/duck.png'),
                 ),
 
                 Container(
-                  height: 65,
-                  width: 310,
+                  height: 60,
+                  width: 300,
                   margin: const EdgeInsets.all(10),
                   child:OutlinedButton(
                     style:OutlinedButton.styleFrom(
@@ -73,7 +73,7 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                     },
                     child: const Text('他の商品をスキャンする',
                       style:TextStyle(
-                        fontSize: 25,
+                        fontSize: 24,
                         color:Colors.deepOrange,
                         fontWeight: FontWeight.bold,
                       ),
@@ -85,9 +85,9 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        margin: const EdgeInsets.all(5),
+                        margin: const EdgeInsets.fromLTRB(0,0,5,10),
                         height: 80,
-                        width: 180,
+                        width: 160,
                         child:OutlinedButton(
                           style:OutlinedButton.styleFrom(
                             side: const BorderSide(
@@ -99,7 +99,7 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                           },
                           child: const Text('他のユーザー\nを選択する',
                               style:TextStyle(
-                                fontSize: 24,
+                                fontSize: 21,
                                 color:Colors.indigo,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -108,9 +108,9 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.all(5),
+                        margin: const EdgeInsets.fromLTRB(5,0,0,10),
                         height: 80,
-                        width: 180,
+                        width: 150,
                         child:OutlinedButton(
                             style:OutlinedButton.styleFrom(
                               side: const BorderSide(
@@ -119,7 +119,7 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                             ),
                             child: const Text('読み取った\n成分を見る',
                                 style:TextStyle(
-                                  fontSize: 24,
+                                  fontSize: 21,
                                   color:Colors.indigo,
                                   fontWeight: FontWeight.bold,
                                 ),

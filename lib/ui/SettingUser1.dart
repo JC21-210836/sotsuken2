@@ -35,7 +35,7 @@ class UserSettings1 extends State<StateUserSettings1>{
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:[
                   Container(
-                    margin:const EdgeInsets.fromLTRB(0, 10, 0, 25),
+                    margin:const EdgeInsets.fromLTRB(0, 10, 0, 15),
                     padding:const EdgeInsets.fromLTRB(40, 10, 40, 10),
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -45,7 +45,7 @@ class UserSettings1 extends State<StateUserSettings1>{
                     ),
                     child:const Text('ユーザー設定',
                       style: TextStyle(
-                          fontSize: 35,
+                          fontSize: 30,
                           color:Colors.deepOrange,
                           fontWeight: FontWeight.bold
                       ),
@@ -54,7 +54,7 @@ class UserSettings1 extends State<StateUserSettings1>{
                   Container(
                     margin:const EdgeInsets.all(20),
                     child:const Text('登録内容を変更する\nユーザーを選択してください',
-                      style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -101,7 +101,9 @@ class UserSettings1 extends State<StateUserSettings1>{
                                   )
                               ),
                               child:Text(valueName2,style:const TextStyle(fontSize: 25,color:Colors.black87)),
-                              onPressed: (){},
+                              onPressed: (){
+                                PageRoute(valueName2);
+                              },
                             ),
                           ),
                           Container(
@@ -115,7 +117,9 @@ class UserSettings1 extends State<StateUserSettings1>{
                                   )
                               ),
                               child:Text(valueName3,style:const TextStyle(fontSize: 25,color:Colors.black87)),
-                              onPressed: (){},
+                              onPressed: (){
+                                PageRoute(valueName3);
+                              },
                             ),
                           ),
                           Container(
@@ -129,7 +133,9 @@ class UserSettings1 extends State<StateUserSettings1>{
                                   )
                               ),
                               child:Text(valueName4,style:const TextStyle(fontSize: 25,color:Colors.black87)),
-                              onPressed: (){},
+                              onPressed: (){
+                                PageRoute(valueName4);
+                              },
                             ),
                           ),
                           Container(
@@ -143,7 +149,9 @@ class UserSettings1 extends State<StateUserSettings1>{
                                   )
                               ),
                               child:Text(valueName5,style:const TextStyle(fontSize: 25,color:Colors.black87)),
-                              onPressed: (){},
+                              onPressed: (){
+                                PageRoute(valueName5);
+                              },
                             ),
                           ),
 

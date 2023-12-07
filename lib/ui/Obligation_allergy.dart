@@ -47,7 +47,7 @@ class Obligation_allergy_Page extends State<CheckBoxT>{
             ),
             child: const Text('表示義務アレルギー',
                 style: TextStyle(
-                    fontSize: 33,
+                    fontSize: 30,
                     color:Colors.deepOrange,
                     fontWeight: FontWeight.bold
                 )
@@ -228,7 +228,8 @@ class Obligation_allergy_Page extends State<CheckBoxT>{
           ),
 
           Container(
-            width: 320,
+            height: 90,
+            width: 290,
             margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
             padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
             child:OutlinedButton(
@@ -256,7 +257,7 @@ class Obligation_allergy_Page extends State<CheckBoxT>{
               },
               child: const Text('表示推奨アレルギーを\n選択する',
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 23,
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center
@@ -264,8 +265,8 @@ class Obligation_allergy_Page extends State<CheckBoxT>{
             ),
           ),
           Container(
-            width: 320,
-            height: 80,
+            width: 290,
+            height: 70,
             padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
             child:OutlinedButton(
               style: OutlinedButton.styleFrom(
@@ -279,15 +280,15 @@ class Obligation_allergy_Page extends State<CheckBoxT>{
               },
               child: const Text('登録済み成分を選択',
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 23,
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center),
             ),
           ),
           Container(
-            height: 80,
-            width: 320,
+            height: 70,
+            width: 290,
             padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
             child:  OutlinedButton(
               style: OutlinedButton.styleFrom(
@@ -313,7 +314,7 @@ class Obligation_allergy_Page extends State<CheckBoxT>{
                 aod.HanteiObligation();
               },
               child: const Text('決定',style: TextStyle(
-                fontSize: 25,
+                fontSize: 23,
                 fontWeight: FontWeight.bold,
               ),
                   textAlign: TextAlign.center),
