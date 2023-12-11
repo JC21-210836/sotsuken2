@@ -35,7 +35,7 @@ class UserSettings1 extends State<StateUserSettings1>{
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:[
                   Container(
-                    margin:const EdgeInsets.fromLTRB(0, 10, 0, 15),
+                    margin:const EdgeInsets.fromLTRB(0, 10, 0, 10),
                     padding:const EdgeInsets.fromLTRB(40, 10, 40, 10),
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -53,9 +53,11 @@ class UserSettings1 extends State<StateUserSettings1>{
                   ),
                   Container(
                     margin:const EdgeInsets.all(20),
-                    child:const Text('登録内容を変更する\nユーザーを選択してください',
-                      style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
+                    child: const FittedBox(
+                      child: Text('登録内容を変更する\nユーザーを選択してください',
+                        style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                   Container(

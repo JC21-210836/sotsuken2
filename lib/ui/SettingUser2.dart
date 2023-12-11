@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'SettingUser_NameChange.dart';
+
+import 'SettingUserNameChange.dart';
+import 'SettingUserDelete.dart';
 
 class StateUserSettings2 extends StatefulWidget{
   final String UserName;
@@ -41,51 +43,39 @@ class UserSettings2 extends State<StateUserSettings2> {
                         ),
                       ),
                     ),
-
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children:[
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color:Colors.deepOrangeAccent),
-                            ),
-                            child:Container(
-                                width: 170,
-                                height: 70,
-                                margin: const EdgeInsets.all(5),
-                                alignment:Alignment.center,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color:Colors.deepOrangeAccent),
-                                ),
-                                child:const Text('選択されている\nユーザー',
-                                  style:TextStyle(
-                                      fontSize:23,
-                                      color:Colors.deepOrange,
-                                      fontWeight: FontWeight.bold
-                                  ),
-                                  textAlign: TextAlign.center,
-                                )
-                            ),
+                    Container(
+                      child:Container(
+                        width: 280,
+                        height: 60,
+                        margin: const EdgeInsets.all(5),
+                        decoration: const BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                                  color:Colors.deepOrangeAccent
+                              )
                           ),
+                        ),
 
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color:Colors.deepOrangeAccent),
-                            ),
-                            child:Container(
-                              width: 140,
-                              height: 70,
-                              margin: const EdgeInsets.all(5),
-                              alignment:Alignment.center,
-                              decoration: BoxDecoration(
-                                border: Border.all(color:Colors.deepOrangeAccent),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              width:60,
+                              child: const Icon(
+                                Icons.account_box,
+                                color: Colors.redAccent,
+                                size:50,
                               ),
-                              child:Text(widget.UserName,style: const TextStyle(fontSize: 25),textAlign: TextAlign.center,),
                             ),
-                          ),
-                        ]
+                            Container(
+                              width: 220,
+                              child:Text(widget.UserName,style: const TextStyle(fontSize: 25),textAlign: TextAlign.center,),
+                            )
+                          ],
+                        ),
+                      ),
                     ),
+
 
                     Container(
                       width:270,
@@ -93,14 +83,14 @@ class UserSettings2 extends State<StateUserSettings2> {
                       margin: EdgeInsets.fromLTRB(20, 25, 20, 20),
                       child:ElevatedButton(
                         style:ElevatedButton.styleFrom(
-                            backgroundColor: Colors.deepOrange
+                            backgroundColor: Colors.deepOrangeAccent
                         ),
-                        child: const Text('ユーザー名の変更',style: TextStyle(fontSize: 28,fontWeight: FontWeight.bold),),
+                        child: const Text('ユーザー名の変更',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
                         onPressed: (){
                           Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context){
-                              return StateSettingUser_NameChange(widget.UserName);
-                            })
+                              MaterialPageRoute(builder: (context){
+                                return StateSettingUserNameChange(widget.UserName);
+                              })
                           );
                         },
                       ),
@@ -112,9 +102,9 @@ class UserSettings2 extends State<StateUserSettings2> {
                       margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
                       child:ElevatedButton(
                         style:ElevatedButton.styleFrom(
-                            backgroundColor: Colors.deepOrange
+                            backgroundColor: Colors.deepOrangeAccent
                         ),
-                        child: const Text('アレルゲンの変更',style: TextStyle(fontSize: 28,fontWeight: FontWeight.bold),),
+                        child: const Text('アレルゲンの変更',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
                         onPressed: (){},
                       ),
 
@@ -125,10 +115,16 @@ class UserSettings2 extends State<StateUserSettings2> {
                       margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
                       child:ElevatedButton(
                         style:ElevatedButton.styleFrom(
-                            backgroundColor: Colors.pink
+                            backgroundColor: Colors.red
                         ),
-                        child: const Text('ユーザーの削除',style: TextStyle(fontSize: 28,fontWeight: FontWeight.bold),),
-                        onPressed: (){},
+                        child: const Text('ユーザーの削除',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                        onPressed: (){
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context){
+                                return StateSettingUserDelete(widget.UserName);
+                              })
+                          );
+                        },
                       ),
 
                     ),
@@ -139,15 +135,15 @@ class UserSettings2 extends State<StateUserSettings2> {
                       margin: EdgeInsets.fromLTRB(20, 10, 20, 25),
                       child:OutlinedButton(
                         style:OutlinedButton.styleFrom(
-                            side: const BorderSide(
-                                color: Colors.deepOrange
-                            ),
+                          side: const BorderSide(
+                              color: Colors.deepOrange
+                          ),
                         ),
                         child: const Text('ユーザー選択画面に\n戻る',
                           style: TextStyle(
-                              color:Colors.deepOrange,
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
+                            color:Colors.deepOrange,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
                           ),
                           textAlign: TextAlign.center,
                         ),

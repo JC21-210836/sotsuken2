@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'CreateUser2.dart';
+
 import 'package:sotsuken2/Data/AllUserData.dart';
+import 'package:sotsuken2/Data/AllObligationData.dart';
+import 'package:sotsuken2/Data/AllRecommendationData.dart';
 
 class StateCreateUser1 extends StatefulWidget{
   const StateCreateUser1({super.key});
@@ -45,7 +48,7 @@ class CreateUser1_Page extends State<StateCreateUser1>{
                   Container(
                     margin:const EdgeInsets.all(20),
                     child:const Text('ユーザー名を\n入力してください',
-                      style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -81,6 +84,11 @@ class CreateUser1_Page extends State<StateCreateUser1>{
                             AllUserData aud = AllUserData();
                             aud.setUserName(UN);
                             UserName = aud.getUserName();
+
+                            AllObligationData aod = AllObligationData();
+                            AllRecommendationData ard = AllRecommendationData();
+                            aod.AllResetObligation();
+                            ard.AllResetRecommendation();
                           });
                           if(UN == ""){
                             /*
@@ -88,11 +96,6 @@ class CreateUser1_Page extends State<StateCreateUser1>{
                               ErrorMessage = "名前が入力されていません";
                             });
                             */
-                            Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context){
-                                  return const StateCreateUser2();
-                                })
-                            );
                           }else{
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){

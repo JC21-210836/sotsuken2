@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'ui/ChooseUser.dart';
 import 'package:sotsuken2/Data/AllUserData.dart';
 
@@ -43,7 +42,7 @@ class Home_Page extends State<Home_Page_State>{
             mainAxisAlignment: MainAxisAlignment.center,
             children:<Widget>[
               Container(
-                height:570,
+                height:500,
                 decoration:const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('images/milk.png'),
@@ -53,7 +52,7 @@ class Home_Page extends State<Home_Page_State>{
                 child:Column(
                     children: [
                       Container(
-                        margin: const EdgeInsets.fromLTRB(30,50,30,50),
+                        margin: const EdgeInsets.fromLTRB(30,50,30,40),
                         decoration: BoxDecoration(
                           color:Colors.white,
                           border: Border.all(
@@ -62,33 +61,35 @@ class Home_Page extends State<Home_Page_State>{
                           ),
                         ),
                         child:Container(
-                          margin: const EdgeInsets.fromLTRB(10,10,10,10),
-                          padding: const EdgeInsets.fromLTRB(25,15,25,15),
-                          decoration: BoxDecoration(
-                            color:Colors.white,
-                            border: Border.all(
-                              color: Colors.indigo,
-                              width: 1,
-                            ),
-                          ),
-                          child: const Text('成分チェッカー',
-                            style: TextStyle(
-                                fontSize: 30,
+                            margin: const EdgeInsets.fromLTRB(10,10,10,10),
+                            padding: const EdgeInsets.fromLTRB(25,15,25,15),
+                            decoration: BoxDecoration(
+                              color:Colors.white,
+                              border: Border.all(
                                 color: Colors.indigo,
-                                fontWeight: FontWeight.bold
+                                width: 1,
+                              ),
                             ),
-                          ),
+                            child: const FittedBox(
+                              child: Text('成分チェッカー',
+                                style: TextStyle(
+                                    fontSize: 27,
+                                    color: Colors.indigo,
+                                    fontWeight: FontWeight.bold
+                                ),
+                              ),
+                            )
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.all(25),
-                        height: 65,
-                        width: 250,
+                        margin: const EdgeInsets.all(20),
+                        height: 55,
+                        width: 210,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.indigo
                           ),
-                          child: const Text('食品',style: TextStyle(fontSize: 35),),
+                          child: const Text('食品',style: TextStyle(fontSize: 30),),
                           onPressed: (){
                             Navigator.of(context).push(
                               MaterialPageRoute(builder: (context){
@@ -117,23 +118,23 @@ class Home_Page extends State<Home_Page_State>{
                         ),
                       ),
                       Container(
-                          margin: const EdgeInsets.all(25),
-                          height: 65,
-                          width: 250,
+                          margin: const EdgeInsets.all(20),
+                          height: 55,
+                          width: 210,
                           child:ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.indigo
                             ),
                             onPressed: (){},
-                            child: const Text('美容',style: TextStyle(fontSize: 35),),
+                            child: const Text('美容',style: TextStyle(fontSize: 30),),
                           )
                       ),
 
                       Container(
-                        margin: const EdgeInsets.fromLTRB(0,40,0,20),
+                        margin: const EdgeInsets.fromLTRB(0,30,0,20),
                         //padding:const EdgeInsets.fromLTRB(20, 5, 20, 5),
-                        height: 55,
-                        width: 230,
+                        height: 50,
+                        width: 210,
                         color: Colors.white,
                         child:OutlinedButton(
                           style: OutlinedButton.styleFrom(
@@ -142,7 +143,7 @@ class Home_Page extends State<Home_Page_State>{
                               )
                           ),
                           child: const Text('ご利用方法',
-                              style: TextStyle(fontSize: 28,
+                              style: TextStyle(fontSize: 25,
                                   color:Colors.deepOrange
                               )
                           ),

@@ -48,8 +48,8 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
           child:Column(
             children: [
               Container(
-                margin: EdgeInsets.fromLTRB(0, 40, 0, 20),
-                padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+                margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                 decoration:BoxDecoration(
                   border: Border.all(
                     color:Colors.indigo,
@@ -58,7 +58,7 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                 ),
                 child: const Text('表示推奨アレルギー',
                     style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 25,
                         color:Colors.indigo,
                         fontWeight: FontWeight.bold
                     )
@@ -66,12 +66,12 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
               ),
 
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                       width:180,
-                      margin:const EdgeInsets.fromLTRB(40, 0, 0, 0),
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -88,9 +88,9 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                       )
                   ),
                   Container(
-                      width:170,
+                      width:155,
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -110,36 +110,17 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
               ),
 
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                       width:180,
-                      margin:const EdgeInsets.fromLTRB(40, 0, 0, 0),
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
                               offset: const Offset(-15,0),
-                              child:const Text('いくら',style:TextStyle(fontSize: 20)),
-                            ),
-                            value: cIkura,
-                            onChanged: (value){
-                              setState(() {
-                                cIkura = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                  Container(
-                      width:170,
-                      child:Transform.scale(
-                          scale:1.3,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('オレンジ',style:TextStyle(fontSize: 20,)),
+                              child:const Text('オレンジ',style:TextStyle(fontSize:20,)),
                             ),
                             value: cOrange,
                             onChanged: (value){
@@ -150,15 +131,34 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                           )
                       )
                   ),
+                  Container(
+                      width:155,
+                      child:Transform.scale(
+                          scale:1.2,
+                          child:CheckboxListTile(
+                            controlAffinity: ListTileControlAffinity.leading,
+                            title: Transform.translate(
+                              offset: const Offset(-15,0),
+                              child:const Text('いくら',style:TextStyle(fontSize: 19)),
+                            ),
+                            value: cIkura,
+                            onChanged: (value){
+                              setState(() {
+                                cIkura = value!;
+                              });
+                            },
+                          )
+                      )
+                  ),
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                       width:180,
-                      margin:const EdgeInsets.fromLTRB(40, 0, 0, 0),
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -175,9 +175,9 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                       )
                   ),
                   Container(
-                      width:170,
+                      width:155,
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -196,12 +196,12 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                       width:180,
-                      margin:const EdgeInsets.fromLTRB(40, 0, 0, 0),
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -218,9 +218,9 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                       )
                   ),
                   Container(
-                      width:170,
+                      width:155,
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -239,12 +239,12 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                       width:180,
-                      margin:const EdgeInsets.fromLTRB(40, 0, 0, 0),
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -261,9 +261,9 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                       )
                   ),
                   Container(
-                      width:170,
+                      width:155,
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -282,12 +282,12 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                       width:180,
-                      margin:const EdgeInsets.fromLTRB(40, 0, 0, 0),
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -304,9 +304,9 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                       )
                   ),
                   Container(
-                      width:170,
+                      width:155,
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -325,12 +325,12 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                       width:180,
-                      margin:const EdgeInsets.fromLTRB(40, 0, 0, 0),
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -347,9 +347,9 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                       )
                   ),
                   Container(
-                      width:170,
+                      width:155,
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -368,12 +368,12 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                       width:180,
-                      margin:const EdgeInsets.fromLTRB(40, 0, 0, 0),
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -390,14 +390,14 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                       )
                   ),
                   Container(
-                      width:170,
+                      width:155,
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
                               offset: const Offset(-15,0),
-                              child:const Text('りんご',style:TextStyle(fontSize: 20,)),
+                              child:const Text('りんご',style:TextStyle(fontSize: 19,)),
                             ),
                             value: cRingo,
                             onChanged: (value){
@@ -411,12 +411,12 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                       width:180,
-                      margin:const EdgeInsets.fromLTRB(40, 0, 0, 0),
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -433,7 +433,7 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                       )
                   ),
                   Container(
-                    width:170,
+                    width:150,
 
                   ),
                 ],
@@ -442,12 +442,12 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
 
 
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                      width:280,
-                      margin:const EdgeInsets.fromLTRB(55, 0, 0, 0),
+                      width:250,
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -469,12 +469,12 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                      width:280,
-                      margin:const EdgeInsets.fromLTRB(55, 0, 0, 0),
+                      width:250,
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -496,12 +496,12 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                      width:280,
-                      margin:const EdgeInsets.fromLTRB(55, 0, 0, 0),
+                      width:250,
                       child:Transform.scale(
-                          scale:1.3,
+                          scale:1.2,
                           child:CheckboxListTile(
                             controlAffinity: ListTileControlAffinity.leading,
                             title: Transform.translate(
@@ -525,8 +525,8 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
 
 
               Container(
-                width: 320,
-                height: 80,
+                width: 290,
+                height: 70,
                 margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
                 padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
                 child:OutlinedButton(
@@ -549,8 +549,8 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                 ),
               ),
               Container(
-                height: 80,
-                width: 320,
+                width: 290,
+                height: 70,
                 margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
                 padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
                 child:  OutlinedButton(

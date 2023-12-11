@@ -23,28 +23,46 @@ String valueName5 = "";
 
 class ChooseUser_Page extends State<StateChooseUser>{
 
-  void ReturnAndReload() async{
-    await Navigator.of(context).push(
-        MaterialPageRoute(builder: (context){
-          return const StateCreateUser1();
-        })
-    );
+  void ReturnAndReload(int n) async{
+    if(n == 0){
+      await Navigator.of(context).push(
+          MaterialPageRoute(builder: (context){
+            return const StateCreateUser1();
+          })
+      );
+    }else if(n == 1){
+      await Navigator.of(context).push(
+          MaterialPageRoute(builder: (context){
+            return const StateUserSettings1();
+          })
+      );
+    }
     setState(() {
+
       AllUserData aud = AllUserData();
-      switch (aud.getUserNames().length){
-        case 5 :
-          valueName5 = aud.getUserNames()[4];
-        case 4 :
-          valueName4 = aud.getUserNames()[3];
-        case 3 :
-          valueName3 = aud.getUserNames()[2];
-        case 2 :
-          valueName2 = aud.getUserNames()[1];
-        case 1 :
-          valueName1 = aud.getUserNames()[0];
-          break;
-        default:
-        //エラーのポップアップとかできないかな
+      int aaa = aud.getUserNames().length;
+      debugPrint(aaa.toString());
+      valueName1 = "";
+      valueName2 = "";
+      valueName3 = "";
+      valueName4 = "";
+      valueName5 = "";
+      for(int n = 1; n <= aud.getUserNames().length;n++){
+        switch (n){
+          case 5 :
+            valueName5 = aud.getUserNames()[4];
+          case 4 :
+            valueName4 = aud.getUserNames()[3];
+          case 3 :
+            valueName3 = aud.getUserNames()[2];
+          case 2 :
+            valueName2 = aud.getUserNames()[1];
+          case 1 :
+            valueName1 = aud.getUserNames()[0];
+            break;
+          default:
+          //エラーのポップアップとかできないかな
+        }
       }
     });
   }
@@ -57,193 +75,178 @@ class ChooseUser_Page extends State<StateChooseUser>{
           title: const Text('成分チェッカー')
       ),
       body: Center(
-          child:Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children:<Widget>[
-              Container(
-                width:250,
-                height: 60,
-                padding:const EdgeInsets.fromLTRB(28, 10, 28, 10),
-                margin: const EdgeInsets.fromLTRB(0, 0, 0, 15),
-                color:Colors.indigo,
-
-                child: const Text('ユーザーの選択',
-                  style: TextStyle(
-                    fontSize: 26,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color:Colors.blue,
-                    width: 1,
+        child:SingleChildScrollView(
+            child:Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children:<Widget>[
+                Container(
+                  margin: const EdgeInsets.all(13),
+                  padding: const EdgeInsets.fromLTRB(40, 13, 40, 13),
+                  color: Colors.indigo,
+                  child: const FittedBox(
+                    child:Text('ユーザーの選択',
+                      style: TextStyle(
+                          fontSize: 26,
+                          color:Colors.white,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
                   ),
                 ),
-                child:Container(
-                  padding: const EdgeInsets.all(15),
-                  margin: const EdgeInsets.all(3),
+
+                Container(
                   decoration: BoxDecoration(
                     border: Border.all(
                       color:Colors.blue,
                       width: 1,
                     ),
                   ),
-                  child:Column(
-                    children: [
-                      Container(
-                        width: 240,
-                        height: 50,
-                        margin: const EdgeInsets.all(2),
-                        child: OutlinedButton(
-                          child:Text(valueName1,style: const TextStyle(fontSize: 25),),
-                          onPressed: () {},
-                        ),
+                  child:Container(
+                    padding: const EdgeInsets.all(15),
+                    margin: const EdgeInsets.all(3),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color:Colors.blue,
+                        width: 1,
                       ),
-                      Container(
-                        width: 240,
-                        height: 50,
-                        margin: const EdgeInsets.all(2),
-                        child: OutlinedButton(
-                          child:Text(valueName2,style: const TextStyle(fontSize: 25),),
-                          onPressed: () {},
-                        ),
-                      ),
-                      Container(
-                        width: 240,
-                        height: 50,
-                        margin: const EdgeInsets.all(2),
-                        child: OutlinedButton(
-                          child:Text(valueName3,style: const TextStyle(fontSize: 25),),
-                          onPressed: () {},
-                        ),
-                      ),
-                      Container(
-                        width: 240,
-                        height: 50,
-                        margin: const EdgeInsets.all(2),
-                        child: OutlinedButton(
-                          child:Text(valueName4,style: const TextStyle(fontSize: 25),),
-                          onPressed: () {},
-                        ),
-                      ),
-                      Container(
-                        width: 240,
-                        height: 50,
-                        margin: const EdgeInsets.all(2),
-                        child: OutlinedButton(
-                          child:Text(valueName5,style: const TextStyle(fontSize: 25),),
-                          onPressed: () {},
-                        ),
-                      ),
-                    ],
-                  ),
-
-
-                ),
-              ),
-
-              Container(
-                height: 60,
-                width: 270,
-                margin: const EdgeInsets.all(10),
-                child:OutlinedButton(
-                  style:OutlinedButton.styleFrom(
-                    side: const BorderSide(
-                      color: Colors.black,
                     ),
-                  ),
-                  onPressed: (){
-                    ReturnAndReload();
-                    /*
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                          return const StateCreateUser1();
-                        })
-
-                    ).then((value) {
-                      setState((){
-                        AllUserData aud = AllUserData();
-                        valueName1 = AllUserData.UserName;
-                      });
-                    }
-
-                    );
-                     */
-                  },
-                  child: const Text('新しいユーザを登録',
-                    style:TextStyle(
-                      fontSize: 25,
-                      color:Colors.indigo,
-                      fontWeight: FontWeight.bold,
+                    child:Column(
+                      children: [
+                        Container(
+                          width: 240,
+                          height: 47,
+                          margin: const EdgeInsets.all(2),
+                          child: OutlinedButton(
+                            child:Text(valueName1,style: const TextStyle(fontSize: 25),),
+                            onPressed: () {},
+                          ),
+                        ),
+                        Container(
+                          width: 240,
+                          height: 47,
+                          margin: const EdgeInsets.all(2),
+                          child: OutlinedButton(
+                            child:Text(valueName2,style: const TextStyle(fontSize: 25),),
+                            onPressed: () {},
+                          ),
+                        ),
+                        Container(
+                          width: 240,
+                          height: 47,
+                          margin: const EdgeInsets.all(2),
+                          child: OutlinedButton(
+                            child:Text(valueName3,style: const TextStyle(fontSize: 25),),
+                            onPressed: () {},
+                          ),
+                        ),
+                        Container(
+                          width: 240,
+                          height: 47,
+                          margin: const EdgeInsets.all(2),
+                          child: OutlinedButton(
+                            child:Text(valueName4,style: const TextStyle(fontSize: 25),),
+                            onPressed: () {},
+                          ),
+                        ),
+                        Container(
+                          width: 240,
+                          height: 47,
+                          margin: const EdgeInsets.all(2),
+                          child: OutlinedButton(
+                            child:Text(valueName5,style: const TextStyle(fontSize: 25),),
+                            onPressed: () {},
+                          ),
+                        ),
+                      ],
                     ),
-                    textAlign: TextAlign.center,
+
+
                   ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    height: 60,
-                    width: 140,
-                    child:OutlinedButton(
-                      style:OutlinedButton.styleFrom(
-                        side: const BorderSide(
-                          color: Colors.deepOrange,
-                        ),
+
+                Container(
+                  height: 55,
+                  width: 270,
+                  margin: const EdgeInsets.fromLTRB(0,10,0,5),
+                  child:OutlinedButton(
+                    style:OutlinedButton.styleFrom(
+                      side: const BorderSide(
+                        color: Colors.black,
                       ),
-                      onPressed: (){
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context){
-                              return const StateUserSettings1();
-                            })
-                        );
-                      },
-                      child: const Text('設定',
+                    ),
+                    onPressed: (){
+                      ReturnAndReload(0);
+                    },
+                    child: const FittedBox(
+                      child: Text('新しいユーザを登録',
                         style:TextStyle(
-                          fontSize: 25,
-                          color:Colors.deepOrange,
+                          fontSize: 23,
+                          color:Colors.indigo,
                           fontWeight: FontWeight.bold,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
+
                   ),
-                  Container(
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
                       margin: const EdgeInsets.all(5),
-                      height: 60,
+                      height: 55,
                       width: 140,
                       child:OutlinedButton(
                         style:OutlinedButton.styleFrom(
                           side: const BorderSide(
-                            color: Colors.black,
-                          ),
-                        ),
-                        child: const Text('SKIP',
-                          style:TextStyle(
-                            fontSize: 25,
-                            color:Colors.indigo,
-                            fontWeight: FontWeight.bold,
+                            color: Colors.deepOrange,
                           ),
                         ),
                         onPressed: (){
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context){
-                              return  CheckBoxT(PageFlag: 0);
-                            }),
-                          );
+                          ReturnAndReload(1);
                         },
-                      )
-                  ),
-                ],
-              ),
-            ],
-          )
+                        child: const Text('設定',
+                          style:TextStyle(
+                            fontSize: 23,
+                            color:Colors.deepOrange,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                        margin: const EdgeInsets.all(5),
+                        height: 55,
+                        width: 140,
+                        child:OutlinedButton(
+                          style:OutlinedButton.styleFrom(
+                            side: const BorderSide(
+                              color: Colors.black,
+                            ),
+                          ),
+                          child: const Text('SKIP',
+                            style:TextStyle(
+                              fontSize: 23,
+                              color:Colors.indigo,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          onPressed: (){
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context){
+                                return  CheckBoxT(PageFlag: 0);
+                              }),
+                            );
+                          },
+                        )
+                    ),
+                  ],
+                ),
+              ],
+            )
+        ),
+
       ),
     );
   }

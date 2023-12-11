@@ -44,12 +44,12 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                 Container(
                   margin: const EdgeInsets.fromLTRB(20, 40, 20, 0),
                   child:const Text('指定されたアレルゲンは\n見つかりませんでした。',
-                      style: TextStyle(
-                          color:Colors.indigo,
-                          fontSize: 23,
-                          fontWeight: FontWeight.bold
-                      ),
-                      textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color:Colors.indigo,
+                        fontSize: 23,
+                        fontWeight: FontWeight.bold
+                    ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
 
@@ -71,13 +71,14 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                     ),
                     onPressed: (){
                     },
-                    child: const Text('他の商品をスキャンする',
-                      style:TextStyle(
-                        fontSize: 24,
-                        color:Colors.deepOrange,
-                        fontWeight: FontWeight.bold,
+                    child: const FittedBox(
+                      child: Text('他の商品をスキャンする',
+                        style:TextStyle(
+                          fontSize: 24,
+                          color:Colors.deepOrange,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
@@ -97,13 +98,15 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                           onPressed: (){
 
                           },
-                          child: const Text('他のユーザー\nを選択する',
-                              style:TextStyle(
-                                fontSize: 21,
-                                color:Colors.indigo,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign:TextAlign.center
+                          child: const FittedBox(
+                            child:Text('他のユーザー\nを選択する',
+                                style:TextStyle(
+                                  fontSize: 21,
+                                  color:Colors.indigo,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign:TextAlign.center
+                            ),
                           ),
                         ),
                       ),
@@ -117,13 +120,15 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                                 color: Colors.blue,
                               ),
                             ),
-                            child: const Text('読み取った\n成分を見る',
-                                style:TextStyle(
-                                  fontSize: 21,
-                                  color:Colors.indigo,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                textAlign:TextAlign.center
+                            child: const FittedBox(
+                              child:Text('読み取った\n成分を見る',
+                                  style:TextStyle(
+                                    fontSize: 21,
+                                    color:Colors.indigo,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign:TextAlign.center
+                              ),
                             ),
                             onPressed: (){}
                         ),

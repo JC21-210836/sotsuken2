@@ -42,7 +42,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                       ),
                       child:const Text('表示義務',
                           style:TextStyle(
-                              fontSize:30,
+                              fontSize:25,
                               fontWeight: FontWeight.bold,
                               color:Colors.deepOrange
                           )
@@ -59,7 +59,8 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                     //テキスト表示させるやつがいる↓
                     child:Text(HObligation,
                       style:const TextStyle(
-                        fontSize:30,
+                        height: 1.4,
+                        fontSize:23,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -77,7 +78,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                       decoration:BoxDecoration(
                           border:Border.all(color:Colors.blue,width:1)
                       ),
-                      child:Text('表示推奨',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold,color:Colors.indigo)),
+                      child:Text('表示推奨',style:TextStyle(fontSize:25,fontWeight: FontWeight.bold,color:Colors.indigo)),
                     ),
                   ),
                   Container(
@@ -90,7 +91,8 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                     //テキスト表示させるやつがいる↓
                     child:Text(HRecommendation,
                       style:const TextStyle(
-                        fontSize:30,
+                        height: 1.4,
+                        fontSize:23,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
