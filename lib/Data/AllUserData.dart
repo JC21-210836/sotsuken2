@@ -33,8 +33,15 @@ class AllUserData{
     return UserNameList;
   }
 
+
   void deleteUserName(String name){
     UserNameList.remove(name);
+  }
+
+  void changeUserName(String beforeName,String afterName){
+    int idx = UserNameList.indexOf(beforeName);   //trueのインデックスを探す
+    deleteUserName(beforeName);                   //削除
+    UserNameList.insert(idx, afterName);
     debugPrint('Listのなかみ$UserNameList');
   }
 //indexで誰の情報か紐づけで持ってくる

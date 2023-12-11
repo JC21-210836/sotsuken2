@@ -13,6 +13,7 @@ class StateSettingUserNameChange extends StatefulWidget{
 }
 
 class SettingUserNameChange extends State<StateSettingUserNameChange>{
+  String afterName = "";
 
   @override
   Widget build(BuildContext context){
@@ -90,7 +91,7 @@ class SettingUserNameChange extends State<StateSettingUserNameChange>{
                         style:const TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
                         maxLength: 7,
                         onChanged: (value){
-                          //UN = value;
+                          afterName = value;
                         },
                       ),
                     ),
@@ -106,8 +107,11 @@ class SettingUserNameChange extends State<StateSettingUserNameChange>{
                         child:const Text('更新',style: TextStyle(fontSize: 28),),
                         onPressed: (){
                           setState(() {
-
+                            AllUserData aud = AllUserData();
+                            aud.changeUserName(widget.UserName,afterName);
                           });
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
                           Navigator.of(context).pop();
                         },
                       )
