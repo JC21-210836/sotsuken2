@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 
 //import 'package:sotsuken2/CreateUser1.dart';
@@ -34,6 +32,11 @@ class AllUserData{
     sUserName = "";
     return UserNameList;
   }
-  //indexで誰の情報か紐づけで持ってくる
-  //後でdeleteもほしいね
+
+  void deleteUserName(String name){
+    UserNameList.remove(name);
+    debugPrint('Listのなかみ$UserNameList');
+  }
+//indexで誰の情報か紐づけで持ってくる
+//後でdeleteもほしいね
 }
