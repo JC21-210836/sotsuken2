@@ -34,7 +34,7 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
                     color:Colors.red,
                     child:const Text('ユーザーの削除',
                       style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 28,
                           color:Colors.white,
                           fontWeight: FontWeight.bold
                       ),
