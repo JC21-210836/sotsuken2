@@ -7,6 +7,8 @@ import 'package:sotsuken2/ui/ChooseUser.dart';
 class AllUserData{
   //一時的に保持するとこ
   static String sUserName = "";
+  static String bName = "";
+  static String aName = "";
 
   //臨時
   static List<String> UserNameList = [];
@@ -43,6 +45,9 @@ class AllUserData{
     deleteUserName(beforeName);                   //削除
     UserNameList.insert(idx, afterName);
     debugPrint('Listのなかみ$UserNameList');
+
+    bName = beforeName;
+    aName = afterName;
   }
 //indexで誰の情報か紐づけで持ってくる
 //後でdeleteもほしいね
