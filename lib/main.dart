@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget{
             return const StateChooseUser();
           }
         },
-        home: Home_Page_State()
+        home: Home_Page_State(),
     );
   }
 }
