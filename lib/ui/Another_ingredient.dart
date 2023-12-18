@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'AddAnotherIngredient.dart';
+
 import 'package:sotsuken2/Data/AllAnotherData.dart';
 
-import 'AddAnotherIngredient.dart';
+//臨時
+import 'AllergyDetection.dart';
+
+
 
 
 class StateAnother_ingredient extends StatefulWidget{
+  final int PageFlag;
+  const StateAnother_ingredient({Key?key, required this.PageFlag}): super(key:key) ;
 
   @override
   State<StateAnother_ingredient> createState(){
@@ -160,7 +167,18 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                           )
                           ),
                           onPressed:(){
+                            if(widget.PageFlag == 0){
+                              Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context){
+                                    return const StateAllergyDetection();
+                                  })
+                              );
 
+                            }else if(widget.PageFlag == 1){
+                              Navigator.of(context).pop();
+                            }
+                            debugPrint(widget.PageFlag.toString());
+                            //aod.HanteiObligation();
                           },
                           child: const Text('決定',style: TextStyle(
                             fontSize: 23,

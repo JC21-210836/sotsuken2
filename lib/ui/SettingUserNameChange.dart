@@ -112,9 +112,8 @@ class SettingUserNameChange extends State<StateSettingUserNameChange>{
                             AllUserData aud = AllUserData();
                             aud.changeUserName(widget.UserName,afterName);
                           });
-                          Navigator.of(context).pop();
-                          Navigator.of(context).pop();
-                          Navigator.of(context).pop();
+                          //ユ－ザー選択画面(ChooseUser)
+                          Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
                         },
                       )
                   ),

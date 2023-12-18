@@ -126,34 +126,36 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                   ),
                 ),
               ],
-              Container(
-                width: 290,
-                height: 70,
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                child:OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                      side: const BorderSide(
-                        color: Colors.indigoAccent,
-                        width: 1.5,
-                      ),
-                      primary:Colors.indigo
+              if(widget.PageFlag == 0)...[
+                Container(
+                  width: 290,
+                  height: 70,
+                  margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                  padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
+                  child:OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                        side: const BorderSide(
+                          color: Colors.indigoAccent,
+                          width: 1.5,
+                        ),
+                        primary:Colors.indigo
+                    ),
+                    onPressed:(){
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context){
+                            return StateAnother_ingredient(PageFlag:widget.PageFlag);
+                          })
+                      );
+                    },
+                    child: const Text('登録済み成分を選択',
+                        style: TextStyle(
+                          fontSize: 23,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center),
                   ),
-                  onPressed:(){
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context){
-                          return StateAnother_ingredient();
-                        })
-                    );
-                  },
-                  child: const Text('登録済み成分を選択',
-                      style: TextStyle(
-                        fontSize: 23,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center),
                 ),
-              ),
+              ],
               Container(
                 width: 290,
                 height: 70,
@@ -175,6 +177,7 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                           })
                       );
                     }else if(widget.PageFlag == 1){
+                      //なおしたいNamdpush
                       Navigator.of(context).pop();
                       Navigator.of(context).pop();
                     }

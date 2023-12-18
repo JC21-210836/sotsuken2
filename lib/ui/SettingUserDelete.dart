@@ -104,9 +104,8 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
                               //エラーメッセが欲しいけど今出す場所ない
                             }
                           });
-                          Navigator.pop(context);
-                          Navigator.pop(context);
-                          Navigator.of(context).pop();
+                          //ユ－ザー選択画面(ChooseUser)
+                          Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
                         },
                       )
                   ),

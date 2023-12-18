@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'Recommendation_allergy.dart';
+import 'Another_ingredient.dart';
 
 import 'package:sotsuken2/Data/AllObligationData.dart';
+
 //臨時
 import 'AllergyDetection.dart';
 
@@ -132,28 +134,34 @@ class Obligation_allergy extends State<StateObligation_allergy>{
 
                     ),
                   ),
-                  Container(
-                    width: 290,
-                    height: 70,
-                    padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                    child:OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                          foregroundColor: Colors.indigo, side: const BorderSide(
-                        color: Colors.indigoAccent,
-                        width: 1.5,
-                      )
+                  if(widget.PageFlag == 0)...[
+                    Container(
+                      width: 290,
+                      height: 70,
+                      padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
+                      child:OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                            foregroundColor: Colors.indigo, side: const BorderSide(
+                          color: Colors.indigoAccent,
+                          width: 1.5,
+                        )
+                        ),
+                        onPressed:(){
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context){
+                                return StateAnother_ingredient(PageFlag: widget.PageFlag);
+                              })
+                          );
+                        },
+                        child: const Text('登録済み成分を選択',
+                            style: TextStyle(
+                              fontSize: 23,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center),
                       ),
-                      onPressed:(){
-
-                      },
-                      child: const Text('登録済み成分を選択',
-                          style: TextStyle(
-                            fontSize: 23,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center),
                     ),
-                  ),
+                  ],
                   Container(
                     height: 70,
                     width: 290,
