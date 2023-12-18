@@ -1,40 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/ui/AllergyDetection.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
+import 'package:sotsuken2/Data/AllAnotherData.dart';
+import 'package:sotsuken2/ui/Another_ingredient.dart';
 
 
-class CheckBoxT2 extends StatefulWidget{
+class StateRecommendation_allergy extends StatefulWidget{
   final int PageFlag;
-  const CheckBoxT2({Key?key, required this.PageFlag}): super(key:key) ;
+  const StateRecommendation_allergy({Key?key, required this.PageFlag}): super(key:key) ;
 
   @override
-  State<CheckBoxT2> createState(){
-    return Recommendation_allergy_Page();
+  State<StateRecommendation_allergy> createState(){
+    return Recommendation_allergy();
   }
 }
 
-class Recommendation_allergy_Page extends State<CheckBoxT2> {
+class Recommendation_allergy extends State<StateRecommendation_allergy> {
 //チェックボックスの数だけいる(20)
-  bool cAlmond = false; //アーモンド
-  bool cAwabi = false;
-  bool cIka = false;
-  bool cIkura = false;
-  bool cOrange = false;
-  bool cBeef = false;   //牛肉
-  bool cGoma = false;
-  bool cSake = false;
-  bool cSaba = false;
-  bool cDaizu = false;
-  bool cChicken = false; //鶏肉
-  bool cBanana = false;
-  bool cPork = false;    //豚肉
-  bool cMatsutake = false;
-  bool cMomo = false;
-  bool cYamaimo = false;   //牛肉
-  bool cRingo = false;
-  bool cZeratin = false;
-  bool cCashewnut = false;  //カシューナッツ
-  bool cKiui = false;
+
+  AllRecommendationData ard = AllRecommendationData();
 
   @override
   Widget build(BuildContext context) {
@@ -65,465 +49,83 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                 ),
               ),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width:180,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('あわび',style:TextStyle(fontSize: 20)),
+              for(int n = 0 ; n < 18; n = n+2)...[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    for(int nn = 0 ; nn < 2  ; nn++)...[
+                      if(nn == 0)...[
+                        Container(
+                            width:170,
+                            child:Transform.scale(
+                                scale:1.2,
+                                child:CheckboxListTile(
+                                    controlAffinity: ListTileControlAffinity.leading,
+                                    title: Transform.translate(
+                                      offset: const Offset(-15,0),
+                                      child:Text(ard.getValue()[n+nn],style: TextStyle(fontSize: 20)),
+                                    ),
+                                    value: ard.getBool()[n+nn],
+                                    onChanged: (value) {
+                                      setState(() {
+                                        ard.getBool()[n+nn] = value!;
+                                      });
+                                    }
+                                )
+                            )
+                        ),
+                      ]else...[
+                        if(n+1 == 17)...[
+                          Container(
+                            width: 160,
+                          ),
+                        ]else...[
+                          Container(
+                            width: 160,
+                            child:Transform.scale(
+                              scale:1.2,
+                              child: CheckboxListTile(
+                                  controlAffinity: ListTileControlAffinity.leading,
+                                  title: Transform.translate(
+                                    offset: const Offset(-15,0),
+                                    child:Text(ard.getValue()[n+nn],style: TextStyle(fontSize: 20)),
+                                  ),
+                                  value: ard.getBool()[n+nn],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      ard.getBool()[n+nn] = value!;
+                                    });
+                                  }
+                              ),
                             ),
-                            value: cAwabi,
-                            onChanged: (value){
-                              setState(() {
-                                cAwabi = value!;
-                              });
-                            },
-                          )
-                      )
+                          ),
+                        ],
+                      ],
+                    ],
+                  ],
+                ),
+              ],
+              for(int n = 18 ; n < 20 ; n++ )...[
+                Container(
+                  width: 303,
+                  child:Transform.scale(
+                    scale:1.2,
+                    child: CheckboxListTile(
+                        controlAffinity: ListTileControlAffinity.leading,
+                        title: Transform.translate(
+                          offset: const Offset(-15,0),
+                          child:Text(ard.getValue()[n],style: TextStyle(fontSize: 20)),
+                        ),
+                        value: ard.getBool()[n],
+                        onChanged: (value) {
+                          setState(() {
+                            ard.getBool()[n] = value!;
+                          });
+                        }
+                    ),
                   ),
-                  Container(
-                      width:155,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('いか',style:TextStyle(fontSize: 20,)),
-                            ),
-                            value: cIka,
-                            onChanged: (value){
-                              setState(() {
-                                cIka = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                ],
-              ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width:180,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('オレンジ',style:TextStyle(fontSize:20,)),
-                            ),
-                            value: cOrange,
-                            onChanged: (value){
-                              setState(() {
-                                cOrange = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                  Container(
-                      width:155,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('いくら',style:TextStyle(fontSize: 19)),
-                            ),
-                            value: cIkura,
-                            onChanged: (value){
-                              setState(() {
-                                cIkura = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width:180,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('牛肉',style:TextStyle(fontSize: 20)),
-                            ),
-                            value: cBeef,
-                            onChanged: (value){
-                              setState(() {
-                                cBeef = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                  Container(
-                      width:155,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('ごま',style:TextStyle(fontSize: 20,)),
-                            ),
-                            value: cGoma,
-                            onChanged: (value){
-                              setState(() {
-                                cGoma = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width:180,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('さけ',style:TextStyle(fontSize: 20)),
-                            ),
-                            value: cSake,
-                            onChanged: (value){
-                              setState(() {
-                                cSake = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                  Container(
-                      width:155,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('さば',style:TextStyle(fontSize: 20,)),
-                            ),
-                            value: cSaba,
-                            onChanged: (value){
-                              setState(() {
-                                cSaba = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width:180,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('大豆',style:TextStyle(fontSize: 20)),
-                            ),
-                            value: cDaizu,
-                            onChanged: (value){
-                              setState(() {
-                                cDaizu = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                  Container(
-                      width:155,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('鶏肉',style:TextStyle(fontSize: 20,)),
-                            ),
-                            value: cChicken,
-                            onChanged: (value){
-                              setState(() {
-                                cChicken = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width:180,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('バナナ',style:TextStyle(fontSize: 20)),
-                            ),
-                            value: cBanana,
-                            onChanged: (value){
-                              setState(() {
-                                cBanana = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                  Container(
-                      width:155,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('豚肉',style:TextStyle(fontSize: 20,)),
-                            ),
-                            value: cPork,
-                            onChanged: (value){
-                              setState(() {
-                                cPork = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width:180,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('まつたけ',style:TextStyle(fontSize: 20)),
-                            ),
-                            value: cMatsutake,
-                            onChanged: (value){
-                              setState(() {
-                                cMatsutake = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                  Container(
-                      width:155,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('もも',style:TextStyle(fontSize: 20,)),
-                            ),
-                            value: cMomo,
-                            onChanged: (value){
-                              setState(() {
-                                cMomo = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width:180,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('やまいも',style:TextStyle(fontSize: 20)),
-                            ),
-                            value: cYamaimo,
-                            onChanged: (value){
-                              setState(() {
-                                cYamaimo = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                  Container(
-                      width:155,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('りんご',style:TextStyle(fontSize: 19,)),
-                            ),
-                            value: cRingo,
-                            onChanged: (value){
-                              setState(() {
-                                cRingo = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width:180,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('ゼラチン',style:TextStyle(fontSize: 20)),
-                            ),
-                            value: cZeratin,
-                            onChanged: (value){
-                              setState(() {
-                                cZeratin = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                  Container(
-                    width:150,
-
-                  ),
-                ],
-              ),
-
-
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width:250,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('アーモンド',style:TextStyle(fontSize: 20,)),
-                            ),
-                            value: cAlmond,
-                            onChanged: (value){
-                              setState(() {
-                                cAlmond = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                  Container(
-                    width:70,
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width:250,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('カシューナッツ',style:TextStyle(fontSize: 20,)),
-                            ),
-                            value: cCashewnut,
-                            onChanged: (value){
-                              setState(() {
-                                cCashewnut = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                  Container(
-                    width:70,
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width:250,
-                      child:Transform.scale(
-                          scale:1.2,
-                          child:CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            title: Transform.translate(
-                              offset: const Offset(-15,0),
-                              child:const Text('キウイフルーツ',style:TextStyle(fontSize: 20)),
-                            ),
-                            value: cKiui,
-                            onChanged: (value){
-                              setState(() {
-                                cKiui = value!;
-                              });
-                            },
-                          )
-                      )
-                  ),
-                  Container(
-                    width:70,
-                  ),
-                ],
-              ),
-
-
+                ),
+              ],
               Container(
                 width: 290,
                 height: 70,
@@ -538,7 +140,11 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                       primary:Colors.indigo
                   ),
                   onPressed:(){
-
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context){
+                          return StateAnother_ingredient();
+                        })
+                    );
                   },
                   child: const Text('登録済み成分を選択',
                       style: TextStyle(
@@ -573,9 +179,6 @@ class Recommendation_allergy_Page extends State<CheckBoxT2> {
                       Navigator.of(context).pop();
                     }
                     debugPrint(widget.PageFlag.toString());
-                    AllRecommendationData ard = AllRecommendationData();
-                    ard.setRecommendationBool([cAwabi,cIka,cIkura,cOrange,cBeef,cGoma,cSake,cSaba,cDaizu,cChicken,
-                      cBanana,cPork,cMatsutake,cMomo,cYamaimo,cRingo,cZeratin,cAlmond,cCashewnut,cKiui]);
                     ard.HanteiRecommendation();
                   },
                   child: const Text('決定',style: TextStyle(

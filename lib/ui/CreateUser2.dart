@@ -99,7 +99,7 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                           onPressed: (){
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
-                                  return CheckBoxT(PageFlag : 1);
+                                  return StateObligation_allergy(PageFlag : 1);
                                 })
                             );
                             AllObligationData aod = AllObligationData();

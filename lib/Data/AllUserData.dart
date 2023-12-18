@@ -1,7 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
-//import 'package:sotsuken2/CreateUser1.dart';
-//import 'package:sotsuken2/CreateUser2.dart';
 import 'package:sotsuken2/ui/ChooseUser.dart';
 
 class AllUserData{
@@ -35,7 +35,6 @@ class AllUserData{
     return UserNameList;
   }
 
-
   void deleteUserName(String name){
     UserNameList.remove(name);
   }
@@ -45,9 +44,6 @@ class AllUserData{
     deleteUserName(beforeName);                   //削除
     UserNameList.insert(idx, afterName);
     debugPrint('Listのなかみ$UserNameList');
-
-    bName = beforeName;
-    aName = afterName;
   }
 //indexで誰の情報か紐づけで持ってくる
 //後でdeleteもほしいね
