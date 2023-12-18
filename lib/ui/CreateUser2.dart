@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sotsuken2/Data/AllAnotherData.dart';
 import 'CreateUserCheck.dart';
 import 'Obligation_allergy.dart';
 import 'Another_ingredient.dart';
@@ -18,6 +19,10 @@ class StateCreateUser2 extends StatefulWidget{
 String UserName = "";
 
 class CreateUser2_Page extends State<StateCreateUser2> {
+
+  AllObligationData aod = AllObligationData();
+  AllRecommendationData ard = AllRecommendationData();
+  AllAnotherData aad = AllAnotherData();
 
   @override
   Widget build(BuildContext context) {
@@ -99,8 +104,6 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                                   return const StateObligation_allergy(PageFlag : 1);
                                 })
                             );
-                            AllObligationData aod = AllObligationData();
-                            AllRecommendationData ard = AllRecommendationData();
                             setState(() {
                               aod.AllResetObligation();
                               ard.AllResetRecommendation();
@@ -137,6 +140,9 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                                 return const StateAnother_ingredient(PageFlag:1);
                               })
                             );
+                            setState(() {
+                              aad.AllResetAnother();
+                            });
                           },
                         )
                     ),
@@ -157,11 +163,11 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                           ),
                           child:const Text('登録内容を確認',style: TextStyle(fontSize: 28)),
                           onPressed: (){
-                            AllObligationData aod = AllObligationData();
-                            AllRecommendationData ard = AllRecommendationData();
+
                             setState(() {
                               CreateUserCheck.HObligation = aod.getValueCheckString();
                               CreateUserCheck.HRecommendation = ard.getValueCheckString2();
+                              CreateUserCheck.HAnother = aad.getValueCheckString3();
                             });
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){

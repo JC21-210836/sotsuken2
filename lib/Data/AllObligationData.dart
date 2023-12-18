@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class AllObligationData{
 
   static List<bool> boolList = List.filled(8, false);
@@ -54,7 +53,6 @@ class AllObligationData{
         hObligation = '$hObligation\n${valueCheck[x]}';
       }
     }
-    debugPrint(hObligation);
     return hObligation;
   }
 

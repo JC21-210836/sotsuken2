@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sotsuken2/Data/AllAnotherData.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
 import 'package:sotsuken2/Data/AllUserData.dart';
@@ -15,9 +16,11 @@ class StateCreateUserCheck extends StatefulWidget{
 class CreateUserCheck extends State<StateCreateUserCheck>{
   static String HObligation = "";
   static String HRecommendation = "";
+  static String HAnother = "";
 
   AllObligationData aod = AllObligationData();
   AllRecommendationData ard = AllRecommendationData();
+  AllAnotherData aad = AllAnotherData();
 
 
   @override
@@ -107,19 +110,19 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                   ],
 
                   //追加成分
-                  if(ard.getValueCheck2().isNotEmpty)...[
+                  if(aad.getValueCheck3().isNotEmpty)...[
                     Container(
-                      margin: const EdgeInsets.fromLTRB(0, 0, 120, 0),
+                      margin: const EdgeInsets.fromLTRB(0, 0, 70, 0),
                       decoration:BoxDecoration(
-                          border:Border.all(color:Colors.blue,width:1)
+                          border:Border.all(color:Colors.amber,width:1)
                       ),
                       child:Container(
                         margin:const EdgeInsets.fromLTRB(5, 5, 5, 5),
                         padding:const EdgeInsets.fromLTRB(15, 10, 15, 10),
                         decoration:BoxDecoration(
-                            border:Border.all(color:Colors.blue,width:1)
+                            border:Border.all(color:Colors.amber,width:1)
                         ),
-                        child:Text('表示推奨',style:TextStyle(fontSize:25,fontWeight: FontWeight.bold,color:Colors.indigo)),
+                        child:Text('その他の成分',style:TextStyle(fontSize:25,fontWeight: FontWeight.bold,color:Colors.orange)),
                       ),
                     ),
                     Container(
@@ -127,10 +130,10 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                       margin: const EdgeInsets.fromLTRB(15, 5, 15, 30),
                       padding:const EdgeInsets.fromLTRB(25, 10, 25, 10),
                       decoration:BoxDecoration(
-                          border:Border.all(color:Colors.blue,width:1)
+                          border:Border.all(color:Colors.amber,width:1)
                       ),
                       //テキスト表示させるやつがいる↓
-                      child:Text(HRecommendation,
+                      child:Text(HAnother,
                         style:const TextStyle(
                           height: 1.4,
                           fontSize:23,
