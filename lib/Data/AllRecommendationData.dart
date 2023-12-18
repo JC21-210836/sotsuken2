@@ -42,7 +42,11 @@ class AllRecommendationData{
     debugPrint(valueCheck2.toString());
   }
 
-  String getCheckValue2(){
+  List<String> getValueCheck2(){
+    return valueCheck2;
+  }
+
+  String getValueCheckString2(){
     hRecommendation = "";
     for(int x = 0;x < valueCheck2.length; x++){
       if(x == 0 || x == valueCheck2.length){

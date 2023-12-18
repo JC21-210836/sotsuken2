@@ -160,8 +160,8 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                             AllObligationData aod = AllObligationData();
                             AllRecommendationData ard = AllRecommendationData();
                             setState(() {
-                              CreateUserCheck.HObligation = aod.getCheckValue();
-                              CreateUserCheck.HRecommendation = ard.getCheckValue2();
+                              CreateUserCheck.HObligation = aod.getValueCheckString();
+                              CreateUserCheck.HRecommendation = ard.getValueCheckString2();
                             });
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){

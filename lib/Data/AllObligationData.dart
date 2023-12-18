@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/ui/Obligation_allergy.dart';
 
 
 class AllObligationData{
@@ -41,7 +40,12 @@ class AllObligationData{
     debugPrint(valueCheck.toString());
   }
 
-  String getCheckValue(){
+  List<String> getValueCheck(){
+    debugPrint("valueCheckのなかみ$valueCheck");
+    return valueCheck;
+  }
+
+  String getValueCheckString(){
     hObligation = "";
     for(int x = 0;x < valueCheck.length; x++){
       if(x == 0 || x == valueCheck.length){
