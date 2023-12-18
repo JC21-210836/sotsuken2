@@ -56,14 +56,14 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                     for(int nn = 0 ; nn < 2  ; nn++)...[
                       if(nn == 0)...[
                         Container(
-                            width:170,
+                            width:176,
                             child:Transform.scale(
-                                scale:1.2,
+                                scale:1.1,
                                 child:CheckboxListTile(
                                     controlAffinity: ListTileControlAffinity.leading,
                                     title: Transform.translate(
                                       offset: const Offset(-15,0),
-                                      child:Text(ard.getValue()[n+nn],style: TextStyle(fontSize: 20)),
+                                      child:Text(ard.getValue()[n+nn],style: TextStyle(fontSize: 19)),
                                     ),
                                     value: ard.getBool()[n+nn],
                                     onChanged: (value) {
@@ -77,13 +77,13 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                       ]else...[
                         if(n+1 == 17)...[
                           Container(
-                            width: 160,
+                            width: 157,
                           ),
                         ]else...[
                           Container(
-                            width: 160,
+                            width: 157,
                             child:Transform.scale(
-                              scale:1.2,
+                              scale:1.1,
                               child: CheckboxListTile(
                                   controlAffinity: ListTileControlAffinity.leading,
                                   title: Transform.translate(
@@ -107,9 +107,9 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
               ],
               for(int n = 18 ; n < 20 ; n++ )...[
                 Container(
-                  width: 303,
+                  width: 319,
                   child:Transform.scale(
-                    scale:1.2,
+                    scale:1.1,
                     child: CheckboxListTile(
                         controlAffinity: ListTileControlAffinity.leading,
                         title: Transform.translate(

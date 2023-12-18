@@ -75,7 +75,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                               for(int nn = 0 ; nn < 2  ; nn++)...[
                                 if(nn == 0)...[
                                   Container(
-                                    width: 170,
+                                    width: 165,
                                     child:Transform.scale(
                                       scale:1.1,
                                       child: CheckboxListTile(
@@ -96,11 +96,11 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                                 ]else...[
                                   if(aad.getValue3().length % 2 == 1 && aad.getValue3().length == n+1)...[
                                     Container(
-                                      width: 170,
+                                      width: 165,
                                     ),
                                   ]else...[
                                     Container(
-                                      width: 170,
+                                      width: 165,
                                       child:Transform.scale(
                                         scale:1.1,
                                         child: CheckboxListTile(

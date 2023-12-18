@@ -66,7 +66,7 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          padding:EdgeInsets.fromLTRB(7, 3, 7, 3),
+                          padding:EdgeInsets.fromLTRB(5, 3, 5, 3),
                           decoration: BoxDecoration(
                             color:Colors.white,
                             border: Border.all(

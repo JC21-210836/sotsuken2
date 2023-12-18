@@ -61,7 +61,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                             Container(
                                 width:160,
                                 child:Transform.scale(
-                                    scale:1.2,
+                                    scale:1.1,
                                     child:CheckboxListTile(
                                         controlAffinity: ListTileControlAffinity.leading,
                                         title: Transform.translate(
@@ -81,7 +81,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                             Container(
                               width: 160,
                               child:Transform.scale(
-                                scale:1.2,
+                                scale:1.1,
                                 child: CheckboxListTile(
                                     controlAffinity: ListTileControlAffinity.leading,
                                     title: Transform.translate(
