@@ -51,7 +51,10 @@ class AllAnotherData{
   }
 
   void AllResetAnother(){
-    boolList3 = List.filled(getValue3().length, false);
+    debugPrint(getValue3().length.toString());
+    if(boolList3.isNotEmpty){
+      boolList3 = List.filled(getValue3().length, false);
+    }
     valueCheck3 = [];
     hAnother = "";
   }
