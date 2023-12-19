@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'ChooseUser.dart';
 import 'SettingUser2.dart';
 import 'package:sotsuken2/Data/AllUserData.dart';
 
@@ -22,6 +21,8 @@ class UserSettings1 extends State<StateUserSettings1>{
         })
     );
   }
+
+  AllUserData aud = AllUserData();
 
   @override
   Widget build(BuildContext context){
@@ -66,6 +67,8 @@ class UserSettings1 extends State<StateUserSettings1>{
                             color:Colors.deepOrange)
                     ),
                     child:Container(
+                      width:265,
+                      height: 290,
                       padding: const EdgeInsets.all(15),
                       margin: const EdgeInsets.all(3),
                       decoration: BoxDecoration(
@@ -74,88 +77,36 @@ class UserSettings1 extends State<StateUserSettings1>{
                       ),
                       child:Column(
                         children: [
-                          //child:Text(allUserName,style:const TextStyle(fontSize: 20,)),
-                          //ボタン×５
-                          Container(
-                            width: 240,
-                            height: 50,
-                            margin: const EdgeInsets.all(2),
-                            child:OutlinedButton(
-                              style:OutlinedButton.styleFrom(
-                                  side:const BorderSide(
-                                      color: Colors.deepOrangeAccent
-                                  )
+
+                          if(aud.getUserNames().isEmpty)...[
+                            Container(
+                              margin:EdgeInsets.fromLTRB(0, 70, 0, 70),
+                              child:const Text('ユーザーが\n登録されていません',
+                                  style:TextStyle(
+                                      fontSize: 25,color:Colors.black87,
+                                      fontWeight: FontWeight.bold,
+                                  ),textAlign: TextAlign.center,
                               ),
-                              child:Text(valueName1,style:const TextStyle(fontSize: 25,color:Colors.black87)),
-                              onPressed: (){
-                                PageRoute(valueName1);
-                              },
                             ),
-                          ),
-                          Container(
-                            width: 240,
-                            height: 50,
-                            margin: const EdgeInsets.all(2),
-                            child:OutlinedButton(
-                              style:OutlinedButton.styleFrom(
-                                  side:const BorderSide(
-                                      color: Colors.deepOrangeAccent
-                                  )
+                          ],
+                          for(String n in aud.getUserNames())...[
+                            Container(
+                              width: 240,
+                              height: 50,
+                              margin: const EdgeInsets.all(2),
+                              child:OutlinedButton(
+                                style:OutlinedButton.styleFrom(
+                                    side:const BorderSide(
+                                        color: Colors.deepOrangeAccent
+                                    )
+                                ),
+                                child:Text(n,style:const TextStyle(fontSize: 25,color:Colors.black87)),
+                                onPressed: (){
+                                  PageRoute(n);
+                                },
                               ),
-                              child:Text(valueName2,style:const TextStyle(fontSize: 25,color:Colors.black87)),
-                              onPressed: (){
-                                PageRoute(valueName2);
-                              },
                             ),
-                          ),
-                          Container(
-                            width: 240,
-                            height: 50,
-                            margin: const EdgeInsets.all(2),
-                            child:OutlinedButton(
-                              style:OutlinedButton.styleFrom(
-                                  side:const BorderSide(
-                                      color: Colors.deepOrangeAccent
-                                  )
-                              ),
-                              child:Text(valueName3,style:const TextStyle(fontSize: 25,color:Colors.black87)),
-                              onPressed: (){
-                                PageRoute(valueName3);
-                              },
-                            ),
-                          ),
-                          Container(
-                            width: 240,
-                            height: 50,
-                            margin: const EdgeInsets.all(2),
-                            child:OutlinedButton(
-                              style:OutlinedButton.styleFrom(
-                                  side:const BorderSide(
-                                      color: Colors.deepOrangeAccent
-                                  )
-                              ),
-                              child:Text(valueName4,style:const TextStyle(fontSize: 25,color:Colors.black87)),
-                              onPressed: (){
-                                PageRoute(valueName4);
-                              },
-                            ),
-                          ),
-                          Container(
-                            width: 240,
-                            height: 50,
-                            margin: const EdgeInsets.all(2),
-                            child:OutlinedButton(
-                              style:OutlinedButton.styleFrom(
-                                  side:const BorderSide(
-                                      color: Colors.deepOrangeAccent
-                                  )
-                              ),
-                              child:Text(valueName5,style:const TextStyle(fontSize: 25,color:Colors.black87)),
-                              onPressed: (){
-                                PageRoute(valueName5);
-                              },
-                            ),
-                          ),
+                          ]
 
                         ],
                       ),

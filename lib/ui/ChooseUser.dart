@@ -15,12 +15,6 @@ class StateChooseUser extends StatefulWidget{
   }
 }
 
-String valueName1 = "";
-String valueName2 = "";
-String valueName3 = "";
-String valueName4 = "";
-String valueName5 = "";
-
 class ChooseUser_Page extends State<StateChooseUser>{
 
   void ReturnAndReload(int n) async{
@@ -37,36 +31,9 @@ class ChooseUser_Page extends State<StateChooseUser>{
           })
       );
     }
-    setState(() {
-
-      AllUserData aud = AllUserData();
-      int aaa = aud.getUserNames().length;
-      debugPrint(aaa.toString());
-      valueName1 = "";
-      valueName2 = "";
-      valueName3 = "";
-      valueName4 = "";
-      valueName5 = "";
-      for(int n = 1; n <= aud.getUserNames().length;n++){
-        switch (n){
-          case 5 :
-            valueName5 = aud.getUserNames()[4];
-          case 4 :
-            valueName4 = aud.getUserNames()[3];
-          case 3 :
-            valueName3 = aud.getUserNames()[2];
-          case 2 :
-            valueName2 = aud.getUserNames()[1];
-          case 1 :
-            valueName1 = aud.getUserNames()[0];
-            break;
-          default:
-          //エラーのポップアップとかできないかな
-        }
-      }
-    });
+    setState(() {});
   }
-
+  AllUserData aud = AllUserData();
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -102,6 +69,8 @@ class ChooseUser_Page extends State<StateChooseUser>{
                     ),
                   ),
                   child:Container(
+                    width: 265,
+                    height:290,
                     padding: const EdgeInsets.all(15),
                     margin: const EdgeInsets.all(3),
                     decoration: BoxDecoration(
@@ -112,51 +81,29 @@ class ChooseUser_Page extends State<StateChooseUser>{
                     ),
                     child:Column(
                       children: [
-                        Container(
-                          width: 240,
-                          height: 47,
-                          margin: const EdgeInsets.all(2),
-                          child: OutlinedButton(
-                            child:Text(valueName1,style: const TextStyle(fontSize: 25),),
-                            onPressed: () {},
+                        if(aud.getUserNames().isEmpty)...[
+                          Container(
+                            margin:EdgeInsets.fromLTRB(0, 70, 0, 70),
+                            child:const Text('ユーザーが\n登録されていません',
+                              style:TextStyle(
+                                fontSize: 25,color:Colors.black87,
+                                fontWeight: FontWeight.bold,
+                              ),textAlign: TextAlign.center,
+                            ),
                           ),
-                        ),
-                        Container(
-                          width: 240,
-                          height: 47,
-                          margin: const EdgeInsets.all(2),
-                          child: OutlinedButton(
-                            child:Text(valueName2,style: const TextStyle(fontSize: 25),),
-                            onPressed: () {},
+                        ],
+                        for(String n in aud.getUserNames())...[
+                          Container(
+                            width: 240,
+                            height: 47,
+                            margin: const EdgeInsets.all(2),
+                            child: OutlinedButton(
+                              child:Text(n,style: const TextStyle(fontSize: 25),),
+                              onPressed: () {},
+                            ),
                           ),
-                        ),
-                        Container(
-                          width: 240,
-                          height: 47,
-                          margin: const EdgeInsets.all(2),
-                          child: OutlinedButton(
-                            child:Text(valueName3,style: const TextStyle(fontSize: 25),),
-                            onPressed: () {},
-                          ),
-                        ),
-                        Container(
-                          width: 240,
-                          height: 47,
-                          margin: const EdgeInsets.all(2),
-                          child: OutlinedButton(
-                            child:Text(valueName4,style: const TextStyle(fontSize: 25),),
-                            onPressed: () {},
-                          ),
-                        ),
-                        Container(
-                          width: 240,
-                          height: 47,
-                          margin: const EdgeInsets.all(2),
-                          child: OutlinedButton(
-                            child:Text(valueName5,style: const TextStyle(fontSize: 25),),
-                            onPressed: () {},
-                          ),
-                        ),
+                        ],
+
                       ],
                     ),
 

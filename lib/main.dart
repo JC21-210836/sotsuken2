@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'ui/ChooseUser.dart';
-import 'package:sotsuken2/Data/AllUserData.dart';
 
 void main() {
   runApp(const MyApp());    //const無くても動く(下とセット)
@@ -97,24 +96,6 @@ class Home_Page extends State<Home_Page_State>{
                           child: const Text('食品',style: TextStyle(fontSize: 30),),
                           onPressed: (){
                             Navigator.pushNamed(context, 'ChooseUser_page');
-                            setState(() {
-                              AllUserData aud = AllUserData();
-                              switch (aud.getUserNames().length) {
-                                case 5 :
-                                  valueName5 = aud.getUserNames()[4];
-                                case 4 :
-                                  valueName4 = aud.getUserNames()[3];
-                                case 3 :
-                                  valueName3 = aud.getUserNames()[2];
-                                case 2 :
-                                  valueName2 = aud.getUserNames()[1];
-                                case 1 :
-                                  valueName1 = aud.getUserNames()[0];
-                                  break;
-                                default:
-                              }
-                              //エラーのポップアップとかできないかな
-                            });
                           },
                         ),
                       ),
