@@ -44,35 +44,33 @@ class UserSettings2 extends State<StateUserSettings2> {
                       ),
                     ),
                     Container(
-                      child:Container(
-                        width: 280,
-                        height: 60,
-                        margin: const EdgeInsets.all(5),
-                        decoration: const BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  color:Colors.deepOrangeAccent
-                              )
-                          ),
-                        ),
-
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width:60,
-                              child: const Icon(
-                                Icons.account_box,
-                                color: Colors.redAccent,
-                                size:50,
-                              ),
-                            ),
-                            Container(
-                              width: 220,
-                              child:Text(widget.UserName,style: const TextStyle(fontSize: 25),textAlign: TextAlign.center,),
+                      width: 280,
+                      height: 60,
+                      margin: const EdgeInsets.all(5),
+                      decoration: const BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(
+                                color:Colors.deepOrangeAccent
                             )
-                          ],
                         ),
+                      ),
+
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            width:60,
+                            child: Icon(
+                              Icons.account_box,
+                              color: Colors.redAccent,
+                              size:50,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 220,
+                            child:Text(widget.UserName,style: const TextStyle(fontSize: 25),textAlign: TextAlign.center,),
+                          )
+                        ],
                       ),
                     ),
 
@@ -80,7 +78,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                     Container(
                       width:270,
                       height:50,
-                      margin: EdgeInsets.fromLTRB(20, 25, 20, 20),
+                      margin: const EdgeInsets.fromLTRB(20, 25, 20, 20),
                       child:ElevatedButton(
                         style:ElevatedButton.styleFrom(
                             backgroundColor: Colors.deepOrangeAccent
@@ -99,7 +97,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                     Container(
                       width:270,
                       height:50,
-                      margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+                      margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                       child:ElevatedButton(
                         style:ElevatedButton.styleFrom(
                             backgroundColor: Colors.deepOrangeAccent
@@ -112,7 +110,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                     Container(
                       width:270,
                       height:50,
-                      margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+                      margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                       child:ElevatedButton(
                         style:ElevatedButton.styleFrom(
                             backgroundColor: Colors.red
@@ -132,7 +130,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                     Container(
                       width:290,
                       height:90,
-                      margin: EdgeInsets.fromLTRB(20, 10, 20, 25),
+                      margin: const EdgeInsets.fromLTRB(20, 10, 20, 25),
                       child:OutlinedButton(
                         style:OutlinedButton.styleFrom(
                           side: const BorderSide(

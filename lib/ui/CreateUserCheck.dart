@@ -90,7 +90,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                         decoration:BoxDecoration(
                             border:Border.all(color:Colors.blue,width:1)
                         ),
-                        child:Text('表示推奨',style:TextStyle(fontSize:25,fontWeight: FontWeight.bold,color:Colors.indigo)),
+                        child:const Text('表示推奨',style:TextStyle(fontSize:25,fontWeight: FontWeight.bold,color:Colors.indigo)),
                       ),
                     ),
                     Container(
@@ -124,7 +124,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                         decoration:BoxDecoration(
                             border:Border.all(color:Colors.amber,width:1)
                         ),
-                        child:Text('その他の成分',style:TextStyle(fontSize:25,fontWeight: FontWeight.bold,color:Colors.orange)),
+                        child:const Text('その他の成分',style:TextStyle(fontSize:25,fontWeight: FontWeight.bold,color:Colors.orange)),
                       ),
                     ),
                     Container(
@@ -167,7 +167,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                               ard.AllResetRecommendation();
                             });
                             //ユ－ザー選択画面(ChooseUser)
-                            Future.delayed(Duration(seconds: 1)).then((_){
+                            Future.delayed(const Duration(seconds: 1)).then((_){
                               Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
                             });
                           }

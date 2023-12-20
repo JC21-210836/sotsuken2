@@ -36,7 +36,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
 
                 children:<Widget>[
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                    margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                     padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                     decoration:BoxDecoration(
                       border: Border.all(
@@ -58,7 +58,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                       children: [
                         for(int nn = 0 ; nn < 2  ; nn++)...[
                           if(nn == 0)...[
-                            Container(
+                            SizedBox(
                                 width:160,
                                 child:Transform.scale(
                                     scale:1.1,
@@ -66,7 +66,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                                         controlAffinity: ListTileControlAffinity.leading,
                                         title: Transform.translate(
                                           offset: const Offset(-15,0),
-                                          child:Text(aod.getValue()[n+nn],style: TextStyle(fontSize: 20)),
+                                          child:Text(aod.getValue()[n+nn],style: const TextStyle(fontSize: 20)),
                                         ),
                                         value: aod.getBool()[n+nn],
                                         onChanged: (value) {
@@ -78,7 +78,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                                 )
                             ),
                           ]else...[
-                            Container(
+                            SizedBox(
                               width: 160,
                               child:Transform.scale(
                                 scale:1.1,
@@ -86,7 +86,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                                     controlAffinity: ListTileControlAffinity.leading,
                                     title: Transform.translate(
                                       offset: const Offset(-15,0),
-                                      child:Text(aod.getValue()[n+nn],style: TextStyle(fontSize: 20)),
+                                      child:Text(aod.getValue()[n+nn],style: const TextStyle(fontSize: 20)),
                                     ),
                                     value: aod.getBool()[n+nn],
                                     onChanged: (value) {
@@ -105,7 +105,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                   Container(
                     height: 90,
                     width: 290,
-                    margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                     padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
                     child:OutlinedButton(
                       style: OutlinedButton.styleFrom(

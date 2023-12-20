@@ -43,7 +43,7 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
                     ),
                   ),
 
-                  Container(
+                  SizedBox(
                     width: 310,
                     child:Transform.scale(
                         scale: 1.2,
@@ -109,7 +109,7 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
                             }
                           });
                           //ユ－ザー選択画面(ChooseUser)
-                          Future.delayed(Duration(seconds: 1)).then((_){
+                          Future.delayed(const Duration(seconds: 1)).then((_){
                             Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
                           });
                         },
@@ -127,7 +127,7 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
   void _deleteUser() async {
     debugPrint('_deleteUserに来ました');
     final rowsDeleted = await dbProvider.deleteUser(widget.UserName);
-    print('削除しました $rowsDeleted');
+    debugPrint('削除しました $rowsDeleted');
   }
 
   void _selectlistUser() async {

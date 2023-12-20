@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/ui/AllergyDetection.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
-import 'package:sotsuken2/Data/AllAnotherData.dart';
-import 'package:sotsuken2/ui/Another_ingredient.dart';
+import 'Another_ingredient.dart';
 
 
 class StateRecommendation_allergy extends StatefulWidget{
@@ -32,7 +31,7 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
           child:Column(
             children: [
               Container(
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
                 padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                 decoration:BoxDecoration(
                   border: Border.all(
@@ -55,7 +54,7 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                   children: [
                     for(int nn = 0 ; nn < 2  ; nn++)...[
                       if(nn == 0)...[
-                        Container(
+                        SizedBox(
                             width:176,
                             child:Transform.scale(
                                 scale:1.1,
@@ -63,7 +62,7 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                                     controlAffinity: ListTileControlAffinity.leading,
                                     title: Transform.translate(
                                       offset: const Offset(-15,0),
-                                      child:Text(ard.getValue()[n+nn],style: TextStyle(fontSize: 19)),
+                                      child:Text(ard.getValue()[n+nn],style: const TextStyle(fontSize: 19)),
                                     ),
                                     value: ard.getBool()[n+nn],
                                     onChanged: (value) {
@@ -80,7 +79,7 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                             width: 157,
                           ),
                         ]else...[
-                          Container(
+                          SizedBox(
                             width: 157,
                             child:Transform.scale(
                               scale:1.1,
@@ -88,7 +87,7 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                                   controlAffinity: ListTileControlAffinity.leading,
                                   title: Transform.translate(
                                     offset: const Offset(-15,0),
-                                    child:Text(ard.getValue()[n+nn],style: TextStyle(fontSize: 20)),
+                                    child:Text(ard.getValue()[n+nn],style: const TextStyle(fontSize: 20)),
                                   ),
                                   value: ard.getBool()[n+nn],
                                   onChanged: (value) {
@@ -106,7 +105,7 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                 ),
               ],
               for(int n = 18 ; n < 20 ; n++ )...[
-                Container(
+                SizedBox(
                   width: 319,
                   child:Transform.scale(
                     scale:1.1,
@@ -114,7 +113,7 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                         controlAffinity: ListTileControlAffinity.leading,
                         title: Transform.translate(
                           offset: const Offset(-15,0),
-                          child:Text(ard.getValue()[n],style: TextStyle(fontSize: 20)),
+                          child:Text(ard.getValue()[n],style: const TextStyle(fontSize: 20)),
                         ),
                         value: ard.getBool()[n],
                         onChanged: (value) {
@@ -130,15 +129,14 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                 Container(
                   width: 290,
                   height: 70,
-                  margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                  margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                   padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
                   child:OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                        side: const BorderSide(
+                        foregroundColor: Colors.indigo, side: const BorderSide(
                           color: Colors.indigoAccent,
                           width: 1.5,
-                        ),
-                        primary:Colors.indigo
+                        )
                     ),
                     onPressed:(){
                       Navigator.of(context).push(
@@ -159,15 +157,14 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
               Container(
                 width: 290,
                 height: 70,
-                margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
+                margin: const EdgeInsets.fromLTRB(0, 0, 0, 40),
                 padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
                 child:  OutlinedButton(
                   style: OutlinedButton.styleFrom(
-                      side: const BorderSide(
+                      foregroundColor: Colors.deepOrange, side: const BorderSide(
                         color: Colors.deepOrange,
                         width: 1.5,
-                      ),
-                      primary:Colors.deepOrange
+                      )
                   ),
                   onPressed:(){
                     if(widget.PageFlag == 0){

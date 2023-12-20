@@ -52,7 +52,7 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       child:Container(
                         width: 280,
                         height: 60,
@@ -68,15 +68,15 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Container(
+                            const SizedBox(
                               width:60,
-                              child: const Icon(
+                              child:Icon(
                                 Icons.account_box,
                                 color: Colors.indigo,
                                 size:50,
                               ),
                             ),
-                            Container(
+                            SizedBox(
                               width: 220,
                               child:Text(UserName,style: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
                             )

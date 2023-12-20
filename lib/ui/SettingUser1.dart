@@ -80,7 +80,7 @@ class UserSettings1 extends State<StateUserSettings1>{
 
                           if(DBProvider.userName.isEmpty)...[
                             Container(
-                              margin:EdgeInsets.fromLTRB(0, 70, 0, 70),
+                              margin:const EdgeInsets.fromLTRB(0, 70, 0, 70),
                               child:const Text('ユーザーが\n登録されていません',
                                   style:TextStyle(
                                       fontSize: 25,color:Colors.black87,
@@ -117,15 +117,7 @@ class UserSettings1 extends State<StateUserSettings1>{
                 ]
             ),
           )
-
       ),
     );
   }
-
-}
-
-
-
-bool NullHantei(){
-  return true;
 }

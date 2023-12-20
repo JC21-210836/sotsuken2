@@ -26,7 +26,7 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
               children:<Widget>[
 
                 Container(
-                  margin: EdgeInsets.fromLTRB(0, 10, 0, 15),
+                  margin: const EdgeInsets.fromLTRB(0, 10, 0, 15),
                   decoration: BoxDecoration(
                       border: Border.all(color:Colors.deepOrange)
                   ),
