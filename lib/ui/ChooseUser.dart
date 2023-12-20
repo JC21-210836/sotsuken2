@@ -17,7 +17,7 @@ class StateChooseUser extends StatefulWidget{
 }
 
 class ChooseUser_Page extends State<StateChooseUser>{
-  /*
+
   void ReturnAndReload(int n) async{
     if(n == 0){
       await Navigator.of(context).push(
@@ -25,17 +25,19 @@ class ChooseUser_Page extends State<StateChooseUser>{
             return const StateCreateUser1();
           })
       );
+      setState(() {});
     }else if(n == 1){
       await Navigator.of(context).push(
           MaterialPageRoute(builder: (context){
             return const StateUserSettings1();
           })
       );
+      setState(() {});
     }
-    setState(() {});
+
   }
   
-   */
+
   AllUserData aud = AllUserData(username: AllUserData.sUserName);
   @override
   Widget build(BuildContext context){
@@ -125,13 +127,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
                       ),
                     ),
                     onPressed: (){
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context){
-                          return const StateCreateUser1();
-                        })  
-                      ).then((value){
-                        setState(() {});
-                      });
+                      ReturnAndReload(0);
                     },
                     child: const FittedBox(
                       child: Text('新しいユーザを登録',
@@ -160,13 +156,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
                           ),
                         ),
                         onPressed: (){
-                          Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context){
-                                return const StateUserSettings1();
-                              })
-                          ).then((value){
-                            setState(() {});
-                          });
+                          ReturnAndReload(1);
                         },
                         child: const Text('設定',
                           style:TextStyle(
