@@ -145,7 +145,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                     ),
                   ],
 
-                  if(aod.getValueCheck().isEmpty && ard.getValueCheck2().isEmpty)...[
+                  if(aod.getValueCheck().isEmpty && ard.getValueCheck2().isEmpty && aad.getValueCheck3().isEmpty)...[
                     Container(
                       margin: const EdgeInsets.fromLTRB(10, 50, 10, 80),
                       child:const Text('何も登録されていません',style:TextStyle(fontSize: 25,fontWeight: FontWeight.bold))
