@@ -75,7 +75,6 @@ class ChooseUser_Page extends State<StateChooseUser>{
                   ),
                   child:Container(
                     width: 265,
-                    height:290,
                     padding: const EdgeInsets.all(15),
                     margin: const EdgeInsets.all(3),
                     decoration: BoxDecoration(

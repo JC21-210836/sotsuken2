@@ -69,7 +69,6 @@ class UserSettings1 extends State<StateUserSettings1>{
                     ),
                     child:Container(
                       width:265,
-                      height: 290,
                       padding: const EdgeInsets.all(15),
                       margin: const EdgeInsets.all(3),
                       decoration: BoxDecoration(
