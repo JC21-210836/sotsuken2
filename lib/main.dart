@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'DB/Database.dart';
 import 'ui/ChooseUser.dart';
 
 void main() {
@@ -96,6 +97,7 @@ class Home_Page extends State<Home_Page_State>{
                           child: const Text('食品',style: TextStyle(fontSize: 30),),
                           onPressed: (){
                             Navigator.pushNamed(context, 'ChooseUser_page');
+                            _selectlistUser();
                           },
                         ),
                       ),
@@ -140,5 +142,12 @@ class Home_Page extends State<Home_Page_State>{
         ),
       ),
     );
+  }
+  final dbProvider = DBProvider.instance;
+  //ユーザの追加処理
+  void _selectlistUser() async {
+    debugPrint('_selectAllUserにきました');
+    final result = await dbProvider.selectlistUser();
+    debugPrint('userNameの中身$result');
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../DB/Database.dart';
 import 'CreateUser1.dart';
 import 'Obligation_allergy.dart';
 import 'SettingUser1.dart';
@@ -16,7 +17,7 @@ class StateChooseUser extends StatefulWidget{
 }
 
 class ChooseUser_Page extends State<StateChooseUser>{
-
+  /*
   void ReturnAndReload(int n) async{
     if(n == 0){
       await Navigator.of(context).push(
@@ -33,7 +34,9 @@ class ChooseUser_Page extends State<StateChooseUser>{
     }
     setState(() {});
   }
-  AllUserData aud = AllUserData();
+  
+   */
+  AllUserData aud = AllUserData(username: AllUserData.sUserName);
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -81,7 +84,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
                     ),
                     child:Column(
                       children: [
-                        if(aud.getUserNames().isEmpty)...[
+                        if(DBProvider.userName.isEmpty)...[
                           Container(
                             margin:EdgeInsets.fromLTRB(0, 70, 0, 70),
                             child:const Text('ユーザーが\n登録されていません',
@@ -92,7 +95,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
                             ),
                           ),
                         ],
-                        for(String n in aud.getUserNames())...[
+                        for(String n in DBProvider.userName)...[
                           Container(
                             width: 240,
                             height: 47,
@@ -122,7 +125,13 @@ class ChooseUser_Page extends State<StateChooseUser>{
                       ),
                     ),
                     onPressed: (){
-                      ReturnAndReload(0);
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context){
+                          return const StateCreateUser1();
+                        })  
+                      ).then((value){
+                        setState(() {});
+                      });
                     },
                     child: const FittedBox(
                       child: Text('新しいユーザを登録',
@@ -151,7 +160,13 @@ class ChooseUser_Page extends State<StateChooseUser>{
                           ),
                         ),
                         onPressed: (){
-                          ReturnAndReload(1);
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context){
+                                return const StateUserSettings1();
+                              })
+                          ).then((value){
+                            setState(() {});
+                          });
                         },
                         child: const Text('設定',
                           style:TextStyle(

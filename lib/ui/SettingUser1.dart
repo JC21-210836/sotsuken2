@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../DB/Database.dart';
 import 'SettingUser2.dart';
 import 'package:sotsuken2/Data/AllUserData.dart';
 
@@ -22,7 +23,7 @@ class UserSettings1 extends State<StateUserSettings1>{
     );
   }
 
-  AllUserData aud = AllUserData();
+  AllUserData aud = AllUserData(username: AllUserData.sUserName);
 
   @override
   Widget build(BuildContext context){
@@ -78,7 +79,7 @@ class UserSettings1 extends State<StateUserSettings1>{
                       child:Column(
                         children: [
 
-                          if(aud.getUserNames().isEmpty)...[
+                          if(DBProvider.userName.isEmpty)...[
                             Container(
                               margin:EdgeInsets.fromLTRB(0, 70, 0, 70),
                               child:const Text('ユーザーが\n登録されていません',
@@ -89,7 +90,7 @@ class UserSettings1 extends State<StateUserSettings1>{
                               ),
                             ),
                           ],
-                          for(String n in aud.getUserNames())...[
+                          for(String n in DBProvider.userName)...[
                             Container(
                               width: 240,
                               height: 50,

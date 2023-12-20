@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../DB/Database.dart';
 import 'ChooseUser.dart';
 
 import 'package:sotsuken2/Data/AllUserData.dart';
@@ -17,6 +18,8 @@ class StateSettingUserDelete extends StatefulWidget{
 class SettingUserDelete extends State<StateSettingUserDelete>{
   bool Agree = false;
   String UN = "";
+  AllUserData aud = AllUserData(username: AllUserData.sUserName);
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -98,8 +101,10 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
                         onPressed: (){
                           setState(() {
                             if(widget.UserName == UN && Agree == true){
-                              AllUserData aud = AllUserData();
-                              aud.deleteUserName(widget.UserName);
+                              _deleteUser();
+                              _selectlistUser();
+                              //aud.deleteUserName(widget.UserName);
+
                             }else{
                               //エラーメッセが欲しいけど今出す場所ない
                             }
@@ -115,6 +120,18 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
 
       ),
     );
+  }
+  final dbProvider = DBProvider.instance;
+  //ユーザの追加処理
+  void _deleteUser() async {
+    debugPrint('_deleteUserに来ました');
+    final rowsDeleted = await dbProvider.deleteUser(widget.UserName);
+    print('削除しました $rowsDeleted');
+  }
+  void _selectlistUser() async {
+    debugPrint('_selectAllUserにきました');
+    final result = await dbProvider.selectlistUser();
+    debugPrint('userNameの中身$result');
   }
 
 }

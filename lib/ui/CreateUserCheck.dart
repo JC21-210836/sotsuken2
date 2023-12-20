@@ -4,6 +4,8 @@ import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
 import 'package:sotsuken2/Data/AllUserData.dart';
 
+import '../DB/Database.dart';
+
 class StateCreateUserCheck extends StatefulWidget{
   const StateCreateUserCheck({super.key});
 
@@ -18,6 +20,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
   static String HRecommendation = "";
   static String HAnother = "";
 
+  AllUserData aud = AllUserData(username: AllUserData.sUserName);
   AllObligationData aod = AllObligationData();
   AllRecommendationData ard = AllRecommendationData();
   AllAnotherData aad = AllAnotherData();
@@ -157,11 +160,10 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                       child:ElevatedButton(
                           child:const Text('登録',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold)),
                           onPressed:(){
-                            AllUserData aud = AllUserData();
-                            AllObligationData aod = AllObligationData();
-                            AllRecommendationData ard = AllRecommendationData();
                             setState(() {
-                              aud.setUserNameFinal();
+                              _insertUser();
+                              _selectlistUser();
+                              //aud.setUserNameFinal();
                               aod.AllResetObligation();
                               ard.AllResetRecommendation();
                             });
@@ -176,5 +178,18 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
 
       ),
     );
+  }
+  final dbProvider = DBProvider.instance;
+  //ユーザの追加処理
+  void _insertUser() async {
+    AllUserData row = AllUserData.newAllUserData();
+    row.username = AllUserData.sUserName;
+    final username = await dbProvider.insertUser(row);
+    print('ユーザ表にinsertしました: $username');
+  }
+  void _selectlistUser() async {
+    debugPrint('_selectAllUserにきました');
+    final result = await dbProvider.selectlistUser();
+    debugPrint('userNameの中身$result');
   }
 }
