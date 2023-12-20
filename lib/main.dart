@@ -96,8 +96,10 @@ class Home_Page extends State<Home_Page_State>{
                           ),
                           child: const Text('食品',style: TextStyle(fontSize: 30),),
                           onPressed: (){
-                            Navigator.pushNamed(context, 'ChooseUser_page');
                             _selectlistUser();
+                            Future.delayed(const Duration(seconds: 1)).then((_){
+                              Navigator.pushNamed(context, 'ChooseUser_page');
+                            });
                           },
                         ),
                       ),
@@ -109,7 +111,9 @@ class Home_Page extends State<Home_Page_State>{
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.indigo
                             ),
-                            onPressed: (){},
+                            onPressed: (){
+
+                            },
                             child: const Text('美容',style: TextStyle(fontSize: 30),),
                           )
                       ),
