@@ -127,7 +127,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
                       ),
                     ),
                     onPressed: (){
-                      ReturnAndReload(0);
+                        ReturnAndReload(0);
                     },
                     child: const FittedBox(
                       child: Text('新しいユーザを登録',
