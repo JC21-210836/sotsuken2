@@ -110,7 +110,9 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
                             }
                           });
                           //ユ－ザー選択画面(ChooseUser)
-                          Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
+                          Future.delayed(Duration(seconds: 1)).then((_){
+                            Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
+                          });
                         },
                       )
                   ),

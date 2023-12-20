@@ -168,7 +168,9 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                               ard.AllResetRecommendation();
                             });
                             //ユ－ザー選択画面(ChooseUser)
-                            Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
+                            Future.delayed(Duration(seconds: 1)).then((_){
+                              Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
+                            });
                           }
                       )
                   )
@@ -179,6 +181,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
       ),
     );
   }
+
   final dbProvider = DBProvider.instance;
   //ユーザの追加処理
   void _insertUser() async {

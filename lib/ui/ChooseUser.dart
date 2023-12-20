@@ -25,14 +25,14 @@ class ChooseUser_Page extends State<StateChooseUser>{
             return const StateCreateUser1();
           })
       );
-      setState(() {});
+      setState((){});
     }else if(n == 1){
       await Navigator.of(context).push(
           MaterialPageRoute(builder: (context){
             return const StateUserSettings1();
           })
       );
-      setState(() {});
+      setState((){});
     }
 
   }
