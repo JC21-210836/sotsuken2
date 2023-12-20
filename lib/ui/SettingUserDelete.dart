@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../DB/Database.dart';
-import 'ChooseUser.dart';
 
 import 'package:sotsuken2/Data/AllUserData.dart';
 
@@ -130,6 +129,7 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
     final rowsDeleted = await dbProvider.deleteUser(widget.UserName);
     print('削除しました $rowsDeleted');
   }
+
   void _selectlistUser() async {
     debugPrint('_selectAllUserにきました');
     final result = await dbProvider.selectlistUser();

@@ -5,8 +5,6 @@ import 'CreateUser1.dart';
 import 'Obligation_allergy.dart';
 import 'SettingUser1.dart';
 
-import 'package:sotsuken2/Data/AllUserData.dart';
-
 class StateChooseUser extends StatefulWidget{
   const StateChooseUser({super.key});
 
@@ -32,13 +30,15 @@ class ChooseUser_Page extends State<StateChooseUser>{
             return const StateUserSettings1();
           })
       );
-      setState((){});
+      setState((){
+        debugPrint("とおった");
+      });
     }
 
   }
   
 
-  AllUserData aud = AllUserData(username: AllUserData.sUserName);
+  //AllUserData aud = AllUserData(username: AllUserData.sUserName);
   @override
   Widget build(BuildContext context){
     return Scaffold(

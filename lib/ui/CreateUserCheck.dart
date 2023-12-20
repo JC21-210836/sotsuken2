@@ -20,7 +20,6 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
   static String HRecommendation = "";
   static String HAnother = "";
 
-  AllUserData aud = AllUserData(username: AllUserData.sUserName);
   AllObligationData aod = AllObligationData();
   AllRecommendationData ard = AllRecommendationData();
   AllAnotherData aad = AllAnotherData();
