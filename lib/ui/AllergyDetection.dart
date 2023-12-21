@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'ReadIngredient.dart';
 //臨時
 import 'AllergyNotDetection.dart';
 
@@ -146,7 +147,13 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                                   textAlign:TextAlign.center
                               ),
                             ),
-                            onPressed: (){}
+                            onPressed: (){
+                              Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context){
+                                    return StateReadIngredient();
+                                  })
+                              );
+                            }
                         ),
                       )
                     ]
