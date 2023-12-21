@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../DB/Database.dart';
+import 'AllUserData.dart';
+
 class AllObligationData{
 
   static List<bool> boolList = List.filled(8, false);
@@ -7,6 +10,10 @@ class AllObligationData{
   static List<String> valueCheck = [];
   static String hObligation = "";
 
+  //みちるちゃんの
+  static Map<String, String> Gimu = {"HG1":"えび", "HG2":"かに", "HG3":"くるみ", "HG4":"小麦", "HG5":"そば", "HG6":"卵", "HG7":"乳", "HG8":"落花生",};
+  static List<String> CheckValue = []; // チェックされた食品名を格納
+  static List<String> foodid = [];    // foodidをリストに格納
 
   //追加
   String getValueString(){
@@ -60,5 +67,26 @@ class AllObligationData{
     boolList = List.filled(8, false);
     valueCheck = [];
     hObligation = "";
+  }
+
+  //みちるちゃんの
+  void insertHanteiObligation() async {
+    debugPrint('insertHanteiObligationに来ました');
+    final dbProvider = DBProvider.instance;
+    CheckValue.clear();//foodidのクリア
+    CheckValue = getValueCheck();
+    for (int x = 0; x < CheckValue.length; x++) {
+      Gimu.forEach((key, value) { //foodidのみを出力
+        if (value == CheckValue[x]) { //もしGimuリストのfoodNameとCheckValueのfoodNameが一致したら
+          foodid.add(key as String); // foodidリストにGimuリストのfoodidを格納
+        }
+      });
+    }
+    final int userid = await dbProvider.selectUserId(AllUserData.sUserName);// ユーザーIDを非同期で取得
+    for (int x = 0; x < foodid.length; x++) {
+      final result2 = await dbProvider.insertfood(userid, foodid[x]);// ここでDBにuseridとCheckKeyを渡す（insert）
+      debugPrint('insert処理した内容:$result2');
+    }
+    debugPrint(CheckValue.toString());
   }
 }

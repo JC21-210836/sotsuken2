@@ -258,25 +258,51 @@ class DBProvider {
         }
       });
     }
-    /*
-    final userid = userId.length;
-    final username = userName.length;
-    debugPrint('useridのlength $userid');
-    debugPrint('useridの中身 $userId');
-    debugPrint('usernameのlength $username');
-    debugPrint('usernameの中身 $userName');
-     */
     return userName;
   }
 
-/*
-  //-list処理一覧-
-  //表示義務の追加処理
-  Future<int> insertfood(String checkKey) async {
-    debugPrint("insertUserにきました");
+//-list処理一覧-
+  //ユーザIDセレクト用
+  int selectid = 1; // 単一のint型変数として宣言
+  Future<int> selectUserId(String sUserName) async {
+    debugPrint("selectUserIdにきました");
     Database db = await instance.database;
-    return await db.insert('list', {'userid': 1, 'foodid': checkKey});
+    final List<Map<String, dynamic>> userid =
+    await db.query('user', where: 'username = ?', whereArgs: [sUserName]);
+    for (Map<String, dynamic?> userMap in userid) {
+      if (userMap.containsKey('userid')) {
+        selectid = userMap['userid'] as int;
+        print('useridを出力：$selectid');
+        break; // ループを抜ける
+      }
+    }
+    return selectid;
   }
- */
+
+  //表示義務の追加処理
+  Future<int> insertfood(int userid ,String checkKey) async {
+    debugPrint("insertfoodにきました");
+    Database db = await instance.database;
+    return await db.insert('list', {'userid': userid, 'foodid': checkKey});
+  }
+
+  //表示推奨の追加処理
+  Future<int> insertfood2(int userid ,String checkKey) async {
+    debugPrint("insertfood2にきました");
+    Database db = await instance.database;
+    return await db.insert('list', {'userid': userid, 'foodid': checkKey});
+  }
+
+  //foodlistを削除する
+  Future deletefood(int userid) async {
+    debugPrint('deletefoodにきました');
+    Database db = await instance.database;
+    return await db.delete(
+      'list',
+      where: 'userid = ?',
+      whereArgs: [userid],
+    );
+  }
+
 
 }

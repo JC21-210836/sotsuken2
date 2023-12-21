@@ -162,6 +162,8 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                             setState(() {
                               _insertUser();
                               _selectlistUser();
+                              aod.insertHanteiObligation();//追加
+                              ard.insertHanteiObligation2();//追加
                               //aud.setUserNameFinal();
                               aod.AllResetObligation();
                               ard.AllResetRecommendation();

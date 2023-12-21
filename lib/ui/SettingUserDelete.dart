@@ -101,6 +101,7 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
                           setState(() {
                             if(widget.UserName == UN && Agree == true){
                               _deleteUser();
+                              _deletefood();
                               _selectlistUser();
                               //aud.deleteUserName(widget.UserName);
 
@@ -123,7 +124,7 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
     );
   }
   final dbProvider = DBProvider.instance;
-  //ユーザの追加処理
+  //ユーザの削除処理
   void _deleteUser() async {
     debugPrint('_deleteUserに来ました');
     final rowsDeleted = await dbProvider.deleteUser(widget.UserName);
@@ -134,6 +135,13 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
     debugPrint('_selectAllUserにきました');
     final result = await dbProvider.selectlistUser();
     debugPrint('userNameの中身$result');
+  }
+  //食品の削除
+  void _deletefood() async {
+    debugPrint('_deleteUserに来ました');
+    final int userid = await dbProvider.selectUserId(AllUserData.sUserName);// ユーザーIDを非同期で取得
+    final rowsDeleted = await dbProvider.deletefood(userid);
+    print('削除しました $rowsDeleted');
   }
 
 }
