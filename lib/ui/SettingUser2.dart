@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../DB/Database.dart';
 import 'SettingUserNameChange.dart';
 import 'SettingUserDelete.dart';
 import 'SettingUserAllergy.dart';
@@ -105,12 +106,15 @@ class UserSettings2 extends State<StateUserSettings2> {
                         ),
                         child: const Text('アレルゲンの変更',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
                         onPressed: (){
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context){
-                              return const StateSettingAllergy();
-                            })
+                          _selectGimu();
+                          Future.delayed(const Duration(seconds: 1)).then((_){
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context){
+                                  return StateSettingAllergy(widget.UserName);
+                                })
 
-                          );
+                            );
+                          });
 
                         },
                       ),
@@ -166,5 +170,20 @@ class UserSettings2 extends State<StateUserSettings2> {
           )
       ),
     );
+  }
+  final dbProvider = DBProvider.instance;
+  void _selectGimu() async {
+    debugPrint('_selectGimuにきました');
+
+//1.参照するユーザのidの取得
+    final int userid = await dbProvider.selectUserId(widget.UserName);
+
+//とあるユーザが登録したfoodNameの情報を取得　
+    final result = await dbProvider.selectGimu(userid);
+
+//importしてもみられるよーっていうdebug
+    final import = DBProvider.Gimulist;
+    debugPrint('importした表示義務：$import');
+
   }
 }

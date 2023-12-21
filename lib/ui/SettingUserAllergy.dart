@@ -6,7 +6,8 @@ import 'package:sotsuken2/Data/AllRecommendationData.dart';
 import '../DB/Database.dart';
 
 class StateSettingAllergy extends StatefulWidget{
-  const StateSettingAllergy({super.key});
+  final String UserName;
+  const StateSettingAllergy(this.UserName);
 
   @override
   State<StateSettingAllergy> createState(){
@@ -36,7 +37,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:[
                   Container(
-                    margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+                    margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                     padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                     decoration:const BoxDecoration(
                       color: Colors.deepOrange,
@@ -51,7 +52,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                   ),
 
                   //表示義務
-                  if(aod.getValueCheck().isNotEmpty)...[
+                  if(DBProvider.Gimulist.isNotEmpty)...[
                     Container(
                       margin: const EdgeInsets.fromLTRB(0, 40, 120, 0),
                       decoration:BoxDecoration(
@@ -73,6 +74,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                         ),
                       ),
                     ),
+
                     Container(
                       width: 280,
                       margin: const EdgeInsets.fromLTRB(15, 5, 15, 30),
@@ -80,14 +82,21 @@ class SettingAllergy extends State<StateSettingAllergy>{
                       decoration:BoxDecoration(
                           border:Border.all(color:Colors.red,width:1)
                       ),
-                      //テキスト表示させるやつがいる↓
-                      child:Text(HObligation,
-                        style:const TextStyle(
-                          height: 1.4,
-                          fontSize:23,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      child:Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          for(String gim in DBProvider.Gimulist)...[
+                            Text('・$gim',
+                              style:const TextStyle(
+                                height: 1.5,
+                                fontSize:25,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ]
+                        ],
                       ),
+                      //テキスト表示させるやつがいる
                     ),
                   ],
 
@@ -199,5 +208,23 @@ class SettingAllergy extends State<StateSettingAllergy>{
       ),
     );
   }
+  /*
+  final dbProvider = DBProvider.instance;
+  void _selectGimu() async {
+    debugPrint('_selectGimuにきました');
+
+//1.参照するユーザのidの取得
+    final int userid = await dbProvider.selectUserId(widget.UserName);
+
+//とあるユーザが登録したfoodNameの情報を取得　
+    final result = await dbProvider.selectGimu(userid);
+
+//importしてもみられるよーっていうdebug
+    final import = DBProvider.Gimulist;
+    debugPrint('importした表示義務：$import');
+
+  }
+
+   */
 
 }

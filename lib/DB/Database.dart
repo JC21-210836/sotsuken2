@@ -4,6 +4,7 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sotsuken2/Data/AllUserData.dart';
+import 'package:sotsuken2/Data/AllObligationData.dart';
 
 class DBProvider {
 
@@ -304,6 +305,43 @@ class DBProvider {
       whereArgs: [userid],
     );
   }
+  //追加要素
+//アレルゲン変更処理表示用
+//あるユーザの表示義務登録情報を参照し、GimuListに格納する処理
+  static List<String> Gimuvalue = [];//とあるユーザが登録したfoodidのリスト
+  static List<String> Gimulist = [];//とあるユーザが登録したfoodNameのリスト
+
+//表示義務
+  Future<List<String>> selectGimu(int userid) async {
+    debugPrint("selectGimuにきました");
+    final db = await instance.database;
+
+    //カテゴリーがHG　表示義務
+    final list = await db.rawQuery('select foodid from list where userid = ?',[userid]);
+    debugPrint('$useridのfoodidリストです$list');
+
+    Gimuvalue.clear();//表示義務foodidリストのクリア
+    for (Map<String, dynamic?> gimu in list) {//foodidはある
+      gimu.forEach((key, value) {
+        Gimuvalue.add(value as String); // foodidを1件ずつ格納
+        //debugPrint('Gimuvalueに入れた内容：$Gimuvalue');
+      });
+    }
+
+    Gimulist.clear();//表示義務foodidNameの// クリア
+    for(int x = 0;x < Gimuvalue.length; x++) {
+      AllObligationData.Gimu.forEach((key, value) {
+        if (key == Gimuvalue[x]) {
+          Gimulist.add(value as String);
+          //debugPrint('Gimulistに入れた内容：$Gimulist');
+        }
+      });
+    }
+    debugPrint('最終的にGimulistに入れた内容：$Gimulist');
+
+    return Gimulist;
+  }
+
 
 
 }
