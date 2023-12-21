@@ -106,7 +106,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                         ),
                         child: const Text('アレルゲンの変更',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
                         onPressed: (){
-                          _selectGimu();
+                          _selectGS();
                           Future.delayed(const Duration(seconds: 1)).then((_){
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
@@ -172,18 +172,10 @@ class UserSettings2 extends State<StateUserSettings2> {
     );
   }
   final dbProvider = DBProvider.instance;
-  void _selectGimu() async {
+  void _selectGS() async {
     debugPrint('_selectGimuにきました');
-
-//1.参照するユーザのidの取得
     final int userid = await dbProvider.selectUserId(widget.UserName);
-
-//とあるユーザが登録したfoodNameの情報を取得　
-    final result = await dbProvider.selectGimu(userid);
-
-//importしてもみられるよーっていうdebug
-    final import = DBProvider.Gimulist;
-    debugPrint('importした表示義務：$import');
-
+    await dbProvider.selectGimu(userid);//表示義務
+    await dbProvider.selectSui(userid);//表示推奨
   }
 }

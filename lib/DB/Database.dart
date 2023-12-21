@@ -6,6 +6,8 @@ import 'package:sqflite/sqflite.dart';
 import 'package:sotsuken2/Data/AllUserData.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 
+import '../Data/AllRecommendationData.dart';
+
 class DBProvider {
 
   DBProvider._();
@@ -342,6 +344,38 @@ class DBProvider {
     return Gimulist;
   }
 
+  //表示推奨
+//あるユーザの表示推奨登録情報を参照し、SuiListに格納する処理
+  static List<String> Suivalue = [];//とあるユーザが登録したfoodidのリスト
+  static List<String> Suilist = [];//とあるユーザが登録したfoodNameのリスト
 
+//表示推奨
+  Future<List<String>> selectSui(int userid) async {
+    debugPrint("selectSuiにきました");
+    final db = await instance.database;
+
+    //カテゴリーがHS　表示推奨
+    final list = await db.rawQuery('select foodid from list where userid = ?',[userid]);
+    debugPrint('$useridのfoodidリストです$list');
+
+    Suivalue.clear();//表示推奨foodidリストのクリア
+    for (Map<String, dynamic?> sui in list) {//foodidはある
+      sui.forEach((key, value) {
+        Suivalue.add(value as String); // foodidを1件ずつ格納
+      });
+    }
+
+    Suilist.clear();//表示推奨foodidNameのクリア
+    for(int x = 0;x < Suivalue.length; x++) {
+      AllRecommendationData.Sui.forEach((key, value) {
+        if (key == Suivalue[x]) {
+          Suilist.add(value as String);
+        }
+      });
+    }
+    debugPrint('最終的にSuilistに入れた内容：$Suilist');
+
+    return Suilist;
+  }
 
 }

@@ -101,7 +101,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                   ],
 
                   //表示推奨
-                  if(ard.getValueCheck2().isNotEmpty)...[
+                  if(DBProvider.Suilist.isNotEmpty)...[
                     Container(
                       margin: const EdgeInsets.fromLTRB(0, 0, 120, 0),
                       decoration:BoxDecoration(
@@ -124,12 +124,19 @@ class SettingAllergy extends State<StateSettingAllergy>{
                           border:Border.all(color:Colors.blue,width:1)
                       ),
                       //テキスト表示させるやつがいる↓
-                      child:Text(HRecommendation,
-                        style:const TextStyle(
-                          height: 1.4,
-                          fontSize:23,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      child:Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          for(String sui in DBProvider.Suilist)...[
+                            Text('・$sui',
+                              style:const TextStyle(
+                                height: 1.5,
+                                fontSize:25,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ]
+                        ],
                       ),
                     ),
                   ],
@@ -226,5 +233,4 @@ class SettingAllergy extends State<StateSettingAllergy>{
   }
 
    */
-
 }
