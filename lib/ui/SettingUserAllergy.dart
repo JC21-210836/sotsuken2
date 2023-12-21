@@ -36,7 +36,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:[
                   Container(
-                    margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                    margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
                     padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                     decoration:const BoxDecoration(
                       color: Colors.deepOrange,
@@ -161,9 +161,30 @@ class SettingAllergy extends State<StateSettingAllergy>{
                   Container(
                       width:230,
                       height:60,
-                      margin:const EdgeInsets.fromLTRB(15, 0, 15, 40),
+                      margin:const EdgeInsets.fromLTRB(20, 0, 15, 7),
                       child:ElevatedButton(
-                          child:const Text('登録',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold)),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.orange
+                        ),
+                          child:const Text('変更',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.white)),
+                          onPressed:(){
+                            setState(() {
+
+                            });
+                          }
+                      )
+                  ),
+                  Container(
+                      width:230,
+                      height:60,
+                      margin:const EdgeInsets.fromLTRB(15, 7, 15, 40),
+                      child:OutlinedButton(
+                          style:OutlinedButton.styleFrom(
+                            side: const BorderSide(
+                                color: Colors.deepOrange
+                            ),
+                          ),
+                          child:const Text('更新',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.deepOrange)),
                           onPressed:(){
                             setState(() {
 
