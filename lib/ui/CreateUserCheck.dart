@@ -164,13 +164,12 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                               _selectlistUser();
                               aod.insertHanteiObligation();//追加
                               ard.insertHanteiObligation2();//追加
-                              //aud.setUserNameFinal();
-                              aod.AllResetObligation();
-                              ard.AllResetRecommendation();
                             });
                             //ユ－ザー選択画面(ChooseUser)
                             Future.delayed(const Duration(seconds: 1)).then((_){
                               Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
+                              aod.AllResetObligation();
+                              ard.AllResetRecommendation();
                             });
                           }
                       )
