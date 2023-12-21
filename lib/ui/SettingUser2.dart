@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'SettingUserNameChange.dart';
 import 'SettingUserDelete.dart';
+import 'SettingUserAllergy.dart';
 
 class StateUserSettings2 extends StatefulWidget{
   final String UserName;
@@ -103,7 +104,15 @@ class UserSettings2 extends State<StateUserSettings2> {
                             backgroundColor: Colors.deepOrangeAccent
                         ),
                         child: const Text('アレルゲンの変更',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context){
+                              return const StateSettingAllergy();
+                            })
+
+                          );
+
+                        },
                       ),
 
                     ),

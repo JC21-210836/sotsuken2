@@ -71,6 +71,7 @@ class DBProvider {
           hiragana TEXT,
           kanji TEXT,
           eigo TEXT,
+          otherName TEXT,
           categoryid TEXT,
           FOREIGN KEY(userid) REFERENCES user(userid),
           FOREIGN KEY(categoryid) REFERENCES category(categoryid)

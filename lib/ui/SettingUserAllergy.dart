@@ -35,6 +35,21 @@ class SettingAllergy extends State<StateSettingAllergy>{
             child:Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:[
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                    padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                    decoration:const BoxDecoration(
+                      color: Colors.deepOrange,
+                    ),
+                    child: const Text('アレルゲンの変更',
+                        style: TextStyle(
+                            fontSize: 25,
+                            color:Colors.white,
+                            fontWeight: FontWeight.bold
+                        )
+                    ),
+                  ),
+
                   //表示義務
                   if(aod.getValueCheck().isNotEmpty)...[
                     Container(
