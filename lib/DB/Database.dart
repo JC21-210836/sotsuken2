@@ -307,8 +307,8 @@ class DBProvider {
       whereArgs: [userid],
     );
   }
-  //追加要素
-//アレルゲン変更処理表示用
+//追加した処理12/21
+//-アレルゲン変更処理表示用-
 //あるユーザの表示義務登録情報を参照し、GimuListに格納する処理
   static List<String> Gimuvalue = [];//とあるユーザが登録したfoodidのリスト
   static List<String> Gimulist = [];//とあるユーザが登録したfoodNameのリスト
@@ -320,22 +320,22 @@ class DBProvider {
 
     //カテゴリーがHG　表示義務
     final list = await db.rawQuery('select foodid from list where userid = ?',[userid]);
-    debugPrint('$useridのfoodidリストです$list');
 
-    Gimuvalue.clear();//表示義務foodidリストのクリア
+
+    Gimuvalue.clear();
     for (Map<String, dynamic?> gimu in list) {//foodidはある
       gimu.forEach((key, value) {
         Gimuvalue.add(value as String); // foodidを1件ずつ格納
-        //debugPrint('Gimuvalueに入れた内容：$Gimuvalue');
+        debugPrint('Gimuvalueの内容：$Gimuvalue');
       });
     }
 
-    Gimulist.clear();//表示義務foodidNameの// クリア
     for(int x = 0;x < Gimuvalue.length; x++) {
       AllObligationData.Gimu.forEach((key, value) {
         if (key == Gimuvalue[x]) {
+          Gimulist.clear();//表示義務foodidNameの// クリア
           Gimulist.add(value as String);
-          //debugPrint('Gimulistに入れた内容：$Gimulist');
+          debugPrint('Gimuvalueの内容：$Gimulist');
         }
       });
     }
@@ -344,7 +344,8 @@ class DBProvider {
     return Gimulist;
   }
 
-  //表示推奨
+
+//表示推奨
 //あるユーザの表示推奨登録情報を参照し、SuiListに格納する処理
   static List<String> Suivalue = [];//とあるユーザが登録したfoodidのリスト
   static List<String> Suilist = [];//とあるユーザが登録したfoodNameのリスト
@@ -356,19 +357,18 @@ class DBProvider {
 
     //カテゴリーがHS　表示推奨
     final list = await db.rawQuery('select foodid from list where userid = ?',[userid]);
-    debugPrint('$useridのfoodidリストです$list');
 
-    Suivalue.clear();//表示推奨foodidリストのクリア
+    Suilist.clear();
     for (Map<String, dynamic?> sui in list) {//foodidはある
       sui.forEach((key, value) {
         Suivalue.add(value as String); // foodidを1件ずつ格納
       });
     }
 
-    Suilist.clear();//表示推奨foodidNameのクリア
     for(int x = 0;x < Suivalue.length; x++) {
       AllRecommendationData.Sui.forEach((key, value) {
         if (key == Suivalue[x]) {
+          Suilist.clear();//表示義務foodidリストのクリア
           Suilist.add(value as String);
         }
       });
@@ -377,5 +377,4 @@ class DBProvider {
 
     return Suilist;
   }
-
 }
