@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/Data/AllAnotherData.dart';
 
+import '../DB/Database.dart';
+
 class StateAddAnotherIngredient extends StatefulWidget{
   const StateAddAnotherIngredient({super.key});
 
@@ -234,6 +236,7 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
                         ),
                         child:const Text('登録',style: TextStyle(fontSize: 30),),
                         onPressed: (){
+                          _insertAdd();//追加した処理12/21
                           aad.addMethod3(kanji);
                           Navigator.pop(context);
                         },
@@ -246,5 +249,12 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
       ),
     );
   }
-
+  //追加した処理12/21
+  final dbProvider = DBProvider.instance;
+  //個人追加表とリスト表の追加処理 個人追加表のuseridを消しました
+  void _insertAdd() async {
+    debugPrint('_insertAddにきました');
+    final AddList = await dbProvider.insertAdd(ingredientName ,kanji ,english,otherName);
+    print('個人追加表にinsertしました: $AddList');
+  }
 }

@@ -106,7 +106,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                         ),
                         child: const Text('アレルゲンの変更',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
                         onPressed: (){
-                          _selectGS();
+                          _selectGimu();//追加した処理12/21
                           Future.delayed(const Duration(seconds: 1)).then((_){
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
@@ -171,11 +171,17 @@ class UserSettings2 extends State<StateUserSettings2> {
       ),
     );
   }
+  //追加した処理12/21
   final dbProvider = DBProvider.instance;
-  void _selectGS() async {
+  void _selectGimu() async {
     debugPrint('_selectGimuにきました');
     final int userid = await dbProvider.selectUserId(widget.UserName);
     await dbProvider.selectGimu(userid);//表示義務
     await dbProvider.selectSui(userid);//表示推奨
+
+    final importgimu = DBProvider.Gimulist;
+    final importsui = DBProvider.Suilist;
+    debugPrint('import　gimuの内容：$importgimu');
+    debugPrint('import　suiの内容：$importsui');
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../DB/Database.dart';
-import 'AllUserData.dart';
+import '../ui/CreateUser2.dart';
 
 class AllObligationData{
 
@@ -69,12 +69,14 @@ class AllObligationData{
     hObligation = "";
   }
 
+  //追加した処理12/21
   //みちるちゃんの
   void insertHanteiObligation() async {
     debugPrint('insertHanteiObligationに来ました');
     final dbProvider = DBProvider.instance;
     CheckValue.clear();//foodidのクリア
     CheckValue = getValueCheck();
+    foodid.clear();//追加した処理12/21
     for (int x = 0; x < CheckValue.length; x++) {
       Gimu.forEach((key, value) { //foodidのみを出力
         if (value == CheckValue[x]) { //もしGimuリストのfoodNameとCheckValueのfoodNameが一致したら
@@ -82,10 +84,12 @@ class AllObligationData{
         }
       });
     }
-    final int userid = await dbProvider.selectUserId(AllUserData.sUserName);// ユーザーIDを非同期で取得
+    debugPrint('最終的なfoodidの内容:$foodid');
+    final int userid = await dbProvider.selectUserId(UserName);// ユーザーIDを非同期で取得
+    debugPrint('useridの内容:$userid');
     for (int x = 0; x < foodid.length; x++) {
       final result2 = await dbProvider.insertfood(userid, foodid[x]);// ここでDBにuseridとCheckKeyを渡す（insert）
-      debugPrint('insert処理した内容:$result2');
+      debugPrint('foodidの内容だよ:$foodid');
     }
     debugPrint(CheckValue.toString());
   }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/ui/Obligation_allergy.dart';
 
 import '../DB/Database.dart';
-import 'AllUserData.dart';
+import '../ui/CreateUser2.dart';
 
 
 class AllRecommendationData{
@@ -73,12 +72,14 @@ class AllRecommendationData{
     hRecommendation = "";
   }
 
+  //追加した処理12/21
   //みちるちゃんの
   void insertHanteiObligation2() async {
     debugPrint('insertHanteiObligationに来ました');
     final dbProvider = DBProvider.instance;
     CheckValue2.clear();//foodidのクリア
     CheckValue2 = getValueCheck2();
+    foodid2.clear();//追加した処理12/21
     for (int x = 0; x < CheckValue2.length; x++) {
       Sui.forEach((key, value) { //foodidのみを出力
         if (value == CheckValue2[x]) { //もしSuiリストのfoodNameとCheckValueのfoodNameが一致したら
@@ -86,11 +87,14 @@ class AllRecommendationData{
         }
       });
     }
-    final int userid = await dbProvider.selectUserId(AllUserData.sUserName);// ユーザーIDを非同期で取得
+    debugPrint('最終的なfoodid2の内容:$foodid2');
+    final int userid = await dbProvider.selectUserId(UserName);// ユーザーIDを非同期で取得
+    debugPrint('useridの内容:$userid');
     for (int x = 0; x < foodid2.length; x++) {
       final result2 = await dbProvider.insertfood2(userid, foodid2[x]);// ここでDBにuseridとCheckKeyを渡す（insert）
-      debugPrint('insert処理した内容:$result2');
+      debugPrint('foodid2の内容だよ2:$foodid2');
     }
+    debugPrint('最終的なfoodid2の内容だよ2:$foodid2');
     debugPrint(CheckValue2.toString());
   }
 }

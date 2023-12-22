@@ -164,6 +164,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                               _selectlistUser();
                               aod.insertHanteiObligation();//追加
                               ard.insertHanteiObligation2();//追加
+                              aad.insertAllResetAnother();//追加した処理12/21
                             });
                             //ユ－ザー選択画面(ChooseUser)
                             Future.delayed(const Duration(seconds: 1)).then((_){
