@@ -4,6 +4,9 @@ import '../DB/Database.dart';
 import 'CreateUser1.dart';
 import 'Obligation_allergy.dart';
 import 'SettingUser1.dart';
+import 'package:sotsuken2/Data/AllObligationData.dart';
+import 'package:sotsuken2/Data/AllRecommendationData.dart';
+import 'package:sotsuken2/Data/AllAnotherData.dart';
 
 class StateChooseUser extends StatefulWidget{
   const StateChooseUser({super.key});
@@ -15,6 +18,10 @@ class StateChooseUser extends StatefulWidget{
 }
 
 class ChooseUser_Page extends State<StateChooseUser>{
+
+  AllObligationData aod = AllObligationData();
+  AllRecommendationData ard = AllRecommendationData();
+  AllAnotherData aad = AllAnotherData();
 
   void ReturnAndReload(int n) async{
     if(n == 0){
@@ -189,6 +196,11 @@ class ChooseUser_Page extends State<StateChooseUser>{
                                 return  StateObligation_allergy(PageFlag: 'ChooseUser');
                               }),
                             );
+                            setState(() {
+                              aod.AllResetObligation();
+                              ard.AllResetRecommendation();
+                              aad.AllResetAnother();
+                            });
                           },
                         )
                     ),
