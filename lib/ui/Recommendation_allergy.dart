@@ -125,7 +125,7 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                   ),
                 ),
               ],
-              if(widget.PageFlag == 'ChooseUser')...[
+              if(widget.PageFlag == 'ChooseUser' || widget.PageFlag =='SettingUser')...[
                 Container(
                   width: 290,
                   height: 70,
@@ -173,7 +173,7 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                             return const StateAllergyDetection();
                           })
                       );
-                    }else if(widget.PageFlag == 'CreateUser'){
+                    }else if(widget.PageFlag == 'CreateUser' || widget.PageFlag =='SettingUser'){
                       //なおしたいNamdpush
                       Navigator.of(context).pop();
                       Navigator.of(context).pop();

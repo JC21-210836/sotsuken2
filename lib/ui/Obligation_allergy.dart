@@ -134,7 +134,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
 
                     ),
                   ),
-                  if(widget.PageFlag == 'ChooseUser')...[
+                  if(widget.PageFlag == 'ChooseUser' || widget.PageFlag =='SettingUser')...[
                     Container(
                       width: 290,
                       height: 70,
@@ -181,7 +181,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                               })
                           );
 
-                        }else if(widget.PageFlag == 'CreateUser'){
+                        }else if(widget.PageFlag == 'CreateUser' || widget.PageFlag =='SettingUser'){
                           Navigator.of(context).pop();
                         }
                         debugPrint(widget.PageFlag.toString());
