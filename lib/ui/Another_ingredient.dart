@@ -10,7 +10,7 @@ import 'AllergyDetection.dart';
 
 
 class StateAnother_ingredient extends StatefulWidget{
-  final int PageFlag;
+  final String PageFlag;
   const StateAnother_ingredient({Key?key, required this.PageFlag}): super(key:key) ;
 
   @override

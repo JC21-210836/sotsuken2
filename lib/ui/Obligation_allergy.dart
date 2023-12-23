@@ -9,7 +9,7 @@ import 'AllergyDetection.dart';
 
 
 class StateObligation_allergy extends StatefulWidget{
-  final int PageFlag;
+  final String PageFlag;
   const StateObligation_allergy({Key?key, required this.PageFlag}): super(key:key) ;
 
   @override
@@ -134,7 +134,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
 
                     ),
                   ),
-                  if(widget.PageFlag == 0)...[
+                  if(widget.PageFlag == 'ChooseUser')...[
                     Container(
                       width: 290,
                       height: 70,
@@ -174,7 +174,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                       )
                       ),
                       onPressed:(){
-                        if(widget.PageFlag == 0){
+                        if(widget.PageFlag == 'CreateUser'){
                           Navigator.of(context).push(
                               MaterialPageRoute(builder: (context){
                                 return const StateAllergyDetection();

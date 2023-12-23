@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'Obligation_allergy.dart';
+
 import 'package:sotsuken2/Data/AllAnotherData.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
@@ -37,7 +39,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:[
                   Container(
-                    margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                    margin: const EdgeInsets.fromLTRB(0, 30, 0, 10),
                     padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                     decoration:const BoxDecoration(
                       color: Colors.deepOrange,
@@ -54,7 +56,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                   //表示義務
                   if(DBProvider.Gimulist.isNotEmpty)...[
                     Container(
-                      margin: const EdgeInsets.fromLTRB(0, 40, 120, 0),
+                      margin: const EdgeInsets.fromLTRB(0, 20, 120, 0),
                       decoration:BoxDecoration(
                           border:Border.all(color:Colors.red,width:1)
                       ),
@@ -185,7 +187,11 @@ class SettingAllergy extends State<StateSettingAllergy>{
                           child:const Text('変更',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.white)),
                           onPressed:(){
                             setState(() {
-
+                              Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context){
+                                  return StateObligation_allergy(PageFlag: 'SettingUser');
+                                })
+                              );
                             });
                           }
                       )

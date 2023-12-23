@@ -186,7 +186,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
                           onPressed: (){
                             Navigator.of(context).push(
                               MaterialPageRoute(builder: (context){
-                                return  StateObligation_allergy(PageFlag: 0);
+                                return  StateObligation_allergy(PageFlag: 'ChooseUser');
                               }),
                             );
                           },

@@ -101,7 +101,7 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                           onPressed: (){
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
-                                  return const StateObligation_allergy(PageFlag : 1);
+                                  return const StateObligation_allergy(PageFlag : 'CreateUser');
                                 })
                             );
                             setState(() {
@@ -137,7 +137,7 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                           onPressed: (){
                             Navigator.of(context).push(
                               MaterialPageRoute(builder: (context){
-                                return const StateAnother_ingredient(PageFlag:1);
+                                return const StateAnother_ingredient(PageFlag:'CreateUser');
                               })
                             );
                             setState(() {

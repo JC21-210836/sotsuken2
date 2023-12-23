@@ -5,7 +5,7 @@ import 'Another_ingredient.dart';
 
 
 class StateRecommendation_allergy extends StatefulWidget{
-  final int PageFlag;
+  final String PageFlag;
   const StateRecommendation_allergy({Key?key, required this.PageFlag}): super(key:key) ;
 
   @override
@@ -125,7 +125,7 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                   ),
                 ),
               ],
-              if(widget.PageFlag == 0)...[
+              if(widget.PageFlag == 'ChooseUser')...[
                 Container(
                   width: 290,
                   height: 70,
@@ -167,13 +167,13 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                       )
                   ),
                   onPressed:(){
-                    if(widget.PageFlag == 0){
+                    if(widget.PageFlag == 'ChooseUser'){
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context){
                             return const StateAllergyDetection();
                           })
                       );
-                    }else if(widget.PageFlag == 1){
+                    }else if(widget.PageFlag == 'CreateUser'){
                       //なおしたいNamdpush
                       Navigator.of(context).pop();
                       Navigator.of(context).pop();
