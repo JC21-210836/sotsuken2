@@ -72,6 +72,23 @@ class AllRecommendationData{
     hRecommendation = "";
   }
 
+  void valueChangeBool2(){
+    int count = 0;
+    for(String value in DBProvider.Suilist){
+      while(true){
+        if(valueList2[count] == value){
+          boolList2[count] = true;
+          count++;
+          break;
+        }else{
+          boolList2[count] = false;
+        }
+        count++;
+      }
+    }
+  }
+
+
   //追加した処理12/21
   //みちるちゃんの
   void insertHanteiObligation2() async {

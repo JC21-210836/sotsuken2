@@ -69,6 +69,23 @@ class AllObligationData{
     hObligation = "";
   }
 
+  void valueChangeBool1(){
+    int count = 0;
+    for(String value in DBProvider.Gimulist){
+      while(true){
+        if(valueList[count] == value){
+          boolList[count] = true;
+          count++;
+          break;
+        }else{
+          boolList[count] = false;
+        }
+        count++;
+      }
+    }
+  }
+
+
   //追加した処理12/21
   //みちるちゃんの
   void insertHanteiObligation() async {

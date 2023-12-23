@@ -186,12 +186,20 @@ class SettingAllergy extends State<StateSettingAllergy>{
                         ),
                           child:const Text('変更',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.white)),
                           onPressed:(){
-                            setState(() {
-                              Navigator.of(context).push(
+                            Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
                                   return StateObligation_allergy(PageFlag: 'SettingUser');
                                 })
-                              );
+                            );
+                            setState(() {
+
+                              aod.AllResetObligation();
+                              aod.valueChangeBool1();
+                              ard.AllResetRecommendation();
+                              ard.valueChangeBool2();
+                              aad.AllResetAnother();
+                              //まだないけどvalueCheckBool3ができるよてい
+
                             });
                           }
                       )

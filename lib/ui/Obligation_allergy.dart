@@ -174,14 +174,14 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                       )
                       ),
                       onPressed:(){
-                        if(widget.PageFlag == 'CreateUser'){
+                        if(widget.PageFlag == 'ChooseUser'){
                           Navigator.of(context).push(
                               MaterialPageRoute(builder: (context){
                                 return const StateAllergyDetection();
                               })
                           );
 
-                        }else if(widget.PageFlag == 1){
+                        }else if(widget.PageFlag == 'CreateUser'){
                           Navigator.of(context).pop();
                         }
                         debugPrint(widget.PageFlag.toString());
