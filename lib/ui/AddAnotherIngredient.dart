@@ -58,7 +58,7 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
                     ),
                   ),
                   Container(
-                    child:const Text('※成分名(ひらがな)必須',
+                    child:const Text('※成分名はひらがな または カタカナ',
                       style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.red),
                       textAlign: TextAlign.center,
                     ),
@@ -76,7 +76,7 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
                               width: 1.5,
                             ),
                           ),
-                          child: const Text('成分名\n(ひらがな)',
+                          child: const Text('成分名\n(必須)',
                             style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.indigo),
                             textAlign: TextAlign.center,
                           ),
@@ -237,7 +237,7 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
                         child:const Text('登録',style: TextStyle(fontSize: 30),),
                         onPressed: (){
                           _insertAdd();//追加した処理12/21
-                          aad.addMethod3(kanji);
+                          aad.addMethod3(ingredientName);
                           Navigator.pop(context);
                         },
                       )
