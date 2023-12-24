@@ -3,6 +3,7 @@ import 'Recommendation_allergy.dart';
 import 'Another_ingredient.dart';
 
 import 'package:sotsuken2/Data/AllObligationData.dart';
+import 'package:sotsuken2/Data/AllRecommendationData.dart';
 
 //臨時
 import 'AllergyDetection.dart';
@@ -22,6 +23,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
 //チェックボックスの数だけいる(8)
 
   AllObligationData aod = AllObligationData();
+  AllRecommendationData ard = AllRecommendationData();
 
   @override
   Widget build(BuildContext context) {
@@ -186,6 +188,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                         }
                         debugPrint(widget.PageFlag.toString());
                         aod.HanteiObligation();
+                        ard.HanteiRecommendation();
                       },
                       child: const Text('決定',style: TextStyle(
                         fontSize: 23,
