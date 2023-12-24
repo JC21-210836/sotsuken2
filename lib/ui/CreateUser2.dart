@@ -106,8 +106,8 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                                 })
                             );
                             setState(() {
-                              aod.AllResetObligation();
-                              ard.AllResetRecommendation();
+                              //aod.AllResetObligation();
+                              //ard.AllResetRecommendation();
                             });
                           },
                         )
