@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'AllUserData.dart';
 import '../DB/Database.dart';
 import '../ui/CreateUser2.dart';
 
@@ -107,7 +107,7 @@ class AllObligationData{
       });
     }
     debugPrint('最終的なfoodidの内容:$foodid');
-    final int userid = await dbProvider.selectUserId(UserName);// ユーザーIDを非同期で取得
+    final int userid = await dbProvider.selectUserId(AllUserData.sUserName);// ユーザーIDを非同期で取得
     debugPrint('useridの内容:$userid');
     for (int x = 0; x < foodid.length; x++) {
       final result2 = await dbProvider.insertfood(userid, foodid[x]);// ここでDBにuseridとCheckKeyを渡す（insert）

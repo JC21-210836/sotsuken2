@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'AllUserData.dart';
+
 import '../DB/Database.dart';
 import '../ui/CreateUser2.dart';
 
@@ -92,7 +94,6 @@ class AllRecommendationData{
     }
   }
 
-
   //追加した処理12/21
   //みちるちゃんの
   void insertHanteiObligation2() async {
@@ -109,7 +110,7 @@ class AllRecommendationData{
       });
     }
     debugPrint('最終的なfoodid2の内容:$foodid2');
-    final int userid = await dbProvider.selectUserId(UserName);// ユーザーIDを非同期で取得
+    final int userid = await dbProvider.selectUserId(AllUserData.sUserName);// ユーザーIDを非同期で取得
     debugPrint('useridの内容:$userid');
     for (int x = 0; x < foodid2.length; x++) {
       final result2 = await dbProvider.insertfood2(userid, foodid2[x]);// ここでDBにuseridとCheckKeyを渡す（insert）

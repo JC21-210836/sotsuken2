@@ -8,7 +8,8 @@ import 'package:sotsuken2/Data/AllRecommendationData.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 
 class StateCreateUser2 extends StatefulWidget{
-  const StateCreateUser2({super.key});
+  final String sUserName;
+  StateCreateUser2(this.sUserName);
 
   @override
   State<StateCreateUser2> createState(){
@@ -16,7 +17,7 @@ class StateCreateUser2 extends StatefulWidget{
   }
 }
 
-String UserName = "";
+//String UserName = "";
 
 class CreateUser2_Page extends State<StateCreateUser2> {
 
@@ -78,7 +79,7 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                             ),
                             SizedBox(
                               width: 220,
-                              child:Text(UserName,style: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+                              child:Text(widget.sUserName,style: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
                             )
                           ],
                         ),
