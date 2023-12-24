@@ -306,7 +306,16 @@ class DBProvider {
     );
   }
 
-
+  //特定ユーザのlist表を削除する
+  Future deletelist(int userid) async {
+    debugPrint('deletelistにきました');
+    Database db = await instance.database;
+    return await db.delete(
+      'list',
+      where: 'userid = ?',
+      whereArgs: [userid],
+    );
+  }
 
 
 
@@ -433,6 +442,8 @@ class DBProvider {
     Database db = await instance.database;
     return await db.insert('list', {'userid': userid, 'addid': addid});
   }
+
+
 
 
 }

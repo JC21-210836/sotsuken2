@@ -7,7 +7,7 @@ class AllObligationData{
 
   static List<bool> boolList = List.filled(8, false);
   static List<String> valueList = ["えび","かに","くるみ","小麦","そば","卵","乳","落花生",];
-  static List<String> valueCheck = [];
+  static List<String> valueCheck = [];  //trueの名前
   static String hObligation = "";
 
   //みちるちゃんの
@@ -49,6 +49,11 @@ class AllObligationData{
   List<String> getValueCheck(){
     debugPrint("valueCheckのなかみ$valueCheck");
     return valueCheck;
+  }
+
+  void setValueCheck(List<String> dbValue){
+    debugPrint("setvalueCheckのなかみ$dbValue");
+   valueCheck =  dbValue;
   }
 
   String getValueCheckString(){

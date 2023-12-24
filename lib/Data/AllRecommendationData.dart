@@ -53,6 +53,10 @@ class AllRecommendationData{
     return valueCheck2;
   }
 
+  void setValueCheck2(List<String> dbValue){
+    valueCheck2 =  dbValue;
+  }
+
   String getValueCheckString2(){
     hRecommendation = "";
     for(int x = 0;x < valueCheck2.length; x++){

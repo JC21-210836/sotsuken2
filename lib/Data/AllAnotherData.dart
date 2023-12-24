@@ -40,6 +40,10 @@ class AllAnotherData{
     return valueCheck3;
   }
 
+  void setValueCheck3(List<String> dbValue){
+    valueCheck3 =  dbValue;
+  }
+
   String getValueCheckString3(){
     hAnother = "";
     for(int x = 0;x < valueCheck3.length; x++){

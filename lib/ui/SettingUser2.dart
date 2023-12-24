@@ -5,6 +5,9 @@ import 'SettingUserNameChange.dart';
 import 'SettingUserDelete.dart';
 import 'SettingUserAllergy.dart';
 
+import 'package:sotsuken2/Data/AllRecommendationData.dart';
+import 'package:sotsuken2/Data/AllObligationData.dart';
+
 class StateUserSettings2 extends StatefulWidget{
   final String UserName;
   const StateUserSettings2(this.UserName);
@@ -16,6 +19,9 @@ class StateUserSettings2 extends StatefulWidget{
 }
 
 class UserSettings2 extends State<StateUserSettings2> {
+
+  AllObligationData aod = AllObligationData();
+  AllRecommendationData ard = AllRecommendationData();
 
   @override
   Widget build(BuildContext context) {
@@ -106,16 +112,16 @@ class UserSettings2 extends State<StateUserSettings2> {
                         ),
                         child: const Text('アレルゲンの変更',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
                         onPressed: (){
+                          aod.setValueCheck(DBProvider.Gimulist);
+                          ard.setValueCheck2(DBProvider.Suilist);
                           _selectGimu();//追加した処理12/21
                           Future.delayed(const Duration(seconds: 1)).then((_){
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
                                   return StateSettingAllergy(widget.UserName);
                                 })
-
                             );
                           });
-
                         },
                       ),
 
