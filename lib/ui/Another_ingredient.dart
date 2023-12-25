@@ -167,14 +167,14 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                           )
                           ),
                           onPressed:(){
-                            if(widget.PageFlag == 0){
+                            if(widget.PageFlag == 'ChooseUser'){
                               Navigator.of(context).push(
                                   MaterialPageRoute(builder: (context){
                                     return const StateAllergyDetection();
                                   })
                               );
 
-                            }else if(widget.PageFlag == 1){
+                            }else if(widget.PageFlag == 'CreateUser' || widget.PageFlag == 'SettingUser'){
                               Navigator.of(context).pop();
                             }
                             debugPrint(widget.PageFlag.toString());
