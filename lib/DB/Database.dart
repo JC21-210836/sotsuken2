@@ -411,10 +411,10 @@ class DBProvider {
   //-追加成分の処理-
   //追加成分の新規登録処理(登録ボタンを押したときに実行)
   //個人追加表の追加処理
-  Future<int> insertAdd(String hiragana, String kanji, String eigo,String otherName) async {
+  Future<int> insertAdd(int userid ,String hiragana, String kanji, String eigo,String otherName) async {
     debugPrint("insertAddにきました");
     Database db = await instance.database;
-    return await db.insert('k_add', {'hiragana': hiragana, 'kanji': kanji, 'eigo': eigo, 'otherName': otherName, 'categoryid': 'TS'});
+    return await db.insert('k_add', {'userid': userid, 'hiragana': hiragana, 'kanji': kanji, 'eigo': eigo, 'otherName': otherName, 'categoryid': 'TS'});
   }
 
 
@@ -436,14 +436,71 @@ class DBProvider {
     return addid;
   }
 
-  //リスト表の追加処理
+  //リスト表に個人追加成分の追加処理
   Future<int> insertlistAdd(int userid ,int addid) async {
     debugPrint("insertlistAddにきました");
     Database db = await instance.database;
     return await db.insert('list', {'userid': userid, 'addid': addid});
   }
 
+  //登録された追加成分の全表示
+  static List<String> AddList = [];//登録されたhiraganaのリスト
 
+  //追加した12/24
+  //追加登録成分の参照処理
+  Future<List<String>> selectAdd() async {
+    debugPrint("selectAddにきました");
+    final db = await instance.database;
+    AddList.clear(); //前回のデータのクリア処理
+    //すべてのhiragana
+    final hiragana = await db.rawQuery('SELECT hiragana FROM k_add');
+    debugPrint('hiraganaの内容：$hiragana');
 
+    for (Map<String, dynamic?> ad in hiragana) {
+      ad.forEach((key, value) {
+        AddList.add(value as String); // hiraganaを1件ずつ格納
+        debugPrint('AddListの内容：$AddList');
+      });
+    }
+    debugPrint('最終的にAddListに入れた内容：$AddList');
+    return AddList;
+  }
+
+  //とあるユーザがリスト表に登録した追加成分の表示
+  //アレルゲンの変更画面の表示に使用する
+  static List<String> addvalue = [];//とあるユーザが登録したaddidのリスト
+  static List<String> userAddList = [];//とあるユーザが登録したhiraganaのリスト
+
+  Future<List<String>> selectUserADD(int userid) async {
+    debugPrint("selectUserADDにきました");
+    final db = await instance.database;
+
+    addvalue.clear();//前回データのクリア処理
+    userAddList.clear();
+
+    //とあるユーザがリスト表に登録した全てのaddid
+    final addidlist = await db.rawQuery('select addid from list where userid = ?', [userid]);
+    debugPrint('addidlistの内容：$addidlist');
+
+    for (Map<String, dynamic?> add in addidlist) { //foodidはある
+      add.forEach((key, value) {
+        addvalue.add(value as String); // 登録されたaddidを1件ずつ格納
+        debugPrint('addvalueの内容：$addvalue');
+      });
+    }
+    debugPrint('最終的にaddvalueに入れた内容：$addvalue');
+
+    //addidを元に、該当するhiraganaをuserAddListに格納する処理
+    for (int x = 0; x < addvalue.length; x++) {
+      AddList.forEach((element) {
+        if (addvalue[x] == element) {
+          userAddList.add(element as String);
+          debugPrint('userAddListの内容：$userAddList');
+        }
+      });
+    }
+    debugPrint('最終的にuserAddListに入れた内容：$userAddList');
+    return userAddList;
+  }
 
 }

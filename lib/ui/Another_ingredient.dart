@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sotsuken2/DB/Database.dart';
 import 'AddAnotherIngredient.dart';
 
 import 'package:sotsuken2/Data/AllAnotherData.dart';
@@ -23,12 +24,15 @@ class StateAnother_ingredient extends StatefulWidget{
 class Another_ingredient extends State<StateAnother_ingredient>{
   AllAnotherData aad = AllAnotherData();
 
+  //test
+  bool sushi = false;
+
   int forMethod(){
     int forCount;
-    if(aad.getValue3().length % 2 == 1){
-      forCount = aad.getValue3().length+1;
+    if(DBProvider.AddList.length % 2 == 1){
+      forCount = DBProvider.AddList.length+1;
     }else{
-      forCount = aad.getValue3().length;
+      forCount = DBProvider.AddList.length;
     }
     return forCount;
   }
@@ -62,43 +66,20 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                             )
                         ),
                       ),
-                      if(aad.getValue3().isEmpty)...[
+
+                      if(DBProvider.AddList.isEmpty)...[
                         Container(
                           margin: const EdgeInsets.all(30),
                           child:const Text('何も登録されていません',style: TextStyle(fontSize: 25),),
                         ),
-                      ],
-                      for(int n = 0 ; n < forMethod(); n = n+2)...[
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              for(int nn = 0 ; nn < 2  ; nn++)...[
-                                if(nn == 0)...[
-                                  Container(
-                                    width: 165,
-                                    child:Transform.scale(
-                                      scale:1.1,
-                                      child: CheckboxListTile(
-                                          controlAffinity: ListTileControlAffinity.leading,
-                                          title: Transform.translate(
-                                            offset: const Offset(-15,0),
-                                            child:Text(aad.getValue3()[n+nn],style: TextStyle(fontSize: 20)),
-                                          ),
-                                          value: aad.getBool3()[n+nn],
-                                          onChanged: (value) {
-                                            setState(() {
-                                              aad.getBool3()[n+nn] = value!;
-                                            });
-                                          }
-                                      ),
-                                    ),
-                                  ),
-                                ]else...[
-                                  if(aad.getValue3().length % 2 == 1 && aad.getValue3().length == n+1)...[
-                                    Container(
-                                      width: 165,
-                                    ),
-                                  ]else...[
+                      ]else...[
+                        for(int n = 0 ; n < forMethod(); n = n+2)...[
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                for(int nn = 0 ; nn < 2  ; nn++)...[
+                                  if(nn == 0)...[
+
                                     Container(
                                       width: 165,
                                       child:Transform.scale(
@@ -107,7 +88,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                                             controlAffinity: ListTileControlAffinity.leading,
                                             title: Transform.translate(
                                               offset: const Offset(-15,0),
-                                              child:Text(aad.getValue3()[n+nn],style: TextStyle(fontSize: 20)),
+                                              child:Text(DBProvider.AddList[n+nn],style: TextStyle(fontSize: 20)),
                                             ),
                                             value: aad.getBool3()[n+nn],
                                             onChanged: (value) {
@@ -118,13 +99,43 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                                         ),
                                       ),
                                     ),
-                                  ]
 
-                                ]
-                              ],
-                            ]
-                        )
+                                  ]else...[
+
+                                    if(DBProvider.AddList.length % 2 == 1 && DBProvider.AddList.length == n+1)...[
+                                      Container(
+                                        width: 165,
+                                      ),
+                                    ]else...[
+                                      Container(
+                                        width: 165,
+                                        child:Transform.scale(
+                                          scale:1.1,
+                                          child: CheckboxListTile(
+                                              controlAffinity: ListTileControlAffinity.leading,
+                                              title: Transform.translate(
+                                                offset: const Offset(-15,0),
+                                                child:Text(DBProvider.AddList[n+nn],style: TextStyle(fontSize: 20)),
+                                              ),
+                                              value: aad.getBool3()[n+nn],
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  aad.getBool3()[n+nn] = value!;
+                                                });
+                                              }
+                                          ),
+                                        ),
+                                      ),
+                                    ]
+
+                                  ]
+                                ],
+                              ]
+                          )
+
+                        ],
                       ],
+
                       Container(
                         width: 290,
                         height: 90,
@@ -178,7 +189,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                               Navigator.of(context).pop();
                             }
                             debugPrint(widget.PageFlag.toString());
-                            aad.HanteiAnother();
+                            //aad.HanteiAnother();
                           },
                           child: const Text('決定',style: TextStyle(
                             fontSize: 23,

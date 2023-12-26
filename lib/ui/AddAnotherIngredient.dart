@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sotsuken2/Data/AllAnotherData.dart';
 
 import '../DB/Database.dart';
+import '../Data/AllUserData.dart';
 
 class StateAddAnotherIngredient extends StatefulWidget{
   const StateAddAnotherIngredient({super.key});
@@ -237,8 +238,11 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
                         child:const Text('登録',style: TextStyle(fontSize: 30),),
                         onPressed: (){
                           _insertAdd();//追加した処理12/21
-                          aad.addMethod3(ingredientName);
-                          Navigator.pop(context);
+                          _selectAdd();//テスト用で追加した処理12/24
+                          //aad.addMethod3(ingredientName);
+                          Future.delayed(const Duration(seconds: 1)).then((_) {
+                            Navigator.pop(context);
+                          });
                         },
                       )
                   ),
@@ -251,10 +255,25 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
   }
   //追加した処理12/21
   final dbProvider = DBProvider.instance;
-  //個人追加表とリスト表の追加処理 個人追加表のuseridを消しました
+  //個人追加表へ追加処理
   void _insertAdd() async {
     debugPrint('_insertAddにきました');
-    final AddList = await dbProvider.insertAdd(ingredientName ,kanji ,english,otherName);
+    final int userid = await dbProvider.selectUserId(AllUserData.sUserName);// ユーザーIDを非同期で取得
+    debugPrint('useridの内容:$userid');
+    final AddList = await dbProvider.insertAdd(userid, ingredientName ,kanji ,english,otherName);
     print('個人追加表にinsertしました: $AddList');
+    _selectAdd();//テスト用で追加した処理12/24 登録ボタンでselect使用とすると処理が早すぎて、ワンテンポ表示が遅れたので、insert処理後にselect処理実行されるように調整
   }
+
+  //追加した処理12/24
+  //追加成分表示テストメソッド
+  void _selectAdd() async {
+    debugPrint('_selectAddにきました');
+    final List<String> hiragana = await dbProvider.selectAdd();//ひらがなslectメソッド結果
+    final List<String> import = DBProvider.AddList;//import結果
+    debugPrint('追加成分の内容:$hiragana');
+    debugPrint('Addlistをimportした結果：$import');
+    debugPrint(DBProvider.AddList.toString());
+  }
+
 }

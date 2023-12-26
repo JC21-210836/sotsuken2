@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../DB/Database.dart';
 import 'Recommendation_allergy.dart';
 import 'Another_ingredient.dart';
 
@@ -149,11 +150,14 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                         )
                         ),
                         onPressed:(){
-                          Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context){
-                                return StateAnother_ingredient(PageFlag: widget.PageFlag);
-                              })
-                          );
+                          _selectAdd();
+                          Future.delayed(const Duration(seconds: 1)).then((_){
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context){
+                                  return StateAnother_ingredient(PageFlag: widget.PageFlag);
+                                })
+                            );
+                          });
                         },
                         child: const Text('登録済み成分を選択',
                             style: TextStyle(
@@ -202,5 +206,19 @@ class Obligation_allergy extends State<StateObligation_allergy>{
             )
         )
     );
+  }
+
+  //追加した処理12/21
+  final dbProvider = DBProvider.instance;
+
+  //追加した処理12/24
+  //追加成分表示テストメソッド
+  void _selectAdd() async {
+    debugPrint('_selectAddにきました');
+    final List<String> hiragana = await dbProvider.selectAdd();//ひらがなslectメソッド結果
+    final List<String> import = DBProvider.AddList;//import結果
+    debugPrint('追加成分の内容:$hiragana');
+    debugPrint('Addlistをimportした結果：$import');
+    debugPrint(DBProvider.AddList.toString());
   }
 }

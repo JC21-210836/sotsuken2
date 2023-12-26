@@ -191,14 +191,17 @@ class ChooseUser_Page extends State<StateChooseUser>{
                             ),
                           ),
                           onPressed: (){
-                            Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context){
-                                return  StateObligation_allergy(PageFlag: 'ChooseUser');
-                              }),
-                            );
                             setState(() {
                               aod.AllResetObligation();
                               ard.AllResetRecommendation();
+                              _selectAdd();
+                            });
+                            Future.delayed(const Duration (seconds: 1)).then((_){
+                              Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context){
+                                  return  StateObligation_allergy(PageFlag: 'ChooseUser');
+                                }),
+                              );
                               aad.AllResetAnother();
                             });
                           },
@@ -212,5 +215,15 @@ class ChooseUser_Page extends State<StateChooseUser>{
 
       ),
     );
+  }
+  final dbProvider = DBProvider.instance;
+
+  void _selectAdd() async {
+    debugPrint('_selectAddにきました');
+    final List<String> hiragana = await dbProvider.selectAdd();//ひらがなslectメソッド結果
+    final List<String> import = DBProvider.AddList;//import結果
+    debugPrint('追加成分の内容:$hiragana');
+    debugPrint('Addlistをimportした結果：$import');
+    debugPrint(DBProvider.AddList.toString());
   }
 }

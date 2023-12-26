@@ -58,17 +58,15 @@ class AllAnotherData{
 
   void AllResetAnother(){
     debugPrint(getValue3().length.toString());
-  /*うまくいってない
-    if(boolList3.isNotEmpty){
-      boolList3 = [];
-      for(int n = 1 ; n <= boolList3.length ; n++ ){
+    if(DBProvider.AddList.isNotEmpty){
+      boolList3.clear();
+      for(int n = 1 ; n <= DBProvider.AddList.length ; n++ ){
         boolList3.add(false);
       }
     }
-
-   */
     valueCheck3 = [];
     hAnother = "";
+    debugPrint(boolList3.toString());
   }
 
   //追加した処理12/21
