@@ -28,9 +28,11 @@ class AllAnotherData{
 
   void HanteiAnother(){
     valueCheck3.clear();
+
     for(int x = 0;x < boolList3.length; x++){
       if(boolList3[x] == true){
-        valueCheck3.add(valueList3[x]);
+        valueCheck3.add(DBProvider.AddList[x]);
+
       }
     }
     debugPrint(valueCheck3.toString());

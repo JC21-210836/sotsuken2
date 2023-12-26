@@ -189,7 +189,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                               Navigator.of(context).pop();
                             }
                             debugPrint(widget.PageFlag.toString());
-                            //aad.HanteiAnother();
+                            aad.HanteiAnother();
                           },
                           child: const Text('決定',style: TextStyle(
                             fontSize: 23,
