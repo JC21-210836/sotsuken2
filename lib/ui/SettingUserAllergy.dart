@@ -219,7 +219,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                             setState(() {
                               _deletelist();//リスト表から前データを削除：追加した処理12/21
                               aod.insertHanteiObligation();//表示義務を再度追加：追加した処理12/21
-                              ard.insertHanteiObligation2();//表示推奨を再度追加：追加した処理12/21
+                              ard.insertHanteiRecommendation();//表示推奨を再度追加：追加した処理12/21
                               aad.insertAllResetAnother();//追加成分を再度追加：追加した処理12/21
                             });
                           }

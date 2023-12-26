@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'AllUserData.dart';
 
 import '../DB/Database.dart';
-import '../ui/CreateUser2.dart';
 
 
 class AllRecommendationData{
@@ -96,7 +95,7 @@ class AllRecommendationData{
 
   //追加した処理12/21
   //みちるちゃんの
-  void insertHanteiObligation2() async {
+  void insertHanteiRecommendation() async {
     debugPrint('insertHanteiObligationに来ました');
     final dbProvider = DBProvider.instance;
     CheckValue2.clear();//foodidのクリア

@@ -67,13 +67,21 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                           border:Border.all(color:Colors.red,width:1)
                       ),
                       //テキスト表示させるやつがいる↓
-                      child:Text(HObligation,
-                        style:const TextStyle(
-                          height: 1.4,
-                          fontSize:23,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+
+                      child:Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          for(String obligation in aod.getValueCheck())...[
+                            Text('・$obligation',
+                              style:const TextStyle(
+                                height: 1.5,
+                                fontSize:25,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ]
+                        ],
+                      )
                     ),
                   ],
 
@@ -101,13 +109,20 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                           border:Border.all(color:Colors.blue,width:1)
                       ),
                       //テキスト表示させるやつがいる↓
-                      child:Text(HRecommendation,
-                        style:const TextStyle(
-                          height: 1.4,
-                          fontSize:23,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      child:Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          for(String recommendation in ard.getValueCheck2())...[
+                            Text('・$recommendation',
+                              style:const TextStyle(
+                                height: 1.5,
+                                fontSize:25,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ]
+                        ],
+                      )
                     ),
                   ],
 
@@ -135,13 +150,20 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                           border:Border.all(color:Colors.amber,width:1)
                       ),
                       //テキスト表示させるやつがいる↓
-                      child:Text(HAnother,
-                        style:const TextStyle(
-                          height: 1.4,
-                          fontSize:23,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      child:Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          for(String another in aad.getValueCheck3())...[
+                            Text('・$another',
+                              style:const TextStyle(
+                                height: 1.5,
+                                fontSize:25,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ]
+                        ],
+                      )
                     ),
                   ],
 
@@ -163,7 +185,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                               _insertUser();
                               _selectlistUser();
                               aod.insertHanteiObligation();//追加
-                              ard.insertHanteiObligation2();//追加
+                              ard.insertHanteiRecommendation();//追加
                               aad.insertAllResetAnother();//追加した処理12/21
                             });
                             //ユ－ザー選択画面(ChooseUser)
