@@ -164,12 +164,6 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                           ),
                           child:const Text('登録内容を確認',style: TextStyle(fontSize: 28)),
                           onPressed: (){
-
-                            setState(() {
-                              CreateUserCheck.HObligation = aod.getValueCheckString();
-                              CreateUserCheck.HRecommendation = ard.getValueCheckString2();
-                              CreateUserCheck.HAnother = aad.getValueCheckString3();
-                            });
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
                                   return const StateCreateUserCheck();

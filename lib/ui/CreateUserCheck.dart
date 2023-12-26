@@ -16,14 +16,10 @@ class StateCreateUserCheck extends StatefulWidget{
 }
 
 class CreateUserCheck extends State<StateCreateUserCheck>{
-  static String HObligation = "";
-  static String HRecommendation = "";
-  static String HAnother = "";
 
   AllObligationData aod = AllObligationData();
   AllRecommendationData ard = AllRecommendationData();
   AllAnotherData aad = AllAnotherData();
-
 
   @override
   Widget build(BuildContext context){

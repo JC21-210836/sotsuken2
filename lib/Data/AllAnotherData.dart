@@ -8,7 +8,6 @@ class AllAnotherData{
   static List<bool> boolList3 = [];
   static List<String> valueList3= [];
   static List<String> valueCheck3 = [];
-  static String hAnother = "";
 
 
   void addMethod3(String nam) {
@@ -46,18 +45,6 @@ class AllAnotherData{
     valueCheck3 =  dbValue;
   }
 
-  String getValueCheckString3(){
-    hAnother = "";
-    for(int x = 0;x < valueCheck3.length; x++){
-      if(x == 0 || x == valueCheck3.length){
-        hAnother = '$hAnother${valueCheck3[x]}';
-      }else{
-        hAnother = '$hAnother\n${valueCheck3[x]}';
-      }
-    }
-    return hAnother;
-  }
-
   void AllResetAnother(){
     debugPrint(getValue3().length.toString());
     if(DBProvider.AddList.isNotEmpty){
@@ -67,7 +54,6 @@ class AllAnotherData{
       }
     }
     valueCheck3 = [];
-    hAnother = "";
     debugPrint(boolList3.toString());
   }
 

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'AllUserData.dart';
 import '../DB/Database.dart';
-import '../ui/CreateUser2.dart';
 
 class AllObligationData{
 
   static List<bool> boolList = List.filled(8, false);
   static List<String> valueList = ["えび","かに","くるみ","小麦","そば","卵","乳","落花生",];
   static List<String> valueCheck = [];  //trueの名前
-  static String hObligation = "";
 
   //みちるちゃんの
   static Map<String, String> Gimu = {"HG1":"えび", "HG2":"かに", "HG3":"くるみ", "HG4":"小麦", "HG5":"そば", "HG6":"卵", "HG7":"乳", "HG8":"落花生",};
@@ -56,22 +54,9 @@ class AllObligationData{
    valueCheck =  dbValue;
   }
 
-  String getValueCheckString(){
-    hObligation = "";
-    for(int x = 0;x < valueCheck.length; x++){
-      if(x == 0 || x == valueCheck.length){
-        hObligation = '$hObligation${valueCheck[x]}';
-      }else{
-        hObligation = '$hObligation\n${valueCheck[x]}';
-      }
-    }
-    return hObligation;
-  }
-
   void AllResetObligation(){
     boolList = List.filled(8, false);
     valueCheck = [];
-    hObligation = "";
   }
 
   void valueChangeBool1(){

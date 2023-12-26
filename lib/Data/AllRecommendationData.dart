@@ -11,7 +11,6 @@ class AllRecommendationData{
   static List<String> valueList2 = ["あわび","いか","オレンジ","いくら","牛肉","ごま","さけ", "さば","大豆","鶏肉",
     "バナナ","豚肉","まつたけ","もも","やまいも","りんご","ゼラチン","アーモンド","カシューナッツ","キウイフルーツ"];
   static List<String> valueCheck2 = [];
-  static String hRecommendation = "";
 
   //みちるちゃんの
   static Map<String, String> Sui = {"SA1":"アーモンド", "SB1":"あわび", "SC1":"いか", "SD1":"いくら", "SE1":"カシューナッツ", "SF1":"オレンジ", "SG2":"キウイフルーツ", "SH2":"牛肉","SI1":"ごま","SJ1":"さけ","SK1":"さば","SL2":"大豆","SM2":"鶏肉","SN1":"バナナ","SO2":"豚肉","SP1":"まつたけ","SQ1":"もも","SR1":"やまいも","SS1":"りんご","ST1":"ゼラチン",};
@@ -58,23 +57,9 @@ class AllRecommendationData{
     valueCheck2 =  dbValue;
   }
 
-  String getValueCheckString2(){
-    hRecommendation = "";
-    for(int x = 0;x < valueCheck2.length; x++){
-      if(x == 0 || x == valueCheck2.length){
-        hRecommendation = '$hRecommendation${valueCheck2[x]}';
-      }else{
-        hRecommendation = '$hRecommendation\n${valueCheck2[x]}';
-      }
-    }
-    debugPrint(hRecommendation);
-    return hRecommendation;
-  }
-
   void AllResetRecommendation(){
     boolList2 =  List.filled(20, false);
     valueCheck2 = [];
-    hRecommendation = "";
   }
 
   void valueChangeBool2(){
