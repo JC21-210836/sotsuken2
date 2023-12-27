@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sotsuken2/Data/AllAnotherData.dart';
 
 import '../DB/Database.dart';
 import 'SettingUserNameChange.dart';
@@ -22,6 +23,7 @@ class UserSettings2 extends State<StateUserSettings2> {
 
   AllObligationData aod = AllObligationData();
   AllRecommendationData ard = AllRecommendationData();
+  AllAnotherData aad = AllAnotherData();
 
   @override
   Widget build(BuildContext context) {
@@ -117,6 +119,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                           _selectGimu();//追加した処理12/21
                           aod.setValueCheck(DBProvider.Gimulist);
                           ard.setValueCheck2(DBProvider.Suilist);
+                          aad.setValueCheck3(DBProvider.AddList);
                           Future.delayed(const Duration(seconds: 1)).then((_){
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
@@ -186,10 +189,6 @@ class UserSettings2 extends State<StateUserSettings2> {
     final int userid = await dbProvider.selectUserId(widget.UserName);
     await dbProvider.selectGimu(userid);//表示義務
     await dbProvider.selectSui(userid);//表示推奨
-
-    final importgimu = DBProvider.Gimulist;
-    final importsui = DBProvider.Suilist;
-    debugPrint('import　gimuの内容：$importgimu');
-    debugPrint('import　suiの内容：$importsui');
+    await dbProvider.selectUserADD(userid);
   }
 }
