@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/ui/AllergyDetection.dart';
+import 'package:sotsuken2/Data/AllObligationData.dart';
+import 'package:sotsuken2/Data/AllAnotherData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
 import '../DB/Database.dart';
 import 'Another_ingredient.dart';
@@ -18,7 +20,9 @@ class StateRecommendation_allergy extends StatefulWidget{
 
 class Recommendation_allergy extends State<StateRecommendation_allergy> {
 //チェックボックスの数だけいる(20)
+  AllObligationData aod = AllObligationData();
   AllRecommendationData ard = AllRecommendationData();
+  AllAnotherData aad = AllAnotherData();
 
   @override
   Widget build(BuildContext context) {
@@ -184,7 +188,9 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                       Navigator.of(context).pop();
                     }
                     debugPrint(widget.PageFlag.toString());
+                    aod.HanteiObligation();
                     ard.HanteiRecommendation();
+                    aad.HanteiAnother();
                   },
                   child: const Text('決定',style: TextStyle(
                     fontSize: 23,

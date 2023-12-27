@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/DB/Database.dart';
+import 'package:sotsuken2/Data/AllObligationData.dart';
+import 'package:sotsuken2/Data/AllRecommendationData.dart';
 import 'AddAnotherIngredient.dart';
 
 import 'package:sotsuken2/Data/AllAnotherData.dart';
@@ -23,6 +25,8 @@ class StateAnother_ingredient extends StatefulWidget{
 
 
 class Another_ingredient extends State<StateAnother_ingredient>{
+  AllObligationData aod = AllObligationData();
+  AllRecommendationData ard = AllRecommendationData();
   AllAnotherData aad = AllAnotherData();
 
   //test
@@ -194,7 +198,8 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                                 Navigator.of(context).pop();
                               }
                             }
-                            debugPrint(widget.PageFlag.toString());
+                            aod.HanteiObligation();
+                            ard.HanteiRecommendation();
                             aad.HanteiAnother();
                           },
                           child: const Text('決定',style: TextStyle(

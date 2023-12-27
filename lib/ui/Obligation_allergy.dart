@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sotsuken2/Data/AllAnotherData.dart';
 import '../DB/Database.dart';
 import 'Recommendation_allergy.dart';
 import 'Another_ingredient.dart';
@@ -25,6 +26,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
 
   AllObligationData aod = AllObligationData();
   AllRecommendationData ard = AllRecommendationData();
+  AllAnotherData aad = AllAnotherData();
   final int pagecount = 1;
 
   @override
@@ -194,6 +196,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                         debugPrint(widget.PageFlag.toString());
                         aod.HanteiObligation();
                         ard.HanteiRecommendation();
+                        aad.HanteiAnother();
                       },
                       child: const Text('決定',style: TextStyle(
                         fontSize: 23,
