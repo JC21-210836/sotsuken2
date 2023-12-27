@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../DB/Database.dart';
 import 'CreateUser1.dart';
 import 'Obligation_allergy.dart';
-import 'SettingUser1.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
 import 'package:sotsuken2/Data/AllAnotherData.dart';
@@ -32,11 +31,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
       );
       setState((){});
     }else if(n == 1){
-      await Navigator.of(context).push(
-          MaterialPageRoute(builder: (context){
-            return const StateUserSettings1();
-          })
-      );
+      await Navigator.pushNamed(context, 'SettingUser_page');
       setState((){
         debugPrint("とおった");
       });

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'DB/Database.dart';
+import 'ui/SettingUser1.dart';
 import 'ui/ChooseUser.dart';
+import 'DB/Database.dart';
+
 
 void main() {
   runApp(const MyApp());    //const無くても動く(下とセット)
@@ -20,7 +22,10 @@ class MyApp extends StatelessWidget{
         routes: {
           'ChooseUser_page':(context){
             return const StateChooseUser();
-          }
+          },
+          'SettingUser_page':(context){
+            return const StateUserSettings1();
+          },
         },
         home: Home_Page_State(),
     );

@@ -185,8 +185,10 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                                   })
                               );
 
-                            }else if(widget.PageFlag == 'CreateUser' || widget.PageFlag == 'SettingUser'){
+                            }else if(widget.PageFlag == 'CreateUser'){
                               Navigator.of(context).pop();
+                            }else if(widget.PageFlag == 'SettingUser'){
+                              //popUtil
                             }
                             debugPrint(widget.PageFlag.toString());
                             aad.HanteiAnother();
