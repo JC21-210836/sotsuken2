@@ -219,9 +219,11 @@ class SettingAllergy extends State<StateSettingAllergy>{
                           ),
                           child:const Text('更新',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.deepOrange)),
                           onPressed:(){
-                            debugPrint('一応更新に来ましたあああああああああああ');
                             setState(() {
+                              debugPrint('valueCheckのでーたないよう'+aod.getValueCheck().toString());
                               _deletelist();//リスト表から前データを削除：追加した処理12/21
+                              aod.HanteiObligation();
+                              ard.HanteiRecommendation();
                               aod.insertHanteiObligation();//表示義務を再度追加：追加した処理12/21
                               ard.insertHanteiRecommendation();//表示推奨を再度追加：追加した処理12/21
                               aad.insertAllResetAnother();//追加成分を再度追加：追加した処理12/21
