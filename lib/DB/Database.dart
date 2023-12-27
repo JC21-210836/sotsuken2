@@ -27,7 +27,7 @@ class DBProvider {
     debugPrint("_initDatabaseにきました");
 
     Directory documentDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentDirectory.path, 'ugoku5.db');
+    String path = join(documentDirectory.path, 'ugoku2.db');
     return await openDatabase(
       path,
       version: 1,
@@ -285,14 +285,14 @@ class DBProvider {
   Future<int> insertfood(int userid ,String checkKey) async {
     debugPrint("insertfoodにきました");
     Database db = await instance.database;
-    return await db.insert('list', {'userid': userid, 'foodid': checkKey});
+    return await db.insert('list', {'userid': userid, 'foodid': checkKey,'beautyid': '--', 'addid': '--'});
   }
 
   //表示推奨の追加処理
   Future<int> insertfood2(int userid ,String checkKey) async {
     debugPrint("insertfood2にきました");
     Database db = await instance.database;
-    return await db.insert('list', {'userid': userid, 'foodid': checkKey});
+    return await db.insert('list', {'userid': userid, 'foodid': checkKey,'beautyid': '--', 'addid': '--'});
   }
 
   //foodlistを削除する
@@ -440,7 +440,7 @@ class DBProvider {
   Future<int> insertlistAdd(int userid ,int addid) async {
     debugPrint("insertlistAddにきました");
     Database db = await instance.database;
-    return await db.insert('list', {'userid': userid, 'addid': addid});
+    return await db.insert('list', {'userid': userid,'foodid': '--','beautyid': '--', 'addid': addid});
   }
 
   //登録された追加成分の全表示
