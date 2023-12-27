@@ -189,6 +189,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                               Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
                               aod.AllResetObligation();
                               ard.AllResetRecommendation();
+                              aad.AllResetAnother();
                             });
                           }
                       )

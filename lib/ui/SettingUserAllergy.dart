@@ -168,12 +168,19 @@ class SettingAllergy extends State<StateSettingAllergy>{
                           border:Border.all(color:Colors.amber,width:1)
                       ),
                       //テキスト表示させるやつがいる↓
-                      child:Text(HAnother,
-                        style:const TextStyle(
-                          height: 1.4,
-                          fontSize:23,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      child:Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          for(String another in aad.getValueCheck3())...[
+                            Text('・$another',
+                              style:const TextStyle(
+                                height: 1.5,
+                                fontSize:25,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ]
+                        ],
                       ),
                     ),
                   ],
@@ -187,11 +194,8 @@ class SettingAllergy extends State<StateSettingAllergy>{
                         ),
                           child:const Text('変更',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.white)),
                           onPressed:(){
-                            aod.AllResetObligation();
                             aod.valueChangeBool1();
-                            ard.AllResetRecommendation();
                             ard.valueChangeBool2();
-                            aad.AllResetAnother();
                             //まだないけどvalueCheckBool3ができるよてい
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
@@ -215,13 +219,17 @@ class SettingAllergy extends State<StateSettingAllergy>{
                           ),
                           child:const Text('更新',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.deepOrange)),
                           onPressed:(){
-                            Navigator.pop(context);
+                            debugPrint('一応更新に来ましたあああああああああああ');
                             setState(() {
                               _deletelist();//リスト表から前データを削除：追加した処理12/21
                               aod.insertHanteiObligation();//表示義務を再度追加：追加した処理12/21
                               ard.insertHanteiRecommendation();//表示推奨を再度追加：追加した処理12/21
                               aad.insertAllResetAnother();//追加成分を再度追加：追加した処理12/21
                             });
+                            Future.delayed(const Duration(seconds: 1)).then((_){
+                              Navigator.pop(context);
+                            });
+
                           }
                       )
                   )

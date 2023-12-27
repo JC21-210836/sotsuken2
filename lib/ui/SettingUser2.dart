@@ -112,9 +112,12 @@ class UserSettings2 extends State<StateUserSettings2> {
                         ),
                         child: const Text('アレルゲンの変更',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
                         onPressed: (){
+                          aod.AllResetObligation();
+                          ard.AllResetRecommendation();
                           aod.setValueCheck(DBProvider.Gimulist);
                           ard.setValueCheck2(DBProvider.Suilist);
                           _selectGimu();//追加した処理12/21
+
                           Future.delayed(const Duration(seconds: 1)).then((_){
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
