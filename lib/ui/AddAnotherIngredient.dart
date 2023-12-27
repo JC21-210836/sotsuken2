@@ -239,7 +239,7 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
                         onPressed: (){
                           _insertAdd();//追加した処理12/21
                           _selectAdd();//テスト用で追加した処理12/24
-                          //aad.addMethod3(ingredientName);
+                          aad.addMethod3(ingredientName);
                           Future.delayed(const Duration(seconds: 1)).then((_) {
                             Navigator.pop(context);
                           });

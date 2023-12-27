@@ -11,7 +11,6 @@ class AllAnotherData{
 
 
   void addMethod3(String nam) {
-    valueList3.add(nam);
     boolList3.add(false);
     debugPrint(valueList3.toString());
   }
