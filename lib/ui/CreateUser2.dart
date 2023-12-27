@@ -141,7 +141,7 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                             Future.delayed(const Duration(seconds: 1)).then((_){
                               Navigator.of(context).push(
                                   MaterialPageRoute(builder: (context){
-                                    return const StateAnother_ingredient(PageFlag:'CreateUser');
+                                    return StateAnother_ingredient(PageFlag:'CreateUser', PageCount: 0);
                                   })
                               );
                             });

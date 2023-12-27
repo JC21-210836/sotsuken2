@@ -25,6 +25,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
 
   AllObligationData aod = AllObligationData();
   AllRecommendationData ard = AllRecommendationData();
+  final int pagecount = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +122,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                         aod.HanteiObligation();
                         Navigator.of(context).push(
                             MaterialPageRoute(builder: (context){
-                              return StateRecommendation_allergy(PageFlag: widget.PageFlag);
+                              return StateRecommendation_allergy(PageFlag: widget.PageFlag, PageCount : pagecount);
                             })
                         );
                       },
@@ -154,7 +155,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                           Future.delayed(const Duration(seconds: 1)).then((_){
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
-                                  return StateAnother_ingredient(PageFlag: widget.PageFlag);
+                                  return StateAnother_ingredient(PageFlag: widget.PageFlag, PageCount : pagecount);
                                 })
                             );
                           });

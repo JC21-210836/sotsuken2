@@ -7,7 +7,8 @@ import 'Another_ingredient.dart';
 
 class StateRecommendation_allergy extends StatefulWidget{
   final String PageFlag;
-  const StateRecommendation_allergy({Key?key, required this.PageFlag}): super(key:key) ;
+  int PageCount = 0;
+  StateRecommendation_allergy({Key?key, required this.PageFlag,required this.PageCount});
 
   @override
   State<StateRecommendation_allergy> createState(){
@@ -17,7 +18,6 @@ class StateRecommendation_allergy extends StatefulWidget{
 
 class Recommendation_allergy extends State<StateRecommendation_allergy> {
 //チェックボックスの数だけいる(20)
-
   AllRecommendationData ard = AllRecommendationData();
 
   @override
@@ -145,7 +145,7 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                         Navigator.of(context).push(
                             MaterialPageRoute(builder: (context) {
                               return StateAnother_ingredient(
-                                  PageFlag: widget.PageFlag);
+                                  PageFlag: widget.PageFlag,PageCount: widget.PageCount+1);
                             })
                         );
                       });

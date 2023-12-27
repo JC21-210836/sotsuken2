@@ -12,7 +12,8 @@ import 'AllergyDetection.dart';
 
 class StateAnother_ingredient extends StatefulWidget{
   final String PageFlag;
-  const StateAnother_ingredient({Key?key, required this.PageFlag}): super(key:key) ;
+  int PageCount = 0;
+  StateAnother_ingredient({super.key, required this.PageFlag,required this.PageCount});
 
   @override
   State<StateAnother_ingredient> createState(){
@@ -152,7 +153,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                           onPressed:(){
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
-                                  return const StateAddAnotherIngredient();
+                                  return StateAddAnotherIngredient(widget.PageFlag,widget.PageCount);
                                 })
                             ).then((value){
                               setState(() {});
@@ -188,7 +189,10 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                             }else if(widget.PageFlag == 'CreateUser'){
                               Navigator.of(context).pop();
                             }else if(widget.PageFlag == 'SettingUser'){
-                              //popUtil
+                              debugPrint(widget.PageCount.toString());
+                              for(int n = 0 ; n <= widget.PageCount; n++){
+                                Navigator.of(context).pop();
+                              }
                             }
                             debugPrint(widget.PageFlag.toString());
                             aad.HanteiAnother();

@@ -5,7 +5,10 @@ import '../DB/Database.dart';
 import '../Data/AllUserData.dart';
 
 class StateAddAnotherIngredient extends StatefulWidget{
-  const StateAddAnotherIngredient({super.key});
+  final String PageFlag;
+   int pagecount = 0;
+  StateAddAnotherIngredient(this.PageFlag,this.pagecount);
+
 
   @override
   State<StateAddAnotherIngredient> createState(){
