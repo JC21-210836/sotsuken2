@@ -27,7 +27,7 @@ class DBProvider {
     debugPrint("_initDatabaseにきました");
 
     Directory documentDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentDirectory.path, 'ugoku2.db');
+    String path = join(documentDirectory.path, 'ugoku3.db');
     return await openDatabase(
       path,
       version: 1,
@@ -220,26 +220,15 @@ class DBProvider {
   Future deleteUser(String username) async {
     debugPrint('deleteUserにきました');
     Database db = await instance.database;
-    return await db.delete(
-      'user',
-      where: 'username = ?',
-      whereArgs: [username],
-    );
+    return await db.delete('user', where: 'username = ?', whereArgs: [username],);
   }
 
   //usernameを更新する
   Future updateUser(String UserName,String afterName) async {
     debugPrint('updateUserにきました');
     Database db = await instance.database;
-    final values = <String, String>{
-      "username": afterName,
-    };
-    await db.update(
-      "user",
-      values,
-      where: "username=?",
-      whereArgs: [UserName],
-    );
+    final values = <String, String>{"username": afterName,};
+    await db.update("user", values, where: "username=?", whereArgs: [UserName],);
   }
 
   //userId,userNameをlistに格納する処理
@@ -254,16 +243,17 @@ class DBProvider {
     for (Map<String, dynamic?> userMap in userData) {
       userMap.forEach((key, value) {
         if (key == 'userid') {
-          userId.add(value as int); // キャスト
+          userId.add(value as int);
         } else if (key == 'username') {
-          userName.add(value as String); // キャスト
+          userName.add(value as String);
         }
       });
     }
     return userName;
   }
 
-//-list処理一覧-
+
+  //-list処理一覧-
   //ユーザIDセレクト用
   int selectid = 1; // 単一のint型変数として宣言
   Future<int> selectUserId(String sUserName) async {
@@ -285,47 +275,38 @@ class DBProvider {
   Future<int> insertfood(int userid ,String checkKey) async {
     debugPrint("insertfoodにきました");
     Database db = await instance.database;
-    return await db.insert('list', {'userid': userid, 'foodid': checkKey,'beautyid': '--', 'addid': '--'});
+    return await db.insert('list', {'userid': userid, 'foodid': checkKey,'beautyid': '--', 'addid': 0});
   }
 
   //表示推奨の追加処理
   Future<int> insertfood2(int userid ,String checkKey) async {
     debugPrint("insertfood2にきました");
     Database db = await instance.database;
-    return await db.insert('list', {'userid': userid, 'foodid': checkKey,'beautyid': '--', 'addid': '--'});
+    return await db.insert('list', {'userid': userid, 'foodid': checkKey,'beautyid': '--', 'addid': 0});
   }
 
   //foodlistを削除する
   Future deletefood(int userid) async {
     debugPrint('deletefoodにきました');
     Database db = await instance.database;
-    return await db.delete(
-      'list',
-      where: 'userid = ?',
-      whereArgs: [userid],
-    );
+    return await db.delete('list', where: 'userid = ?', whereArgs: [userid],);
   }
 
   //特定ユーザのlist表を削除する
   Future deletelist(int userid) async {
     debugPrint('deletelistにきました');
     Database db = await instance.database;
-    return await db.delete(
-      'list',
-      where: 'userid = ?',
-      whereArgs: [userid],
-    );
+    return await db.delete('list', where: 'userid = ?', whereArgs: [userid],);
   }
 
 
 
-  //追加した処理12/21
-//-アレルゲン変更処理表示用-
-//あるユーザの表示義務登録情報を参照し、GimuListに格納する処理
+  //-アレルゲン変更処理表示用-
+  //あるユーザの表示義務登録情報を参照し、GimuListに格納する処理
   static List<String> Gimuvalue = [];//とあるユーザが登録したfoodidのリスト
   static List<String> Gimulist = [];//とあるユーザが登録したfoodNameのリスト
 
-//表示義務
+  //表示義務
   Future<List<String>> selectGimu(int userid) async {
     debugPrint("selectGimuにきました");
     final db = await instance.database;
@@ -340,7 +321,7 @@ class DBProvider {
     final gim = AllObligationData.Gimu;
     debugPrint('表示義務の内容：$gim');
 
-    for (Map<String, dynamic?> gimu in foodidlist) { //foodidはある
+    for (Map<String, dynamic?> gimu in foodidlist) {
       gimu.forEach((key, value) {
         Gimuvalue.add(value as String); // foodidを1件ずつ格納
         debugPrint('Gimuvalueの内容：$Gimuvalue');
@@ -362,12 +343,12 @@ class DBProvider {
   }
 
 
-//表示推奨
-//あるユーザの表示推奨登録情報を参照し、SuiListに格納する処理
+  //表示推奨
+  //あるユーザの表示推奨登録情報を参照し、SuiListに格納する処理
   static List<String> Suivalue = [];//とあるユーザが登録したfoodidのリスト
   static List<String> Suilist = [];//とあるユーザが登録したfoodNameのリスト
 
-//表示推奨
+  //表示推奨
   Future<List<String>> selectSui(int userid) async {
     debugPrint("selectSuiにきました");
     final db = await instance.database;
@@ -436,6 +417,7 @@ class DBProvider {
     return addid;
   }
 
+
   //リスト表に個人追加成分の追加処理
   Future<int> insertlistAdd(int userid ,int addid) async {
     debugPrint("insertlistAddにきました");
@@ -443,10 +425,10 @@ class DBProvider {
     return await db.insert('list', {'userid': userid,'foodid': '--','beautyid': '--', 'addid': addid});
   }
 
-  //登録された追加成分の全表示
-  static List<String> AddList = [];//登録されたhiraganaのリスト
 
-  //追加した12/24
+
+  static List<String> AddList = [];//登録された追加成分hiraganaの全表示
+
   //追加登録成分の参照処理
   Future<List<String>> selectAdd() async {
     debugPrint("selectAddにきました");
@@ -466,9 +448,12 @@ class DBProvider {
     return AddList;
   }
 
+
+
+
   //とあるユーザがリスト表に登録した追加成分の表示
   //アレルゲンの変更画面の表示に使用する
-  static List<String> addvalue = [];//とあるユーザが登録したaddidのリスト
+  static List<int> addvalue = [];//とあるユーザが登録したaddidのリスト
   static List<String> userAddList = [];//とあるユーザが登録したhiraganaのリスト
 
   Future<List<String>> selectUserADD(int userid) async {
@@ -482,25 +467,28 @@ class DBProvider {
     final addidlist = await db.rawQuery('select addid from list where userid = ?', [userid]);
     debugPrint('addidlistの内容：$addidlist');
 
-    for (Map<String, dynamic?> add in addidlist) { //foodidはある
+    for (Map<String, dynamic?> add in addidlist) {
       add.forEach((key, value) {
-        addvalue.add(value as String); // 登録されたaddidを1件ずつ格納
+        addvalue.add(value as int); // 登録されたaddidを1件ずつ格納
         debugPrint('addvalueの内容：$addvalue');
       });
     }
     debugPrint('最終的にaddvalueに入れた内容：$addvalue');
 
-    //addidを元に、該当するhiraganaをuserAddListに格納する処理
+
+
     for (int x = 0; x < addvalue.length; x++) {
-      AddList.forEach((element) {
-        if (addvalue[x] == element) {
-          userAddList.add(element as String);
-          debugPrint('userAddListの内容：$userAddList');
+      if(addvalue[x] <= 1) { //addidが1以上なら、個人追加表に登録されているaddidと一致するhiraganaをもってくる
+        final hiragana = await db.rawQuery('SELECT hiragana FROM k_add where addid = ?', [addvalue[x]]); //addidと一致するhiraganaを参照
+        debugPrint('addidと一致したhiraganaの内容：$hiragana');
+        for (Map<String, dynamic?> Hlist in hiragana) {//hiraganaの参照情報をMap<String, dynamic?>にいれる
+          Hlist.forEach((key, value) {
+            userAddList.add(value); //userAddListにhiraganaの情報をいれる
+          });
         }
-      });
+      }
     }
     debugPrint('最終的にuserAddListに入れた内容：$userAddList');
     return userAddList;
   }
-
 }

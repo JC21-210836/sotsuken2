@@ -119,7 +119,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                           _selectGimu();//追加した処理12/21
                           aod.setValueCheck(DBProvider.Gimulist);
                           ard.setValueCheck2(DBProvider.Suilist);
-                          aad.setValueCheck3(DBProvider.AddList);
+                          aad.setValueCheck3(DBProvider.userAddList);
                           Future.delayed(const Duration(seconds: 1)).then((_){
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
@@ -189,6 +189,6 @@ class UserSettings2 extends State<StateUserSettings2> {
     final int userid = await dbProvider.selectUserId(widget.UserName);
     await dbProvider.selectGimu(userid);//表示義務
     await dbProvider.selectSui(userid);//表示推奨
-    await dbProvider.selectUserADD(userid);
+    await dbProvider.selectUserADD(userid);//←ここついかした
   }
 }

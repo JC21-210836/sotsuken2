@@ -19,9 +19,6 @@ class StateSettingAllergy extends StatefulWidget{
 }
 
 class SettingAllergy extends State<StateSettingAllergy>{
-  static String HObligation = "";
-  static String HRecommendation = "";
-  static String HAnother = "";
 
   AllObligationData aod = AllObligationData();
   AllRecommendationData ard = AllRecommendationData();
@@ -224,6 +221,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                               _deletelist();//リスト表から前データを削除：追加した処理12/21
                               aod.HanteiObligation();
                               ard.HanteiRecommendation();
+                              aad.HanteiAnother();
                               aod.insertHanteiObligation();//表示義務を再度追加：追加した処理12/21
                               ard.insertHanteiRecommendation();//表示推奨を再度追加：追加した処理12/21
                               aad.insertAllResetAnother();//追加成分を再度追加：追加した処理12/21
