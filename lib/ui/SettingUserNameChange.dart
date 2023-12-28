@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:sotsuken2/Data/AllUserData.dart';
+import '../DB/Database.dart';
 
 class StateSettingUserNameChange extends StatefulWidget{
   final String UserName;
@@ -28,15 +28,17 @@ class SettingUserNameChange extends State<StateSettingUserNameChange>{
                 children:[
                   Container(
                     margin:const EdgeInsets.fromLTRB(0, 10, 0, 30),
-                    padding:const EdgeInsets.fromLTRB(30, 10, 30, 10),
+                    padding:const EdgeInsets.fromLTRB(20, 12, 20, 12),
                     color:Colors.deepOrange,
-                    child:const Text('ユーザー名の変更',
-                      style: TextStyle(
-                          fontSize: 30,
-                          color:Colors.white,
-                          fontWeight: FontWeight.bold
+                    child:const FittedBox(
+                      child:Text('ユーザー名の変更',
+                        style: TextStyle(
+                            fontSize: 28,
+                            color:Colors.white,
+                            fontWeight: FontWeight.bold
+                        ),
                       ),
-                    ),
+                    )
                   ),
 
                   Container(
@@ -107,12 +109,13 @@ class SettingUserNameChange extends State<StateSettingUserNameChange>{
                         child:const Text('更新',style: TextStyle(fontSize: 28),),
                         onPressed: (){
                           setState(() {
-                            AllUserData aud = AllUserData();
-                            aud.changeUserName(widget.UserName,afterName);
+                            _updateUser();
+                            _selectlistUser();
                           });
-                          Navigator.of(context).pop();
-                          Navigator.of(context).pop();
-                          Navigator.of(context).pop();
+                          //ユ－ザー選択画面(ChooseUser)
+                          Future.delayed(const Duration(seconds: 1)).then((_){
+                            Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
+                          });
                         },
                       )
                   ),
@@ -123,5 +126,19 @@ class SettingUserNameChange extends State<StateSettingUserNameChange>{
       ),
     );
   }
+  final dbProvider = DBProvider.instance;
+
+  void _updateUser() async {
+    debugPrint("_updateUserにきました");
+    await dbProvider.updateUser(widget.UserName,afterName);
+    debugPrint('ユーザを更新しました');
+  }
+
+  void _selectlistUser() async {
+    debugPrint('_selectAllUserにきました');
+    final result = await dbProvider.selectlistUser();
+    debugPrint('userNameの中身$result');
+  }
+
 
 }

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/Data/AllRecommendationData.dart';
-import 'package:sotsuken2/ui/CreateUserCheck.dart';
-
-import 'Obligation_allergy.dart';
-import 'ChooseUser.dart';
+import 'package:sotsuken2/Data/AllAnotherData.dart';
+import '../DB/Database.dart';
 import 'CreateUserCheck.dart';
+import 'Obligation_allergy.dart';
+import 'Another_ingredient.dart';
 
-import 'package:sotsuken2/Data/AllUserData.dart';
+import 'package:sotsuken2/Data/AllRecommendationData.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 
 class StateCreateUser2 extends StatefulWidget{
-  const StateCreateUser2({super.key});
+  final String sUserName;
+  StateCreateUser2(this.sUserName);
 
   @override
   State<StateCreateUser2> createState(){
@@ -18,9 +18,13 @@ class StateCreateUser2 extends StatefulWidget{
   }
 }
 
-String UserName = "";
+//String UserName = "";
 
 class CreateUser2_Page extends State<StateCreateUser2> {
+
+  AllObligationData aod = AllObligationData();
+  AllRecommendationData ard = AllRecommendationData();
+  AllAnotherData aad = AllAnotherData();
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +54,7 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       child:Container(
                         width: 280,
                         height: 60,
@@ -66,17 +70,17 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Container(
+                            const SizedBox(
                               width:60,
-                              child: const Icon(
+                              child:Icon(
                                 Icons.account_box,
                                 color: Colors.indigo,
                                 size:50,
                               ),
                             ),
-                            Container(
+                            SizedBox(
                               width: 220,
-                              child:Text(UserName,style: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+                              child:Text(widget.sUserName,style: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
                             )
                           ],
                         ),
@@ -99,14 +103,12 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                           onPressed: (){
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
-                                  return CheckBoxT(PageFlag : 1);
+                                  return const StateObligation_allergy(PageFlag : 'CreateUser');
                                 })
                             );
-                            AllObligationData aod = AllObligationData();
-                            AllRecommendationData ard = AllRecommendationData();
                             setState(() {
-                              aod.AllResetObligation();
-                              ard.AllResetRecommendation();
+                              //aod.AllResetObligation();
+                              //ard.AllResetRecommendation();
                             });
                           },
                         )
@@ -134,7 +136,19 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                             style: TextStyle(fontSize: 25,color:Colors.indigo,fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
                           ),
-                          onPressed: (){},
+                          onPressed: (){
+                            _selectAdd();
+                            Future.delayed(const Duration(seconds: 1)).then((_){
+                              Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context){
+                                    return StateAnother_ingredient(PageFlag:'CreateUser', PageCount: 0);
+                                  })
+                              );
+                            });
+                            setState(() {
+                              aad.AllResetAnother();
+                            });
+                          },
                         )
                     ),
                     Container(
@@ -150,16 +164,10 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                         padding:const EdgeInsets.all(5),
                         child:ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              primary: Colors.indigo
+                              backgroundColor: Colors.indigo
                           ),
                           child:const Text('登録内容を確認',style: TextStyle(fontSize: 28)),
                           onPressed: (){
-                            AllObligationData aod = AllObligationData();
-                            AllRecommendationData ard = AllRecommendationData();
-                            setState(() {
-                              CreateUserCheck.HObligation = aod.getCheckValue();
-                              CreateUserCheck.HRecommendation = ard.getCheckValue2();
-                            });
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
                                   return const StateCreateUserCheck();
@@ -173,5 +181,18 @@ class CreateUser2_Page extends State<StateCreateUser2> {
             )
         )
     );
+  }
+  //追加した処理12/21
+  final dbProvider = DBProvider.instance;
+
+  //追加した処理12/24
+  //追加成分表示テストメソッド
+  void _selectAdd() async {
+    debugPrint('_selectAddにきました');
+    final List<String> hiragana = await dbProvider.selectAdd();//ひらがなslectメソッド結果
+    final List<String> import = DBProvider.AddList;//import結果
+    debugPrint('追加成分の内容:$hiragana');
+    debugPrint('Addlistをimportした結果：$import');
+    debugPrint(DBProvider.AddList.toString());
   }
 }

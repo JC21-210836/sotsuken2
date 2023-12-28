@@ -17,6 +17,10 @@ class StateCreateUser1 extends StatefulWidget{
 class CreateUser1_Page extends State<StateCreateUser1>{
   String UN = "";
   String ErrorMessage = "";
+  AllUserData aud = AllUserData(username: AllUserData.sUserName);
+  AllObligationData aod = AllObligationData();
+  AllRecommendationData ard = AllRecommendationData();
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -81,12 +85,8 @@ class CreateUser1_Page extends State<StateCreateUser1>{
                         child:const Text('次へ',style: TextStyle(fontSize: 30),),
                         onPressed: (){
                           setState(() {
-                            AllUserData aud = AllUserData();
                             aud.setUserName(UN);
-                            UserName = aud.getUserName();
-
-                            AllObligationData aod = AllObligationData();
-                            AllRecommendationData ard = AllRecommendationData();
+                            //UserName = aud.getUserName();
                             aod.AllResetObligation();
                             ard.AllResetRecommendation();
                           });
@@ -99,7 +99,7 @@ class CreateUser1_Page extends State<StateCreateUser1>{
                           }else{
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
-                                  return const StateCreateUser2();
+                                  return StateCreateUser2(aud.getUserName());
                                 })
                             );
                           }
@@ -113,5 +113,4 @@ class CreateUser1_Page extends State<StateCreateUser1>{
       ),
     );
   }
-
 }

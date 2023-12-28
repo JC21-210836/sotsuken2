@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
+import '../Data/AllUserData.dart';
+import 'Obligation_allergy.dart';
+
 import 'package:sotsuken2/Data/AllAnotherData.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
-import 'package:sotsuken2/Data/AllUserData.dart';
 
 import '../DB/Database.dart';
 
-class StateCreateUserCheck extends StatefulWidget{
-  const StateCreateUserCheck({super.key});
+class StateSettingAllergy extends StatefulWidget{
+  final String UserName;
+  const StateSettingAllergy(this.UserName);
 
   @override
-  State<StateCreateUserCheck> createState(){
-    return CreateUserCheck();
+  State<StateSettingAllergy> createState(){
+    return SettingAllergy();
   }
 }
 
-class CreateUserCheck extends State<StateCreateUserCheck>{
+class SettingAllergy extends State<StateSettingAllergy>{
 
   AllObligationData aod = AllObligationData();
   AllRecommendationData ard = AllRecommendationData();
   AllAnotherData aad = AllAnotherData();
+
 
   @override
   Widget build(BuildContext context){
@@ -32,10 +36,25 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
             child:Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:[
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(0, 30, 0, 10),
+                    padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                    decoration:const BoxDecoration(
+                      color: Colors.deepOrange,
+                    ),
+                    child: const Text('アレルゲンの変更',
+                        style: TextStyle(
+                            fontSize: 25,
+                            color:Colors.white,
+                            fontWeight: FontWeight.bold
+                        )
+                    ),
+                  ),
+
                   //表示義務
                   if(aod.getValueCheck().isNotEmpty)...[
                     Container(
-                      margin: const EdgeInsets.fromLTRB(0, 40, 120, 0),
+                      margin: const EdgeInsets.fromLTRB(0, 20, 120, 0),
                       decoration:BoxDecoration(
                           border:Border.all(color:Colors.red,width:1)
                       ),
@@ -55,6 +74,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                         ),
                       ),
                     ),
+
                     Container(
                       width: 280,
                       margin: const EdgeInsets.fromLTRB(15, 5, 15, 30),
@@ -62,13 +82,11 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                       decoration:BoxDecoration(
                           border:Border.all(color:Colors.red,width:1)
                       ),
-                      //テキスト表示させるやつがいる↓
-
                       child:Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          for(String obligation in aod.getValueCheck())...[
-                            Text('・$obligation',
+                          for(String gim in aod.getValueCheck())...[
+                            Text('・$gim',
                               style:const TextStyle(
                                 height: 1.5,
                                 fontSize:25,
@@ -77,7 +95,8 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                             ),
                           ]
                         ],
-                      )
+                      ),
+                      //テキスト表示させるやつがいる
                     ),
                   ],
 
@@ -108,8 +127,8 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                       child:Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          for(String recommendation in ard.getValueCheck2())...[
-                            Text('・$recommendation',
+                          for(String sui in ard.getValueCheck2())...[
+                            Text('・$sui',
                               style:const TextStyle(
                                 height: 1.5,
                                 fontSize:25,
@@ -118,7 +137,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                             ),
                           ]
                         ],
-                      )
+                      ),
                     ),
                   ],
 
@@ -159,38 +178,58 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                             ),
                           ]
                         ],
-                      )
+                      ),
                     ),
                   ],
-
-                  if(aod.getValueCheck().isEmpty && ard.getValueCheck2().isEmpty && aad.getValueCheck3().isEmpty)...[
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(10, 50, 10, 80),
-                      child:const Text('何も登録されていません',style:TextStyle(fontSize: 25,fontWeight: FontWeight.bold))
-                    ),
-                  ],
-
                   Container(
                       width:230,
                       height:60,
-                      margin:const EdgeInsets.fromLTRB(15, 0, 15, 40),
+                      margin:const EdgeInsets.fromLTRB(20, 0, 15, 7),
                       child:ElevatedButton(
-                          child:const Text('登録',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold)),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.orange
+                        ),
+                          child:const Text('変更',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.white)),
+                          onPressed:(){
+                            aod.valueChangeBool1();
+                            ard.valueChangeBool2();
+                            //まだないけどvalueCheckBool3ができるよてい
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context){
+                                  return StateObligation_allergy(PageFlag: 'SettingUser');
+                                })
+                            ).then((value){
+                              setState(() {});
+                            });
+                          }
+                      )
+                  ),
+                  Container(
+                      width:230,
+                      height:60,
+                      margin:const EdgeInsets.fromLTRB(15, 7, 15, 40),
+                      child:OutlinedButton(
+                          style:OutlinedButton.styleFrom(
+                            side: const BorderSide(
+                                color: Colors.deepOrange
+                            ),
+                          ),
+                          child:const Text('更新',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.deepOrange)),
                           onPressed:(){
                             setState(() {
-                              _insertUser();
-                              _selectlistUser();
-                              aod.insertHanteiObligation();//追加
-                              ard.insertHanteiRecommendation();//追加
-                              aad.insertAllResetAnother();//追加した処理12/21
+                              debugPrint('valueCheckのでーたないよう'+aod.getValueCheck().toString());
+                              _deletelist();//リスト表から前データを削除：追加した処理12/21
+                              aod.HanteiObligation();
+                              ard.HanteiRecommendation();
+                              aad.HanteiAnother();
+                              aod.insertHanteiObligation();//表示義務を再度追加：追加した処理12/21
+                              ard.insertHanteiRecommendation();//表示推奨を再度追加：追加した処理12/21
+                              aad.insertAllResetAnother();//追加成分を再度追加：追加した処理12/21
                             });
-                            //ユ－ザー選択画面(ChooseUser)
                             Future.delayed(const Duration(seconds: 1)).then((_){
-                              Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
-                              aod.AllResetObligation();
-                              ard.AllResetRecommendation();
-                              aad.AllResetAnother();
+                              Navigator.pop(context);
                             });
+
                           }
                       )
                   )
@@ -201,18 +240,14 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
       ),
     );
   }
-
+  //12/24追加処理
   final dbProvider = DBProvider.instance;
-  //ユーザの追加処理
-  void _insertUser() async {
-    AllUserData row = AllUserData.newAllUserData();
-    row.username = AllUserData.sUserName;
-    final username = await dbProvider.insertUser(row);
-    print('ユーザ表にinsertしました: $username');
-  }
-  void _selectlistUser() async {
-    debugPrint('_selectAllUserにきました');
-    final result = await dbProvider.selectlistUser();
-    debugPrint('userNameの中身$result');
+
+  //リスト表の削除
+  void _deletelist() async {
+    debugPrint('_deleteUserに来ました');
+    final int userid = await dbProvider.selectUserId(AllUserData.sUserName);// ユーザーIDを非同期で取得
+    final rowsDeleted = await dbProvider.deletelist(userid);
+    print('削除しました $rowsDeleted');
   }
 }

@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-
-//import 'package:sotsuken2/CreateUser1.dart';
-//import 'package:sotsuken2/CreateUser2.dart';
-import 'package:sotsuken2/ui/ChooseUser.dart';
+import '../DB/Database.dart';
 
 class AllUserData{
   //一時的に保持するとこ
@@ -21,29 +17,22 @@ class AllUserData{
     return sUserName;
   }
 
-  void setUserNameFinal(){
-    debugPrint(sUserName);
-    UserNameList.add(sUserName);
-    debugPrint('Listのなかみ$UserNameList');
-    sUserName = "";
+  //みちるちゃんの領域
+  final dbProvider = DBProvider.instance;
+
+  late String username;
+
+  AllUserData({
+    required this.username,
+  });
+
+  AllUserData.newAllUserData(){
+    username = "";
   }
 
-  List<String> getUserNames(){
-    sUserName = "";
-    return UserNameList;
-  }
-
-
-  void deleteUserName(String name){
-    UserNameList.remove(name);
-  }
-
-  void changeUserName(String beforeName,String afterName){
-    int idx = UserNameList.indexOf(beforeName);   //trueのインデックスを探す
-    deleteUserName(beforeName);                   //削除
-    UserNameList.insert(idx, afterName);
-    debugPrint('Listのなかみ$UserNameList');
-  }
+  Map<String, String> toMap() =>{
+    "username":username,
+  };
 //indexで誰の情報か紐づけで持ってくる
 //後でdeleteもほしいね
 }

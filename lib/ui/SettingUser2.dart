@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:sotsuken2/Data/AllAnotherData.dart';
 
+import '../DB/Database.dart';
 import 'SettingUserNameChange.dart';
 import 'SettingUserDelete.dart';
+import 'SettingUserAllergy.dart';
+
+import 'package:sotsuken2/Data/AllRecommendationData.dart';
+import 'package:sotsuken2/Data/AllObligationData.dart';
 
 class StateUserSettings2 extends StatefulWidget{
   final String UserName;
@@ -14,6 +20,10 @@ class StateUserSettings2 extends StatefulWidget{
 }
 
 class UserSettings2 extends State<StateUserSettings2> {
+
+  AllObligationData aod = AllObligationData();
+  AllRecommendationData ard = AllRecommendationData();
+  AllAnotherData aad = AllAnotherData();
 
   @override
   Widget build(BuildContext context) {
@@ -44,35 +54,33 @@ class UserSettings2 extends State<StateUserSettings2> {
                       ),
                     ),
                     Container(
-                      child:Container(
-                        width: 280,
-                        height: 60,
-                        margin: const EdgeInsets.all(5),
-                        decoration: const BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  color:Colors.deepOrangeAccent
-                              )
-                          ),
-                        ),
-
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width:60,
-                              child: const Icon(
-                                Icons.account_box,
-                                color: Colors.redAccent,
-                                size:50,
-                              ),
-                            ),
-                            Container(
-                              width: 220,
-                              child:Text(widget.UserName,style: const TextStyle(fontSize: 25),textAlign: TextAlign.center,),
+                      width: 280,
+                      height: 60,
+                      margin: const EdgeInsets.all(5),
+                      decoration: const BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(
+                                color:Colors.deepOrangeAccent
                             )
-                          ],
                         ),
+                      ),
+
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            width:60,
+                            child: Icon(
+                              Icons.account_box,
+                              color: Colors.redAccent,
+                              size:50,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 220,
+                            child:Text(widget.UserName,style: const TextStyle(fontSize: 25),textAlign: TextAlign.center,),
+                          )
+                        ],
                       ),
                     ),
 
@@ -80,7 +88,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                     Container(
                       width:270,
                       height:50,
-                      margin: EdgeInsets.fromLTRB(20, 25, 20, 20),
+                      margin: const EdgeInsets.fromLTRB(20, 25, 20, 20),
                       child:ElevatedButton(
                         style:ElevatedButton.styleFrom(
                             backgroundColor: Colors.deepOrangeAccent
@@ -99,20 +107,34 @@ class UserSettings2 extends State<StateUserSettings2> {
                     Container(
                       width:270,
                       height:50,
-                      margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+                      margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                       child:ElevatedButton(
                         style:ElevatedButton.styleFrom(
                             backgroundColor: Colors.deepOrangeAccent
                         ),
                         child: const Text('アレルゲンの変更',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
-                        onPressed: (){},
+                        onPressed: (){
+                          //aod.AllResetObligation();
+                          //ard.AllResetRecommendation();
+                          _selectGimu();//追加した処理12/21
+                          aod.setValueCheck(DBProvider.Gimulist);
+                          ard.setValueCheck2(DBProvider.Suilist);
+                          aad.setValueCheck3(DBProvider.userAddList);
+                          Future.delayed(const Duration(seconds: 1)).then((_){
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context){
+                                  return StateSettingAllergy(widget.UserName);
+                                })
+                            );
+                          });
+                        },
                       ),
 
                     ),
                     Container(
                       width:270,
                       height:50,
-                      margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+                      margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                       child:ElevatedButton(
                         style:ElevatedButton.styleFrom(
                             backgroundColor: Colors.red
@@ -132,7 +154,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                     Container(
                       width:290,
                       height:90,
-                      margin: EdgeInsets.fromLTRB(20, 10, 20, 25),
+                      margin: const EdgeInsets.fromLTRB(20, 10, 20, 25),
                       child:OutlinedButton(
                         style:OutlinedButton.styleFrom(
                           side: const BorderSide(
@@ -159,5 +181,14 @@ class UserSettings2 extends State<StateUserSettings2> {
           )
       ),
     );
+  }
+  //追加した処理12/21
+  final dbProvider = DBProvider.instance;
+  void _selectGimu() async {
+    debugPrint('_selectGimuにきました');
+    final int userid = await dbProvider.selectUserId(widget.UserName);
+    await dbProvider.selectGimu(userid);//表示義務
+    await dbProvider.selectSui(userid);//表示推奨
+    await dbProvider.selectUserADD(userid);//←ここついかした
   }
 }

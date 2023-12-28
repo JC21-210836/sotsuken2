@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'ReadIngredient.dart';
 
 class StateAllergyNotDetection extends StatefulWidget{
   const StateAllergyNotDetection({super.key});
@@ -130,7 +131,13 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                                   textAlign:TextAlign.center
                               ),
                             ),
-                            onPressed: (){}
+                            onPressed: (){
+                              Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context){
+                                  return StateReadIngredient();
+                                })
+                              );
+                            }
                         ),
                       )
                     ]

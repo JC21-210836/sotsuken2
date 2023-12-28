@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'ChooseUser.dart';
+import '../DB/Database.dart';
 
 import 'package:sotsuken2/Data/AllUserData.dart';
 
@@ -17,6 +17,8 @@ class StateSettingUserDelete extends StatefulWidget{
 class SettingUserDelete extends State<StateSettingUserDelete>{
   bool Agree = false;
   String UN = "";
+  AllUserData aud = AllUserData(username: AllUserData.sUserName);
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -34,14 +36,14 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
                     color:Colors.red,
                     child:const Text('ユーザーの削除',
                       style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 28,
                           color:Colors.white,
                           fontWeight: FontWeight.bold
                       ),
                     ),
                   ),
 
-                  Container(
+                  SizedBox(
                     width: 310,
                     child:Transform.scale(
                         scale: 1.2,
@@ -98,15 +100,19 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
                         onPressed: (){
                           setState(() {
                             if(widget.UserName == UN && Agree == true){
-                              AllUserData aud = AllUserData();
-                              aud.deleteUserName(widget.UserName);
+                              _deleteUser();
+                              _deletefood();
+                              _selectlistUser();
+                              //aud.deleteUserName(widget.UserName);
+
                             }else{
                               //エラーメッセが欲しいけど今出す場所ない
                             }
                           });
-                          Navigator.pop(context);
-                          Navigator.pop(context);
-                          Navigator.of(context).pop();
+                          //ユ－ザー選択画面(ChooseUser)
+                          Future.delayed(const Duration(seconds: 1)).then((_){
+                            Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
+                          });
                         },
                       )
                   ),
@@ -116,6 +122,26 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
 
       ),
     );
+  }
+  final dbProvider = DBProvider.instance;
+  //ユーザの削除処理
+  void _deleteUser() async {
+    debugPrint('_deleteUserに来ました');
+    final rowsDeleted = await dbProvider.deleteUser(widget.UserName);
+    debugPrint('削除しました $rowsDeleted');
+  }
+
+  void _selectlistUser() async {
+    debugPrint('_selectAllUserにきました');
+    final result = await dbProvider.selectlistUser();
+    debugPrint('userNameの中身$result');
+  }
+  //食品の削除
+  void _deletefood() async {
+    debugPrint('_deleteUserに来ました');
+    final int userid = await dbProvider.selectUserId(AllUserData.sUserName);// ユーザーIDを非同期で取得
+    final rowsDeleted = await dbProvider.deletefood(userid);
+    print('削除しました $rowsDeleted');
   }
 
 }
