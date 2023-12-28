@@ -4,6 +4,7 @@ import 'CreateUser2.dart';
 import 'package:sotsuken2/Data/AllUserData.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
+import 'package:sotsuken2/Data/AllAnotherData.dart';
 
 class StateCreateUser1 extends StatefulWidget{
   const StateCreateUser1({super.key});
@@ -20,6 +21,7 @@ class CreateUser1_Page extends State<StateCreateUser1>{
   AllUserData aud = AllUserData(username: AllUserData.sUserName);
   AllObligationData aod = AllObligationData();
   AllRecommendationData ard = AllRecommendationData();
+  AllAnotherData aad = AllAnotherData();
 
   @override
   Widget build(BuildContext context){
@@ -89,6 +91,7 @@ class CreateUser1_Page extends State<StateCreateUser1>{
                             //UserName = aud.getUserName();
                             aod.AllResetObligation();
                             ard.AllResetRecommendation();
+                            aad.AllResetAnother();
                           });
                           if(UN == ""){
                             /*

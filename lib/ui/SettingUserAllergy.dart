@@ -193,6 +193,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                           onPressed:(){
                             aod.valueChangeBool1();
                             ard.valueChangeBool2();
+                            aad.valueChangeBool3();
                             //まだないけどvalueCheckBool3ができるよてい
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){

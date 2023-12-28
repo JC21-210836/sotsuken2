@@ -56,6 +56,22 @@ class AllAnotherData{
     debugPrint(boolList3.toString());
   }
 
+  void valueChangeBool3(){
+    int count = 0;
+    for(String value in DBProvider.userAddList){
+      while(true){
+        if(valueList3[count] == value){
+          boolList3[count] = true;
+          count++;
+          break;
+        }else{
+          boolList3[count] = false;
+        }
+        count++;
+      }
+    }
+  }
+
   //追加した処理12/21
   //追加成分のinsert処理
   static List<String> checkadd = [];//チェックされた追加名のリスト

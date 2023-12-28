@@ -106,10 +106,6 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                                   return const StateObligation_allergy(PageFlag : 'CreateUser');
                                 })
                             );
-                            setState(() {
-                              //aod.AllResetObligation();
-                              //ard.AllResetRecommendation();
-                            });
                           },
                         )
                     ),
@@ -144,9 +140,6 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                                     return StateAnother_ingredient(PageFlag:'CreateUser', PageCount: 0);
                                   })
                               );
-                            });
-                            setState(() {
-                              aad.AllResetAnother();
                             });
                           },
                         )
