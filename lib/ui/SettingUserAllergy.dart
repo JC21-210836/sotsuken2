@@ -193,7 +193,6 @@ class SettingAllergy extends State<StateSettingAllergy>{
                           onPressed:(){
                             aod.valueChangeBool1();
                             ard.valueChangeBool2();
-
                             aad.valueChangeBool3();
                             //まだないけどvalueCheckBool3ができるよてい
                             Navigator.of(context).push(
@@ -229,6 +228,9 @@ class SettingAllergy extends State<StateSettingAllergy>{
                               aad.insertAllResetAnother();//追加成分を再度追加：追加した処理12/21
                             });
                             Future.delayed(const Duration(seconds: 1)).then((_){
+                              aod.AllResetObligation();
+                              ard.AllResetRecommendation();
+                              aad.AllResetAnother();
                               Navigator.pop(context);
                             });
 

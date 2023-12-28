@@ -17,6 +17,7 @@ class AllAnotherData{
 
   void setValueList3(){
     valueList3 = DBProvider.AddList;
+    debugPrint('valueList3のなかみみ$valueList3');
   }
 
   List<String> getValue3() {

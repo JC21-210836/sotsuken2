@@ -193,7 +193,6 @@ class UserSettings2 extends State<StateUserSettings2> {
     await dbProvider.selectSui(userid);//表示推奨
     await dbProvider.selectAdd();
     await dbProvider.selectUserADD(userid);//←ここついかした
-    //debugPrint('GimuListのなかみいいいいい'+DBProvider.Gimulist.toString());
 
   }
 }
