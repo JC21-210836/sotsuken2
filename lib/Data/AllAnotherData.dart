@@ -5,9 +5,9 @@ import 'AllUserData.dart';
 
 class AllAnotherData{
 
-  static List<bool> boolList3 = [];
-  static List<String> valueList3= [];
-  static List<String> valueCheck3 = [];
+  static List<bool> boolList3 = []; //true,false全部分
+  static List<String> valueList3= []; //名前全部
+  static List<String> valueCheck3 = []; //trueのなまえ
 
 
   void addMethod3(String nam) {
@@ -15,6 +15,9 @@ class AllAnotherData{
     debugPrint(valueList3.toString());
   }
 
+  void setValueList3(){
+    valueList3 = DBProvider.AddList;
+  }
 
   List<String> getValue3() {
     return valueList3;
@@ -59,6 +62,7 @@ class AllAnotherData{
   void valueChangeBool3(){
     int count = 0;
     for(String value in DBProvider.userAddList){
+      debugPrint('valueChangeBool3とおった$valueList3');
       while(true){
         if(valueList3[count] == value){
           boolList3[count] = true;

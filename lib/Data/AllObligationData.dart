@@ -62,6 +62,7 @@ class AllObligationData{
   void valueChangeBool1(){
     int count = 0;
     for(String value in DBProvider.Gimulist){
+      debugPrint('valueChangeBool1とおった$valueList');
       while(true){
         if(valueList[count] == value){
           boolList[count] = true;

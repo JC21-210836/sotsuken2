@@ -117,6 +117,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                           //aod.AllResetObligation();
                           //ard.AllResetRecommendation();
                           _selectGimu();//追加した処理12/21
+                          aad.setValueList3();
                           aod.setValueCheck(DBProvider.Gimulist);
                           ard.setValueCheck2(DBProvider.Suilist);
                           aad.setValueCheck3(DBProvider.userAddList);
@@ -190,6 +191,7 @@ class UserSettings2 extends State<StateUserSettings2> {
     final int userid = await dbProvider.selectUserId(widget.UserName);
     await dbProvider.selectGimu(userid);//表示義務
     await dbProvider.selectSui(userid);//表示推奨
+    await dbProvider.selectAdd();
     await dbProvider.selectUserADD(userid);//←ここついかした
     //debugPrint('GimuListのなかみいいいいい'+DBProvider.Gimulist.toString());
 

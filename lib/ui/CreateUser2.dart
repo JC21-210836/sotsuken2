@@ -134,6 +134,7 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                           ),
                           onPressed: (){
                             _selectAdd();
+                            aad.setValueList3();
                             Future.delayed(const Duration(seconds: 1)).then((_){
                               Navigator.of(context).push(
                                   MaterialPageRoute(builder: (context){
