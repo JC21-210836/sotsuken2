@@ -22,6 +22,11 @@ class DBProvider {
     _database = await _initDatabase();
     return _database!;
   }
+  Future<List<Map<String, dynamic>>> getAllData() async {
+    final db = await database;
+
+    return await db.query('food');
+  }
 
   Future<Database> _initDatabase() async {
     debugPrint("_initDatabaseにきました");
@@ -490,5 +495,24 @@ class DBProvider {
     }
     debugPrint('最終的にuserAddListに入れた内容：$userAddList');
     return userAddList;
+  }
+}
+
+class dblist{
+  dblist(){
+    fetchDataFromDatabase();
+  }
+  List<Map<String, dynamic>> databaseContent = []; // データベースの中身を格納するリスト
+
+  // データベースの中身を取得する処理
+  Future<void> fetchDataFromDatabase() async {
+    databaseContent = await DBProvider.instance.getAllData();
+    //setState(() {}); // データが取得されたことを反映
+    debugPrint("DBくん:$databaseContent");
+  }
+
+  Future<List<Map<String, dynamic>>> getData() async{
+    databaseContent = await DBProvider.instance.getAllData();
+    return databaseContent;
   }
 }
