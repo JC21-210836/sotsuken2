@@ -2,15 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:sotsuken2/DB/Database.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
+import 'package:sotsuken2/ui/ImageLoaderSelect.dart';
 import 'AddAnotherIngredient.dart';
-
 import 'package:sotsuken2/Data/AllAnotherData.dart';
-
-//臨時
-import 'AllergyDetection.dart';
-
-
-
 
 class StateAnother_ingredient extends StatefulWidget{
   final String PageFlag;
@@ -186,7 +180,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                             if(widget.PageFlag == 'ChooseUser'){
                               Navigator.of(context).push(
                                   MaterialPageRoute(builder: (context){
-                                    return const StateAllergyDetection();
+                                    return const ImageLoderSelect();
                                   })
                               );
 

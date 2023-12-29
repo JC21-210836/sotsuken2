@@ -1,21 +1,53 @@
 import 'package:flutter/material.dart';
-import 'ReadIngredient.dart';
-//臨時
+import 'package:image_picker/image_picker.dart';
+import '../Api/api.dart';
+import '../DB/Database.dart';
 import 'AllergyNotDetection.dart';
 
 class StateAllergyDetection extends StatefulWidget{
-  const StateAllergyDetection({super.key});
+  const StateAllergyDetection(this.image, {Key? key}) : super(key: key);
+  final XFile? image;
 
   @override
-  State<StateAllergyDetection> createState(){
-    return AllergyDetection_Page();
-  }
+  AllergyDetection_Page createState() => AllergyDetection_Page();
 }
 
 class AllergyDetection_Page extends State<StateAllergyDetection>{
+  String val = "読み込み中";
+  XFile get _image => widget.image!;
+
+  void postData() async {
+    await Api.instance.postData(_image);
+    List<Map<String, dynamic>> databaseContent = await dblist().getData();
+    List<String> contentList = await Api.instance.getContentList();
+    setState(() {
+      print("セットステートするで");
+      String values = "";
+
+      for(Map<String, dynamic> dbc in databaseContent){
+        for(String s in contentList) {
+          String word = dbc['foodname'];
+          if (s.contains(word)) {
+            values = "$values \n $s";
+            debugPrint("追加：　$s");
+            debugPrint("表示： $values");
+            break;
+          }
+        }
+      }
+      if(values == ""){
+        values = "何も検知されませんでした";
+      }
+      val = values;
+      print("vals$val");
+    });
+  }
 
   @override
   Widget build(BuildContext context){
+    setState(() {
+      postData();
+    });
     return Scaffold(
       appBar: AppBar(
           title: const Text('成分チェッカー')
@@ -58,19 +90,10 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                       width: 300,
                       height: 320,
                       //多分↓ここのconst邪魔になる
-                      child:const Column(
-                        children: [
-                          Text(''),
-                          Text(''),
-                          Text(''),
-                          Text(''),
-                          Text(''),
-                          Text(''),
-                        ],
-                      ),
-                    )
+                      child:Text(val,style:TextStyle(fontSize: 15)
+                    ),
+                    ),
                 ),
-
                 Container(
                   height: 60,
                   width: 300,
@@ -148,11 +171,11 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                               ),
                             ),
                             onPressed: (){
-                              Navigator.of(context).push(
+                              /*Navigator.of(context).push(
                                   MaterialPageRoute(builder: (context){
                                     return StateReadIngredient();
                                   })
-                              );
+                              );*/
                             }
                         ),
                       )
