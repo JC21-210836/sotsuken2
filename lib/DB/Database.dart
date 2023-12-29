@@ -2,7 +2,10 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:sotsuken2/Data/AllObligationData.dart';
+import 'package:sotsuken2/Data/AllRecommendationData.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:sotsuken2/Data/AllUserData.dart';
 
 class DBProvider {
 
@@ -19,12 +22,17 @@ class DBProvider {
     _database = await _initDatabase();
     return _database!;
   }
+  Future<List<Map<String, dynamic>>> getAllData() async {
+    final db = await database;
+
+    return await db.query('food');
+  }
 
   Future<Database> _initDatabase() async {
     debugPrint("_initDatabaseにきました");
 
     Directory documentDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentDirectory.path, 'test10.db');
+    String path = join(documentDirectory.path, 'ugoku3.db');
     return await openDatabase(
       path,
       version: 1,
@@ -203,5 +211,308 @@ class DBProvider {
     for (final food in foods) {
       await db.insert('food', food);
     }
+  }
+
+  //-ユーザ処理一覧-
+  //ユーザの追加処理
+  Future<int> insertUser(AllUserData row) async {
+    debugPrint("insertUserにきました");
+    Database db = await instance.database;
+    return await db.insert('user', row.toMap());
+  }
+
+  //usernameを削除する
+  Future deleteUser(String username) async {
+    debugPrint('deleteUserにきました');
+    Database db = await instance.database;
+    return await db.delete('user', where: 'username = ?', whereArgs: [username],);
+  }
+
+  //usernameを更新する
+  Future updateUser(String UserName,String afterName) async {
+    debugPrint('updateUserにきました');
+    Database db = await instance.database;
+    final values = <String, String>{"username": afterName,};
+    await db.update("user", values, where: "username=?", whereArgs: [UserName],);
+  }
+
+  //userId,userNameをlistに格納する処理
+  static List<int> userId = [];
+  static List<String> userName = [];
+  Future<List<String>> selectlistUser() async {
+    debugPrint("selectUserにきました");
+    final db = await instance.database;
+    final userData = await db.query('user');
+    userId.clear(); // リストを再度使用する前にクリアする
+    userName.clear();
+    for (Map<String, dynamic?> userMap in userData) {
+      userMap.forEach((key, value) {
+        if (key == 'userid') {
+          userId.add(value as int);
+        } else if (key == 'username') {
+          userName.add(value as String);
+        }
+      });
+    }
+    return userName;
+  }
+
+
+  //-list処理一覧-
+  //ユーザIDセレクト用
+  int selectid = 1; // 単一のint型変数として宣言
+  Future<int> selectUserId(String sUserName) async {
+    debugPrint("selectUserIdにきました");
+    Database db = await instance.database;
+    final List<Map<String, dynamic>> userid =
+    await db.query('user', where: 'username = ?', whereArgs: [sUserName]);
+    for (Map<String, dynamic?> userMap in userid) {
+      if (userMap.containsKey('userid')) {
+        selectid = userMap['userid'] as int;
+        print('useridを出力：$selectid');
+        break; // ループを抜ける
+      }
+    }
+    return selectid;
+  }
+
+  //表示義務の追加処理
+  Future<int> insertfood(int userid ,String checkKey) async {
+    debugPrint("insertfoodにきました");
+    Database db = await instance.database;
+    return await db.insert('list', {'userid': userid, 'foodid': checkKey,'beautyid': '--', 'addid': 0});
+  }
+
+  //表示推奨の追加処理
+  Future<int> insertfood2(int userid ,String checkKey) async {
+    debugPrint("insertfood2にきました");
+    Database db = await instance.database;
+    return await db.insert('list', {'userid': userid, 'foodid': checkKey,'beautyid': '--', 'addid': 0});
+  }
+
+  //foodlistを削除する
+  Future deletefood(int userid) async {
+    debugPrint('deletefoodにきました');
+    Database db = await instance.database;
+    return await db.delete('list', where: 'userid = ?', whereArgs: [userid],);
+  }
+
+  //特定ユーザのlist表を削除する
+  Future deletelist(int userid) async {
+    debugPrint('deletelistにきました');
+    Database db = await instance.database;
+    return await db.delete('list', where: 'userid = ?', whereArgs: [userid],);
+  }
+
+
+
+  //-アレルゲン変更処理表示用-
+  //あるユーザの表示義務登録情報を参照し、GimuListに格納する処理
+  static List<String> Gimuvalue = [];//とあるユーザが登録したfoodidのリスト
+  static List<String> Gimulist = [];//とあるユーザが登録したfoodNameのリスト
+
+  //表示義務
+  Future<List<String>> selectGimu(int userid) async {
+    debugPrint("selectGimuにきました");
+    final db = await instance.database;
+
+    Gimuvalue.clear();
+    Gimulist.clear();
+
+    //すべてのfoodid
+    final foodidlist = await db.rawQuery('select foodid from list where userid = ?', [userid]);
+    debugPrint('foodidlistの内容：$foodidlist');
+
+    final gim = AllObligationData.Gimu;
+    debugPrint('表示義務の内容：$gim');
+
+    for (Map<String, dynamic?> gimu in foodidlist) {
+      gimu.forEach((key, value) {
+        Gimuvalue.add(value as String); // foodidを1件ずつ格納
+        debugPrint('Gimuvalueの内容：$Gimuvalue');
+      });
+    }
+
+    debugPrint('最終的にGimuvalueに入れた内容：$Gimuvalue');
+
+    for (int x = 0; x < Gimuvalue.length; x++) {
+      gim.forEach((key, value) {
+        if (Gimuvalue[x] == key) {
+          Gimulist.add(value as String);
+          debugPrint('Gimulistの内容：$Gimulist');
+        }
+      });
+    }
+    debugPrint('最終的にGimulistに入れた内容：$Gimulist');
+    return Gimulist;
+  }
+
+
+  //表示推奨
+  //あるユーザの表示推奨登録情報を参照し、SuiListに格納する処理
+  static List<String> Suivalue = [];//とあるユーザが登録したfoodidのリスト
+  static List<String> Suilist = [];//とあるユーザが登録したfoodNameのリスト
+
+  //表示推奨
+  Future<List<String>> selectSui(int userid) async {
+    debugPrint("selectSuiにきました");
+    final db = await instance.database;
+
+    Suivalue.clear();
+    Suilist.clear();
+
+    //すべてのfoodid
+    final foodidlist = await db.rawQuery('select foodid from list where userid = ?', [userid]);
+    debugPrint('foodidlistの内容：$foodidlist');
+
+    final sui = AllRecommendationData.Sui;
+    debugPrint('表示推奨の内容：$sui');
+
+    for (Map<String, dynamic?> sui in foodidlist) { //foodidはある
+      sui.forEach((key, value) {
+        Suivalue.add(value as String); // foodidを1件ずつ格納
+        debugPrint('Suivalueの内容：$Suivalue');
+      });
+    }
+
+    debugPrint('最終的にSuivalueに入れた内容：$Suivalue');
+
+    for (int x = 0; x < Suivalue.length; x++) {
+      sui.forEach((key, value) {
+        if (Suivalue[x] == key) {
+          Suilist.add(value as String);
+          debugPrint('Suilistの内容：$Suilist');
+        }
+      });
+    }
+    debugPrint('最終的にSuilistに入れた内容：$Suilist');
+    return Suilist;
+  }
+
+
+
+
+
+
+  //-追加成分の処理-
+  //追加成分の新規登録処理(登録ボタンを押したときに実行)
+  //個人追加表の追加処理
+  Future<int> insertAdd(int userid ,String hiragana, String kanji, String eigo,String otherName) async {
+    debugPrint("insertAddにきました");
+    Database db = await instance.database;
+    return await db.insert('k_add', {'userid': userid, 'hiragana': hiragana, 'kanji': kanji, 'eigo': eigo, 'otherName': otherName, 'categoryid': 'TS'});
+  }
+
+
+  //AddIDセレクト用
+  static int addid = 1; // 単一のint型変数として宣言
+  Future<int> selectAddId(int userid) async {
+    debugPrint("selectAddIdにきました");
+    Database db = await instance.database;
+
+    final Addid = await db.rawQuery('select addid from k_add where userid = ?',[userid]);
+    debugPrint('Addidをselectした内容：$Addid');
+
+    for (Map<String, dynamic?> ADD in Addid) {//foodidはある
+      ADD.forEach((key, value) {
+        addid = value! as int; // foodidを1件ずつ格納
+        debugPrint('追加されたaddid：$addid');
+      });
+    }
+    return addid;
+  }
+
+
+  //リスト表に個人追加成分の追加処理
+  Future<int> insertlistAdd(int userid ,int addid) async {
+    debugPrint("insertlistAddにきました");
+    Database db = await instance.database;
+    return await db.insert('list', {'userid': userid,'foodid': '--','beautyid': '--', 'addid': addid});
+  }
+
+
+
+  static List<String> AddList = [];//登録された追加成分hiraganaの全表示
+
+  //追加登録成分の参照処理
+  Future<List<String>> selectAdd() async {
+    debugPrint("selectAddにきました");
+    final db = await instance.database;
+    AddList.clear(); //前回のデータのクリア処理
+    //すべてのhiragana
+    final hiragana = await db.rawQuery('SELECT hiragana FROM k_add');
+    debugPrint('hiraganaの内容：$hiragana');
+
+    for (Map<String, dynamic?> ad in hiragana) {
+      ad.forEach((key, value) {
+        AddList.add(value as String); // hiraganaを1件ずつ格納
+        debugPrint('AddListの内容：$AddList');
+      });
+    }
+    debugPrint('最終的にAddListに入れた内容：$AddList');
+    return AddList;
+  }
+
+
+
+
+  //とあるユーザがリスト表に登録した追加成分の表示
+  //アレルゲンの変更画面の表示に使用する
+  static List<int> addvalue = [];//とあるユーザが登録したaddidのリスト
+  static List<String> userAddList = [];//とあるユーザが登録したhiraganaのリスト
+
+  Future<List<String>> selectUserADD(int userid) async {
+    debugPrint("selectUserADDにきました");
+    final db = await instance.database;
+
+    addvalue.clear();//前回データのクリア処理
+    userAddList.clear();
+
+    //とあるユーザがリスト表に登録した全てのaddid
+    final addidlist = await db.rawQuery('select addid from list where userid = ?', [userid]);
+    debugPrint('addidlistの内容：$addidlist');
+
+    for (Map<String, dynamic?> add in addidlist) {
+      add.forEach((key, value) {
+        addvalue.add(value as int); // 登録されたaddidを1件ずつ格納
+        debugPrint('addvalueの内容：$addvalue');
+      });
+    }
+    debugPrint('最終的にaddvalueに入れた内容：$addvalue');
+
+
+
+    for (int x = 0; x < addvalue.length; x++) {
+      if(addvalue[x] <= 1) { //addidが1以上なら、個人追加表に登録されているaddidと一致するhiraganaをもってくる
+        final hiragana = await db.rawQuery('SELECT hiragana FROM k_add where addid = ?', [addvalue[x]]); //addidと一致するhiraganaを参照
+        debugPrint('addidと一致したhiraganaの内容：$hiragana');
+        for (Map<String, dynamic?> Hlist in hiragana) {//hiraganaの参照情報をMap<String, dynamic?>にいれる
+          Hlist.forEach((key, value) {
+            userAddList.add(value); //userAddListにhiraganaの情報をいれる
+          });
+        }
+      }
+    }
+    debugPrint('最終的にuserAddListに入れた内容：$userAddList');
+    return userAddList;
+  }
+}
+
+class dblist{
+  dblist(){
+    fetchDataFromDatabase();
+  }
+  List<Map<String, dynamic>> databaseContent = []; // データベースの中身を格納するリスト
+
+  // データベースの中身を取得する処理
+  Future<void> fetchDataFromDatabase() async {
+    databaseContent = await DBProvider.instance.getAllData();
+    //setState(() {}); // データが取得されたことを反映
+    debugPrint("DBくん:$databaseContent");
+  }
+
+  Future<List<Map<String, dynamic>>> getData() async{
+    databaseContent = await DBProvider.instance.getAllData();
+    return databaseContent;
   }
 }
