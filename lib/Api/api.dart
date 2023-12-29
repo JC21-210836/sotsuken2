@@ -7,8 +7,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sotsuken2/DB/Food.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../DB/Database.dart';
-
 class Api{
   static List<String> contentList = [""];
   Api._();
@@ -67,10 +65,7 @@ class Api{
     //、を見つけるまでを1要素として配列に格納する
     contentList = genStr.split('、');
     debugPrint("読み込んだ文字：$contentList");
-
-    result();
   }
-
   List<String> getContentList(){
     return contentList;
   }
