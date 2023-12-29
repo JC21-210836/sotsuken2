@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sotsuken2/DB/Database.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
-import 'package:sotsuken2/Data/AllAnotherData.dart';
+import 'package:sotsuken2/ui/ImageLoaderSelect.dart';
 import 'AddAnotherIngredient.dart';
-import '../DB/Add.dart';
-
-//臨時
-import 'AllergyDetection.dart';
+import 'package:sotsuken2/Data/AllAnotherData.dart';
 
 class StateAnother_ingredient extends StatefulWidget{
   final String PageFlag;
@@ -168,75 +166,45 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                               textAlign: TextAlign.center),
                         ),
                       ),
-                      if(widget.PageFlag == 'ChooseUser' || widget.PageFlag == 'CreateUser' || widget.PageFlag == 'SettingUser')...[
-                        Container(
-                          width: 290,
-                          height: 70,
-                          margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
-                          padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                          child:  OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                                foregroundColor: Colors.deepOrange, side: const BorderSide(
-                              color: Colors.deepOrange,
-                              width: 1.5,
-                            )
-                            ),
-                            onPressed:(){
-                              if(widget.PageFlag == 'ChooseUser'){
-                                Navigator.of(context).push(
-                                    MaterialPageRoute(builder: (context){
-                                      return const StateAllergyDetection();
-                                    })
-                                );
+                      Container(
+                        width: 290,
+                        height: 70,
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
+                        padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
+                        child:  OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                              foregroundColor: Colors.deepOrange, side: const BorderSide(
+                            color: Colors.deepOrange,
+                            width: 1.5,
+                          )
+                          ),
+                          onPressed:(){
+                            if(widget.PageFlag == 'ChooseUser'){
+                              Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context){
+                                    return const ImageLoderSelect();
+                                  })
+                              );
 
-                              }else if(widget.PageFlag == 'CreateUser'){
+                            }else if(widget.PageFlag == 'CreateUser'){
+                              Navigator.of(context).pop();
+                            }else if(widget.PageFlag == 'SettingUser'){
+                              debugPrint(widget.PageCount.toString());
+                              for(int n = 0 ; n <= widget.PageCount; n++){
                                 Navigator.of(context).pop();
-                              }else if(widget.PageFlag == 'SettingUser'){
-                                debugPrint(widget.PageCount.toString());
-                                for(int n = 0 ; n <= widget.PageCount; n++){
-                                  Navigator.of(context).pop();
-                                }
                               }
-                              aod.HanteiObligation();
-                              ard.HanteiRecommendation();
-                              aad.HanteiAnother();
-                            },
-                            child: const Text('決定',style: TextStyle(
-                              fontSize: 23,
-                              fontWeight: FontWeight.bold,
-                            ),
-                                textAlign: TextAlign.center),
+                            }
+                            aod.HanteiObligation();
+                            ard.HanteiRecommendation();
+                            aad.HanteiAnother();
+                          },
+                          child: const Text('決定',style: TextStyle(
+                            fontSize: 23,
+                            fontWeight: FontWeight.bold,
                           ),
-                        )
-                      ],
-                      if(widget.PageFlag == 'Manual')...[
-                        Container(
-                          width: 290,
-                          height: 70,
-                          margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
-                          padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                          child:  OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                                foregroundColor: Colors.deepOrange, side: const BorderSide(
-                              color: Colors.deepOrange,
-                              width: 1.5,
-                            )
-                            ),
-                            onPressed:(){
-                              //ここにデータベースの削除メソッド
-
-                              setState(() {});
-                            },
-                            child: const Text('選択した項目を削除',style: TextStyle(
-                              fontSize: 23,
-                              fontWeight: FontWeight.bold,
-                            ),
-                                textAlign: TextAlign.center),
-                          ),
-                        )
-
-                      ],
-
+                              textAlign: TextAlign.center),
+                        ),
+                      )
                     ]
                 )
             )
