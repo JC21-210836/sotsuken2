@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/ui/AllergyDetection.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllAnotherData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
-import '../DB/Add.dart';
+import 'package:sotsuken2/ui/ImageLoaderSelect.dart';
+import '../DB/Database.dart';
 import 'Another_ingredient.dart';
 
 
@@ -179,7 +179,7 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                     if(widget.PageFlag == 'ChooseUser'){
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context){
-                            return const StateAllergyDetection();
+                            return const ImageLoderSelect();
                           })
                       );
                     }else if(widget.PageFlag == 'CreateUser' || widget.PageFlag =='SettingUser'){
