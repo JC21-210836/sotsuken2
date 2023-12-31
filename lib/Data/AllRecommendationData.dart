@@ -84,11 +84,11 @@ class AllRecommendationData{
     debugPrint('insertHanteiObligationに来ました');
     final dbProvider = DBProvider.instance;
     CheckValue2.clear();//foodidのクリア
-    CheckValue2 = getValueCheck2();
     foodid2.clear();//追加した処理12/21
-    for (int x = 0; x < CheckValue2.length; x++) {
+    debugPrint('valueCheck2を使用します：$valueCheck2');
+    for (int x = 0; x < valueCheck2.length; x++) {
       Sui.forEach((key, value) { //foodidのみを出力
-        if (value == CheckValue2[x]) { //もしSuiリストのfoodNameとCheckValueのfoodNameが一致したら
+        if (value == valueCheck2[x]) { //もしSuiリストのfoodNameとCheckValueのfoodNameが一致したら
           foodid2.add(key as String); // foodidリストにSuiリストのfoodidを格納
         }
       });

@@ -79,25 +79,22 @@ class AllAnotherData{
 
   //追加した処理12/21
   //追加成分のinsert処理
-  static List<String> checkadd = [];//チェックされた追加名のリスト
-
   void insertAllResetAnother() async {
     debugPrint('insertAllResetAnotherに来ました');
     final dbProvider = DBProvider.instance;
-    checkadd.clear();//前回のcheckaddをクリア
-    checkadd = getValueCheck3();//新たにcheckされたデータを代入
 
     final int userid = await dbProvider.selectUserId(AllUserData.sUserName);// ユーザーIDを非同期で取得
-    final int addid = await dbProvider.selectAddId(userid);//あるユーザが登録したaddidを取得
-
     debugPrint('参照したいuseridは:$userid');
-    debugPrint('参照したいaddidは:$addid');
 
-    for (int x = 0; x < checkadd.length; x++) {
-      final result2 = await dbProvider.insertlistAdd(userid, addid);// リスト表へのinsert処理
+
+    //あるユーザが登録したaddidを取得
+    for(int x = 0; x < valueCheck3.length; x++) {
+      final int addid = await dbProvider.selectAddId(valueCheck3[x]);//checkaddに格納されている追加名を1つずつ引数で渡す
+      debugPrint('参照したいaddidは:$addid');
+      final result2 = await dbProvider.insertlistAdd(userid, DBProvider.addid);// リスト表へのinsert処理
       debugPrint('リスト表にinsert処理した内容:$result2');
     }
-    debugPrint(checkadd.toString());
+    debugPrint(valueCheck3.toString());
   }
 
 /*
@@ -105,7 +102,6 @@ class AllAnotherData{
     debugPrint(valueList3.length.toString());
     return valueList3.toString();
   }
-
    */
 }
 

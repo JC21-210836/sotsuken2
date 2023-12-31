@@ -27,7 +27,7 @@ class DBProvider {
     debugPrint("_initDatabaseにきました");
 
     Directory documentDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentDirectory.path, 'ugoku3.db');
+    String path = join(documentDirectory.path, 'test7.db');
     return await openDatabase(
       path,
       version: 1,
@@ -392,20 +392,20 @@ class DBProvider {
   //-追加成分の処理-
   //追加成分の新規登録処理(登録ボタンを押したときに実行)
   //個人追加表の追加処理
-  Future<int> insertAdd(int userid ,String hiragana, String kanji, String eigo,String otherName) async {
+  Future<int> insertAdd(String hiragana, String kanji, String eigo,String otherName) async {
     debugPrint("insertAddにきました");
     Database db = await instance.database;
-    return await db.insert('k_add', {'userid': userid, 'hiragana': hiragana, 'kanji': kanji, 'eigo': eigo, 'otherName': otherName, 'categoryid': 'TS'});
+    return await db.insert('k_add', {'userid': 0, 'hiragana': hiragana, 'kanji': kanji, 'eigo': eigo, 'otherName': otherName, 'categoryid': 'TS'});
   }
 
 
   //AddIDセレクト用
-  static int addid = 1; // 単一のint型変数として宣言
-  Future<int> selectAddId(int userid) async {
+  static int addid = 0; // 単一のint型変数として宣言
+  Future<int> selectAddId(String checkadd) async {
     debugPrint("selectAddIdにきました");
     Database db = await instance.database;
 
-    final Addid = await db.rawQuery('select addid from k_add where userid = ?',[userid]);
+    final Addid = await db.rawQuery('select addid from k_add where hiragana = ?',[checkadd]);
     debugPrint('Addidをselectした内容：$Addid');
 
     for (Map<String, dynamic?> ADD in Addid) {//foodidはある
@@ -434,14 +434,20 @@ class DBProvider {
     debugPrint("selectAddにきました");
     final db = await instance.database;
     AddList.clear(); //前回のデータのクリア処理
+    debugPrint('AddListをクリアしました：$AddList');
+
     //すべてのhiragana
     final hiragana = await db.rawQuery('SELECT hiragana FROM k_add');
     debugPrint('hiraganaの内容：$hiragana');
 
     for (Map<String, dynamic?> ad in hiragana) {
       ad.forEach((key, value) {
-        AddList.add(value as String); // hiraganaを1件ずつ格納
-        debugPrint('AddListの内容：$AddList');
+        for (int x = 0; x < ad.length; x++) {
+          if (key == 'hiragana') {
+            AddList.add(value as String); // hiraganaを1件ずつ格納
+            debugPrint('AddListの内容：$AddList');
+          }
+        }
       });
     }
     debugPrint('最終的にAddListに入れた内容：$AddList');
@@ -475,15 +481,14 @@ class DBProvider {
     }
     debugPrint('最終的にaddvalueに入れた内容：$addvalue');
 
-
-
     for (int x = 0; x < addvalue.length; x++) {
-      if(addvalue[x] <= 1) { //addidが1以上なら、個人追加表に登録されているaddidと一致するhiraganaをもってくる
+      if(addvalue[x] != 0) { //addidが1以上なら、個人追加表に登録されているaddidと一致するhiraganaをもってくる
         final hiragana = await db.rawQuery('SELECT hiragana FROM k_add where addid = ?', [addvalue[x]]); //addidと一致するhiraganaを参照
         debugPrint('addidと一致したhiraganaの内容：$hiragana');
         for (Map<String, dynamic?> Hlist in hiragana) {//hiraganaの参照情報をMap<String, dynamic?>にいれる
           Hlist.forEach((key, value) {
             userAddList.add(value); //userAddListにhiraganaの情報をいれる
+            debugPrint('userAddListとってこれているかな：$userAddList');
           });
         }
       }
