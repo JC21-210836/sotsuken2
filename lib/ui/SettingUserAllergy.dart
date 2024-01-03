@@ -194,7 +194,6 @@ class SettingAllergy extends State<StateSettingAllergy>{
                             aod.valueChangeBool1();
                             ard.valueChangeBool2();
                             aad.valueChangeBool3();
-                            //まだないけどvalueCheckBool3ができるよてい
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
                                   return StateObligation_allergy(PageFlag: 'SettingUser');
@@ -219,6 +218,9 @@ class SettingAllergy extends State<StateSettingAllergy>{
                           onPressed:(){
                             setState(() {
                               debugPrint('valueCheckのでーたないよう'+aod.getValueCheck().toString());
+                              aod.valueChangeBool1();
+                              ard.valueChangeBool2();
+                              aad.valueChangeBool3();
                               _deletelist();//リスト表から前データを削除：追加した処理12/21
                               aod.HanteiObligation();
                               ard.HanteiRecommendation();
