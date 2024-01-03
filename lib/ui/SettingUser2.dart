@@ -184,14 +184,16 @@ class UserSettings2 extends State<StateUserSettings2> {
       ),
     );
   }
+
   //追加した処理12/21
   final dbProvider = DBProvider.instance;
   void _selectGimu() async {
     debugPrint('_selectGimuにきました');
     final int userid = await dbProvider.selectUserId(widget.UserName);
+    debugPrint('これから調べるユーザはuserid：$useridです');
     await dbProvider.selectGimu(userid);//表示義務
     await dbProvider.selectSui(userid);//表示推奨
-    await dbProvider.selectAdd();
+    //await dbProvider.selectAdd();
     await dbProvider.selectUserADD(userid);//←ここついかした
 
   }

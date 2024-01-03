@@ -211,7 +211,6 @@ class Obligation_allergy extends State<StateObligation_allergy>{
         )
     );
   }
-
   //追加した処理12/21
   final dbProvider = DBProvider.instance;
 
@@ -225,4 +224,5 @@ class Obligation_allergy extends State<StateObligation_allergy>{
     debugPrint('Addlistをimportした結果：$import');
     debugPrint(DBProvider.AddList.toString());
   }
+
 }

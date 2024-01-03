@@ -134,7 +134,7 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                           ),
                           onPressed: (){
                             _selectAdd();
-                            aad.setValueList3();
+                            aad.setValueList3();//移動した。お試し
                             Future.delayed(const Duration(seconds: 1)).then((_){
                               Navigator.of(context).push(
                                   MaterialPageRoute(builder: (context){
@@ -176,6 +176,7 @@ class CreateUser2_Page extends State<StateCreateUser2> {
         )
     );
   }
+
   //追加した処理12/21
   final dbProvider = DBProvider.instance;
 
@@ -189,4 +190,5 @@ class CreateUser2_Page extends State<StateCreateUser2> {
     debugPrint('Addlistをimportした結果：$import');
     debugPrint(DBProvider.AddList.toString());
   }
+
 }

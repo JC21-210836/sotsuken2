@@ -186,9 +186,9 @@ class SettingAllergy extends State<StateSettingAllergy>{
                       height:60,
                       margin:const EdgeInsets.fromLTRB(20, 0, 15, 7),
                       child:ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.orange
-                        ),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.orange
+                          ),
                           child:const Text('変更',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.white)),
                           onPressed:(){
                             aod.valueChangeBool1();
@@ -223,9 +223,6 @@ class SettingAllergy extends State<StateSettingAllergy>{
                               aod.HanteiObligation();
                               ard.HanteiRecommendation();
                               aad.HanteiAnother();
-                              aod.insertHanteiObligation();//表示義務を再度追加：追加した処理12/21
-                              ard.insertHanteiRecommendation();//表示推奨を再度追加：追加した処理12/21
-                              aad.insertAllResetAnother();//追加成分を再度追加：追加した処理12/21
                             });
                             Future.delayed(const Duration(seconds: 1)).then((_){
                               aod.AllResetObligation();
@@ -251,7 +248,12 @@ class SettingAllergy extends State<StateSettingAllergy>{
   void _deletelist() async {
     debugPrint('_deleteUserに来ました');
     final int userid = await dbProvider.selectUserId(AllUserData.sUserName);// ユーザーIDを非同期で取得
+    debugPrint('deleteするuseridは：$useridです');
     final rowsDeleted = await dbProvider.deletelist(userid);
-    print('削除しました $rowsDeleted');
+    debugPrint('削除しました $rowsDeleted');
+    //insert処理を個々に追加してみる
+    aod.insertHanteiObligation();//表示義務を再度追加：追加した処理12/21
+    ard.insertHanteiRecommendation();//表示推奨を再度追加：追加した処理12/21
+    aad.insertAllResetAnother();//追加成分を再度追加：追加した処理12/21
   }
 }

@@ -139,9 +139,9 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                   child:OutlinedButton(
                     style: OutlinedButton.styleFrom(
                         foregroundColor: Colors.indigo, side: const BorderSide(
-                          color: Colors.indigoAccent,
-                          width: 1.5,
-                        )
+                      color: Colors.indigoAccent,
+                      width: 1.5,
+                    )
                     ),
                     onPressed:(){
                       _selectAdd();
@@ -171,9 +171,9 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                 child:  OutlinedButton(
                   style: OutlinedButton.styleFrom(
                       foregroundColor: Colors.deepOrange, side: const BorderSide(
-                        color: Colors.deepOrange,
-                        width: 1.5,
-                      )
+                    color: Colors.deepOrange,
+                    width: 1.5,
+                  )
                   ),
                   onPressed:(){
                     if(widget.PageFlag == 'ChooseUser'){
@@ -209,8 +209,8 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
   //追加した処理12/21
   final dbProvider = DBProvider.instance;
 
-  //追加した処理12/24
-  //追加成分表示テストメソッド
+//追加した処理12/24
+//追加成分表示テストメソッド
   void _selectAdd() async {
     debugPrint('_selectAddにきました');
     final List<String> hiragana = await dbProvider.selectAdd();//ひらがなslectメソッド結果
