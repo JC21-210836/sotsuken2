@@ -51,7 +51,7 @@ class AllObligationData{
 
   void setValueCheck(List<String> dbValue){
     debugPrint("setvalueCheckのなかみ$dbValue");
-   valueCheck =  dbValue;
+    valueCheck =  dbValue;
   }
 
   void AllResetObligation(){
@@ -83,11 +83,11 @@ class AllObligationData{
     debugPrint('insertHanteiObligationに来ました');
     final dbProvider = DBProvider.instance;
     CheckValue.clear();//foodidのクリア
-    CheckValue = getValueCheck();
     foodid.clear();//追加した処理12/21
-    for (int x = 0; x < CheckValue.length; x++) {
+    debugPrint('valueCheckを使用します：$valueCheck');
+    for (int x = 0; x < valueCheck.length; x++) {
       Gimu.forEach((key, value) { //foodidのみを出力
-        if (value == CheckValue[x]) { //もしGimuリストのfoodNameとCheckValueのfoodNameが一致したら
+        if (value == valueCheck[x]) { //もしGimuリストのfoodNameとCheckValueのfoodNameが一致したら
           foodid.add(key as String); // foodidリストにGimuリストのfoodidを格納
         }
       });
