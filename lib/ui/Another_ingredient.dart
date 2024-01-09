@@ -93,7 +93,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                                             controlAffinity: ListTileControlAffinity.leading,
                                             title: Transform.translate(
                                               offset: const Offset(-15,0),
-                                              child:Text(DBProvider.AddList[n+nn],style: TextStyle(fontSize: 20)),
+                                              child:Text(DBProvider.AddList[n+nn],style: TextStyle(fontSize: 19)),
                                             ),
                                             value: aad.getBool3()[n+nn],
                                             onChanged: (value) {
@@ -120,7 +120,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                                               controlAffinity: ListTileControlAffinity.leading,
                                               title: Transform.translate(
                                                 offset: const Offset(-15,0),
-                                                child:Text(DBProvider.AddList[n+nn],style: TextStyle(fontSize: 20)),
+                                                child:Text(DBProvider.AddList[n+nn],style: TextStyle(fontSize: 19)),
                                               ),
                                               value: aad.getBool3()[n+nn],
                                               onChanged: (value) {
