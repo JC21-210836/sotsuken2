@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sotsuken2/Api/api.dart';
+import 'package:sotsuken2/ui/AllergyNotDetection.dart';
 import 'dart:io';
 import 'AllergyDetection.dart';
 
@@ -94,12 +96,22 @@ class ImageCheck extends StatelessWidget {
                               fontWeight: FontWeight.bold
                           ),
                         ),
-                        onPressed: () {
-                          Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context){
-                                return StateAllergyDetection(image);
-                              })
-                          );
+                        onPressed: () async{
+                          await Api.instance.postData(image);
+                          String content = await Api.instance.result();
+                          if(content != "No"){
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context){
+                                  return StateAllergyDetection();
+                                })
+                            );
+                          }else {
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context){
+                                  return StateAllergyNotDetection();
+                                })
+                            );
+                          }
                         },
                       ),
                     ),
