@@ -12,6 +12,7 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
 
   @override
   Widget build(BuildContext context){
+    print("AllergyNotDetectionにきた");
     return Scaffold(
       appBar: AppBar(
           title: const Text('成分チェッカー')

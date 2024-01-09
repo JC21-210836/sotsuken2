@@ -1,53 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import '../Api/api.dart';
-import '../DB/Database.dart';
 import 'AllergyNotDetection.dart';
 
 class StateAllergyDetection extends StatefulWidget{
-  const StateAllergyDetection(this.image, {Key? key}) : super(key: key);
-  final XFile? image;
-
+ const StateAllergyDetection({super.key});
   @override
   AllergyDetection_Page createState() => AllergyDetection_Page();
 }
 
 class AllergyDetection_Page extends State<StateAllergyDetection>{
   String val = "読み込み中";
-  XFile get _image => widget.image!;
+  bool _isInitialized = false;
+
+  @override
+  void initState() {
+    super.initState();
+    if (!_isInitialized) {
+      // 非同期処理を直接行わず、Future.delayedを使用して非同期処理が完了後にsetStateを呼ぶ
+      Future.delayed(Duration.zero, () {
+        postData();
+        _isInitialized = true;
+      });
+    }
+  }
 
   void postData() async {
-    await Api.instance.postData(_image);
-    List<Map<String, dynamic>> databaseContent = await dblist().getData();
-    List<String> contentList = await Api.instance.getContentList();
-    setState(() {
-      print("セットステートするで");
-      String values = "";
-
-      for(Map<String, dynamic> dbc in databaseContent){
-        for(String s in contentList) {
-          String word = dbc['foodname'];
-          if (s.contains(word)) {
-            values = "$values \n $s";
-            debugPrint("追加：　$s");
-            debugPrint("表示： $values");
-            break;
-          }
-        }
-      }
-      if(values == ""){
-        values = "何も検知されませんでした";
-      }
-      val = values;
-      print("vals$val");
-    });
+    String contentList = await Api.instance.result();
+    if (mounted) {
+      setState(() {
+        print("セットステートするで");
+        val = contentList;
+        print("vals$val");
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context){
-    setState(() {
-      postData();
-    });
+    print("AllergyDetectionにきた");
     return Scaffold(
       appBar: AppBar(
           title: const Text('成分チェッカー')
