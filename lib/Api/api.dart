@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../DB/Database.dart';
+
 class Api{
   static List<String> contentList = [""];
   Api._();
@@ -67,8 +69,33 @@ class Api{
     content = content.replaceAll("、", "");
 
     debugPrint("読み込んだ文字：$contentList");
+
+    result();
   }
+
   List<String> getContentList(){
     return contentList;
+  }
+
+  Future<String> result()async {
+    String values = "";
+    List<String> list = getContentList();
+    List<Map<String, dynamic>> databaseContent = await dblist().getData();
+
+    for(Map<String, dynamic> dbc in databaseContent){
+      for(String s in list) {
+        String word = dbc['foodname'];
+        if (s.contains(word)) {
+          values = "$values \n $s";
+          debugPrint("追加：　$s");
+          debugPrint("表示： $values");
+          break;
+        }
+      }
+    }
+    if(values == ""){
+      values = "No";
+    }
+    return values;
   }
 }
