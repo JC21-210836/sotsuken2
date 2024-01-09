@@ -52,6 +52,7 @@ class _ImageCheckState extends State<ImageCheck> {
                       ),
                     ),
                   ),
+                ),
 
                   Container(
                     width: 250,
