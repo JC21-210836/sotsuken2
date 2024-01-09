@@ -22,8 +22,6 @@ class _ImageCheckState extends State<ImageCheck> {
   Image? imagepath;
 
   Widget build(BuildContext context) {
-    print("Build method is called.");
-
     return Scaffold(
       body: Center(
         child: Stack(
