@@ -24,6 +24,7 @@ class _ImageCheckState extends State<ImageCheck> {
 
   Widget build(BuildContext context) {
     print("Build method is called.");
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -58,7 +59,6 @@ class _ImageCheckState extends State<ImageCheck> {
                       ),
                     ),
                   ),
-                ),
 
                   Container(
                     width: 250,
