@@ -112,6 +112,10 @@ class _ImageCheckState extends State<ImageCheck> {
                             });
                             await Api.instance.postData(widget.image);
                             String content = await Api.instance.result();
+                            setState(() {
+                              isLoading = false;
+                            });
+
                             if (content != "No") {
                               Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context) {
@@ -138,7 +142,7 @@ class _ImageCheckState extends State<ImageCheck> {
             if (isLoading)
               Container(
                 color: Colors.black.withOpacity(0.5),
-                child: Center(
+                child: const Center(
                   child: CircularProgressIndicator(),
                 ),
               ),
