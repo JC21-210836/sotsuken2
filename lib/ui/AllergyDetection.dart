@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sotsuken2/ui/ImageLoaderSelect.dart';
+import 'package:sotsuken2/ui/ReadIngredient.dart';
 import '../Api/api.dart';
-import 'AllergyNotDetection.dart';
 
 class StateAllergyDetection extends StatefulWidget{
  const StateAllergyDetection({super.key});
@@ -97,7 +98,7 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                     onPressed: (){
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context){
-                            return const StateAllergyNotDetection();
+                            return const ImageLoderSelect();
                           })
                       );
                     },
@@ -161,11 +162,11 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                               ),
                             ),
                             onPressed: (){
-                              /*Navigator.of(context).push(
+                              Navigator.of(context).push(
                                   MaterialPageRoute(builder: (context){
-                                    return StateReadIngredient();
+                                    return const ReadIngredient();
                                   })
-                              );*/
+                              );
                             }
                         ),
                       )
