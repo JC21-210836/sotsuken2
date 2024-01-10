@@ -33,7 +33,9 @@ class ChooseUser_Page extends State<StateChooseUser>{
     }else if(n == 1){
       await Navigator.pushNamed(context, 'SettingUser_page');
       setState((){
-        debugPrint("とおった");
+        aod.AllResetObligation();
+        ard.AllResetRecommendation();
+        aad.AllResetAnother();
       });
     }
 
