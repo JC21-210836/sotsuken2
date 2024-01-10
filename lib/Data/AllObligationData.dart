@@ -79,7 +79,7 @@ class AllObligationData{
 
   //追加した処理12/21
   //みちるちゃんの
-  void insertHanteiObligation() async {
+  void insertHanteiObligation(String username) async {
     debugPrint('insertHanteiObligationに来ました');
     final dbProvider = DBProvider.instance;
     CheckValue.clear();//foodidのクリア
@@ -93,7 +93,7 @@ class AllObligationData{
       });
     }
     debugPrint('最終的なfoodidの内容:$foodid');
-    final int userid = await dbProvider.selectUserId(AllUserData.sUserName);// ユーザーIDを非同期で取得
+    final int userid = await dbProvider.selectUserId(username);// ユーザーIDを非同期で取得
     debugPrint('useridの内容:$userid');
     for (int x = 0; x < foodid.length; x++) {
       final result2 = await dbProvider.insertfood(userid, foodid[x]);// ここでDBにuseridとCheckKeyを渡す（insert）

@@ -164,7 +164,7 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                           onPressed: (){
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
-                                  return const StateCreateUserCheck();
+                                  return StateCreateUserCheck(widget.sUserName);
                                 })
                             );
                           },

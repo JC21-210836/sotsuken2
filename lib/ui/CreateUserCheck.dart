@@ -7,7 +7,8 @@ import 'package:sotsuken2/Data/AllUserData.dart';
 import '../DB/Database.dart';
 
 class StateCreateUserCheck extends StatefulWidget{
-  const StateCreateUserCheck({super.key});
+  final String UserName;
+  StateCreateUserCheck(this.UserName);
 
   @override
   State<StateCreateUserCheck> createState(){
@@ -180,9 +181,9 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                             setState(() {
                               _insertUser();
                               _selectlistUser();
-                              aod.insertHanteiObligation();//追加
-                              ard.insertHanteiRecommendation();//追加
-                              aad.insertAllResetAnother();//追加した処理12/21
+                              aod.insertHanteiObligation(widget.UserName);//追加
+                              ard.insertHanteiRecommendation(widget.UserName);//追加
+                              aad.insertAllResetAnother(widget.UserName);//追加した処理12/21
                             });
                             //ユ－ザー選択画面(ChooseUser)
                             Future.delayed(const Duration(seconds: 1)).then((_){

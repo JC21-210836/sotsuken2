@@ -23,8 +23,6 @@ class UserSettings1 extends State<StateUserSettings1>{
     );
   }
 
-  AllUserData aud = AllUserData(username: AllUserData.sUserName);
-
   @override
   Widget build(BuildContext context){
     return Scaffold(

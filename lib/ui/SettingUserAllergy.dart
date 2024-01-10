@@ -254,8 +254,8 @@ class SettingAllergy extends State<StateSettingAllergy>{
     final rowsDeleted = await dbProvider.deletelist(userid);
     debugPrint('削除しました $rowsDeleted');
     //insert処理を個々に追加してみる
-    aod.insertHanteiObligation();//表示義務を再度追加：追加した処理12/21
-    ard.insertHanteiRecommendation();//表示推奨を再度追加：追加した処理12/21
-    aad.insertAllResetAnother();//追加成分を再度追加：追加した処理12/21
+    aod.insertHanteiObligation(widget.UserName);//表示義務を再度追加：追加した処理12/21
+    ard.insertHanteiRecommendation(widget.UserName);//表示推奨を再度追加：追加した処理12/21
+    aad.insertAllResetAnother(widget.UserName);//追加成分を再度追加：追加した処理12/21
   }
 }
