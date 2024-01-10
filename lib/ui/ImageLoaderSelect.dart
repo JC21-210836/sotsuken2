@@ -14,10 +14,11 @@ class ImageLoderSelect extends StatelessWidget{
           primaryColor: Colors.blue,
         ),
         home: const Home_Page_State()
+                    // ↑名前変えたいかも
     );
   }
 }
-
+    // ↓ここらへんも全部
 class Home_Page_State extends StatefulWidget{
   const Home_Page_State({super.key});
 

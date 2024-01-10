@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import '../Api/api.dart';
 import 'ImageLoaderSelect.dart';
 
 class ReadIngredient extends StatefulWidget {
-  const ReadIngredient(this.image, {Key? key}) : super(key: key);
-  final XFile? image;
+  const ReadIngredient({super.key});
 
   @override
   _ReadIngredientState createState() => _ReadIngredientState();
@@ -13,24 +11,32 @@ class ReadIngredient extends StatefulWidget {
 
 class _ReadIngredientState extends State<ReadIngredient> {
   List<String> vals = ["読み込み中"];
-  XFile get _image => widget.image!;
+  bool _isInitialized = false;
 
+  @override
+  void initState() {
+    super.initState();
+    if (!_isInitialized) {
+      // 非同期処理を直接行わず、Future.delayedを使用して非同期処理が完了後にsetStateを呼ぶ
+      Future.delayed(Duration.zero, () {
+        postData();
+        _isInitialized = true;
+      });
+    }
+  }
   void postData() async {
-    await Api.instance.postData(_image);
     List<String> contentList = await Api.instance.getContentList();
-    setState(() {
-      print("セットステートするで");
-      vals = contentList;
-      print("vals$vals");
-    });
+    if(mounted){
+      setState(() {
+        print("セットステートするで");
+        vals = contentList;
+        print("vals$vals");
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-
-    setState(() {
-      postData();
-    });
     return Scaffold(
       appBar: AppBar(
         title: const Text('成分チェッカー'),
