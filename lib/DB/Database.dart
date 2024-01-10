@@ -27,7 +27,7 @@ class DBProvider {
     debugPrint("_initDatabaseにきました");
 
     Directory documentDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentDirectory.path, 'test7.db');
+    String path = join(documentDirectory.path, 'test.db');
     return await openDatabase(
       path,
       version: 1,
@@ -496,4 +496,32 @@ class DBProvider {
     debugPrint('最終的にuserAddListに入れた内容：$userAddList');
     return userAddList;
   }
+
+
+
+
+  //変更処理1-09
+  int deleteid = 0; // 単一のint型変数として宣言
+  Future Deletelist(String username) async {
+    debugPrint("deletelistにきました");
+    final db = await instance.database;
+
+    //削除対象のuseridの特定
+    final List<Map<String, dynamic>> deleteuserid = await db.query('user', where: 'username = ?', whereArgs: [username]);
+    debugPrint('削除するユーザのidを特定しました$deleteuserid');
+
+    for (Map<String, dynamic?> userMap in deleteuserid) {
+      if (userMap.containsKey('userid')) {
+        deleteid = userMap['userid'] as int;
+        print('useridを出力：$deleteid');
+        break; // ループを抜ける
+      }
+      return deleteid;
+    }
+    //ユーザidと一致するリストデータの削除
+    debugPrint('リスト削除する対象ユーザidは$deleteidです');
+    await db.delete('list', where: 'userid = ?', whereArgs: [deleteid],);
+    debugPrint('リストを削除しました');
+  }
+
 }

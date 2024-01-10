@@ -101,10 +101,7 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
                           setState(() {
                             if(widget.UserName == UN && Agree == true){
                               _deleteUser();
-                              _deletefood();
-                              _selectlistUser();
                               //aud.deleteUserName(widget.UserName);
-
                             }else{
                               //エラーメッセが欲しいけど今出す場所ない
                             }
@@ -124,24 +121,20 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
     );
   }
   final dbProvider = DBProvider.instance;
-  //ユーザの削除処理
+  //削除処理　変更1/09
   void _deleteUser() async {
     debugPrint('_deleteUserに来ました');
-    final rowsDeleted = await dbProvider.deleteUser(widget.UserName);
-    debugPrint('削除しました $rowsDeleted');
-  }
+    //関連するデータの削除
+    await dbProvider.Deletelist(widget.UserName);
+    debugPrint('useridと一致するデータを削除を完了しました。');
 
-  void _selectlistUser() async {
-    debugPrint('_selectAllUserにきました');
+    //ユーザの削除
+    final rowsDeleted = await dbProvider.deleteUser(widget.UserName);
+    debugPrint('ユーザを削除しました $rowsDeleted');
+
+    //現在残っているユーザの確認
     final result = await dbProvider.selectlistUser();
-    debugPrint('userNameの中身$result');
-  }
-  //食品の削除
-  void _deletefood() async {
-    debugPrint('_deleteUserに来ました');
-    final int userid = await dbProvider.selectUserId(AllUserData.sUserName);// ユーザーIDを非同期で取得
-    final rowsDeleted = await dbProvider.deletefood(userid);
-    print('削除しました $rowsDeleted');
+    debugPrint('現在登録されているuserNameの中身$result');
   }
 
 }

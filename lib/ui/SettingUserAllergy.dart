@@ -249,7 +249,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
   //リスト表の削除
   void _deletelist() async {
     debugPrint('_deleteUserに来ました');
-    final int userid = await dbProvider.selectUserId(AllUserData.sUserName);// ユーザーIDを非同期で取得
+    final int userid = await dbProvider.selectUserId(widget.UserName);// ユーザーIDを非同期で取得
     debugPrint('deleteするuseridは：$useridです');
     final rowsDeleted = await dbProvider.deletelist(userid);
     debugPrint('削除しました $rowsDeleted');
