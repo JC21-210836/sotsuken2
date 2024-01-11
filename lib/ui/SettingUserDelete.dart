@@ -51,7 +51,9 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
                             controlAffinity: ListTileControlAffinity.leading,
                             title:Transform.translate(
                               offset: const Offset(-15, 0),
-                              child:const Text('このユーザーを削除する',style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+                              child:const FittedBox(
+                                child:Text('このユーザーを削除する',style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+                              ),
                             ),
                             value: Agree,
                             onChanged:(value) {

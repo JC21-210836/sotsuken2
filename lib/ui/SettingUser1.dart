@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../DB/Database.dart';
 import 'SettingUser2.dart';
-import 'package:sotsuken2/Data/AllUserData.dart';
 
 class StateUserSettings1 extends StatefulWidget{
   const StateUserSettings1({super.key});
@@ -78,12 +77,14 @@ class UserSettings1 extends State<StateUserSettings1>{
 
                           if(DBProvider.userName.isEmpty)...[
                             Container(
-                              margin:const EdgeInsets.fromLTRB(0, 70, 0, 70),
-                              child:const Text('ユーザーが\n登録されていません',
+                              margin:const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                              child:const FittedBox(
+                                child:Text('ユーザーが\n登録されていません',
                                   style:TextStyle(
                                       fontSize: 25,color:Colors.black87,
                                       fontWeight: FontWeight.bold,
                                   ),textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ],

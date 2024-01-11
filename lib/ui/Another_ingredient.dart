@@ -86,14 +86,14 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                                   if(nn == 0)...[
 
                                     Container(
-                                      width: 165,
+                                      width: 167,
                                       child:Transform.scale(
                                         scale:1.1,
                                         child: CheckboxListTile(
                                             controlAffinity: ListTileControlAffinity.leading,
                                             title: Transform.translate(
                                               offset: const Offset(-15,0),
-                                              child:Text(DBProvider.AddList[n+nn],style: TextStyle(fontSize: 19)),
+                                              child:Text(DBProvider.AddList[n+nn],style: TextStyle(fontSize: 17)),
                                             ),
                                             value: aad.getBool3()[n+nn],
                                             onChanged: (value) {
@@ -109,18 +109,18 @@ class Another_ingredient extends State<StateAnother_ingredient>{
 
                                     if(DBProvider.AddList.length % 2 == 1 && DBProvider.AddList.length == n+1)...[
                                       Container(
-                                        width: 165,
+                                        width: 167,
                                       ),
                                     ]else...[
                                       Container(
-                                        width: 165,
+                                        width: 167,
                                         child:Transform.scale(
                                           scale:1.1,
                                           child: CheckboxListTile(
                                               controlAffinity: ListTileControlAffinity.leading,
                                               title: Transform.translate(
                                                 offset: const Offset(-15,0),
-                                                child:Text(DBProvider.AddList[n+nn],style: TextStyle(fontSize: 19)),
+                                                child:Text(DBProvider.AddList[n+nn],style: TextStyle(fontSize: 18)),
                                               ),
                                               value: aad.getBool3()[n+nn],
                                               onChanged: (value) {
