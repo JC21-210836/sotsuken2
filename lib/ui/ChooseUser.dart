@@ -6,6 +6,7 @@ import 'Obligation_allergy.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
 import 'package:sotsuken2/Data/AllAnotherData.dart';
+import 'package:sotsuken2/component/HamburgerMenu.dart';
 
 class StateChooseUser extends StatefulWidget{
   const StateChooseUser({super.key});
@@ -38,7 +39,6 @@ class ChooseUser_Page extends State<StateChooseUser>{
         aad.AllResetAnother();
       });
     }
-
   }
   
 
@@ -50,6 +50,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
           toolbarHeight: 60,
           title: const Text('成分チェッカー')
       ),
+      endDrawer: const DrawerMenu(),
       body: Center(
         child:SingleChildScrollView(
             child:Column(
