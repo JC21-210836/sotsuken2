@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/ui/ImageLoaderSelect.dart';
 import 'package:sotsuken2/ui/ReadIngredient.dart';
-//import '../Api/api.dart';
-//本来必要なimport文↑
+import '../Api/api.dart';
 
 class StateAllergyDetection extends StatefulWidget{
  const StateAllergyDetection({super.key});
@@ -11,9 +10,7 @@ class StateAllergyDetection extends StatefulWidget{
 }
 
 class AllergyDetection_Page extends State<StateAllergyDetection>{
-  String val = "読み込み中";
-  //  val必要なかったら消して
-
+  List<String>vals = ["読み込み中"];
   bool _isInitialized = false;
 
   @override
@@ -29,12 +26,11 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
   }
 
   void postData() async {
-    //contentList持ってくる↓
-    //List<String> contentList = await Api.instance.result();
+    List<String> contentList = await Api.instance.result();
     if (mounted) {
       setState(() {
         print("セットステートするで");
-        //val = contentList;
+        vals = contentList;
       });
     }
   }
@@ -85,8 +81,16 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                       height: 320,
 
                       //ここが表示部分
-                      child:Text(val,style:TextStyle(fontSize: 15)
-                    ),
+                      child:ListView.builder(
+                        itemCount: vals.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4.0)
+                                .copyWith(left: 5.0),
+                            child: Text(vals[index]),
+                          );
+                        },
+                      ),
                     ),
                 ),
                 Container(
