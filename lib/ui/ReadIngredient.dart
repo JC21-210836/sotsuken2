@@ -77,7 +77,7 @@ class _ReadIngredientState extends State<ReadIngredient> {
                     margin: const EdgeInsets.all(5),
                     width: 300,
                     height: 320,
-                    //多分↓ここのconst邪魔になる
+                    //list形式の表示してます
                     child: ListView.builder(
                       itemCount: vals.length,
                       itemBuilder: (BuildContext context, int index) {
