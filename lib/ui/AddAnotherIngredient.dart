@@ -54,16 +54,21 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
                     ),
                   ),
                   Container(
-                    margin:const EdgeInsets.all(3),
-                    child:const Text('下記情報を入力してください。',
-                      style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
+                    margin:const EdgeInsets.fromLTRB(10, 5, 10, 3),
+                    child:const FittedBox(
+                      child: Text('下記情報を入力してください。',
+                        style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                   Container(
-                    child:const Text('※成分名はひらがな または カタカナ',
-                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.red),
-                      textAlign: TextAlign.center,
+                    margin:const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child:const FittedBox(
+                      child:Text('※成分名はひらがな または カタカナ',
+                        style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.red),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                   Container(
@@ -107,10 +112,12 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
                   ),
 
                   Container(
-                    margin:const EdgeInsets.all(5),
-                    child:const Text('成分名の漢字、英語、別名を\n入力してください。',
-                      style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
+                    margin:const EdgeInsets.fromLTRB(10, 15, 10, 3),
+                    child:const FittedBox(
+                      child:Text('成分名の漢字、英語、別名を\n入力してください。(任意)',
+                        style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                   Row(

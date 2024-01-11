@@ -75,7 +75,9 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                       if(DBProvider.AddList.isEmpty)...[
                         Container(
                           margin: const EdgeInsets.all(30),
-                          child:const Text('何も登録されていません',style: TextStyle(fontSize: 25),),
+                          child:const FittedBox(
+                            child:Text('何も登録されていません',style: TextStyle(fontSize: 25),),
+                          ),
                         ),
                       ]else...[
                         for(int n = 0 ; n < forMethod(); n = n+2)...[
