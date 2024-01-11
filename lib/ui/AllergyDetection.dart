@@ -69,29 +69,29 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                   ),
                 ),
                 Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color:Colors.deepOrange,width: 1)
+                  ),
+                  child:Container(
                     decoration: BoxDecoration(
                         border: Border.all(color:Colors.deepOrange,width: 1)
                     ),
-                    child:Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color:Colors.deepOrange,width: 1)
-                      ),
-                      margin: const EdgeInsets.all(5),
-                      width: 300,
-                      height: 320,
+                    margin: const EdgeInsets.all(5),
+                    width: 300,
+                    height: 320,
 
-                      //ここが表示部分
-                      child:ListView.builder(
-                        itemCount: vals.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 4.0)
-                                .copyWith(left: 5.0),
-                            child: Text(vals[index]),
-                          );
-                        },
-                      ),
+                    //ここが表示部分
+                    child:ListView.builder(
+                      itemCount: vals.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0)
+                              .copyWith(left: 5.0),
+                          child: Text(vals[index]),
+                        );
+                      },
                     ),
+                  ),
                 ),
                 Container(
                   height: 60,
