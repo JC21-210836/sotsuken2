@@ -169,32 +169,43 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                       margin: const EdgeInsets.fromLTRB(10, 50, 10, 80),
                       child:const Text('何も登録されていません',style:TextStyle(fontSize: 25,fontWeight: FontWeight.bold))
                     ),
-                  ],
-
-                  Container(
+                    Container(
                       width:230,
                       height:60,
-                      margin:const EdgeInsets.fromLTRB(15, 0, 15, 40),
-                      child:ElevatedButton(
-                          child:const Text('登録',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold)),
-                          onPressed:(){
-                            setState(() {
-                              _insertUser();
-                              _selectlistUser();
-                              aod.insertHanteiObligation(widget.UserName);//追加
-                              ard.insertHanteiRecommendation(widget.UserName);//追加
-                              aad.insertAllResetAnother(widget.UserName);//追加した処理12/21
-                            });
-                            //ユ－ザー選択画面(ChooseUser)
-                            Future.delayed(const Duration(seconds: 1)).then((_){
-                              Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
-                              aod.AllResetObligation();
-                              ard.AllResetRecommendation();
-                              aad.AllResetAnother();
-                            });
-                          }
-                      )
-                  )
+                      child: ElevatedButton(
+                        child:const Text('戻る',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold)),
+                        onPressed: (){
+                          Navigator.pop(context);
+                        },
+                      ),
+                    )
+                  ],
+                  if(aod.getValueCheck().isNotEmpty || ard.getValueCheck2().isNotEmpty || aad.getValueCheck3().isNotEmpty)...[
+                    Container(
+                        width:230,
+                        height:60,
+                        margin:const EdgeInsets.fromLTRB(15, 0, 15, 40),
+                        child:ElevatedButton(
+                            child:const Text('登録',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold)),
+                            onPressed:(){
+                              setState(() {
+                                _insertUser();
+                                _selectlistUser();
+                                aod.insertHanteiObligation(widget.UserName);//追加
+                                ard.insertHanteiRecommendation(widget.UserName);//追加
+                                aad.insertAllResetAnother(widget.UserName);//追加した処理12/21
+                              });
+                              //ユ－ザー選択画面(ChooseUser)
+                              Future.delayed(const Duration(seconds: 1)).then((_){
+                                Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
+                                aod.AllResetObligation();
+                                ard.AllResetRecommendation();
+                                aad.AllResetAnother();
+                              });
+                            }
+                        )
+                    )
+                  ],
                 ]
             )
         ),
