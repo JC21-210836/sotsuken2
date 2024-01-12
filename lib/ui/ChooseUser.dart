@@ -50,7 +50,10 @@ class ChooseUser_Page extends State<StateChooseUser>{
           toolbarHeight: 60,
           title: const Text('成分チェッカー')
       ),
-      endDrawer: const DrawerMenu(),
+      endDrawer: const SizedBox(
+        width: 270,
+        child:DrawerMenu(),
+      ),
       body: Center(
         child:SingleChildScrollView(
             child:Column(
