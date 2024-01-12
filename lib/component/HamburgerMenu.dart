@@ -18,8 +18,6 @@ class DrawerMenu extends StatelessWidget{
                alignment: Alignment.bottomLeft,
                child:const Text('- Menu -',style: TextStyle(fontSize: 25),),
              ),
-
-
            ),
          ),
 
@@ -50,6 +48,18 @@ class DrawerMenu extends StatelessWidget{
                    return const StateCreateUser1();
                  })
              );
+           },
+         ),
+         //追加成分管理
+         ListTile(
+           leading: const Icon(
+             Icons.manage_search,
+             color: Colors.black38,
+             size:30,
+           ),
+           title:const Text('追加成分の管理',style: TextStyle(fontSize: 20),),
+           onTap:(){
+             //まだない
            },
          ),
          //設定
