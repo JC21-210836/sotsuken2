@@ -31,6 +31,7 @@ class DrawerMenu extends StatelessWidget{
            ),
            title:const Text('ご利用方法',style: TextStyle(fontSize: 20),),
            onTap:(){
+             Navigator.of(context).pop();
              Navigator.of(context).push(
                  MaterialPageRoute(builder: (context){
                    return Manual_Page();
