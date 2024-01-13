@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/ui/Manual.dart';
 import 'package:sotsuken2/ui/CreateUser1.dart';
+import 'package:sotsuken2/ui/Another_ingredient.dart';
 import 'package:sotsuken2/ui/SettingUser1.dart';
 
 
@@ -65,7 +66,12 @@ class DrawerMenu extends StatelessWidget{
            ),
            title:const Text('追加成分の管理',style: TextStyle(fontSize: 20),),
            onTap:(){
-             //まだない
+             Navigator.of(context).pop();
+             Navigator.of(context).push(
+                 MaterialPageRoute(builder: (context){
+                   return StateAnother_ingredient(PageFlag: 'Manual', PageCount: 0);
+                 })
+             );
            },
          ),
          //設定
