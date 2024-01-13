@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ui/SettingUser1.dart';
 import 'ui/ChooseUser.dart';
+import 'ui/Manual.dart';
 import 'DB/Database.dart';
 
 
@@ -140,7 +141,13 @@ class Home_Page extends State<Home_Page_State>{
                                   color:Colors.deepOrange
                               )
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context){
+                                return Manual_Page();
+                              })
+                            );
+                          },
                         ),
                       )
                     ]

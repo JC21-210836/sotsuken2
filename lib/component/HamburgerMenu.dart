@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-//ここにご利用方法のページ
+import 'package:sotsuken2/ui/Manual.dart';
 import 'package:sotsuken2/ui/CreateUser1.dart';
 import 'package:sotsuken2/ui/SettingUser1.dart';
+
 
 class DrawerMenu extends StatelessWidget{
   const DrawerMenu({super.key});
@@ -30,7 +31,11 @@ class DrawerMenu extends StatelessWidget{
            ),
            title:const Text('ご利用方法',style: TextStyle(fontSize: 20),),
            onTap:(){
-             //まだない
+             Navigator.of(context).push(
+                 MaterialPageRoute(builder: (context){
+                   return Manual_Page();
+                 })
+             );
            },
          ),
          //新規ユーザー登録
