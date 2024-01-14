@@ -40,6 +40,8 @@ class Home_Page_State extends StatefulWidget{
 }
 
 class Home_Page extends State<Home_Page_State>{
+
+  bool buttonBool = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,12 +103,14 @@ class Home_Page extends State<Home_Page_State>{
                               backgroundColor: Colors.indigo
                           ),
                           child: const Text('食品',style: TextStyle(fontSize: 30),),
-                          onPressed: (){
+                          onPressed: buttonBool ? (){
+                            futureReverseBool();
                             _selectlistUser();
                             Future.delayed(const Duration(seconds: 1)).then((_){
                               Navigator.pushNamed(context, 'ChooseUser_page');
+                              futureReverseBool();
                             });
-                          },
+                          } : null,
                         ),
                       ),
                       Container(
@@ -117,9 +121,14 @@ class Home_Page extends State<Home_Page_State>{
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.indigo
                             ),
-                            onPressed: (){
-
-                            },
+                            onPressed: buttonBool ? (){
+                              futureReverseBool();
+                              //_selectlistUser();
+                              Future.delayed(const Duration(seconds: 1)).then((_){
+                                //Navigator.pushNamed(context, 'ChooseUser_page');
+                                futureReverseBool();
+                              });
+                            } : null,
                             child: const Text('美容',style: TextStyle(fontSize: 30),),
                           )
                       ),
@@ -159,6 +168,13 @@ class Home_Page extends State<Home_Page_State>{
       ),
     );
   }
+
+  futureReverseBool(){
+      setState(() {
+        buttonBool = !buttonBool;
+      });
+  }
+
   final dbProvider = DBProvider.instance;
   //ユーザの追加処理
   void _selectlistUser() async {
