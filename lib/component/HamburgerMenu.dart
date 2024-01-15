@@ -95,13 +95,4 @@ class DrawerMenu extends StatelessWidget{
      )
    );
   }
-
 }
-/*
-Navigator.of(context).push(
-  MaterialPageRoute(builder: (context){
-    return StateUserSettings1();
-  })
-);
-
- */
