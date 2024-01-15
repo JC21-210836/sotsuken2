@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'DB/Add.dart';
 import 'DB/User.dart';
+import 'Data/AllAnotherData.dart';
 import 'ui/SettingUser1.dart';
 import 'ui/ChooseUser.dart';
 import 'ui/Manual.dart';
@@ -40,7 +42,7 @@ class Home_Page_State extends StatefulWidget{
 }
 
 class Home_Page extends State<Home_Page_State>{
-
+  AllAnotherData aad = AllAnotherData();
   bool buttonBool = true;
   @override
   Widget build(BuildContext context) {
@@ -109,6 +111,7 @@ class Home_Page extends State<Home_Page_State>{
                             Future.delayed(const Duration(seconds: 1)).then((_){
                               Navigator.pushNamed(context, 'ChooseUser_page');
                               futureReverseBool();
+                              aad.AllResetAnother();
                             });
                           } : null,
                         ),
@@ -181,5 +184,17 @@ class Home_Page extends State<Home_Page_State>{
     debugPrint('_selectAllUserにきました');
     final result = await dbUser.selectlistUser();
     debugPrint('userNameの中身$result');
+    _selectAdd();
+  }
+
+  DBadd dbAdd = DBadd();//DBクラスのインスタンス生成
+
+  void _selectAdd() async {
+    debugPrint('_selectAddにきました');
+    final List<String> hiragana = await dbAdd.selectAdd();//ひらがなslectメソッド結果
+    final List<String> import = DBadd.AddList;//import結果
+    debugPrint('追加成分の内容:$hiragana');
+    debugPrint('Addlistをimportした結果：$import');
+    debugPrint(DBadd.AddList.toString());
   }
 }
