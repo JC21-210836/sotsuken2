@@ -2,10 +2,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:sotsuken2/Data/AllObligationData.dart';
-import 'package:sotsuken2/Data/AllRecommendationData.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sotsuken2/Data/AllUserData.dart';
 
 class DBProvider {
 
@@ -21,11 +18,6 @@ class DBProvider {
     // Databaseがない場合に作成する。
     _database = await _initDatabase();
     return _database!;
-  }
-  Future<List<Map<String, dynamic>>> getAllData() async {
-    final db = await database;
-
-    return await db.query('food');
   }
 
   Future<Database> _initDatabase() async {
