@@ -29,7 +29,7 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
   }
 
   void postData() async {
-    List<String> contentList = await Api.instance.result();
+    List<String> contentList = await Api.instance.verification();
     if (mounted) {
       setState(() {
         print("セットステートするで");
