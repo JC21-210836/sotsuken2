@@ -4,7 +4,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sotsuken2/Api/verification.dart';
 import 'package:sotsuken2/ui/AllergyNotDetection.dart';
 import 'dart:io';
-import '../Api/api.dart';
 import 'AllergyDetection.dart';
 import '../Api/crop.dart';
 
@@ -57,8 +56,6 @@ class _ImageCheckState extends State<ImageCheck> {
                       ),
                     ),
                   ),
-                ),
-
                   Container(
                     width: 250,
                     child: imagepath ?? Image.file(File(widget.image.path)),
