@@ -101,5 +101,17 @@ class DBadd{
     debugPrint('最終的にuserAddListに入れた内容：$userAddList');
     return userAddList;
   }
+  //追加1/15
+  //追加成分を削除する
+  Future deleteAdd(String hiragana) async {
+    debugPrint('deleteAddにきました');
+    Database db = await DBProvider.instance.database;
+    return await db.delete('K_add', where: 'hiragana = ?', whereArgs: [hiragana],);
+  }
+  Future deletelistAdd(int addid) async {
+    debugPrint('deletelistAddにきました');
+    Database db = await DBProvider.instance.database;
+    return await db.delete('list', where: 'addid = ?', whereArgs: [addid],);
+  }
 
 }
