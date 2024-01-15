@@ -116,7 +116,7 @@ class _ImageCheckState extends State<ImageCheck> {
                               isLoading = true;
                             });
                             await Api.instance.postData(widget.image);
-                            List<String> content = await Api.instance.result();
+                            List<String> content = await Api.instance.verification();
                             setState(() {
                               isLoading = false;
                             });
