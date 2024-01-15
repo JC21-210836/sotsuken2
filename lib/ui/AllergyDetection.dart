@@ -4,9 +4,12 @@ import 'package:sotsuken2/ui/ReadIngredient.dart';
 import '../Api/api.dart';
 
 class StateAllergyDetection extends StatefulWidget{
- const StateAllergyDetection({super.key});
+  const StateAllergyDetection({super.key});
+
   @override
-  AllergyDetection_Page createState() => AllergyDetection_Page();
+  State<StateAllergyDetection> createState(){
+    return AllergyDetection_Page();
+  }
 }
 
 class AllergyDetection_Page extends State<StateAllergyDetection>{
