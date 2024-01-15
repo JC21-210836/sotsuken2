@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../DB/Add.dart';
 import '../DB/Database.dart';
-import 'AllUserData.dart';
+import '../DB/List.dart';
 
 class AllAnotherData{
 
@@ -16,7 +17,7 @@ class AllAnotherData{
   }
 
   void setValueList3(){
-    valueList3 = DBProvider.AddList;
+    valueList3 = DBadd.AddList;
     debugPrint('valueList3のなかみみ$valueList3');
   }
 
@@ -33,7 +34,7 @@ class AllAnotherData{
 
     for(int x = 0;x < boolList3.length; x++){
       if(boolList3[x] == true){
-        valueCheck3.add(DBProvider.AddList[x]);
+        valueCheck3.add(DBadd.AddList[x]);
 
       }
     }
@@ -50,9 +51,9 @@ class AllAnotherData{
 
   void AllResetAnother(){
     debugPrint(getValue3().length.toString());
-    if(DBProvider.AddList.isNotEmpty){
+    if(DBadd.AddList.isNotEmpty){
       boolList3.clear();
-      for(int n = 1 ; n <= DBProvider.AddList.length ; n++ ){
+      for(int n = 1 ; n <= DBadd.AddList.length ; n++ ){
         boolList3.add(false);
       }
     }
@@ -62,7 +63,7 @@ class AllAnotherData{
 
   void valueChangeBool3(){
     int count = 0;
-    for(String value in DBProvider.userAddList){
+    for(String value in DBadd.userAddList){
       debugPrint('valueChangeBool3とおった$valueList3');
       while(true){
         if(valueList3[count] == value){
@@ -77,21 +78,22 @@ class AllAnotherData{
     }
   }
 
+  DBadd dbAdd = DBadd();//DBクラスのインスタンス生成
+  DBlist dbList = DBlist();//DBクラスのインスタンス生成
   //追加した処理12/21
   //追加成分のinsert処理
   void insertAllResetAnother(String username) async {
     debugPrint('insertAllResetAnotherに来ました');
-    final dbProvider = DBProvider.instance;
 
-    final int userid = await dbProvider.selectUserId(username);// ユーザーIDを非同期で取得
+    final int userid = await dbList.selectUserId(username);// ユーザーIDを非同期で取得
     debugPrint('参照したいuseridは:$userid');
 
 
     //あるユーザが登録したaddidを取得
     for(int x = 0; x < valueCheck3.length; x++) {
-      final int addid = await dbProvider.selectAddId(valueCheck3[x]);//checkaddに格納されている追加名を1つずつ引数で渡す
+      final int addid = await dbAdd.selectAddId(valueCheck3[x]);//checkaddに格納されている追加名を1つずつ引数で渡す
       debugPrint('参照したいaddidは:$addid');
-      final result2 = await dbProvider.insertlistAdd(userid, DBProvider.addid);// リスト表へのinsert処理
+      final result2 = await dbList.insertlistAdd(userid, DBadd.addid);// リスト表へのinsert処理
       debugPrint('リスト表にinsert処理した内容:$result2');
     }
     debugPrint(valueCheck3.toString());

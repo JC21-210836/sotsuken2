@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../DB/Database.dart';
+import '../DB/User.dart';
 import 'SettingUser2.dart';
 
 class StateUserSettings1 extends StatefulWidget{
@@ -75,7 +75,7 @@ class UserSettings1 extends State<StateUserSettings1>{
                       child:Column(
                         children: [
 
-                          if(DBProvider.userName.isEmpty)...[
+                          if(DBuser.userName.isEmpty)...[
                             Container(
                               margin:const EdgeInsets.fromLTRB(0, 20, 0, 20),
                               child:const FittedBox(
@@ -88,7 +88,7 @@ class UserSettings1 extends State<StateUserSettings1>{
                               ),
                             ),
                           ],
-                          for(String n in DBProvider.userName)...[
+                          for(String n in DBuser.userName)...[
                             Container(
                               width: 240,
                               height: 50,

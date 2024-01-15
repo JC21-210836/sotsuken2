@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../DB/Database.dart';
+import '../DB/User.dart';
 
 class StateSettingUserNameChange extends StatefulWidget{
   final String UserName;
@@ -126,17 +126,17 @@ class SettingUserNameChange extends State<StateSettingUserNameChange>{
       ),
     );
   }
-  final dbProvider = DBProvider.instance;
 
+  DBuser dbUser = DBuser();//DBクラスのインスタンス生成
   void _updateUser() async {
     debugPrint("_updateUserにきました");
-    await dbProvider.updateUser(widget.UserName,afterName);
+    await dbUser.updateUser(widget.UserName,afterName);
     debugPrint('ユーザを更新しました');
   }
 
   void _selectlistUser() async {
     debugPrint('_selectAllUserにきました');
-    final result = await dbProvider.selectlistUser();
+    final result = await dbUser.selectlistUser();
     debugPrint('userNameの中身$result');
   }
 

@@ -4,7 +4,7 @@ import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
 import 'package:sotsuken2/Data/AllUserData.dart';
 
-import '../DB/Database.dart';
+import '../DB/User.dart';
 
 class StateCreateUserCheck extends StatefulWidget{
   final String UserName;
@@ -214,17 +214,17 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
     );
   }
 
-  final dbProvider = DBProvider.instance;
+  DBuser dbUser = DBuser();//DBクラスのインスタンス生成
   //ユーザの追加処理
   void _insertUser() async {
     AllUserData row = AllUserData.newAllUserData();
     row.username = AllUserData.sUserName;
-    final username = await dbProvider.insertUser(row);
+    final username = await dbUser.insertUser(row);
     print('ユーザ表にinsertしました: $username');
   }
   void _selectlistUser() async {
     debugPrint('_selectAllUserにきました');
-    final result = await dbProvider.selectlistUser();
+    final result = await dbUser.selectlistUser();
     debugPrint('userNameの中身$result');
   }
 }

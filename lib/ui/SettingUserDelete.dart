@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../DB/Database.dart';
-
 import 'package:sotsuken2/Data/AllUserData.dart';
+
+import '../DB/List.dart';
+import '../DB/User.dart';
 
 class StateSettingUserDelete extends StatefulWidget{
   final String UserName;
@@ -122,20 +123,21 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
       ),
     );
   }
-  final dbProvider = DBProvider.instance;
+  DBuser dbUser = DBuser();//DBクラスのインスタンス生成
+  DBlist dbList = DBlist();//DBクラスのインスタンス生成
   //削除処理　変更1/09
   void _deleteUser() async {
     debugPrint('_deleteUserに来ました');
     //関連するデータの削除
-    await dbProvider.Deletelist(widget.UserName);
+    await dbList.Deletelist(widget.UserName);
     debugPrint('useridと一致するデータを削除を完了しました。');
 
     //ユーザの削除
-    final rowsDeleted = await dbProvider.deleteUser(widget.UserName);
+    final rowsDeleted = await dbUser.deleteUser(widget.UserName);
     debugPrint('ユーザを削除しました $rowsDeleted');
 
     //現在残っているユーザの確認
-    final result = await dbProvider.selectlistUser();
+    final result = await dbUser.selectlistUser();
     debugPrint('現在登録されているuserNameの中身$result');
   }
 

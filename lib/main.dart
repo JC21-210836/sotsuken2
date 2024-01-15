@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'DB/User.dart';
 import 'ui/SettingUser1.dart';
 import 'ui/ChooseUser.dart';
 import 'ui/Manual.dart';
-import 'DB/Database.dart';
 
 
 void main() {
@@ -175,11 +175,11 @@ class Home_Page extends State<Home_Page_State>{
       });
   }
 
-  final dbProvider = DBProvider.instance;
+  DBuser dbUser = DBuser();//DBクラスのインスタンス生成
   //ユーザの追加処理
   void _selectlistUser() async {
     debugPrint('_selectAllUserにきました');
-    final result = await dbProvider.selectlistUser();
+    final result = await dbUser.selectlistUser();
     debugPrint('userNameの中身$result');
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/Data/AllAnotherData.dart';
-import '../DB/Database.dart';
+import '../DB/Add.dart';
 import 'Recommendation_allergy.dart';
 import 'Another_ingredient.dart';
 
@@ -212,17 +212,17 @@ class Obligation_allergy extends State<StateObligation_allergy>{
     );
   }
   //追加した処理12/21
-  final dbProvider = DBProvider.instance;
+  DBadd dbAdd = DBadd();//DBクラスのインスタンス生成
 
   //追加した処理12/24
   //追加成分表示テストメソッド
   void _selectAdd() async {
     debugPrint('_selectAddにきました');
-    final List<String> hiragana = await dbProvider.selectAdd();//ひらがなslectメソッド結果
-    final List<String> import = DBProvider.AddList;//import結果
+    final List<String> hiragana = await dbAdd.selectAdd();//ひらがなslectメソッド結果
+    final List<String> import = DBadd.AddList;//import結果
     debugPrint('追加成分の内容:$hiragana');
     debugPrint('Addlistをimportした結果：$import');
-    debugPrint(DBProvider.AddList.toString());
+    debugPrint(DBadd.AddList.toString());
   }
 
 }

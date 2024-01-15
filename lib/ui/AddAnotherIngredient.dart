@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/Data/AllAnotherData.dart';
 
-import '../DB/Database.dart';
+import '../DB/Add.dart';
 
 class StateAddAnotherIngredient extends StatefulWidget{
   final String PageFlag;
@@ -261,12 +261,12 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
       ),
     );
   }
-  //追加した処理12/21
-  final dbProvider = DBProvider.instance;
+
+  DBadd dbAdd = DBadd();//DBクラスのインスタンス生成
   //個人追加表へ追加処理
   void _insertAdd() async {
     debugPrint('_insertAddにきました');
-    final AddList = await dbProvider.insertAdd(ingredientName ,kanji ,english,otherName);
+    final AddList = await dbAdd.insertAdd(ingredientName ,kanji ,english,otherName);
     print('個人追加表にinsertしました: $AddList');
     _selectAdd();//テスト用で追加した処理12/24 登録ボタンでselect使用とすると処理が早すぎて、ワンテンポ表示が遅れたので、insert処理後にselect処理実行されるように調整
   }
@@ -275,10 +275,10 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
   //追加成分表示テストメソッド
   void _selectAdd() async {
     debugPrint('_selectAddにきました');
-    final List<String> hiragana = await dbProvider.selectAdd();//ひらがなselectメソッド結果
-    final List<String> import = DBProvider.AddList;//import結果
-    final addlength = DBProvider.AddList[0];
-    final addlength1 = DBProvider.AddList.length;
+    final List<String> hiragana = await dbAdd.selectAdd();//ひらがなselectメソッド結果
+    final List<String> import = DBadd.AddList;//import結果
+    final addlength = DBadd.AddList[0];
+    final addlength1 = DBadd.AddList.length;
     debugPrint('addlength[0]:$addlength');
     debugPrint('addlength1[1]:$addlength1');
     debugPrint('追加成分の内容:$hiragana');

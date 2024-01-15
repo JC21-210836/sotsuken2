@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/DB/Database.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
-import 'AddAnotherIngredient.dart';
-
 import 'package:sotsuken2/Data/AllAnotherData.dart';
+import 'AddAnotherIngredient.dart';
+import '../DB/Add.dart';
 
 //臨時
 import 'AllergyDetection.dart';
-
-
-
 
 class StateAnother_ingredient extends StatefulWidget{
   final String PageFlag;
@@ -28,16 +24,16 @@ class Another_ingredient extends State<StateAnother_ingredient>{
   AllObligationData aod = AllObligationData();
   AllRecommendationData ard = AllRecommendationData();
   AllAnotherData aad = AllAnotherData();
-
+  DBadd dbAdd = DBadd();//DBクラスのインスタンス生成
   //test
   bool sushi = false;
 
   int forMethod(){
     int forCount;
-    if(DBProvider.AddList.length % 2 == 1){
-      forCount = DBProvider.AddList.length+1;
+    if(DBadd.AddList.length % 2 == 1){
+      forCount = DBadd.AddList.length+1;
     }else{
-      forCount = DBProvider.AddList.length;
+      forCount = DBadd.AddList.length;
     }
     return forCount;
   }
@@ -72,7 +68,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                         ),
                       ),
 
-                      if(DBProvider.AddList.isEmpty)...[
+                      if(DBadd.AddList.isEmpty)...[
                         Container(
                           margin: const EdgeInsets.all(30),
                           child:const FittedBox(
@@ -95,7 +91,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                                             controlAffinity: ListTileControlAffinity.leading,
                                             title: Transform.translate(
                                               offset: const Offset(-15,0),
-                                              child:Text(DBProvider.AddList[n+nn],style: TextStyle(fontSize: 17)),
+                                              child:Text(DBadd.AddList[n+nn],style: TextStyle(fontSize: 17)),
                                             ),
                                             value: aad.getBool3()[n+nn],
                                             onChanged: (value) {
@@ -109,7 +105,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
 
                                   ]else...[
 
-                                    if(DBProvider.AddList.length % 2 == 1 && DBProvider.AddList.length == n+1)...[
+                                    if(DBadd.AddList.length % 2 == 1 && DBadd.AddList.length == n+1)...[
                                       Container(
                                         width: 167,
                                       ),
@@ -122,7 +118,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                                               controlAffinity: ListTileControlAffinity.leading,
                                               title: Transform.translate(
                                                 offset: const Offset(-15,0),
-                                                child:Text(DBProvider.AddList[n+nn],style: TextStyle(fontSize: 18)),
+                                                child:Text(DBadd.AddList[n+nn],style: TextStyle(fontSize: 18)),
                                               ),
                                               value: aad.getBool3()[n+nn],
                                               onChanged: (value) {

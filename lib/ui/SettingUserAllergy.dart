@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import '../Data/AllUserData.dart';
+import '../DB/List.dart';
 import 'Obligation_allergy.dart';
 
 import 'package:sotsuken2/Data/AllAnotherData.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
-
-import '../DB/Database.dart';
 
 class StateSettingAllergy extends StatefulWidget{
   final String UserName;
@@ -244,14 +242,14 @@ class SettingAllergy extends State<StateSettingAllergy>{
     );
   }
   //12/24追加処理
-  final dbProvider = DBProvider.instance;
+  DBlist dblist = DBlist();//DBクラスのインスタンス生成
 
   //リスト表の削除
   void _deletelist() async {
     debugPrint('_deleteUserに来ました');
-    final int userid = await dbProvider.selectUserId(widget.UserName);// ユーザーIDを非同期で取得
+    final int userid = await dblist.selectUserId(widget.UserName);// ユーザーIDを非同期で取得
     debugPrint('deleteするuseridは：$useridです');
-    final rowsDeleted = await dbProvider.deletelist(userid);
+    final rowsDeleted = await dblist.deletelist(userid);
     debugPrint('削除しました $rowsDeleted');
     //insert処理を個々に追加してみる
     aod.insertHanteiObligation(widget.UserName);//表示義務を再度追加：追加した処理12/21

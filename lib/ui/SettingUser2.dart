@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/Data/AllAnotherData.dart';
 
-import '../DB/Database.dart';
+import '../DB/Add.dart';
+import '../DB/Food.dart';
+import '../DB/List.dart';
 import 'SettingUserNameChange.dart';
 import 'SettingUserDelete.dart';
 import 'SettingUserAllergy.dart';
@@ -118,9 +120,9 @@ class UserSettings2 extends State<StateUserSettings2> {
                           //ard.AllResetRecommendation();
                           _selectGimu();//追加した処理12/21
                           aad.setValueList3();
-                          aod.setValueCheck(DBProvider.Gimulist);
-                          ard.setValueCheck2(DBProvider.Suilist);
-                          aad.setValueCheck3(DBProvider.userAddList);
+                          aod.setValueCheck(DBfood.Gimulist);
+                          ard.setValueCheck2(DBfood.Suilist);
+                          aad.setValueCheck3(DBadd.userAddList);
 
                           Future.delayed(const Duration(seconds: 1)).then((_){
                             Navigator.of(context).push(
@@ -186,15 +188,17 @@ class UserSettings2 extends State<StateUserSettings2> {
   }
 
   //追加した処理12/21
-  final dbProvider = DBProvider.instance;
+  DBlist dbList = DBlist();//DBクラスのインスタンス生成
+  DBfood dbFood = DBfood();//DBクラスのインスタンス生成
+  DBadd dbAdd = DBadd();//DBクラスのインスタンス生成
   void _selectGimu() async {
     debugPrint('_selectGimuにきました');
-    final int userid = await dbProvider.selectUserId(widget.UserName);
+    final int userid = await dbList.selectUserId(widget.UserName);
     debugPrint('これから調べるユーザはuserid：$useridです');
-    await dbProvider.selectGimu(userid);//表示義務
-    await dbProvider.selectSui(userid);//表示推奨
+    await dbFood.selectGimu(userid);//表示義務
+    await dbFood.selectSui(userid);//表示推奨
     //await dbProvider.selectAdd();
-    await dbProvider.selectUserADD(userid);//←ここついかした
+    await dbAdd.selectUserADD(userid);//←ここついかした
 
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'AllUserData.dart';
+import '../DB/Food.dart';
+import '../DB/List.dart';
 import '../DB/Database.dart';
 
 class AllObligationData{
@@ -61,7 +62,7 @@ class AllObligationData{
 
   void valueChangeBool1(){
     int count = 0;
-    for(String value in DBProvider.Gimulist){
+    for(String value in DBfood.Gimulist){
       debugPrint('valueChangeBool1とおった$valueList');
       while(true){
         if(valueList[count] == value){
@@ -76,12 +77,13 @@ class AllObligationData{
     }
   }
 
+  DBfood dbFood = DBfood();//DBクラスのインスタンス生成
+  DBlist dbList = DBlist();//DBクラスのインスタンス生成
 
   //追加した処理12/21
   //みちるちゃんの
   void insertHanteiObligation(String username) async {
     debugPrint('insertHanteiObligationに来ました');
-    final dbProvider = DBProvider.instance;
     CheckValue.clear();//foodidのクリア
     foodid.clear();//追加した処理12/21
     debugPrint('valueCheckを使用します：$valueCheck');
@@ -93,10 +95,10 @@ class AllObligationData{
       });
     }
     debugPrint('最終的なfoodidの内容:$foodid');
-    final int userid = await dbProvider.selectUserId(username);// ユーザーIDを非同期で取得
+    final int userid = await dbList.selectUserId(username);// ユーザーIDを非同期で取得
     debugPrint('useridの内容:$userid');
     for (int x = 0; x < foodid.length; x++) {
-      final result2 = await dbProvider.insertfood(userid, foodid[x]);// ここでDBにuseridとCheckKeyを渡す（insert）
+      final result2 = await dbFood.insertfood(userid, foodid[x]);// ここでDBにuseridとCheckKeyを渡す（insert）
       debugPrint('foodidの内容だよ:$foodid');
     }
     debugPrint(CheckValue.toString());

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../DB/Database.dart';
+import '../DB/Add.dart';
+import '../DB/User.dart';
 import 'CreateUser1.dart';
 import 'Obligation_allergy.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
@@ -22,6 +23,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
   AllObligationData aod = AllObligationData();
   AllRecommendationData ard = AllRecommendationData();
   AllAnotherData aad = AllAnotherData();
+  DBuser dbUser = DBuser();//DBクラスのインスタンス生成
 
   void ReturnAndReload(int n) async{
     if(n == 0){
@@ -93,7 +95,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
                     ),
                     child:Column(
                       children: [
-                        if(DBProvider.userName.isEmpty)...[
+                        if(DBuser.userName.isEmpty)...[
                           Container(
                             margin:const EdgeInsets.fromLTRB(0, 20, 0, 20),
                             child: const FittedBox(
@@ -106,7 +108,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
                             )
                           ),
                         ],
-                        for(String n in DBProvider.userName)...[
+                        for(String n in DBuser.userName)...[
                           Container(
                             width: 240,
                             height: 47,
@@ -219,14 +221,14 @@ class ChooseUser_Page extends State<StateChooseUser>{
       ),
     );
   }
-  final dbProvider = DBProvider.instance;
+  DBadd dbAdd = DBadd();//DBクラスのインスタンス生成
 
   void _selectAdd() async {
     debugPrint('_selectAddにきました');
-    final List<String> hiragana = await dbProvider.selectAdd();//ひらがなslectメソッド結果
-    final List<String> import = DBProvider.AddList;//import結果
+    final List<String> hiragana = await dbAdd.selectAdd();//ひらがなslectメソッド結果
+    final List<String> import = DBadd.AddList;//import結果
     debugPrint('追加成分の内容:$hiragana');
     debugPrint('Addlistをimportした結果：$import');
-    debugPrint(DBProvider.AddList.toString());
+    debugPrint(DBadd.AddList.toString());
   }
 }
