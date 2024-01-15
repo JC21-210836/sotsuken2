@@ -31,7 +31,76 @@ class Manual_Page extends StatelessWidget{
                 ),
               ),
               Container(
-                child: const Text('本製品をご利用いただき、\nありがとうございます。',style: TextStyle(fontSize: 20),),
+                margin: EdgeInsets.fromLTRB(15, 20, 15, 30),
+                child: const FittedBox(
+                  child:Text(
+                    ' 本製品をご利用いただき、\nありがとうございます。'
+                    '\n\n'
+                    '本製品はAIを使用したアプリに\nなっており、登録成分の有無を\n検知します。'
+                    '\n\n'
+                    '「食品」と「美容」の２品目\n'
+                    '   ご利用いただけますので、'
+                    '\n用途に合わせて選択してください。',
+                    style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              Container(
+                width:330,
+                height:55,
+                margin: const EdgeInsets.all(10),
+                child:OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: const BorderSide(
+                      color: Colors.deepOrange
+                    ),
+                  ),
+                  onPressed: (){},
+                  child: const Text('追加成分の登録について',style: TextStyle(color:Colors.deepOrange,fontSize: 25,fontWeight: FontWeight.bold),)
+                )
+              ),
+              Container(
+                  width:330,
+                  height:55,
+                  margin: const EdgeInsets.all(10),
+                  child:OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(
+                            color: Colors.deepOrange
+                        ),
+                      ),
+                      onPressed: (){},
+                      child: const Text('ユーザーの登録について',style: TextStyle(color:Colors.deepOrange,fontSize: 25,fontWeight: FontWeight.bold),)
+                  )
+              ),
+              Container(
+                  width:330,
+                  height:55,
+                  margin: const EdgeInsets.all(10),
+                  child:OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(
+                            color: Colors.deepOrange
+                        ),
+                      ),
+                      onPressed: (){},
+                      child: const Text('登録の変更について',style: TextStyle(color:Colors.deepOrange,fontSize: 25,fontWeight: FontWeight.bold),)
+                  )
+              ),
+              Container(
+                  width:330,
+                  height:55,
+                  margin: const EdgeInsets.fromLTRB(10,10,10,50),
+                  child:OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(
+                            color: Colors.deepOrange
+                        ),
+                      ),
+                      onPressed: (){},
+                      child: const Text('ユーザーの削除について',style: TextStyle(color:Colors.deepOrange,fontSize: 25,fontWeight: FontWeight.bold),)
+                  )
               ),
 
             ],
