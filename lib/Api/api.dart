@@ -4,8 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
+import 'package:sotsuken2/DB/Food.dart';
+import 'package:sotsuken2/Data/AllAnotherData.dart';
+import 'package:sqflite/sqflite.dart';
 import '../DB/Database.dart';
+//import '../DB/List.dart';
+import '../Data/AllObligationData.dart';
+import '../Data/AllRecommendationData.dart';
 
 class Api{
   static List<String> contentList = [""];
@@ -77,10 +82,16 @@ class Api{
     return contentList;
   }
 
-  Future<List<String>> result()async {
+  DBfood dbFood = DBfood();//DBクラスのインスタンス生成
+
+  Future<List<String>> result() async {
     List<String> values = [];
+    List<String> result = [];
     List<String> list = getContentList();
-    List<Map<String, dynamic>> databaseContent = await dblist().getData();
+    //データ全部持ってくる
+    //ユーザが選択したデータ持ってくる
+    Database db = await DBProvider.instance.database;
+    List<Map<String, dynamic>> databaseContent = await db.query("food");
 
     for(Map<String, dynamic> dbc in databaseContent){
       for(String s in list) {
@@ -95,7 +106,62 @@ class Api{
     }
     if(values.isEmpty){
       values.add("No");
+      return values;
     }
-    return values;
+    else{
+      result = values;
+      return result;
+    }
+
   }
+
+  // 文字認識結果とユーザ選択成分の照合
+  Future<List<String>> verification() async{
+    List<String> select = await AllObligationData().getValueCheck();
+    select.addAll(await AllRecommendationData().getValueCheck2());
+    select.addAll(await AllAnotherData().getValueCheck3());
+    List<String> values = await Api.instance.result();
+    print("verificationのvalues：$values");//ここ空になってるから変更しようね
+    print("verificationのselect：$select");
+    List<String> result = [];
+
+    for(String str in select){
+      for(String s in values) {
+        if (s.contains(str)) {
+          if(!result.contains(str)){
+            result.add(str);
+            debugPrint("追加2：　$str");
+          }
+          debugPrint("表示2： $result");
+          break;
+        }
+      }
+    }if(result.isEmpty){
+    result.add("No");
+    }
+    return result;
+  }
+
+  /*void selectName(String UserName) async{
+
+    Database db = await DBProvider.instance.database;
+    DBlist dbList = DBlist();
+    List<String> select = [];
+
+    final selectList = await db.rawQuery('SELECT hiragana,kanji,eigo,otherName FROM k_add where categoryid = ?',['TS']);
+    final int userid = await dbList.selectUserId(UserName);
+    final foodId = await db.rawQuery('SELECT foodid FROM list where userid = ?',['TS']);
+
+    for (Map<String, dynamic?> ad in selectList) {
+      ad.forEach((key, value) {
+        for (int x = 0; x < ad.length; x++) {
+          print("キー：$key");
+          if (key == 'hiragana' || key == "kanji" || key == "eigo") {
+            select.add(value as String);
+            debugPrint('AddListの内容：$select');
+          }
+        }
+      });
+    }
+  }*/
 }
