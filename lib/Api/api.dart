@@ -85,14 +85,24 @@ class Api{
   DBfood dbFood = DBfood();//DBクラスのインスタンス生成
 
   Future<List<String>> result() async {
+    print("resultきた");
     List<String> values = [];
     List<String> result = [];
     List<String> list = getContentList();
     //データ全部持ってくる
     //ユーザが選択したデータ持ってくる
     Database db = await DBProvider.instance.database;
-    List<Map<String, dynamic>> databaseContent = await db.query("food");
+    List<Map<String, dynamic>> databaseContent = await db.rawQuery("SELECT foodname FROM food");
+    //リスト変換する
+    print("databaseContent：$databaseContent");
 
+    List<Map<String, dynamic>> selectList = await db.rawQuery('SELECT hiragana FROM k_add where categoryid = ? ',['TS']); //現段階ではhiraganaのみ
+    //リスト変換する
+    print("selectList：$selectList");
+
+    databaseContent.addAll(selectList);
+
+    //　↓リスト型で回す
     for(Map<String, dynamic> dbc in databaseContent){
       for(String s in list) {
         String word = dbc['foodname'];
@@ -127,7 +137,9 @@ class Api{
 
     for(String str in select){
       for(String s in values) {
+        print("values s:$s");
         if (s.contains(str)) {
+
           if(!result.contains(str)){
             result.add(str);
             debugPrint("追加2：　$str");
@@ -156,7 +168,7 @@ class Api{
       ad.forEach((key, value) {
         for (int x = 0; x < ad.length; x++) {
           print("キー：$key");
-          if (key == 'hiragana' || key == "kanji" || key == "eigo") {
+          if (key == 'hiragana') {
             select.add(value as String);
             debugPrint('AddListの内容：$select');
           }
