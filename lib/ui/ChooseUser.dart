@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//import '../Api/api.dart';
 import '../DB/Add.dart';
 import '../DB/User.dart';
 import 'CreateUser1.dart';
@@ -115,7 +116,10 @@ class ChooseUser_Page extends State<StateChooseUser>{
                             margin: const EdgeInsets.all(2),
                             child: OutlinedButton(
                               child:Text(n,style: const TextStyle(fontSize: 25),),
-                              onPressed: () {},
+                              onPressed: () {
+                                //Api.instance.selectName(n);
+                                print("押された名前：$n");
+                              },
                             ),
                           ),
                         ],
