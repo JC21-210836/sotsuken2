@@ -4,6 +4,7 @@ import '../DB/Add.dart';
 import '../DB/User.dart';
 import 'CreateUser1.dart';
 import 'Obligation_allergy.dart';
+import 'ImageLoaderSelect.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
 import 'package:sotsuken2/Data/AllAnotherData.dart';
@@ -115,7 +116,17 @@ class ChooseUser_Page extends State<StateChooseUser>{
                             margin: const EdgeInsets.all(2),
                             child: OutlinedButton(
                               child:Text(n,style: const TextStyle(fontSize: 25),),
-                              onPressed: () {},
+                              onPressed: () {
+                                //なのはちゃんのselectName
+
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context){
+                                    return StateImageLoderSelect();
+                                  })
+                                );
+
+
+                              },
                             ),
                           ),
                         ],
