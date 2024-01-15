@@ -223,9 +223,12 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                             )
                             ),
                             onPressed:(){
-                              //ここにデータベースの削除メソッド
-
-                              setState(() {});
+                              _deleteAdd();
+                              _selectAdd();
+                              Future.delayed(Duration(seconds: 1)).then((_){
+                                aad.AllResetAnother();
+                                setState(() {});
+                              });
                             },
                             child: const Text('選択した項目を削除',style: TextStyle(
                               fontSize: 23,
@@ -242,5 +245,39 @@ class Another_ingredient extends State<StateAnother_ingredient>{
             )
         )
     );
+  }
+
+  void _selectAdd() async {
+    debugPrint('_selectAddにきました');
+    final List<String> hiragana = await dbAdd.selectAdd();//ひらがなslectメソッド結果
+    final List<String> import = DBadd.AddList;//import結果
+    debugPrint('追加成分の内容:$hiragana');
+    debugPrint('Addlistをimportした結果：$import');
+    debugPrint(DBadd.AddList.toString());
+  }
+
+//追加成分の削除
+  void _deleteAdd() async {
+    debugPrint('_deleteAddにきました');
+    aad.HanteiAnother();
+    final deleteData = AllAnotherData.valueCheck3;
+    debugPrint('削除対象でーたは$deleteDataです');
+    //リスト表から削除される項目を登録しているaddidを特定
+    for(int x = 0; x < AllAnotherData.valueCheck3.length; x++) {
+      final int addid = await dbAdd.selectAddId(AllAnotherData.valueCheck3[x]);//checkaddに格納されている追加名を1つずつ引数で渡す
+      debugPrint('削除したいaddidは:$addid');
+
+      debugPrint('リスト表に登録されている削除項目を削除します');
+      final deleteAddlist = await dbAdd.deletelistAdd(addid);
+      debugPrint('$deleteAddlistを削除しました');
+
+      //チェックがついたひらがなを条件にk_add表から削除する
+      final deleteAdd = await dbAdd.deleteAdd(AllAnotherData.valueCheck3[x]);
+      debugPrint('個人追加表から削除した内容:$deleteAdd');
+
+      debugPrint('AddListを再更新します');
+      final List<String> hiragana = await dbAdd.selectAdd();//ひらがなselectメソッド結果
+      debugPrint('AddListの中身は$hiraganaです');
+    }
   }
 }
