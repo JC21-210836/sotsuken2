@@ -1,6 +1,9 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'ManualAnotherAdd.dart';
+import 'ManualUserAdd.dart';
+import 'ManualAddChange.dart';
+import 'ManualDeleteUser.dart';
+
 
 class Manual_Page extends StatelessWidget{
   @override
@@ -56,7 +59,13 @@ class Manual_Page extends StatelessWidget{
                       color: Colors.deepOrange
                     ),
                   ),
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context){
+                        return ManualAnotherAdd_Page();
+                      })
+                    );
+                  },
                   child: const Text('追加成分の登録について',style: TextStyle(color:Colors.deepOrange,fontSize: 25,fontWeight: FontWeight.bold),)
                 )
               ),
@@ -70,7 +79,13 @@ class Manual_Page extends StatelessWidget{
                             color: Colors.deepOrange
                         ),
                       ),
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context){
+                              return ManualUserAdd_Page();
+                            })
+                        );
+                      },
                       child: const Text('ユーザーの登録について',style: TextStyle(color:Colors.deepOrange,fontSize: 25,fontWeight: FontWeight.bold),)
                   )
               ),
@@ -84,8 +99,14 @@ class Manual_Page extends StatelessWidget{
                             color: Colors.deepOrange
                         ),
                       ),
-                      onPressed: (){},
-                      child: const Text('登録の変更について',style: TextStyle(color:Colors.deepOrange,fontSize: 25,fontWeight: FontWeight.bold),)
+                      onPressed: (){
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context){
+                              return ManualAddChange_Page();
+                            })
+                        );
+                      },
+                      child: const Text('登録内容の変更について',style: TextStyle(color:Colors.deepOrange,fontSize: 25,fontWeight: FontWeight.bold),)
                   )
               ),
               Container(
@@ -98,7 +119,13 @@ class Manual_Page extends StatelessWidget{
                             color: Colors.deepOrange
                         ),
                       ),
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context){
+                              return ManualDeleteUser_Page();
+                            })
+                        );
+                      },
                       child: const Text('ユーザーの削除について',style: TextStyle(color:Colors.deepOrange,fontSize: 25,fontWeight: FontWeight.bold),)
                   )
               ),

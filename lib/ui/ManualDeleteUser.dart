@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 //追加成分登録についてのページ用
-class ManualAnotherAdd_Page extends StatelessWidget{
+class ManualDeleteUser_Page extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +24,7 @@ class ManualAnotherAdd_Page extends StatelessWidget{
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.deepOrange),
                   ),
-                  child:const Text('追加成分の登録について',
+                  child:const Text('ユーザーの削除について',
                     style: TextStyle(fontSize: 25,color: Colors.deepOrange,fontWeight: FontWeight.bold),
                   ),
                 ),
