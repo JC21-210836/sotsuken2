@@ -119,23 +119,13 @@
 
 ### 【Data】 / 橋本
 
-・AllAnotherData.dart
+・AllAnotherData.dar - 追加成分の表示用のデータ(登録にも利用)
 
- 　追加成分の表示用のデータ(登録にも利用)
+・AllObligationData.dart - 表示義務アレルゲンの表示用のデータ(登録にも利用)
 
-・AllObligationData.dart
+・AllRecommendationData.dart - 表示推奨アレルゲンの表示用のデータ(登録にも利用)
 
-　 表示義務アレルゲンの表示用のデータ(登録にも利用)
-
-・AllRecommendationData.dart
-
- 　表示推奨アレルゲンの表示用のデータ(登録にも利用)
-
-・AllUserData.dart
-
- 　ユーザー登録(名前)の表示用のデータ(登録にも利用)
+・AllUserData.dart - ユーザー登録(名前)の表示用のデータ(登録にも利用)
 
 
-(おまけ)main.dart
-
- 　利用品目の選択画面(食品・美容)
+(おまけ)main.dart - 利用品目の選択画面(食品・美容)
