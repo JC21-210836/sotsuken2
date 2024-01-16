@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sotsuken2/Api/verification.dart';
 import 'package:sotsuken2/ui/ImageLoaderSelect.dart';
 import 'package:sotsuken2/ui/ReadIngredient.dart';
-import '../Api/api.dart';
 
 class StateAllergyDetection extends StatefulWidget{
   const StateAllergyDetection({super.key});
@@ -29,7 +29,7 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
   }
 
   void postData() async {
-    List<String> contentList = await Api.instance.verification();
+    List<String> contentList = await verifications.instance.verification();
     if (mounted) {
       setState(() {
         print("セットステートするで");
@@ -109,7 +109,7 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                     onPressed: (){
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context){
-                            return const ImageLoderSelect();
+                            return ImageLoderSelect();
                           })
                       );
                     },
