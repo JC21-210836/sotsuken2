@@ -5,12 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sotsuken2/DB/Food.dart';
-import 'package:sotsuken2/Data/AllAnotherData.dart';
 import 'package:sqflite/sqflite.dart';
 import '../DB/Database.dart';
-//import '../DB/List.dart';
-import '../Data/AllObligationData.dart';
-import '../Data/AllRecommendationData.dart';
 
 class Api{
   static List<String> contentList = [""];
@@ -69,10 +65,6 @@ class Api{
 
     //、を見つけるまでを1要素として配列に格納する
     contentList = genStr.split('、');
-
-    // contentに改行コードあり、「、」なしで文字列として代入
-    content = content.replaceAll("、", "");
-
     debugPrint("読み込んだ文字：$contentList");
 
     result();
@@ -88,29 +80,44 @@ class Api{
     print("resultきた");
     List<String> values = [];
     List<String> result = [];
-    List<String> list = getContentList();
-    //データ全部持ってくる
-    //ユーザが選択したデータ持ってくる
-    Database db = await DBProvider.instance.database;
-    List<Map<String, dynamic>> databaseContent = await db.rawQuery("SELECT foodname FROM food");
-    //リスト変換する
-    print("databaseContent：$databaseContent");
+    List<String> ocrResult = getContentList();
 
-    List<Map<String, dynamic>> selectList = await db.rawQuery('SELECT hiragana FROM k_add where categoryid = ? ',['TS']); //現段階ではhiraganaのみ
-    //リスト変換する
+    Database db = await DBProvider.instance.database;
+
+    //データ全部持ってくる
+    List<Map<String, dynamic>> databaseContent = await db.rawQuery("SELECT foodname FROM food");
+    //追加成分データ持ってくる
+    List<Map<String, dynamic>> selectList = await db.rawQuery('SELECT hiragana,kanji,eigo,otherName FROM k_add where categoryid = ? ',['TS']);
+    print("databaseContent：$databaseContent");
     print("selectList：$selectList");
 
-    databaseContent.addAll(selectList);
+    //Map→list変換
+    List<String> foodNames = List<String>.from(databaseContent.map((map) => map['foodname']));
+    List<dynamic> addFoodDynamic = selectList
+        .map((map) => [map['hiragana'], map['kanji'], map['eigo']])
+        .expand((element) => element)
+        .where((element) => element != null)
+        .toList();
+
+    //List<dynamic>→List<String>変換
+    List<String> addFood = addFoodDynamic.cast<String>();
+
+    print("追加成分結合前:$foodNames");
+    foodNames.addAll(addFood);
+    //list型結合 nullでないとき
+    print("追加成分結合後:$foodNames");
+
 
     //　↓リスト型で回す
-    for(Map<String, dynamic> dbc in databaseContent){
-      for(String s in list) {
-        String word = dbc['foodname'];
-        if (s.contains(word)) {
-          values.add(s);
-          debugPrint("追加：　$s");
-          debugPrint("表示： $values");
-          break;
+    for(String foods in foodNames){
+      for(String s in ocrResult) {
+        if (s.contains(foods)) {
+          if(!values.contains(foods)){
+            values.add(s);
+            debugPrint("追加：　$s");
+            debugPrint("表示： $values");
+            break;
+          }
         }
       }
     }
@@ -124,56 +131,4 @@ class Api{
     }
 
   }
-
-  // 文字認識結果とユーザ選択成分の照合
-  Future<List<String>> verification() async{
-    List<String> select = await AllObligationData().getValueCheck();
-    select.addAll(await AllRecommendationData().getValueCheck2());
-    select.addAll(await AllAnotherData().getValueCheck3());
-    List<String> values = await Api.instance.result();
-    print("verificationのvalues：$values");//ここ空になってるから変更しようね
-    print("verificationのselect：$select");
-    List<String> result = [];
-
-    for(String str in select){
-      for(String s in values) {
-        print("values s:$s");
-        if (s.contains(str)) {
-
-          if(!result.contains(str)){
-            result.add(str);
-            debugPrint("追加2：　$str");
-          }
-          debugPrint("表示2： $result");
-          break;
-        }
-      }
-    }if(result.isEmpty){
-    result.add("No");
-    }
-    return result;
-  }
-
-  /*void selectName(String UserName) async{
-
-    Database db = await DBProvider.instance.database;
-    DBlist dbList = DBlist();
-    List<String> select = [];
-
-    final selectList = await db.rawQuery('SELECT hiragana,kanji,eigo,otherName FROM k_add where categoryid = ?',['TS']);
-    final int userid = await dbList.selectUserId(UserName);
-    final foodId = await db.rawQuery('SELECT foodid FROM list where userid = ?',['TS']);
-
-    for (Map<String, dynamic?> ad in selectList) {
-      ad.forEach((key, value) {
-        for (int x = 0; x < ad.length; x++) {
-          print("キー：$key");
-          if (key == 'hiragana') {
-            select.add(value as String);
-            debugPrint('AddListの内容：$select');
-          }
-        }
-      });
-    }
-  }*/
 }
