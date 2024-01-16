@@ -17,17 +17,13 @@
 ## ファイル概要
 ### 【Api】/ なのはちゃん
 
-・api.dart
-    Api呼び出し および 情報加工
+・api.dart - Api呼び出し および 情報加工
 
-・crop.dart
-    トリミング加工
+・crop.dart - トリミング加工
 
 ### 【component】 / 橋本
 
-・HamburgerMenu.dart
-
- ハンバーガーメニューの部品
+・HamburgerMenu.dart - ハンバーガーメニューの部品
 
 ### 【DB】/ みちるちゃん
 
@@ -45,76 +41,42 @@
 
 ### 【ui】 / 橋本,なのはちゃん,（みちるちゃん）
 
-・AddAnotherIngredient.dart
+・AddAnotherIngredient.dart - 追加成分登録画面
 
-　　追加成分登録画面
+・AllergyDetection/AllergyNotDetection - アレルギー検出(読み込み結果)画面   アレルゲン有/無
 
-・AllergyDetection/AllergyNotDetection
+・Another_Ingredient.dart - 追加成分の表示画面
 
-　 アレルギー検出(読み込み結果)画面   アレルゲン有/無
+・ChooseUser.dart - ユーザー選択画面
 
-・Another_Ingredient.dart
+・CreateUser1 - ユーザー登録(名前入力画面)
 
-　 追加成分の表示画面
+・CreateUser2 - ユーザー登録(登録内容選択画面)
 
-・ChooseUser.dart
-
- 　ユーザー選択画面
-
-・CreateUser1
-
-　 ユーザー登録(名前入力画面)
-
-・CreateUser2
-
- 　ユーザー登録(登録内容選択画面)
-
-・CreateUserCheck
-
-　 登録内容確認画面
+・CreateUserCheck - 登録内容確認画面
 
 ・ImageCheck.dart
 ・ImageLoaderSelect.dart
 
-・Manual.dart
+・Manual.dart - ご利用方法の画面
 
- 　ご利用方法の画面
+・ManualAnotherAdd.dart - 追加成分の登録についての操作方法
 
-・ManualAnotherAdd.dart
+・Obligation_Allergy.dart - 表示義務アレルゲンの表示画面
 
- 　追加成分の登録についての操作方法
+・ReadIngredient.dart - 読み取った成分一覧画面
 
-・Obligation_Allergy.dart
+・Recommendation_allergy.dart - 表示推奨アレルゲンの表示画面
 
- 　表示義務アレルゲンの表示画面
+・SettingUser1.dart - (設定画面)ユーザーの選択画面
 
-・ReadIngredient.dart
+・SettingUser2.dart - (設定画面)変更内容選択画面
 
- 　読み取った成分一覧画面
+・SettingUserAllergy.dart - (設定画面)登録アレルゲン変更ページ
 
-・Recommendation_allergy.dart
+・SettingUserDelete.dart - (設定画面)ユーザー削除画面
 
-　 表示推奨アレルゲンの表示画面
-
-・SettingUser1.dart
-
- 　(設定画面)ユーザーの選択画面
-
-・SettingUser2.dart
-
-　 (設定画面)変更内容選択画面
-
-・SettingUserAllergy.dart
-
- 　(設定画面)登録アレルゲン変更ページ
-
-・SettingUserDelete.dart
-
- 　(設定画面)ユーザー削除画面
-
-・SettingUserNameChange.dart
-
- 　(設定画面)ユーザー名変更画面
+・SettingUserNameChange.dart - (設定画面)ユーザー名変更画面
 
 
 ### 【Data】 / 橋本
