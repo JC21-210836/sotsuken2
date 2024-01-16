@@ -27,17 +27,17 @@
 
 ### 【DB】/ みちるちゃん
 
-・Add.dart
+・Add.dart - (多分追加成分の登録・表示・削除用のデータ)
 
-・Beauty.dart
+・Beauty.dart - 空
 
-・Database.dart
+・Database.dart -(多分データベースのオープン)
 
-・Food.dart
+・Food.dart - (多分表示推奨・義務のアレルゲン登録データ)
 
-・List.dart
+・List.dart - (わかんね)
 
-・User.dart
+・User.dart - (多分ユーザーの登録・表示用のデータ)
 
 ### 【ui】 / 橋本,なのはちゃん,（みちるちゃん）
 
@@ -55,8 +55,9 @@
 
 ・CreateUserCheck - 登録内容確認画面
 
-・ImageCheck.dart
-・ImageLoaderSelect.dart
+・ImageCheck.dart - 画像選択確認画面
+
+・ImageLoaderSelect.dart - 画像の選択(スキャン/ライブラリ)画面
 
 ・Manual.dart - ご利用方法の画面
 
