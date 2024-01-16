@@ -16,6 +16,7 @@
 
 ## ファイル概要
 ###【Api】/ なのはちゃん
+
 ・api.dart
     Api呼び出し および 情報加工
 
@@ -23,7 +24,9 @@
     トリミング加工
 
 ###【component】 / 橋本
+
 ・HamburgerMenu.dart
+
     ハンバーガーメニューの部品
 
 ###【DB】/ みちるちゃん
@@ -41,13 +44,17 @@
 ・User.dart
 
 ###【ui】 / 橋本,なのはちゃん,（みちるちゃん）
+
 ・AddAnotherIngredient.dart
+
     追加成分登録画面
 
 ・AllergyDetection/AllergyNotDetection
+
     アレルギー検出(読み込み結果)画面   アレルゲン有/無
 
 ・Another_Ingredient.dart
+
     追加成分の表示画面
 
 ・ChooseUser.dart
@@ -97,6 +104,7 @@
 
 
 ###【Data】 / 橋本
+
 ・AllAnotherData.dart
     追加成分の表示用のデータ(登録にも利用)
 
