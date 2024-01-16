@@ -3,7 +3,7 @@ import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllAnotherData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
 import 'package:sotsuken2/ui/ImageLoaderSelect.dart';
-import '../DB/Database.dart';
+import '../DB/Add.dart';
 import 'Another_ingredient.dart';
 
 
