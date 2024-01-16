@@ -28,9 +28,12 @@ class verifications{
 
     print("Foodselect呼び出す");
     List<String> foodSelect = await Foodselect();
+    select.addAll(foodSelect);
+    print("呼出し後のセレクト：$select");
+    select = select.toSet().toList();
+    print("重複排除後のセレクト：$select");
 
-
-    for(String str in foodSelect){
+    for(String str in select){
       for(String s in resultvalues) {
         if (s.contains(str)) {
           if(!result.contains(str)){
@@ -117,7 +120,68 @@ class verifications{
           print("落花生にきた");
           gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['GH2','GH%']);
           g.addAll(gimu);
+        } else if(AllRecommendationData.valueList2[0].contains(select[x])) { //表示義務
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SA1','SA%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[1].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SB1','SB%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[2].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SC1','SC%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[3].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SD1','SD%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[4].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SE1','SE%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[5].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SF1','SF%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[6].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SG2','SG%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[7].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SH2','SH%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[8].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SI1','SI%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[9].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SJ1','SJ%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[10].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SK1','SK%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[11].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SL2','SL%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[12].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SM2','SM%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[13].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SN1','SN%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[14].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SO2','SO%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[15].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SP1','SP%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[16].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SQ1','SQ%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[17].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SR1','SR%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[18].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['SS1','SS%']);
+          g.addAll(gimu);
+        }else if(AllRecommendationData.valueList2[19].contains(select[x])){
+          gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid != ? AND foodid LIKE ?', ['ST1','ST%']);
+          g.addAll(gimu);
         }
+
         print("これからわけます：$g");
         for (Map<String, dynamic> data in g) {
           data.forEach((key, value) {
