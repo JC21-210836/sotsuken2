@@ -27,7 +27,7 @@
 
 ・HamburgerMenu.dart
 
-    ハンバーガーメニューの部品
+ ハンバーガーメニューの部品
 
 ###【DB】/ みちるちゃん
 
@@ -47,76 +47,95 @@
 
 ・AddAnotherIngredient.dart
 
-    追加成分登録画面
+　追加成分登録画面
 
 ・AllergyDetection/AllergyNotDetection
 
-    アレルギー検出(読み込み結果)画面   アレルゲン有/無
+ アレルギー検出(読み込み結果)画面   アレルゲン有/無
 
 ・Another_Ingredient.dart
 
-    追加成分の表示画面
+ 追加成分の表示画面
 
 ・ChooseUser.dart
-    ユーザー選択画面
+
+ ユーザー選択画面
 
 ・CreateUser1
-    ユーザー登録(名前入力画面)
+
+ ユーザー登録(名前入力画面)
 
 ・CreateUser2
-    ユーザー登録(登録内容選択画面)
+
+ ユーザー登録(登録内容選択画面)
 
 ・CreateUserCheck
-    登録内容確認画面
+
+ 登録内容確認画面
 
 ・ImageCheck.dart
 ・ImageLoaderSelect.dart
 
 ・Manual.dart
-    ご利用方法の画面
+
+ ご利用方法の画面
 
 ・ManualAnotherAdd.dart
-    追加成分の登録についての操作方法
+
+ 追加成分の登録についての操作方法
 
 ・Obligation_Allergy.dart
-    表示義務アレルゲンの表示画面
+
+ 表示義務アレルゲンの表示画面
 
 ・ReadIngredient.dart
-    読み取った成分一覧画面
+
+ 読み取った成分一覧画面
 
 ・Recommendation_allergy.dart
-    表示推奨アレルゲンの表示画面
+
+ 表示推奨アレルゲンの表示画面
 
 ・SettingUser1.dart
-    (設定画面)ユーザーの選択画面
+
+ (設定画面)ユーザーの選択画面
 
 ・SettingUser2.dart
-    (設定画面)変更内容選択画面
+
+ (設定画面)変更内容選択画面
 
 ・SettingUserAllergy.dart
-    (設定画面)登録アレルゲン変更ページ
+
+ (設定画面)登録アレルゲン変更ページ
 
 ・SettingUserDelete.dart
-    (設定画面)ユーザー削除画面
+
+ (設定画面)ユーザー削除画面
 
 ・SettingUserNameChange.dart
-    (設定画面)ユーザー名変更画面
+
+ (設定画面)ユーザー名変更画面
 
 
 ###【Data】 / 橋本
 
 ・AllAnotherData.dart
-    追加成分の表示用のデータ(登録にも利用)
+
+ 追加成分の表示用のデータ(登録にも利用)
 
 ・AllObligationData.dart
-    表示義務アレルゲンの表示用のデータ(登録にも利用)
+
+ 表示義務アレルゲンの表示用のデータ(登録にも利用)
 
 ・AllRecommendationData.dart
-    表示推奨アレルゲンの表示用のデータ(登録にも利用)
+
+ 表示推奨アレルゲンの表示用のデータ(登録にも利用)
 
 ・AllUserData.dart
-    ユーザー登録(名前)の表示用のデータ(登録にも利用)
+
+ ユーザー登録(名前)の表示用のデータ(登録にも利用)
 
 
 (おまけ)main.dart
-    利用品目の選択画面(食品・美容)
+
+ 利用品目の選択画面(食品・美容)
