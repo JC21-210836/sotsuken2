@@ -182,7 +182,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                             if(widget.PageFlag == 'ChooseUser'){
                               Navigator.of(context).push(
                                   MaterialPageRoute(builder: (context){
-                                    return const ImageLoderSelect();
+                                    return const StateImageLoderSelect();
                                   })
                               );
 
@@ -193,19 +193,18 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                               for(int n = 0 ; n <= widget.PageCount; n++){
                                 Navigator.of(context).pop();
                               }
-
-                              aod.HanteiObligation();
-                              ard.HanteiRecommendation();
-                              aad.HanteiAnother();
-                            },
-                            child: const Text('決定',style: TextStyle(
-                              fontSize: 23,
-                              fontWeight: FontWeight.bold,
-                            ),
-                                textAlign: TextAlign.center),
+                            }
+                            aod.HanteiObligation();
+                            ard.HanteiRecommendation();
+                            aad.HanteiAnother();
+                          },
+                          child: const Text('決定',style: TextStyle(
+                            fontSize: 23,
+                            fontWeight: FontWeight.bold,
                           ),
-                        )
-                      ],
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
                       if(widget.PageFlag == 'Manual')...[
                         Container(
                           width: 290,
@@ -233,9 +232,8 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                             ),
                                 textAlign: TextAlign.center),
                           ),
-                              textAlign: TextAlign.center),
-                        ),
-                      )
+                        )
+                      ],
                     ]
                 )
             )

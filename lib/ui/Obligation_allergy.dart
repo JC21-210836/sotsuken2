@@ -183,7 +183,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                         if(widget.PageFlag == 'ChooseUser'){
                           Navigator.of(context).push(
                               MaterialPageRoute(builder: (context){
-                                return const ImageLoderSelect();
+                                return const StateImageLoderSelect();
                               })
                           );
 

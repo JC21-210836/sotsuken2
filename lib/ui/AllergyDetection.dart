@@ -106,7 +106,7 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                     onPressed: (){
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context){
-                            return ImageLoderSelect();
+                            return StateImageLoderSelect();
                           })
                       );
                     },
