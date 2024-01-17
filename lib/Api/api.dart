@@ -115,7 +115,6 @@ class Api{
           if(!values.contains(foods)){
             values.add(s);
             debugPrint("追加：　$s");
-            debugPrint("表示： $values");
             break;
           }
         }
@@ -127,6 +126,7 @@ class Api{
     }
     else{
       result = values;
+      print("表示：$result");
       return result;
     }
   }
