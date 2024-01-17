@@ -186,14 +186,14 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                                   })
                               );
 
-                              }else if(widget.PageFlag == 'CreateUser'){
+                            }else if(widget.PageFlag == 'CreateUser'){
+                              Navigator.of(context).pop();
+                            }else if(widget.PageFlag == 'SettingUser'){
+                              debugPrint(widget.PageCount.toString());
+                              for(int n = 0 ; n <= widget.PageCount; n++){
                                 Navigator.of(context).pop();
-                              }else if(widget.PageFlag == 'SettingUser'){
-                                debugPrint(widget.PageCount.toString());
-                                for(int n = 0 ; n <= widget.PageCount; n++){
-                                  Navigator.of(context).pop();
-                                }
                               }
+
                               aod.HanteiObligation();
                               ard.HanteiRecommendation();
                               aad.HanteiAnother();
@@ -233,10 +233,9 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                             ),
                                 textAlign: TextAlign.center),
                           ),
-                        )
-
-                      ],
-
+                              textAlign: TextAlign.center),
+                        ),
+                      )
                     ]
                 )
             )

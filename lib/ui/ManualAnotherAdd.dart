@@ -55,7 +55,6 @@ class ManualAnotherAdd_Page extends StatelessWidget{
                   child: const Text('戻る',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
                 )
               ),
-
             ],
           ),
         ),

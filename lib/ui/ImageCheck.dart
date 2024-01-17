@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sotsuken2/Api/api.dart';
 import 'package:sotsuken2/Api/verification.dart';
 import 'package:sotsuken2/ui/AllergyNotDetection.dart';
 import 'dart:io';
@@ -23,6 +22,8 @@ class _ImageCheckState extends State<ImageCheck> {
   Image? imagepath;
 
   Widget build(BuildContext context) {
+    print("Build method is called.");
+
     return Scaffold(
       body: Center(
         child: Stack(
@@ -52,7 +53,6 @@ class _ImageCheckState extends State<ImageCheck> {
                       ),
                     ),
                   ),
-                ),
 
                   Container(
                     width: 250,
