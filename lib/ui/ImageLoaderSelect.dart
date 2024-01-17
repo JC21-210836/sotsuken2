@@ -2,38 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'ImageCheck.dart';
 
-class ImageLoderSelect extends StatelessWidget{
-  const ImageLoderSelect({super.key}); //無くても動く(上とセット)
+class StateImageLoderSelect extends StatefulWidget{
+  const StateImageLoderSelect({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title:'タイトル',
-        theme: ThemeData(
-          primaryColor: Colors.blue,
-        ),
-        home: const Home_Page_State()
-                    // ↑名前変えたいかも
-    );
-  }
-}
-    // ↓ここらへんも全部
-class Home_Page_State extends StatefulWidget{
-  const Home_Page_State({super.key});
-
-  @override
-  State<Home_Page_State> createState(){
-    return Home_Page();
+  State<StateImageLoderSelect> createState(){
+    return ImageLoderSelect();
   }
 }
 
-class Home_Page extends State<Home_Page_State> {
+class ImageLoderSelect extends State<StateImageLoderSelect> {
 
   @override
   Widget build(BuildContext context) {
     final ImagePicker _picker = ImagePicker();
     return Scaffold(
+      appBar: AppBar(
+          toolbarHeight: 60,
+          title: const Text('成分チェッカー')
+      ),
       body: Center(
         child:Center(
           child:Column(

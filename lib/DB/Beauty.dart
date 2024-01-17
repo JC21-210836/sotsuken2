@@ -1,7 +1,7 @@
-/*import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:sqflite/sqflite.dart';
 import '../Data/AllUserData.dart';
-import 'Database.dart';*/
+import 'Database.dart';
 
 class DBbeauty{
 
