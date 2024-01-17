@@ -40,13 +40,13 @@ class verifications{
             result.add(str);
             debugPrint("追加2：　$str");
           }
-          debugPrint("表示2： $result");
           break;
         }
       }
     }if(result.isEmpty){
       result.add("No");
     }
+    print("表示2：$result");
     return result;
   }
 
@@ -87,6 +87,7 @@ class verifications{
     if (select.isNotEmpty) {
       print("if文に入った");
       Map<String, String> obligationMappings = {
+        //表示義務
         'えび': 'GA%',
         'くるみ': 'GB%',
         'かに': 'GC%',
@@ -95,13 +96,44 @@ class verifications{
         '卵': 'GF%',
         '乳': 'GG%',
         '落花生': 'GH%',
+        //ここから表示推奨
+        'あわび': 'SB%',
+        'いか': 'SC%',
+        'オレンジ': 'SF%',
+        'いくら': 'SD%',
+        'ごま': 'SI%',
+        'さけ': 'SJ%',
+        'さば': 'SK%',
+        '大豆': 'SL%',
+        '鶏肉': 'SM%',
+        'バナナ': 'NB%',
+        '豚肉': 'SO%',
+        'まつたけ': 'SP%',
+        'もも': 'SQ%',
+        'やまいも': 'SR%',
+        'りんご': 'SS%',
+        'ゼラチン': 'ST%',
+        'アーモンド': 'SA%',
+        'カシューナッツ': 'SE%',
+        'キウイフルーツ': 'SG%',
       };
 
-      for (var value in select) {
-        print("for文に入った");
+      //追加成分
+      if(AllAnotherData.valueCheck3.isNotEmpty){
+        List<Map<String, dynamic>> ad = await db.rawQuery('SELECT kanji,eigo,otherName FROM k_add WHERE categoryid = ?', ['TS']);
+        debugPrint('追加成分の漢字と英語をその他を空白込みで取得：$ad');
+        for (Map<String, dynamic?> data in ad) {
+          data.forEach((key, value) {
+            if(value != "" && value != null){
+              All.add(value as String);
+            }
+          });
+        }
+        debugPrint("値が入っている漢字、英語、その他を取ってきた$All");
+      }
 
+      for (var value in select) {
         if (obligationMappings.containsKey(value)) {
-          print("$value にきた");
           gimu = await db.rawQuery('SELECT foodname FROM food WHERE foodid LIKE ?', [obligationMappings[value]]);
           g.addAll(gimu);
         }
