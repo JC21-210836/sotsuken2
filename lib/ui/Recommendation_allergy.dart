@@ -109,7 +109,7 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                   ],
                 ),
               ],
-              for(int n = 18 ; n < 20 ; n++ )...[
+              for(int n = 17 ; n < 20 ; n++ )...[
                 SizedBox(
                   width: 319,
                   child:Transform.scale(
