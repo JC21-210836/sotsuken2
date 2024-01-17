@@ -6,6 +6,7 @@ import 'package:sotsuken2/Api/verification.dart';
 import 'package:sotsuken2/component/AppbarComp.dart';
 import 'package:sotsuken2/ui/AllergyNotDetection.dart';
 import 'dart:io';
+import '../Api/api.dart';
 import 'AllergyDetection.dart';
 import '../Api/crop.dart';
 
