@@ -24,7 +24,7 @@ class DBProvider {
     debugPrint("_initDatabaseにきました");
 
     Directory documentDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentDirectory.path, 'test10.db');
+    String path = join(documentDirectory.path, 'test1.db');
     return await openDatabase(
       path,
       version: 1,
@@ -145,6 +145,7 @@ class DBProvider {
       { 'foodid': 'SD1','foodname': 'いくら','categoryid': 'HS'},
       { 'foodid': 'SD2','foodname': '鮭卵','categoryid': 'HS'},
       { 'foodid': 'SD3','foodname': 'salmon roe','categoryid': 'HS'},
+      { 'foodid': 'SD4','foodname': 'イクラ','categoryid': 'HS'},
       { 'foodid': 'SE1','foodname': 'カシューナッツ','categoryid': 'HS'},
       { 'foodid': 'SE2','foodname': '加州','categoryid': 'HS'},
       { 'foodid': 'SE3','foodname': 'cashew nuts','categoryid': 'HS'},
@@ -185,12 +186,14 @@ class DBProvider {
       { 'foodid': 'SQ1','foodname': 'もも','categoryid': 'HS'},
       { 'foodid': 'SQ2','foodname': '桃','categoryid': 'HS'},
       { 'foodid': 'SQ3','foodname': 'peach','categoryid': 'HS'},
+      { 'foodid': 'SQ4','foodname': 'モモ','categoryid': 'HS'},
       { 'foodid': 'SR1','foodname': 'やまいも','categoryid': 'HS'},
       { 'foodid': 'SR2','foodname': '山芋','categoryid': 'HS'},
       { 'foodid': 'SR3','foodname': 'yam','categoryid': 'HS'},
       { 'foodid': 'SS1','foodname': 'りんご','categoryid': 'HS'},
       { 'foodid': 'SS2','foodname': '林檎','categoryid': 'HS'},
       { 'foodid': 'SS3','foodname': 'apple','categoryid': 'HS'},
+      { 'foodid': 'SS4','foodname': 'リンゴ','categoryid': 'HS'},
       { 'foodid': 'ST1','foodname': 'ゼラチン','categoryid': 'HS'},
       { 'foodid': 'ST2','foodname': '膠','categoryid': 'HS'},
       { 'foodid': 'ST3','foodname': 'gelatin','categoryid': 'HS'},
