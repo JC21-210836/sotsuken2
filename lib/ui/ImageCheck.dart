@@ -1,28 +1,24 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sotsuken2/Api/api.dart';
 import 'package:sotsuken2/Api/verification.dart';
 import 'package:sotsuken2/ui/AllergyNotDetection.dart';
 import 'dart:io';
-import '../Api/api.dart';
 import 'AllergyDetection.dart';
 import '../Api/crop.dart';
-
 class ImageCheck extends StatefulWidget {
   const ImageCheck(this.image, {Key? key}) : super(key: key);
   final XFile image;
-
   @override
   _ImageCheckState createState() => _ImageCheckState();
 }
-
 class _ImageCheckState extends State<ImageCheck> {
   bool isLoading = false;
   String state = "トリミング";
   XFile? cropimage;
   Image? imagepath;
-
   Widget build(BuildContext context) {
+    print("Build method is called.");
     return Scaffold(
       body: Center(
         child: Stack(
@@ -52,8 +48,6 @@ class _ImageCheckState extends State<ImageCheck> {
                       ),
                     ),
                   ),
-                ),
-
                   Container(
                     width: 250,
                     child: imagepath ?? Image.file(File(widget.image.path)),
@@ -69,7 +63,6 @@ class _ImageCheckState extends State<ImageCheck> {
                       textAlign: TextAlign.center,
                     ),
                   ),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -91,7 +84,7 @@ class _ImageCheckState extends State<ImageCheck> {
                                 fontWeight: FontWeight.bold),
                           ),
                           onPressed: () async {
-                            Navigator.pop(context);
+                            Navigator.pushNamed(context, '/');
                           },
                         ),
                       ),
@@ -121,7 +114,6 @@ class _ImageCheckState extends State<ImageCheck> {
                             setState(() {
                               isLoading = false;
                             });
-
                             if (!content.contains("No")) {
                               Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context) {
@@ -184,7 +176,6 @@ class _ImageCheckState extends State<ImageCheck> {
                 ],
               ),
             ),
-
             // プログレスバーの表示
             if (isLoading)
               Container(
