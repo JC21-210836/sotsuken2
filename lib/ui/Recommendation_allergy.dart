@@ -179,7 +179,7 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                     if(widget.PageFlag == 'ChooseUser'){
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context){
-                            return const ImageLoderSelect();
+                            return const StateImageLoderSelect();
                           })
                       );
                     }else if(widget.PageFlag == 'CreateUser' || widget.PageFlag =='SettingUser'){

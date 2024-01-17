@@ -4,6 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sotsuken2/Api/verification.dart';
 import 'package:sotsuken2/ui/AllergyNotDetection.dart';
 import 'dart:io';
+import '../Api/api.dart';
 import 'AllergyDetection.dart';
 import '../Api/crop.dart';
 
@@ -91,7 +92,7 @@ class _ImageCheckState extends State<ImageCheck> {
                                 fontWeight: FontWeight.bold),
                           ),
                           onPressed: () async {
-                            Navigator.pushNamed(context, '/');
+                            Navigator.pop(context);
                           },
                         ),
                       ),

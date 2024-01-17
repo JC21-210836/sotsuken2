@@ -166,34 +166,35 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                               textAlign: TextAlign.center),
                         ),
                       ),
-                      Container(
-                        width: 290,
-                        height: 70,
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
-                        padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                        child:  OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                              foregroundColor: Colors.deepOrange, side: const BorderSide(
-                            color: Colors.deepOrange,
-                            width: 1.5,
-                          )
-                          ),
-                          onPressed:(){
-                            if(widget.PageFlag == 'ChooseUser'){
-                              Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (context){
-                                    return const ImageLoderSelect();
-                                  })
-                              );
+                      if(widget.PageFlag != 'Manual')...[
+                        Container(
+                          width: 290,
+                          height: 70,
+                          margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
+                          padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
+                          child:  OutlinedButton(
+                            style: OutlinedButton.styleFrom(
+                                foregroundColor: Colors.deepOrange, side: const BorderSide(
+                              color: Colors.deepOrange,
+                              width: 1.5,
+                            )
+                            ),
+                            onPressed:(){
+                              if(widget.PageFlag == 'ChooseUser'){
+                                Navigator.of(context).push(
+                                    MaterialPageRoute(builder: (context){
+                                      return const StateImageLoderSelect();
+                                    })
+                                );
 
-                            }else if(widget.PageFlag == 'CreateUser'){
-                              Navigator.of(context).pop();
-                            }else if(widget.PageFlag == 'SettingUser'){
-                              debugPrint(widget.PageCount.toString());
-                              for(int n = 0 ; n <= widget.PageCount; n++){
+                              }else if(widget.PageFlag == 'CreateUser'){
                                 Navigator.of(context).pop();
+                              }else if(widget.PageFlag == 'ChooseUser'){
+                                debugPrint(widget.PageCount.toString());
+                                for(int n = 0 ; n <= widget.PageCount; n++){
+                                  Navigator.of(context).pop();
+                                }
                               }
-
                               aod.HanteiObligation();
                               ard.HanteiRecommendation();
                               aad.HanteiAnother();
@@ -204,7 +205,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                             ),
                                 textAlign: TextAlign.center),
                           ),
-                        )
+                        ),
                       ],
                       if(widget.PageFlag == 'Manual')...[
                         Container(
@@ -233,9 +234,8 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                             ),
                                 textAlign: TextAlign.center),
                           ),
-                              textAlign: TextAlign.center),
-                        ),
-                      )
+                        )
+                      ],
                     ]
                 )
             )
