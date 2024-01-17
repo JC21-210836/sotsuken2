@@ -14,7 +14,7 @@ class ManualAddChange_Page extends StatelessWidget{
           child:Column(
             children: [
               Container(
-                margin: const EdgeInsets.all(20),
+                margin: const EdgeInsets.fromLTRB(10,40,10,10),
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.deepOrange),
                 ),
@@ -30,7 +30,27 @@ class ManualAddChange_Page extends StatelessWidget{
                 ),
               ),
               Container(
-                child: const Text('まだなんもないよ',style: TextStyle(fontSize: 20),),
+                margin:const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                child:Image.asset('images/ManualAddChange1.png'),
+              ),
+              Container(
+
+                margin:const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                child:Image.asset('images/ManualAddChange2.png'),
+              ),
+              Container(
+                  width: 200,
+                  height:50,
+                  margin: const EdgeInsets.fromLTRB(10, 20, 10, 40),
+                  child:ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.deepOrange
+                    ),
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                    child: const Text('戻る',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                  )
               ),
 
             ],
