@@ -104,7 +104,6 @@ class Api{
     print("追加成分結合後:$foodNames");
 
 
-    //　↓リスト型で回す
     for(String foods in foodNames){
       for(String s in ocrResult) {
         if (s.contains(foods)) {
