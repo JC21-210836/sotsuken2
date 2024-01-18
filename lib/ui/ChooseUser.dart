@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-//import '../Api/api.dart';
+import 'package:sotsuken2/Api/verification.dart';
 import '../DB/Add.dart';
 import '../DB/User.dart';
 import 'CreateUser1.dart';
@@ -118,8 +117,8 @@ class ChooseUser_Page extends State<StateChooseUser>{
                             child: OutlinedButton(
                               child:Text(n,style: const TextStyle(fontSize: 25),),
                               onPressed: () {
-                                //なのはちゃんのselectName
-
+                                print("選択されたユーザ$n");
+                                verifications.instance.selectName(n);
                                 Navigator.of(context).push(
                                   MaterialPageRoute(builder: (context){
                                     return StateImageLoderSelect();
@@ -210,6 +209,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
                               aod.AllResetObligation();
                               ard.AllResetRecommendation();
                               _selectAdd();
+                              verifications.instance.selectName("スキップが押された");
                             });
                             Future.delayed(const Duration (seconds: 1)).then((_){
                               Navigator.of(context).push(
