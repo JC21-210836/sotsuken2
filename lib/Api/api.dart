@@ -67,8 +67,6 @@ class Api{
     //、を見つけるまでを1要素として配列に格納する
     contentList = genStr.split('、');
     debugPrint("読み込んだ文字：$contentList");
-
-    result();
   }
 
   List<String> getContentList(){
@@ -109,7 +107,6 @@ class Api{
     print("追加成分結合後:$foodNames");
 
 
-    //　↓リスト型で回す
     for(String foods in foodNames){
       for(String s in ocrResult) {
         if (s.contains(foods)) {
