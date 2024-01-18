@@ -18,6 +18,7 @@ class verifications{
     Database db = await DBProvider.instance.database;
     List<String> foodIDValue = [];//foodidのみ
     List<String> foodNameValue = [];//foodnameのみ
+    List<String> addNameValue = [];//追加成分
 
     print("これからユーザ検証");
     if((DBuser.userId.contains(userid))){
@@ -46,15 +47,43 @@ class verifications{
           });
         }
         debugPrint('最終的にfoodNameValueに入れた内容：$foodNameValue');
-        select.addAll(foodNameValue);
+      }
+      select.addAll(foodNameValue);
+      print("登録された義務と推奨結合：$select");
+
+      //とあるユーザがリスト表に登録しているaddidを取得
+      final addid = await db.rawQuery('SELECT addid FROM list where userid = ?', [userid]);
+      print("addid確認：$addid");
+
+      //addidをもとにname
+      for (Map<String, dynamic?> ADD in addid) {
+        ADD.forEach((key, value) async {
+          for (int x = 0; x < ADD.length; x++) {
+            final addId2 = await db.rawQuery('SELECT hiragana,kanji,eigo,otherName FROM k_add where addid = ?', [value]);
+            debugPrint('addId2の内容：$addId2');
+            for (Map<String, dynamic?> value2 in addId2) {
+              value2.forEach((key, value) {
+                addNameValue.add(value as String);
+                debugPrint('addNameValueの内容：$addNameValue');
+
+                select.addAll(addNameValue);
+                print("リストの追加成分結合した結果：$select");
+              });
+            }
+          }
+        });
       }
     }else{
+      //選択した値格納変数
       select = await AllObligationData().getValueCheck();
       select.addAll(await AllRecommendationData().getValueCheck2());
       select.addAll(await AllAnotherData().getValueCheck3());
-    }
-    //選択した値格納変数
 
+      print("Foodselect呼び出す");
+      List<String> foodSelect = await Foodselect();
+      select.addAll(foodSelect);
+      print("呼出し後のセレクト：$select");
+    }
 
     //文字認識結果格納変数
     List<String> resultvalues = await Api.instance.result();
@@ -64,10 +93,6 @@ class verifications{
 
     List<String> result = [];
 
-    print("Foodselect呼び出す");
-    List<String> foodSelect = await Foodselect();
-    select.addAll(foodSelect);
-    print("呼出し後のセレクト：$select");
     select = select.toSet().toList();
     print("重複排除後のセレクト：$select");
 
@@ -102,6 +127,7 @@ class verifications{
     List<Map<String, dynamic>> gimu = [];
     List<Map<String, dynamic>> g = [];
     List<String> All = [];
+    List<String> hira = [];
 
     if (select.isNotEmpty) {
       print("if文に入った");
@@ -138,17 +164,36 @@ class verifications{
       };
 
       //追加成分
-      if(AllAnotherData.valueCheck3.isNotEmpty){
-        List<Map<String, dynamic>> ad = await db.rawQuery('SELECT kanji,eigo,otherName FROM k_add WHERE categoryid = ?', ['TS']);
-        debugPrint('追加成分の漢字と英語をその他を空白込みで取得：$ad');
-        for (Map<String, dynamic?> data in ad) {
+      if (AllAnotherData.valueCheck3.isNotEmpty) {
+        List<Map<String, dynamic>> hiragana = await db.rawQuery('SELECT hiragana FROM k_add WHERE categoryid = ?', ['TS']);
+        debugPrint('ひらがなだけ取得：$hiragana');
+        for (Map<String, dynamic?> data in hiragana) {
           data.forEach((key, value) {
-            if(value != "" && value != null){
-              All.add(value as String);
+            if (value != "" && value != null) {
+              hira.add(value as String);
             }
           });
         }
-        debugPrint("値が入っている漢字、英語、その他を取ってきた$All");
+        debugPrint("ひらがなだけ取ってきた$hira");
+
+        for (int x = 0; x <
+            AllAnotherData.boolList3.length; x++) { //可変長の文だけ回ります
+          //ひらがなと一致した他データを取ってくる
+          if (select.contains(hira[x])) { //もしひらがなリストにselectがふくまれていたら
+            //ひらがなが一致する他データをとってくる
+            gimu = await db.rawQuery('SELECT kanji,eigo,otherName FROM k_add WHERE categoryid = ? AND hiragana = ?', ['TS', hira[x]]);
+          }
+
+          debugPrint('追加成分の漢字と英語をその他を空白込みで取得：$gimu');
+
+          for (Map<String, dynamic?> data in gimu) {
+            data.forEach((key, value) {
+              if (value != "" && value != null) {
+                All.add(value as String);
+              }
+            });
+          }
+        }
       }
 
       for (var value in select) {
