@@ -7,6 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sotsuken2/DB/Food.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../DB/Database.dart';
+
 class Api{
   static List<String> contentList = [""];
   Api._();
