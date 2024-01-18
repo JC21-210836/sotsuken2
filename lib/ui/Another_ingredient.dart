@@ -189,7 +189,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
 
                               }else if(widget.PageFlag == 'CreateUser'){
                                 Navigator.of(context).pop();
-                              }else if(widget.PageFlag == 'ChooseUser'){
+                              }else if(widget.PageFlag == 'ChooseUser' || widget.PageFlag == 'SettingUser'){
                                 debugPrint(widget.PageCount.toString());
                                 for(int n = 0 ; n <= widget.PageCount; n++){
                                   Navigator.of(context).pop();
