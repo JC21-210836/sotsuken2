@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:sqflite/sqflite.dart';
 import '../DB/Database.dart';
-//import '../DB/List.dart';
+import '../DB/List.dart';
+import '../DB/User.dart';
 import '../Data/AllAnotherData.dart';
 import '../Data/AllObligationData.dart';
 import '../Data/AllRecommendationData.dart';
@@ -11,12 +12,49 @@ class verifications{
   verifications._();
   static final verifications instance = verifications._();
   List<String> select = [];
+  int userid = 0;
   // 文字認識結果とユーザ選択成分の照合
   Future<List<String>> verification() async{
+    Database db = await DBProvider.instance.database;
+    List<String> foodIDValue = [];//foodidのみ
+    List<String> foodNameValue = [];//foodnameのみ
+
+    print("これからユーザ検証");
+    if((DBuser.userId.contains(userid))){
+      print("ユーザ居た");
+      //選択されたユーザーがユーザ表に存在したら
+      final foodId = await db.rawQuery('SELECT foodid FROM list where userid = ?',[userid]);
+      debugPrint("ユーザ$useridが登録したfoodidは$foodId");
+
+      //foodIDをもとに、食品表のfoodnameを取得
+      //foodidのvalueだけを抽出
+      for (Map<String, dynamic?> value in foodId) {
+        value.forEach((key, value) {
+          foodIDValue.add(value as String); // foodidを1件ずつ格納
+          debugPrint('foodIDValueの内容：$foodIDValue');
+        });
+      }
+      debugPrint('最終的にfoodIDValueに入れた内容：$foodIDValue');
+
+      //foodidをもとに、foodNameを特定
+      for (int x = 0; x < foodIDValue.length; x++) {
+        final foodId2 = await db.rawQuery('SELECT foodname FROM food where foodid = ?', [foodIDValue[x]]);
+        for (Map<String, dynamic?> value2 in foodId2) {
+          value2.forEach((key, value) {
+            foodNameValue.add(value as String); // foodidを1件ずつ格納
+            debugPrint('foodNameValueの内容：$foodNameValue');
+          });
+        }
+        debugPrint('最終的にfoodNameValueに入れた内容：$foodNameValue');
+        select.addAll(foodNameValue);
+      }
+    }else{
+      select = await AllObligationData().getValueCheck();
+      select.addAll(await AllRecommendationData().getValueCheck2());
+      select.addAll(await AllAnotherData().getValueCheck3());
+    }
     //選択した値格納変数
-    select = await AllObligationData().getValueCheck();
-    select.addAll(await AllRecommendationData().getValueCheck2());
-    select.addAll(await AllAnotherData().getValueCheck3());
+
 
     //文字認識結果格納変数
     List<String> resultvalues = await Api.instance.result();
@@ -50,32 +88,13 @@ class verifications{
     return result;
   }
 
-  //リストから照合
-  /*void selectName(String UserName) async{
-
-    Database db = await DBProvider.instance.database;
+  //ユーザ選択された時
+  void selectName(String UserName) async{
+    print("selectNameにきた");
     DBlist dbList = DBlist();
-    List<String> select = [];
-    List<String> foodname = await Foodselect();
-    print("void selectNameに持ってきた：$foodname");
-
-    final selectList = await db.rawQuery('SELECT hiragana,kanji,eigo,otherName FROM k_add where categoryid = ?',['TS']);
-    final int userid = await dbList.selectUserId(UserName);
-    final foodId = await db.rawQuery('SELECT foodid FROM list where userid = ?',['TS']);
-
-    List<Map<String, dynamic>> selectedList = await db.rawQuery('SELECT hiragana,kanji,eigo,otherName FROM k_add where categoryid = ? ',['TS']);
-    print("selectList：$selectList");
-
-    //Map→list変換
-    List<dynamic> addFoodDynamic = selectedList
-        .map((map) => [map['hiragana'], map['kanji'], map['eigo']])
-        .expand((element) => element)
-        .where((element) => element != null)
-        .toList();
-
-    //List<dynamic>→List<String>変換
-    List<String> addFood = addFoodDynamic.cast<String>();
-  }*/
+    userid = await dbList.selectUserId(UserName);
+    debugPrint("取得対象のユーザは$useridです");
+  }
 
   //データ取得部分
   Future <List<String>> Foodselect()async {
