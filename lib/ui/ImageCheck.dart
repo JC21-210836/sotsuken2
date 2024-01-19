@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sotsuken2/Api/api.dart';
 import 'package:sotsuken2/Api/verification.dart';
 import 'package:sotsuken2/ui/AllergyNotDetection.dart';
 import 'dart:io';
-import '../Api/api.dart';
 import 'AllergyDetection.dart';
 import '../Api/crop.dart';
 
@@ -72,7 +72,6 @@ class _ImageCheckState extends State<ImageCheck> {
                       textAlign: TextAlign.center,
                     ),
                   ),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -124,7 +123,6 @@ class _ImageCheckState extends State<ImageCheck> {
                             setState(() {
                               isLoading = false;
                             });
-
                             if (!content.contains("No")) {
                               Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context) {
@@ -187,7 +185,6 @@ class _ImageCheckState extends State<ImageCheck> {
                 ],
               ),
             ),
-
             // プログレスバーの表示
             if (isLoading)
               Container(
