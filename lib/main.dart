@@ -145,7 +145,8 @@ class Home_Page extends State<Home_Page_State>{
                           ),
                           child: const Text('ご利用方法',
                               style: TextStyle(fontSize: 25,
-                                  color:Colors.deepOrange
+                                  color:Colors.deepOrange,
+                                  fontWeight:FontWeight.bold,
                               )
                           ),
                           onPressed: () {
