@@ -90,7 +90,7 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 4.0)
                               .copyWith(left: 5.0),
-                          child: Text(vals[index]),
+                          child: Text('・${vals[index]}',style:const TextStyle(fontSize: 20,fontWeight: FontWeight.bold,height: 1.3)),
                         );
                       },
                     ),

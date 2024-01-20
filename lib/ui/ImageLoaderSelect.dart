@@ -56,12 +56,14 @@ class ImageLoderSelect extends State<StateImageLoderSelect> {
                     style:ElevatedButton.styleFrom(
                         backgroundColor: Colors.indigo
                     ),
-                    child: const Text('デバイスの\nライブラリから取得',
-                      style:TextStyle(
-                          fontSize: 21,
-                          fontWeight: FontWeight.bold
+                    child: const FittedBox(
+                      child:Text('デバイスの\nライブラリから取得',
+                        style:TextStyle(
+                            fontSize: 21,
+                            fontWeight: FontWeight.bold
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                     onPressed: () async {
                       final XFile? image = await _picker.pickImage(
@@ -82,7 +84,7 @@ class ImageLoderSelect extends State<StateImageLoderSelect> {
                     ),
                     child: const Text('カメラで撮影する',
                       style:TextStyle(
-                          fontSize: 21,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold
                       ),
                       textAlign: TextAlign.center,

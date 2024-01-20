@@ -33,8 +33,11 @@ class Manual_Page extends StatelessWidget{
                   ),
                 ),
               ),
-              const FittedBox(
-                child: Text('-　-　-　-　-　-　-　-',style: TextStyle(color:Colors.orange,fontWeight:FontWeight.bold,fontSize: 30),),
+              Container(
+                margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                child: const FittedBox(
+                  child: Text('-　-　-　-　-　-　-　-',style: TextStyle(color:Colors.orange,fontWeight:FontWeight.bold,fontSize: 30),),
+                ),
               ),
 
               Container(
@@ -53,20 +56,36 @@ class Manual_Page extends StatelessWidget{
                   ),
                 ),
               ),
-              const FittedBox(
-                child: Text('-　-　-　-　-　-　-　-',style: TextStyle(color:Colors.orange,fontWeight:FontWeight.bold,fontSize: 30),),
+              Container(
+                margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                child: const FittedBox(
+                  child: Text('-　-　-　-　-　-　-　-',style: TextStyle(color:Colors.orange,fontWeight:FontWeight.bold,fontSize: 30),),
+                ),
               ),
               Container(
-                margin: const EdgeInsets.fromLTRB(20, 10, 20, 20),
+                margin: const EdgeInsets.fromLTRB(20, 50, 20, 0),
+                alignment: Alignment.topLeft,
+                child:FittedBox(
+                  child:RichText(
+                      text: const TextSpan(
+                          style: TextStyle(color:Colors.black,),
+                          children: [
+                            TextSpan(
+                                text:'<ご利用の際の注意事項>\n',
+                                style: TextStyle(color:Colors.red,fontSize: 23,fontWeight: FontWeight.bold,height: 0.3)
+                            ),
+                          ]
+                      )
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                 child:FittedBox(
                   child: RichText(
                     text: const TextSpan(
                       style: TextStyle(color:Colors.black,),
                         children: [
-                          TextSpan(
-                              text:'<ご利用の際の注意事項>\n',
-                              style: TextStyle(color:Colors.red,fontSize: 27,fontWeight: FontWeight.bold,height: 2)
-                          ),
                           TextSpan(
                               text:'・ネットワークの接続について\n',
                               style: TextStyle(color:Colors.deepOrange,fontSize: 25,fontWeight: FontWeight.bold,height: 2)
@@ -97,7 +116,7 @@ class Manual_Page extends StatelessWidget{
                           ),
 
                           TextSpan(
-                            text:'・トリミングについて\n',
+                            text:'・写真のトリミングについて\n',
                             style: TextStyle(color:Colors.deepOrange,fontSize: 25,fontWeight: FontWeight.bold,height: 2.5),
                           ),
                           TextSpan(
@@ -111,8 +130,11 @@ class Manual_Page extends StatelessWidget{
                 ),
 
               ),
-              const FittedBox(
-                child: Text('-　-　-　-　-　-　-　-',style: TextStyle(color:Colors.orange,fontWeight:FontWeight.bold,fontSize: 30),),
+              Container(
+                margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                child: const FittedBox(
+                  child: Text('-　-　-　-　-　-　-　-',style: TextStyle(color:Colors.orange,fontWeight:FontWeight.bold,fontSize: 30),),
+                ),
               ),
               Container(
                 margin: const EdgeInsets.fromLTRB(20, 30, 20, 0),
@@ -124,7 +146,7 @@ class Manual_Page extends StatelessWidget{
                       children: [
                         TextSpan(
                             text:'<その他の詳細説明>\n',
-                            style: TextStyle(color:Colors.red,fontSize: 27,fontWeight: FontWeight.bold,height: 1)
+                            style: TextStyle(color:Colors.red,fontSize: 23,fontWeight: FontWeight.bold,height: 1)
                         ),
                       ]
                     )
@@ -133,8 +155,8 @@ class Manual_Page extends StatelessWidget{
               ),
 
               Container(
-                width:330,
-                height:55,
+                width:300,
+                height:50,
                 margin: const EdgeInsets.fromLTRB(10,0,10,10),
                 child:OutlinedButton(
                   style: OutlinedButton.styleFrom(
@@ -149,12 +171,14 @@ class Manual_Page extends StatelessWidget{
                       })
                     );
                   },
-                  child: const Text('追加成分の登録について',style: TextStyle(color:Colors.deepOrange,fontSize: 25,fontWeight: FontWeight.bold),)
+                  child: const FittedBox(
+                     child:Text('追加成分の登録について',style: TextStyle(color:Colors.deepOrange,fontSize: 23,fontWeight: FontWeight.bold),)
+                  ),
                 )
               ),
               Container(
-                  width:330,
-                  height:55,
+                  width:300,
+                  height:50,
                   margin: const EdgeInsets.all(10),
                   child:OutlinedButton(
                       style: OutlinedButton.styleFrom(
@@ -169,12 +193,14 @@ class Manual_Page extends StatelessWidget{
                             })
                         );
                       },
-                      child: const Text('ユーザーの登録について',style: TextStyle(color:Colors.deepOrange,fontSize: 25,fontWeight: FontWeight.bold),)
+                      child: const FittedBox(
+                          child:Text('ユーザーの登録について',style: TextStyle(color:Colors.deepOrange,fontSize: 23,fontWeight: FontWeight.bold),)
+                      ),
                   )
               ),
               Container(
-                  width:330,
-                  height:55,
+                  width:300,
+                  height:50,
                   margin: const EdgeInsets.all(10),
                   child:OutlinedButton(
                       style: OutlinedButton.styleFrom(
@@ -189,12 +215,14 @@ class Manual_Page extends StatelessWidget{
                             })
                         );
                       },
-                      child: const Text('登録内容の変更について',style: TextStyle(color:Colors.deepOrange,fontSize: 25,fontWeight: FontWeight.bold),)
+                      child:const FittedBox(
+                          child: Text('登録内容の変更について',style: TextStyle(color:Colors.deepOrange,fontSize: 23,fontWeight: FontWeight.bold),)
+                      ),
                   )
               ),
               Container(
-                  width:330,
-                  height:55,
+                  width:300,
+                  height:50,
                   margin: const EdgeInsets.fromLTRB(10,10,10,50),
                   child:OutlinedButton(
                       style: OutlinedButton.styleFrom(
@@ -209,7 +237,9 @@ class Manual_Page extends StatelessWidget{
                             })
                         );
                       },
-                      child: const Text('ユーザーの削除について',style: TextStyle(color:Colors.deepOrange,fontSize: 25,fontWeight: FontWeight.bold),)
+                      child:const FittedBox(
+                          child: Text('ユーザーの削除について',style: TextStyle(color:Colors.deepOrange,fontSize: 23,fontWeight: FontWeight.bold),)
+                      ),
                   )
               ),
 

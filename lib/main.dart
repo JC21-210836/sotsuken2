@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title:'タイトル',
+        title:'成分チェッカー',
         theme: ThemeData(
           primaryColor: Colors.blue,
         ),
