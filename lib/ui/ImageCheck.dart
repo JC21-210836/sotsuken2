@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sotsuken2/Api/api.dart';
 import 'package:sotsuken2/Api/verification.dart';
+import 'package:sotsuken2/component/AppbarComp.dart';
 import 'package:sotsuken2/ui/AllergyNotDetection.dart';
 import 'dart:io';
 import 'AllergyDetection.dart';
@@ -26,10 +27,7 @@ class _ImageCheckState extends State<ImageCheck> {
     print("Build method is called.");
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-          toolbarHeight: 60,
-          title: const Text('成分チェッカー')
-      ),
+      appBar: AppbarComp(),
       body: Center(
         child: Stack(
           alignment: Alignment.center,

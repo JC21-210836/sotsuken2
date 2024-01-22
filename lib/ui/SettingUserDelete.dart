@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/Data/AllUserData.dart';
+import 'package:sotsuken2/component/AppbarComp.dart';
 
 import '../DB/List.dart';
 import '../DB/User.dart';
@@ -23,9 +24,7 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar:AppBar(
-        title:const Text('成分チェッカー'),
-      ),
+      appBar:AppbarComp(),
       body: Center(
           child:SingleChildScrollView(
             child:Column(

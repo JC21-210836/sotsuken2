@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sotsuken2/component/AppbarComp.dart';
 
 import '../DB/User.dart';
 import 'SettingUser2.dart';
@@ -25,9 +26,7 @@ class UserSettings1 extends State<StateUserSettings1>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar:AppBar(
-        title:const Text('成分チェッカー'),
-      ),
+      appBar:AppbarComp(),
       body: Center(
           child:SingleChildScrollView(
             child:Column(

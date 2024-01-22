@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/Data/AllAnotherData.dart';
+import 'package:sotsuken2/component/AppbarComp.dart';
 
 import '../DB/Add.dart';
 import '../DB/Food.dart';
@@ -30,9 +31,7 @@ class UserSettings2 extends State<StateUserSettings2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('成分チェッカー'),
-      ),
+      appBar: AppbarComp(),
       body: Center(
           child: SingleChildScrollView(
               child: Column(

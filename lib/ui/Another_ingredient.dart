@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
+import 'package:sotsuken2/component/AppbarComp.dart';
 import 'package:sotsuken2/ui/ImageLoaderSelect.dart';
 import '../DB/Add.dart';
 import 'AddAnotherIngredient.dart';
@@ -38,9 +39,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar:AppBar(
-          title: const Text('成分チェッカー'),
-        ),
+        appBar:AppbarComp(),
         body: Center(
             child:SingleChildScrollView(
                 child:Column(

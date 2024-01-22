@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sotsuken2/component/AppbarComp.dart';
 import 'package:sotsuken2/ui/ReadIngredient.dart';
 
 class StateAllergyNotDetection extends StatefulWidget{
@@ -15,9 +16,7 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
   Widget build(BuildContext context){
     print("AllergyNotDetectionにきた");
     return Scaffold(
-      appBar: AppBar(
-          title: const Text('成分チェッカー')
-      ),
+      appBar: AppbarComp(),
       body: Center(
           child:SingleChildScrollView(
 

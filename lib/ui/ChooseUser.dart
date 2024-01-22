@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/Api/verification.dart';
+import 'package:sotsuken2/component/AppbarComp.dart';
 import '../DB/Add.dart';
 import '../DB/User.dart';
 import 'CreateUser1.dart';
@@ -49,10 +50,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(
-          toolbarHeight: 60,
-          title: const Text('成分チェッカー')
-      ),
+      appBar:AppbarComp(),
       endDrawer: const SizedBox(
         width: 270,
         child:DrawerMenu(),

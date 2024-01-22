@@ -5,6 +5,7 @@ import 'Data/AllAnotherData.dart';
 import 'ui/SettingUser1.dart';
 import 'ui/ChooseUser.dart';
 import 'ui/Manual.dart';
+import 'component/AppbarComp.dart';
 
 
 void main() {
@@ -46,10 +47,7 @@ class Home_Page extends State<Home_Page_State>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 60,
-        title: const Text('成分チェッカー'),
-      ),
+      appBar: AppbarComp(),
       body: Center(
 
         child:Column(

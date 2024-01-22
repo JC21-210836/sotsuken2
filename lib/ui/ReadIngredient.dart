@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sotsuken2/component/AppbarComp.dart';
 import '../Api/api.dart';
 import 'ImageLoaderSelect.dart';
 
@@ -38,9 +39,7 @@ class _ReadIngredientState extends State<ReadIngredient> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('成分チェッカー'),
-      ),
+      appBar: AppbarComp(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(

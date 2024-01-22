@@ -5,6 +5,7 @@ import 'package:sotsuken2/Data/AllUserData.dart';
 import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
 import 'package:sotsuken2/Data/AllAnotherData.dart';
+import '../component/AppbarComp.dart';
 
 class StateCreateUser1 extends StatefulWidget{
   const StateCreateUser1({super.key});
@@ -26,9 +27,7 @@ class CreateUser1_Page extends State<StateCreateUser1>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar:AppBar(
-        title:const Text('成分チェッカー'),
-      ),
+      appBar: AppbarComp(),
       body: Center(
           child:SingleChildScrollView(
             child:Column(
