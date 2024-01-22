@@ -75,8 +75,16 @@ class ImageLoderSelect extends State<StateImageLoderSelect> {
                       }else{
                         showDialog(context: context, builder: (context){
                           return AlertDialog(
-                            title: const Text('エラー'),
-                            content: const Text('読み込みエラーが発生しました。他の画像を選択してください'),
+                            title: Row(
+                              children: [
+                                Icon(
+                                  Icons.error,
+                                  color: Colors.yellow,
+                                ),
+                                Text('エラー'),
+                              ],
+                            ),
+                            content: const Text('読み込みができませんでした。\n他の画像を選択してください'),
                             actions: [
                               TextButton(onPressed: (){
                                 Navigator.pop(context);
