@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget{
             return const StateUserSettings1();
           },
         },
-        home: Container(
+        home:Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
@@ -64,8 +64,8 @@ class Home_Page extends State<Home_Page_State>{
             mainAxisAlignment: MainAxisAlignment.center,
             children:<Widget>[
               Container(
-                height:500,
                 width: 300,
+                margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
@@ -81,7 +81,7 @@ class Home_Page extends State<Home_Page_State>{
                 child:Column(
                     children: [
                       Container(
-                        margin: const EdgeInsets.fromLTRB(30,50,30,20),
+                        margin: const EdgeInsets.fromLTRB(30,40,30,20),
                         decoration: BoxDecoration(
                           color:Colors.white,
                           border: Border.all(
@@ -126,17 +126,17 @@ class Home_Page extends State<Home_Page_State>{
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                primary: Colors.white,
+                                backgroundColor: Colors.white,
                                 elevation:7
                               ),
                                child:Column(
                                 children: [
                                    Container(
                                      margin: EdgeInsets.fromLTRB(0, 3, 0, 0),
-                                     height: 120,
+                                     height: 113,
                                      child:Image.asset(
                                        'images/milk.png',
-                                       fit: BoxFit.fitHeight,
+                                       fit: BoxFit.fitWidth,
                                      ),
                                    ),
                                   const Text('食品',
@@ -167,17 +167,17 @@ class Home_Page extends State<Home_Page_State>{
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20),
                                     ),
-                                    primary: Colors.white,
+                                    backgroundColor: Colors.white,
                                     elevation:7
                                 ),
                                 child:Column(
                                   children: [
                                     Container(
                                       height: 113,
-                                      margin: EdgeInsets.fromLTRB(0, 3, 0, 5),
+                                      margin: EdgeInsets.fromLTRB(0, 3, 0, 0),
                                       child:Image.asset(
                                           'images/founda.png',
-                                          fit: BoxFit.fitHeight,
+                                          fit: BoxFit.fitWidth,
                                       ),
                                     ),
                                     const Text('美容',
@@ -198,21 +198,35 @@ class Home_Page extends State<Home_Page_State>{
                         ],
                       ),
                       Container(
-                        margin: const EdgeInsets.fromLTRB(0,40,0,20),
+                        margin: const EdgeInsets.fromLTRB(0,30,0,30),
                         //padding:const EdgeInsets.fromLTRB(20, 5, 20, 5),
                         height: 50,
                         width: 210,
-                        color: Colors.white,
-                        child:ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                                backgroundColor:Colors.orange[700]
+
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: const [
+                            BoxShadow(
+                                color:Colors.black12,
+                                blurRadius: 2,
+                                spreadRadius: 2,
+                                offset: Offset(2,2)
+                            )
+                          ],
+                          gradient: const LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [Color(0xffff8300),Colors.orange,Color(0xffffd24e),], //青から緑へのグラデーション
                           ),
-                          child: const Text('ご利用方法',
-                              style: TextStyle(fontSize: 25,
+                        ),
+                        child:TextButton.icon(
+                          icon: Icon(Icons.import_contacts,color: Colors.white,),
+                          label: const Text('ご利用方法',
+                                style: TextStyle(fontSize: 25,
                                   color:Colors.white,
                                   fontWeight:FontWeight.bold,
-                              )
-                          ),
+                                )
+                            ),
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(builder: (context){
