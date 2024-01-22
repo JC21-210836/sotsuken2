@@ -114,27 +114,52 @@ class _ImageCheckState extends State<ImageCheck> {
                                 fontWeight: FontWeight.bold),
                           ),
                           onPressed: () async {
-                            setState(() {
-                              isLoading = true;
-                            });
-                            XFile xFileimage = cropimage ?? widget.image;
-                            await Api.instance.postData(xFileimage);
-                            List<String> content = await verifications.instance.verification();
-                            setState(() {
-                              isLoading = false;
-                            });
-                            if (!content.contains("No")) {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) {
-                                  return StateAllergyDetection();
-                                }),
-                              );
-                            } else {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) {
-                                  return StateAllergyNotDetection();
-                                }),
-                              );
+                            try{
+                              setState(() {
+                                isLoading = true;
+                              });
+                              XFile xFileimage = cropimage ?? widget.image;
+                              await Api.instance.postData(xFileimage);
+                              List<String> content = await verifications.instance.verification();
+                              setState(() {
+                                isLoading = false;
+                              });
+                              if (!content.contains("No")) {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context) {
+                                    return StateAllergyDetection();
+                                  }),
+                                );
+                              } else {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context) {
+                                    return StateAllergyNotDetection();
+                                  }),
+                                );
+                              }
+                            }catch(error){
+                              setState(() {
+                                isLoading = false;
+                              });
+                              showDialog(context: context, builder: (context){
+                                return AlertDialog(
+                                  title: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.error,
+                                        color: Colors.red,
+                                      ),
+                                      Text('ネットワークエラー'),
+                                    ],
+                                  ),
+                                  content: const Text('接続状況を確認してください'),
+                                  actions: [
+                                    TextButton(onPressed: (){
+                                      Navigator.pop(context);
+                                    }, child: Text('OK')),
+                                  ],
+                                );
+                              });
                             }
                           },
                         ),
