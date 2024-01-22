@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import '../Api/api.dart';
+import '../DB/Database.dart';
+import 'AllergyNotDetection.dart';
 import 'package:sotsuken2/Api/verification.dart';
 import 'package:sotsuken2/ui/ImageLoaderSelect.dart';
 import 'package:sotsuken2/ui/ReadIngredient.dart';
 
 class StateAllergyDetection extends StatefulWidget{
-  const StateAllergyDetection({super.key});
-
+ const StateAllergyDetection({super.key});
   @override
-  State<StateAllergyDetection> createState(){
-    return AllergyDetection_Page();
-  }
+  AllergyDetection_Page createState() => AllergyDetection_Page();
 }
 
 class AllergyDetection_Page extends State<StateAllergyDetection>{

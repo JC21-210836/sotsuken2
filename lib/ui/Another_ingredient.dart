@@ -17,7 +17,6 @@ class StateAnother_ingredient extends StatefulWidget{
   }
 }
 
-
 class Another_ingredient extends State<StateAnother_ingredient>{
   AllObligationData aod = AllObligationData();
   AllRecommendationData ard = AllRecommendationData();
