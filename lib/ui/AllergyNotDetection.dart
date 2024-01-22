@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/ui/ReadIngredient.dart';
 
+import 'ImageLoaderSelect.dart';
+
 class StateAllergyNotDetection extends StatefulWidget{
   const StateAllergyNotDetection({super.key});
   @override
@@ -71,6 +73,11 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                       ),
                     ),
                     onPressed: (){
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context){
+                            return const StateImageLoderSelect();
+                          })
+                      );
                     },
                     child: const FittedBox(
                       child: Text('他の商品をスキャンする',
