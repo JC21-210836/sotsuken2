@@ -66,11 +66,25 @@ class ImageLoderSelect extends State<StateImageLoderSelect> {
                       ),
                     ),
                     onPressed: () async {
+                      var imageSource = ImageSource.gallery;
                       final XFile? image = await _picker.pickImage(
-                          source: ImageSource.gallery
+                          source: imageSource
                       );
-                      if (image != null)
+                      if (image != null){
                         Navigator.push(context, MaterialPageRoute(builder: (context) => ImageCheck(image),),);
+                      }else{
+                        showDialog(context: context, builder: (context){
+                          return AlertDialog(
+                            title: const Text('エラー'),
+                            content: const Text('読み込みエラーが発生しました。他の画像を選択してください'),
+                            actions: [
+                              TextButton(onPressed: (){
+                                Navigator.pop(context);
+                              }, child: Text('OK')),
+                            ],
+                          );
+                        });
+                      }
                     },
                   ),
                 ),
