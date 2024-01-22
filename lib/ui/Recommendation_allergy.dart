@@ -38,6 +38,7 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
                 margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
                 padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                 decoration:BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     color:Colors.indigo,
                     width: 1,

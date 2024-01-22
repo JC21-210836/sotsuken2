@@ -38,6 +38,7 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
                     margin:const EdgeInsets.fromLTRB(0, 30, 0, 15),
                     padding:const EdgeInsets.fromLTRB(40, 7, 40, 7),
                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                         color: Colors.indigo,
                         width: 1,
@@ -77,6 +78,7 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
                         Container(
                           padding:EdgeInsets.fromLTRB(5, 3, 5, 3),
                           decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
                             color:Colors.white,
                             border: Border.all(
                               color: Colors.indigo,
@@ -126,6 +128,7 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
                         width:90,
                         padding:EdgeInsets.fromLTRB(7, 3, 7, 3),
                         decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
                           color:Colors.white,
                           border: Border.all(
                             color: Colors.indigo,
@@ -164,6 +167,7 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
                         width:90,
                         padding:EdgeInsets.fromLTRB(7, 3, 7, 3),
                         decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
                           color:Colors.white,
                           border: Border.all(
                             color: Colors.indigo,
@@ -202,6 +206,7 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
                         width:90,
                         padding:EdgeInsets.fromLTRB(7, 3, 7, 3),
                         decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
                           color:Colors.white,
                           border: Border.all(
                             color: Colors.indigo,

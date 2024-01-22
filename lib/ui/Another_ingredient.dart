@@ -50,6 +50,7 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                         margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
                         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                         decoration:BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
                           border: Border.all(
                             color:Colors.indigo,
                             width: 1,

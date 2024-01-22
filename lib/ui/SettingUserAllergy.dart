@@ -36,7 +36,8 @@ class SettingAllergy extends State<StateSettingAllergy>{
                   Container(
                     margin: const EdgeInsets.fromLTRB(0, 30, 0, 10),
                     padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                    decoration:const BoxDecoration(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
                       color: Colors.deepOrange,
                     ),
                     child: const Text('アレルゲンの変更',
@@ -77,6 +78,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                       margin: const EdgeInsets.fromLTRB(15, 5, 15, 30),
                       padding:const EdgeInsets.fromLTRB(25, 10, 25, 10),
                       decoration:BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
                           border:Border.all(color:Colors.red,width:1)
                       ),
                       child:Column(
@@ -118,6 +120,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                       margin: const EdgeInsets.fromLTRB(15, 5, 15, 30),
                       padding:const EdgeInsets.fromLTRB(25, 10, 25, 10),
                       decoration:BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
                           border:Border.all(color:Colors.blue,width:1)
                       ),
                       //テキスト表示させるやつがいる↓
@@ -159,6 +162,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                       margin: const EdgeInsets.fromLTRB(15, 5, 15, 30),
                       padding:const EdgeInsets.fromLTRB(25, 10, 25, 10),
                       decoration:BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
                           border:Border.all(color:Colors.amber,width:1)
                       ),
                       //テキスト表示させるやつがいる↓

@@ -28,7 +28,10 @@ class SettingUserNameChange extends State<StateSettingUserNameChange>{
                   Container(
                     margin:const EdgeInsets.fromLTRB(0, 10, 0, 30),
                     padding:const EdgeInsets.fromLTRB(20, 12, 20, 12),
-                    color:Colors.deepOrange,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color:Colors.deepOrange,
+                    ),
                     child:const FittedBox(
                       child:Text('ユーザー名の変更',
                         style: TextStyle(

@@ -37,6 +37,7 @@ class CreateUser1_Page extends State<StateCreateUser1>{
                     margin:const EdgeInsets.fromLTRB(0, 10, 0, 30),
                     padding:const EdgeInsets.fromLTRB(40, 10, 40, 10),
                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                         color: Colors.indigo,
                         width: 1,

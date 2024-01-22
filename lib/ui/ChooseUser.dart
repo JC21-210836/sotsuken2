@@ -63,7 +63,10 @@ class ChooseUser_Page extends State<StateChooseUser>{
                 Container(
                   margin: const EdgeInsets.all(13),
                   padding: const EdgeInsets.fromLTRB(40, 13, 40, 13),
-                  color: Colors.indigo,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.indigo,
+                  ),
                   child: const FittedBox(
                     child:Text('ユーザーの選択',
                       style: TextStyle(

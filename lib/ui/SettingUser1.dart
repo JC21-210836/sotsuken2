@@ -36,6 +36,7 @@ class UserSettings1 extends State<StateUserSettings1>{
                     margin:const EdgeInsets.fromLTRB(0, 10, 0, 10),
                     padding:const EdgeInsets.fromLTRB(40, 10, 40, 10),
                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                         color: Colors.deepOrange,
                         width: 1,

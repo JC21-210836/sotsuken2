@@ -58,7 +58,10 @@ class _ImageCheckState extends State<ImageCheck> {
                   ),
                   Container(
                     width: 250,
-                    child: imagepath ?? Image.file(File(widget.image.path)),
+                    child:ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: imagepath ?? Image.file(File(widget.image.path)),
+                    )
                   ),
                   Container(
                     padding: const EdgeInsets.all(8),

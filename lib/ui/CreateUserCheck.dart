@@ -37,7 +37,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                     Container(
                       margin: const EdgeInsets.fromLTRB(0, 40, 120, 0),
                       decoration:BoxDecoration(
-                          border:Border.all(color:Colors.red,width:1)
+                          border:Border.all(color:Colors.red,width:1),
                       ),
 
                       child: Container(
@@ -60,7 +60,8 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                       margin: const EdgeInsets.fromLTRB(15, 5, 15, 30),
                       padding:const EdgeInsets.fromLTRB(25, 10, 25, 10),
                       decoration:BoxDecoration(
-                          border:Border.all(color:Colors.red,width:1)
+                          border:Border.all(color:Colors.red,width:1),
+                          borderRadius: BorderRadius.circular(5),
                       ),
                       //テキスト表示させるやつがいる↓
 
@@ -102,7 +103,8 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                       margin: const EdgeInsets.fromLTRB(15, 5, 15, 30),
                       padding:const EdgeInsets.fromLTRB(25, 10, 25, 10),
                       decoration:BoxDecoration(
-                          border:Border.all(color:Colors.blue,width:1)
+                          border:Border.all(color:Colors.blue,width:1),
+                        borderRadius: BorderRadius.circular(5),
                       ),
                       //テキスト表示させるやつがいる↓
                       child:Column(
@@ -133,7 +135,8 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                         margin:const EdgeInsets.fromLTRB(5, 5, 5, 5),
                         padding:const EdgeInsets.fromLTRB(15, 10, 15, 10),
                         decoration:BoxDecoration(
-                            border:Border.all(color:Colors.amber,width:1)
+                            border:Border.all(color:Colors.amber,width:1),
+
                         ),
                         child:const Text('その他の成分',style:TextStyle(fontSize:25,fontWeight: FontWeight.bold,color:Colors.orange)),
                       ),
@@ -143,7 +146,8 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                       margin: const EdgeInsets.fromLTRB(15, 5, 15, 30),
                       padding:const EdgeInsets.fromLTRB(25, 10, 25, 10),
                       decoration:BoxDecoration(
-                          border:Border.all(color:Colors.amber,width:1)
+                          border:Border.all(color:Colors.amber,width:1),
+                          borderRadius: BorderRadius.circular(5),
                       ),
                       //テキスト表示させるやつがいる↓
                       child:Column(
