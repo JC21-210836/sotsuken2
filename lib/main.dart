@@ -31,7 +31,16 @@ class MyApp extends StatelessWidget{
             return const StateUserSettings1();
           },
         },
-        home: Home_Page_State(),
+        home: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors:[Colors.white,Color(0xFF90D4FA)],
+            )
+          ),
+          child:Home_Page_State(),
+        ),
     );
   }
 }
@@ -47,6 +56,7 @@ class Home_Page extends State<Home_Page_State>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppbarComp(),
       body: Center(
 
@@ -55,16 +65,23 @@ class Home_Page extends State<Home_Page_State>{
             children:<Widget>[
               Container(
                 height:500,
-                decoration:const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('images/milk.png'),
-                      fit:BoxFit.contain
-                  ),
+                width: 300,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  boxShadow: const [
+                    BoxShadow(
+                      color:Colors.black12,
+                      blurRadius: 2,
+                      spreadRadius: 2,
+                      offset: Offset(7,7)
+                    )
+                  ],
                 ),
                 child:Column(
                     children: [
                       Container(
-                        margin: const EdgeInsets.fromLTRB(30,50,30,40),
+                        margin: const EdgeInsets.fromLTRB(30,50,30,20),
                         decoration: BoxDecoration(
                           color:Colors.white,
                           border: Border.all(
@@ -93,57 +110,106 @@ class Home_Page extends State<Home_Page_State>{
                             )
                         ),
                       ),
-                      Container(
-                        margin: const EdgeInsets.all(20),
-                        height: 55,
-                        width: 210,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.indigo
-                          ),
-                          child: const Text('食品',style: TextStyle(fontSize: 30),),
-                          onPressed:(){
-                            _selectlistUser();
-                            Future.delayed(const Duration(seconds: 1)).then((_){
-                              Navigator.pushNamed(context, 'ChooseUser_page');
-                              aad.AllResetAnother();
-                            });
-                          }
-                        ),
-                      ),
-                      Container(
-                          margin: const EdgeInsets.all(20),
-                          height: 55,
-                          width: 210,
-                          child:ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.indigo
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children:[
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                            height: 170,
+                            width: 120,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Colors.black26,width: 2)
                             ),
-                            onPressed: (){
-                              //_selectlistUser();
-                              Future.delayed(const Duration(seconds: 1)).then((_){
-                                //Navigator.pushNamed(context, 'ChooseUser_page');
-                              });
-                            },
-                            child: const Text('美容',style: TextStyle(fontSize: 30),),
-                          )
+                            child: OutlinedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                primary: Colors.white,
+                                elevation:7
+                              ),
+                               child:Column(
+                                children: [
+                                   Container(
+                                     margin: EdgeInsets.fromLTRB(0, 3, 0, 0),
+                                     height: 120,
+                                     child:Image.asset(
+                                       'images/milk.png',
+                                       fit: BoxFit.fitHeight,
+                                     ),
+                                   ),
+                                  const Text('食品',
+                                    style: TextStyle(
+                                        fontSize: 27,color: Colors.indigo,
+                                    ),
+                                  )
+                                ],
+                               ),
+                                onPressed:(){
+                                  _selectlistUser();
+                                  Future.delayed(const Duration(seconds: 1)).then((_){
+                                    Navigator.pushNamed(context, 'ChooseUser_page');
+                                  });
+                                }
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                            height: 170,
+                            width: 120,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(color: Colors.black26,width: 2)
+                            ),
+                            child: OutlinedButton(
+                                style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    primary: Colors.white,
+                                    elevation:7
+                                ),
+                                child:Column(
+                                  children: [
+                                    Container(
+                                      height: 113,
+                                      margin: EdgeInsets.fromLTRB(0, 3, 0, 5),
+                                      child:Image.asset(
+                                          'images/founda.png',
+                                          fit: BoxFit.fitHeight,
+                                      ),
+                                    ),
+                                    const Text('美容',
+                                      style: TextStyle(
+                                        fontSize: 27,color: Colors.indigo,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                onPressed:(){
+                                  //_selectlistUser();
+                                  Future.delayed(const Duration(seconds: 1)).then((_){
+                                    //Navigator.pushNamed(context, 'ChooseUser_page');
+                                  });
+                                }
+                            ),
+                          ),
+                        ],
                       ),
-
                       Container(
-                        margin: const EdgeInsets.fromLTRB(0,30,0,20),
+                        margin: const EdgeInsets.fromLTRB(0,40,0,20),
                         //padding:const EdgeInsets.fromLTRB(20, 5, 20, 5),
                         height: 50,
                         width: 210,
                         color: Colors.white,
-                        child:OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                              side: const BorderSide(
-                                  color:Colors.deepOrange
-                              )
+                        child:ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                                backgroundColor:Colors.orange[700]
                           ),
                           child: const Text('ご利用方法',
                               style: TextStyle(fontSize: 25,
-                                  color:Colors.deepOrange,
+                                  color:Colors.white,
                                   fontWeight:FontWeight.bold,
                               )
                           ),
