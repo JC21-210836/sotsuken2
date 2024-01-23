@@ -70,19 +70,23 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                 children:<Widget>[
 
                   Container(
-                    margin: const EdgeInsets.fromLTRB(0, 10, 0, 15),
+                    margin: const EdgeInsets.fromLTRB(0, 20, 0, 15),
                     decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
                         border: Border.all(color:Colors.deepOrange)
                     ),
                     child: Container(
-                      margin: const EdgeInsets.all(5),
+                      margin: const EdgeInsets.all(2),
                       padding: const EdgeInsets.fromLTRB(13, 10, 13, 10),
-                      color: Colors.deepOrange,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(color:Colors.deepOrange)
+                      ),
                       child: const FittedBox(
                         child:Text('検出されたアレルゲン',
                           style: TextStyle(
-                              fontSize: 24,
-                              color:Colors.white,
+                              fontSize: 23,
+                              color:Colors.deepOrange,
                               fontWeight: FontWeight.bold
                           ),
                         ),
@@ -116,14 +120,16 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                     ),
                   ),
                   Container(
-                    height: 60,
+                    height: 55,
                     width: 260,
                     margin: const EdgeInsets.all(10),
-                    child:OutlinedButton(
-                      style:OutlinedButton.styleFrom(
-                        side: const BorderSide(
-                          color: Colors.deepOrange,
-                        ),
+                    child:ElevatedButton(
+                      style:ElevatedButton.styleFrom(
+                          backgroundColor: Colors.orange[700],
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15)
+                          ),
+                          elevation: 7
                       ),
                       onPressed: (){
                       },
@@ -131,7 +137,7 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                         child: Text('他の商品をスキャンする',
                           style:TextStyle(
                             fontSize: 24,
-                            color:Colors.deepOrange,
+                            color:Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -143,13 +149,15 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                       children: [
                         Container(
                           margin: const EdgeInsets.fromLTRB(0,0,5,30),
-                          height: 80,
+                          height: 70,
                           width: 140,
-                          child:OutlinedButton(
-                            style:OutlinedButton.styleFrom(
-                              side: const BorderSide(
-                                color: Colors.blue,
-                              ),
+                          child:ElevatedButton(
+                            style:ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15)
+                                ),
+                                elevation: 7
                             ),
                             onPressed: (){
                               Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
@@ -158,7 +166,7 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                               child:Text('他のユーザー\nを選択する',
                                   style:TextStyle(
                                     fontSize: 20,
-                                    color:Colors.indigo,
+                                    color:Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
                                   textAlign:TextAlign.center
@@ -168,19 +176,22 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                         ),
                         Container(
                           margin: const EdgeInsets.fromLTRB(5,0,0,30),
-                          height: 80,
+                          padding:EdgeInsets.fromLTRB(3, 0, 3, 0),
+                          height: 70,
                           width: 130,
-                          child:OutlinedButton(
-                              style:OutlinedButton.styleFrom(
-                                side: const BorderSide(
-                                  color: Colors.blue,
-                                ),
+                          child:ElevatedButton(
+                              style:ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15)
+                                  ),
+                                  elevation: 7
                               ),
                               child: const FittedBox(
                                 child:Text('読み取った\n成分を見る',
                                     style:TextStyle(
                                       fontSize: 20,
-                                      color:Colors.indigo,
+                                      color:Colors.white,
                                       fontWeight: FontWeight.bold,
                                     ),
                                     textAlign:TextAlign.center
