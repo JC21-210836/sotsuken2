@@ -246,9 +246,13 @@ class AddAnotherIngredient extends State<StateAddAnotherIngredient>{
                       margin: const EdgeInsets.fromLTRB(0, 15, 0, 30),
                       child:ElevatedButton(
                         style:ElevatedButton.styleFrom(
-                          backgroundColor: Colors.indigo,
+                            backgroundColor: Colors.blue,
+                            shape:RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            elevation: 7
                         ),
-                        child:const Text('登録',style: TextStyle(fontSize: 30),),
+                        child:const Text('登録',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
                         onPressed: (){
                           _insertAdd();//追加した処理12/21
                           aad.addMethod3(ingredientName);

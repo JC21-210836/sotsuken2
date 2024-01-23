@@ -110,12 +110,13 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                     width: 290,
                     margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                     padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                    child:OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                          foregroundColor: Colors.indigo, side: const BorderSide(
-                        color: Colors.indigoAccent,
-                        width: 1.5,
-                      )
+                    child:ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        shape:RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        elevation: 7
                       ),
                       onPressed:(){
                         aod.HanteiObligation();
@@ -142,12 +143,13 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                       width: 290,
                       height: 70,
                       padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                      child:OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                            foregroundColor: Colors.indigo, side: const BorderSide(
-                          color: Colors.indigoAccent,
-                          width: 1.5,
-                        )
+                      child:ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue,
+                            shape:RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            elevation: 7
                         ),
                         onPressed:(){
                           _selectAdd();
@@ -172,12 +174,13 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                     height: 70,
                     width: 290,
                     padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                    child:  OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                          foregroundColor: Colors.deepOrange, side: const BorderSide(
-                        color: Colors.deepOrange,
-                        width: 1.5,
-                      )
+                    child:  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.orange[700],
+                          shape:RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          elevation: 7
                       ),
                       onPressed:(){
                         if(widget.PageFlag == 'ChooseUser'){

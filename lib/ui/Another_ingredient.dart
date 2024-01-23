@@ -141,13 +141,13 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                         height: 90,
                         margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
                         padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                        child:  OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                              foregroundColor: Colors.indigo,
-                              side: const BorderSide(
-                                color: Colors.blue,
-                                width: 1.5,
-                              )
+                        child:  ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.blue,
+                              shape:RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              elevation: 7
                           ),
                           onPressed:(){
                             Navigator.of(context).push(
@@ -171,12 +171,13 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                           height: 70,
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
                           padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                          child:  OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                                foregroundColor: Colors.deepOrange, side: const BorderSide(
-                              color: Colors.deepOrange,
-                              width: 1.5,
-                            )
+                          child:  ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.orange[700],
+                                shape:RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                elevation: 7
                             ),
                             onPressed:(){
                               if(widget.PageFlag == 'ChooseUser'){
@@ -212,12 +213,13 @@ class Another_ingredient extends State<StateAnother_ingredient>{
                           height: 70,
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
                           padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                          child:  OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                                foregroundColor: Colors.deepOrange, side: const BorderSide(
-                              color: Colors.deepOrange,
-                              width: 1.5,
-                            )
+                          child:  ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red[400],
+                                shape:RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                elevation: 7
                             ),
                             onPressed:(){
                               _deleteAdd();
