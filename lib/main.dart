@@ -6,6 +6,7 @@ import 'ui/SettingUser1.dart';
 import 'ui/ChooseUser.dart';
 import 'ui/Manual.dart';
 import 'component/AppbarComp.dart';
+import 'component/BottomNavbarComp.dart';
 
 
 void main() {
@@ -58,6 +59,7 @@ class Home_Page extends State<Home_Page_State>{
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppbarComp(),
+      bottomNavigationBar: const BottomNavbarCompState(flagName: 'main', text: 'まずは、ご利用になる品目を選択してください。'),
       body: Center(
 
         child:Column(

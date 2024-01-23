@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/component/AppbarComp.dart';
+import 'package:sotsuken2/component/BottomNavbarComp.dart';
 import 'package:sotsuken2/Api/verification.dart';
 import 'package:sotsuken2/ui/ReadIngredient.dart';
 
@@ -49,6 +50,7 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
       child:Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppbarComp(),
+        bottomNavigationBar: const  BottomNavbarCompState(flagName:'none',text: '選択したアレルゲンと\n一致したものを表示しています。閲覧後、移動したいページのボタンをクリックしてください。',),
         body: Center(
           child:Container(
               width: 300,

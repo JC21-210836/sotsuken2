@@ -10,6 +10,7 @@ import 'package:sotsuken2/Data/AllObligationData.dart';
 import 'package:sotsuken2/Data/AllRecommendationData.dart';
 import 'package:sotsuken2/Data/AllAnotherData.dart';
 import 'package:sotsuken2/component/HamburgerMenu.dart';
+import 'package:sotsuken2/component/BottomNavbarComp.dart';
 
 class StateChooseUser extends StatefulWidget{
   const StateChooseUser({super.key});
@@ -65,27 +66,9 @@ class ChooseUser_Page extends State<StateChooseUser>{
             child:DrawerMenu(),
           ),
           //お試し
-          bottomNavigationBar: ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(40),
-              topRight:  Radius.circular(40),
-            ),
-            child:BottomNavigationBar(
-              backgroundColor: Colors.blue[400],
-              fixedColor: Colors.white,
-
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home,size: 30,color:Colors.white),
-                  label: 'home',
-                ) ,
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home,size: 30,color:Colors.white),
-                  label: 'home',
-                ) ,
-              ],
-            ),
-          ),
+          bottomNavigationBar:const BottomNavbarCompState(
+              flagName:'ChooseUser',
+              text:'困ったときは\n「ご利用方法」をお読みください。右上のボタンからご覧になれます。'),
           body: Center(
             child:Container(
               width: 300,

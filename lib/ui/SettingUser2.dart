@@ -113,7 +113,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                       Container(
                         width:250,
                         height:50,
-                        margin: const EdgeInsets.fromLTRB(20, 25, 20, 20),
+                        margin: const EdgeInsets.fromLTRB(20, 25, 20, 15),
                         child:ElevatedButton(
                           style:ElevatedButton.styleFrom(
                               backgroundColor: Colors.deepOrangeAccent,
@@ -122,7 +122,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                               ),
                               elevation: 7
                           ),
-                          child: const Text('ユーザー名の変更',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                          child: const Text('ユーザー名の変更',style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
                           onPressed: (){
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
@@ -136,7 +136,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                       Container(
                         width:250,
                         height:50,
-                        margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                        margin: const EdgeInsets.fromLTRB(20, 0, 20, 15),
                         child:ElevatedButton(
                           style:ElevatedButton.styleFrom(
                               backgroundColor: Colors.deepOrangeAccent,
@@ -145,7 +145,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                               ),
                               elevation: 7
                           ),
-                          child: const Text('アレルゲンの変更',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                          child: const Text('アレルゲンの変更',style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
                           onPressed: (){
                             //aod.AllResetObligation();
                             //ard.AllResetRecommendation();
@@ -169,7 +169,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                       Container(
                         width:250,
                         height:50,
-                        margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                        margin: const EdgeInsets.fromLTRB(20, 0, 20, 15),
                         child:ElevatedButton(
                           style:ElevatedButton.styleFrom(
                               backgroundColor: Colors.red,
@@ -178,7 +178,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                               ),
                               elevation: 7
                           ),
-                          child: const Text('ユーザーの削除',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                          child: const Text('ユーザーの削除',style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
                           onPressed: (){
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (context){
