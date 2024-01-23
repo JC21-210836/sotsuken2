@@ -61,7 +61,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        margin:const EdgeInsets.fromLTRB(0, 10, 0, 15),
+                        margin:const EdgeInsets.fromLTRB(0, 20, 0, 15),
                         padding:const EdgeInsets.fromLTRB(40, 10, 40, 10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -111,7 +111,7 @@ class UserSettings2 extends State<StateUserSettings2> {
 
 
                       Container(
-                        width:270,
+                        width:250,
                         height:50,
                         margin: const EdgeInsets.fromLTRB(20, 25, 20, 20),
                         child:ElevatedButton(
@@ -134,7 +134,7 @@ class UserSettings2 extends State<StateUserSettings2> {
 
                       ),
                       Container(
-                        width:270,
+                        width:250,
                         height:50,
                         margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                         child:ElevatedButton(
@@ -167,7 +167,7 @@ class UserSettings2 extends State<StateUserSettings2> {
 
                       ),
                       Container(
-                        width:270,
+                        width:250,
                         height:50,
                         margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                         child:ElevatedButton(
