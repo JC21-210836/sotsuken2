@@ -121,10 +121,13 @@ class Home_Page extends State<Home_Page_State>{
                             width: 120,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: Colors.black26,width: 2)
+                              border: Border.all(color: Colors.black26,width: 3)
                             ),
                             child: OutlinedButton(
-                              style: ElevatedButton.styleFrom(
+                              style: OutlinedButton.styleFrom(
+                                side: const BorderSide(
+                                  color: Colors.white,
+                                ),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
@@ -162,10 +165,13 @@ class Home_Page extends State<Home_Page_State>{
                             width: 120,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Colors.black26,width: 2)
+                                border: Border.all(color: Colors.black26,width: 3)
                             ),
                             child: OutlinedButton(
-                                style: ElevatedButton.styleFrom(
+                                style: OutlinedButton.styleFrom(
+                                    side: const BorderSide(
+                                      color: Colors.white,
+                                    ),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20),
                                     ),
