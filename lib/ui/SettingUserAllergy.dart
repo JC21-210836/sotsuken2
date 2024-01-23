@@ -212,7 +212,11 @@ class SettingAllergy extends State<StateSettingAllergy>{
                           margin:const EdgeInsets.fromLTRB(20, 0, 15, 7),
                           child:ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.orange
+                                  backgroundColor: Colors.orange,
+                                  shape:RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20)
+                                  ) ,
+                                  elevation: 7
                               ),
                               child:const Text('変更',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.white)),
                               onPressed:(){
@@ -233,13 +237,15 @@ class SettingAllergy extends State<StateSettingAllergy>{
                           width:230,
                           height:60,
                           margin:const EdgeInsets.fromLTRB(15, 7, 15, 40),
-                          child:OutlinedButton(
-                              style:OutlinedButton.styleFrom(
-                                side: const BorderSide(
-                                    color: Colors.deepOrange
-                                ),
+                          child:ElevatedButton(
+                              style:ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue,
+                                  shape:RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)
+                                  ) ,
+                                elevation: 7
                               ),
-                              child:const Text('更新',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.deepOrange)),
+                              child:const Text('更新',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.white)),
                               onPressed:(){
                                 setState(() {
                                   debugPrint('valueCheckのでーたないよう'+aod.getValueCheck().toString());

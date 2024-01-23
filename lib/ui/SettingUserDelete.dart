@@ -124,6 +124,10 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
                         child:ElevatedButton(
                           style:ElevatedButton.styleFrom(
                             backgroundColor: Colors.red,
+                            shape:RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)
+                            ) ,
+                            elevation: 7
                           ),
                           child:const Text('削除',style: TextStyle(fontSize: 28),),
                           onPressed: (){
