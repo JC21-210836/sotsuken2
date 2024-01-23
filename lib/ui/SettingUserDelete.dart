@@ -58,12 +58,12 @@ class SettingUserDelete extends State<StateSettingUserDelete>{
                       padding:const EdgeInsets.fromLTRB(30, 10, 30, 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color:Colors.red,
+                        border: Border.all(color:Colors.red,)
                       ),
                       child:const Text('ユーザーの削除',
                         style: TextStyle(
                             fontSize: 28,
-                            color:Colors.white,
+                            color:Colors.red,
                             fontWeight: FontWeight.bold
                         ),
                       ),

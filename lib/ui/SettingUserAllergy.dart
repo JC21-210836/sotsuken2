@@ -38,12 +38,12 @@ class SettingAllergy extends State<StateSettingAllergy>{
                     padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.deepOrange,
+                      border: Border.all(color:Colors.deepOrange,)
                     ),
                     child: const Text('アレルゲンの変更',
                         style: TextStyle(
                             fontSize: 25,
-                            color:Colors.white,
+                            color:Colors.deepOrange,
                             fontWeight: FontWeight.bold
                         )
                     ),
