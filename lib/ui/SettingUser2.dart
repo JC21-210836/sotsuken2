@@ -93,7 +93,11 @@ class UserSettings2 extends State<StateUserSettings2> {
                       margin: const EdgeInsets.fromLTRB(20, 25, 20, 20),
                       child:ElevatedButton(
                         style:ElevatedButton.styleFrom(
-                            backgroundColor: Colors.deepOrangeAccent
+                            backgroundColor: Colors.deepOrangeAccent,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)
+                            ),
+                            elevation: 7
                         ),
                         child: const Text('ユーザー名の変更',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
                         onPressed: (){
@@ -112,7 +116,11 @@ class UserSettings2 extends State<StateUserSettings2> {
                       margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                       child:ElevatedButton(
                         style:ElevatedButton.styleFrom(
-                            backgroundColor: Colors.deepOrangeAccent
+                            backgroundColor: Colors.deepOrangeAccent,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)
+                            ),
+                            elevation: 7
                         ),
                         child: const Text('アレルゲンの変更',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
                         onPressed: (){
@@ -141,7 +149,11 @@ class UserSettings2 extends State<StateUserSettings2> {
                       margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                       child:ElevatedButton(
                         style:ElevatedButton.styleFrom(
-                            backgroundColor: Colors.red
+                            backgroundColor: Colors.red,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)
+                            ),
+                            elevation: 7
                         ),
                         child: const Text('ユーザーの削除',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
                         onPressed: (){
@@ -159,15 +171,17 @@ class UserSettings2 extends State<StateUserSettings2> {
                       width:290,
                       height:90,
                       margin: const EdgeInsets.fromLTRB(20, 10, 20, 25),
-                      child:OutlinedButton(
-                        style:OutlinedButton.styleFrom(
-                          side: const BorderSide(
-                              color: Colors.deepOrange
-                          ),
+                      child:ElevatedButton(
+                        style:ElevatedButton.styleFrom(
+                            backgroundColor: Colors.orange,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)
+                            ),
+                            elevation: 7
                         ),
                         child: const Text('ユーザー選択画面に\n戻る',
                           style: TextStyle(
-                            color:Colors.deepOrange,
+                            color:Colors.white,
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
