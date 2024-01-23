@@ -83,7 +83,7 @@ class Home_Page extends State<Home_Page_State>{
                 child:Column(
                     children: [
                       Container(
-                        margin: const EdgeInsets.fromLTRB(30,40,30,20),
+                        margin: const EdgeInsets.fromLTRB(30,30,30,15),
                         decoration: BoxDecoration(
                           color:Colors.white,
                           borderRadius: BorderRadius.circular(5),
@@ -208,9 +208,9 @@ class Home_Page extends State<Home_Page_State>{
                         ],
                       ),
                       Container(
-                        margin: const EdgeInsets.fromLTRB(0,30,0,30),
+                        margin: const EdgeInsets.fromLTRB(0,20,0,30),
                         //padding:const EdgeInsets.fromLTRB(20, 5, 20, 5),
-                        height: 50,
+                        height: 45,
                         width: 210,
                         child:ElevatedButton.icon(
                           style: ElevatedButton.styleFrom(
