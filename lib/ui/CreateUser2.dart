@@ -184,9 +184,8 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                               ),
                             ),
                             Container(
-                                width: 270,
                                 height:70,
-                                margin: EdgeInsets.fromLTRB(0, 5, 0, 20),
+                                margin: EdgeInsets.fromLTRB(10, 5, 10, 20),
                                 padding:const EdgeInsets.fromLTRB(5,5,5,10),
                                 child:ElevatedButton(
                                   style: ElevatedButton.styleFrom(
