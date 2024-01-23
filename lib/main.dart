@@ -84,6 +84,7 @@ class Home_Page extends State<Home_Page_State>{
                         margin: const EdgeInsets.fromLTRB(30,40,30,20),
                         decoration: BoxDecoration(
                           color:Colors.white,
+                          borderRadius: BorderRadius.circular(5),
                           border: Border.all(
                             color: Colors.indigo,
                             width: 1,
@@ -94,6 +95,7 @@ class Home_Page extends State<Home_Page_State>{
                             padding: const EdgeInsets.fromLTRB(25,15,25,15),
                             decoration: BoxDecoration(
                               color:Colors.white,
+                              borderRadius: BorderRadius.circular(5),
                               border: Border.all(
                                 color: Colors.indigo,
                                 width: 1,
@@ -202,24 +204,14 @@ class Home_Page extends State<Home_Page_State>{
                         //padding:const EdgeInsets.fromLTRB(20, 5, 20, 5),
                         height: 50,
                         width: 210,
-
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: const [
-                            BoxShadow(
-                                color:Colors.black12,
-                                blurRadius: 2,
-                                spreadRadius: 2,
-                                offset: Offset(2,2)
-                            )
-                          ],
-                          gradient: const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [Color(0xffff8300),Colors.orange,Color(0xffffd24e),], //青から緑へのグラデーション
+                        child:ElevatedButton.icon(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.orange,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15)
+                            ),
+                            elevation: 7
                           ),
-                        ),
-                        child:TextButton.icon(
                           icon: Icon(Icons.import_contacts,color: Colors.white,),
                           label: const Text('ご利用方法',
                                 style: TextStyle(fontSize: 25,

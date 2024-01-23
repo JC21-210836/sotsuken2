@@ -26,93 +26,121 @@ class CreateUser1_Page extends State<StateCreateUser1>{
 
   @override
   Widget build(BuildContext context){
-    return Scaffold(
-      appBar: AppbarComp(),
-      body: Center(
-          child:SingleChildScrollView(
-            child:Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children:[
-                  Container(
-                    margin:const EdgeInsets.fromLTRB(0, 10, 0, 30),
-                    padding:const EdgeInsets.fromLTRB(40, 10, 40, 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: Colors.indigo,
-                        width: 1,
-                      ),
-                    ),
-                    child:const Text('ユーザー登録',
-                      style: TextStyle(
-                          fontSize: 30,
-                          color:Colors.indigo,
-                          fontWeight: FontWeight.bold
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin:const EdgeInsets.all(20),
-                    child:const Text('ユーザー名を\n入力してください',
-                      style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  Container(
-                    margin:const EdgeInsets.all(20),
-                    padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.indigo)
-                    ),
-                    child:SizedBox(
-                      width:200,
-                      child:TextField (
-                        style:const TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
-                        maxLength: 7,
-                        onChanged: (value){
-                          UN = value;
-                        },
-                      ),
-                    ),
-                  ),
-                  Text(ErrorMessage,style:const TextStyle(fontSize: 20,color:Colors.red)),
-                  Container(
-                      width: 200,
-                      height:60,
-                      margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                      child:ElevatedButton(
-                        style:ElevatedButton.styleFrom(
-                          backgroundColor: Colors.indigo,
-                        ),
-                        child:const Text('次へ',style: TextStyle(fontSize: 30),),
-                        onPressed: (){
-                          setState(() {
-                            aud.setUserName(UN);
-                            //UserName = aud.getUserName();
-                            aod.AllResetObligation();
-                            ard.AllResetRecommendation();
-                            aad.AllResetAnother();
-                          });
-                          if(UN == ""){
-                            /*
-                            setState(() {
-                              ErrorMessage = "名前が入力されていません";
-                            });
-                            */
-                          }else{
-                            Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context){
-                                  return StateCreateUser2(aud.getUserName());
-                                })
-                            );
-                          }
-                        },
-                      )
-                  ),
-                ]
+    return Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors:[Colors.white,Color(0xFF90D4FA)],
+        )
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppbarComp(),
+        body: Center(
+          child:Container(
+            width: 300,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+              boxShadow: const [
+                BoxShadow(
+                  color:Colors.black12,
+                  blurRadius: 2,
+                  spreadRadius: 2,
+                  offset: Offset(7,7)
+                )
+              ],
             ),
-          )
-
+            child:SingleChildScrollView(
+              child:Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children:[
+                    Container(
+                      margin:const EdgeInsets.fromLTRB(0, 40, 0, 20),
+                      padding:const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Colors.indigo,
+                          width: 1,
+                        ),
+                      ),
+                      child:const Text('ユーザー登録',
+                        style: TextStyle(
+                            fontSize: 30,
+                            color:Colors.indigo,
+                            fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin:const EdgeInsets.all(10),
+                      child:const Text('ユーザー名を\n入力してください',
+                        style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Container(
+                      margin:const EdgeInsets.all(10),
+                      padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.indigo)
+                      ),
+                      child:SizedBox(
+                        width:200,
+                        child:TextField (
+                          style:const TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
+                          maxLength: 7,
+                          onChanged: (value){
+                            UN = value;
+                          },
+                        ),
+                      ),
+                    ),
+                    Text(ErrorMessage,style:const TextStyle(fontSize: 20,color:Colors.red)),
+                    Container(
+                        width: 200,
+                        height:60,
+                        margin: const EdgeInsets.fromLTRB(0, 20, 0, 40),
+                        child:ElevatedButton(
+                          style:ElevatedButton.styleFrom(
+                            backgroundColor: Colors.indigo,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)
+                            ),
+                            elevation: 7
+                          ),
+                          child:const Text('次へ',style: TextStyle(fontSize: 30),),
+                          onPressed: (){
+                            setState(() {
+                              aud.setUserName(UN);
+                              //UserName = aud.getUserName();
+                              aod.AllResetObligation();
+                              ard.AllResetRecommendation();
+                              aad.AllResetAnother();
+                            });
+                            if(UN == ""){
+                              /*
+                              setState(() {
+                                ErrorMessage = "名前が入力されていません";
+                              });
+                              */
+                            }else{
+                              Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context){
+                                    return StateCreateUser2(aud.getUserName());
+                                  })
+                              );
+                            }
+                          },
+                        )
+                    ),
+                  ]
+              ),
+            )
+          ),
+        ),
       ),
     );
   }

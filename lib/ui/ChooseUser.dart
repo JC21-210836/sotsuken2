@@ -167,7 +167,11 @@ class ChooseUser_Page extends State<StateChooseUser>{
                         margin: const EdgeInsets.fromLTRB(0,10,0,5),
                         child:ElevatedButton(
                           style:ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue[700]
+                              backgroundColor: Colors.blue[700],
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15)
+                              ),
+                              elevation: 7
                           ),
                           onPressed: (){
                             ReturnAndReload(0);
@@ -194,7 +198,11 @@ class ChooseUser_Page extends State<StateChooseUser>{
                             width: 120,
                             child:ElevatedButton(
                               style:ElevatedButton.styleFrom(
-                                backgroundColor: Colors.orange[700]
+                                backgroundColor: Colors.orange[700],
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15)
+                                ),
+                                elevation: 7
                               ),
                               onPressed: (){
                                 ReturnAndReload(1);
@@ -214,7 +222,11 @@ class ChooseUser_Page extends State<StateChooseUser>{
                               width: 120,
                               child:ElevatedButton(
                                 style:ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.lightBlue[500]
+                                    backgroundColor: Colors.lightBlue[500],
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15)
+                                    ),
+                                    elevation: 7
                                 ),
                                 child: const Text('SKIP',
                                   style:TextStyle(

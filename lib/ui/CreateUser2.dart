@@ -29,15 +29,39 @@ class CreateUser2_Page extends State<StateCreateUser2> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors:[Colors.white,Color(0xFF90D4FA)],
+      )
+    ),
+    child: Scaffold(
+      backgroundColor: Colors.transparent,
         appBar: AppbarComp(),
         body: Center(
-            child:SingleChildScrollView(
+          child:Container(
+            width: 320,
+            height:500,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+              boxShadow: const [
+                BoxShadow(
+                    color:Colors.black12,
+                    blurRadius: 2,
+                    spreadRadius: 2,
+                    offset: Offset(7,7)
+                )
+              ],
+            ),
+
                 child:Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:[
                     Container(
-                      margin:const EdgeInsets.fromLTRB(0, 10, 0, 5),
+                      margin:const EdgeInsets.fromLTRB(0, 30, 0, 5),
                       padding:const EdgeInsets.fromLTRB(40, 10, 40, 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -54,126 +78,142 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      child:Container(
-                        width: 280,
-                        height: 60,
-                        margin: const EdgeInsets.all(5),
-                        decoration: const BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  color:Colors.blue
-                              )
-                          ),
-                        ),
+                    Expanded(
+                        child: ListView(
+                          children: <Widget>[
+                            SizedBox(
+                              child:Container(
+                                width: 260,
+                                height: 60,
+                                margin: const EdgeInsets.all(5),
+                                decoration: const BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(
+                                          color:Colors.blue
+                                      )
+                                  ),
+                                ),
 
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const SizedBox(
-                              width:60,
-                              child:Icon(
-                                Icons.account_box,
-                                color: Colors.indigo,
-                                size:50,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const SizedBox(
+                                      width:60,
+                                      child:Icon(
+                                        Icons.account_box,
+                                        color: Colors.indigo,
+                                        size:50,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 220,
+                                      child:Text(widget.sUserName,style: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
-                            SizedBox(
-                              width: 220,
-                              child:Text(widget.sUserName,style: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+                            Container(
+                                width:270,
+                                height: 85,
+                                margin: const EdgeInsets.fromLTRB(20,20,20,10),
+                                child:ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor:Colors.lightBlue[400],
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(15)
+                                      ),
+                                      elevation: 7
+                                  ),
+                                  child:const Text('アレルゲンの選択\n(テンプレート)',
+                                    style: TextStyle(fontSize: 25,color:Colors.white,fontWeight: FontWeight.bold),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  onPressed: (){
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(builder: (context){
+                                          return const StateObligation_allergy(PageFlag : 'CreateUser');
+                                        })
+                                    );
+                                  },
+                                )
+                            ),
+                            Container(
+                              margin:const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                              child: const FittedBox(
+                                child: Text('表示義務・推奨のアレルゲンを\nお選びいただけます。',
+                                  style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
+                            Container(
+                                width:260,
+                                height: 85,
+                                margin: const EdgeInsets.fromLTRB(20,10,20,10),
+                                child:ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:Colors.lightBlue[600],
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15)
+                                    ),
+                                    elevation: 7
+                                  ),
+                                  child:const Text('その他の成分を\n新規追加',
+                                    style: TextStyle(fontSize: 25,color:Colors.white,fontWeight: FontWeight.bold),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  onPressed: (){
+                                    _selectAdd();
+                                    aad.setValueList3();//移動した。お試し
+                                    Future.delayed(const Duration(seconds: 1)).then((_){
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(builder: (context){
+                                            return StateAnother_ingredient(PageFlag:'CreateUser', PageCount: 0);
+                                          })
+                                      );
+                                    });
+                                  },
+                                )
+                            ),
+                            Container(
+                              margin:const EdgeInsets.fromLTRB(0, 0, 0, 15),
+                              child:const Text('テンプレート外の成分を\nご登録いただけます。',
+                                style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            Container(
+                                width: 270,
+                                height:70,
+                                margin: EdgeInsets.fromLTRB(0, 5, 0, 20),
+                                padding:const EdgeInsets.fromLTRB(5,5,5,10),
+                                child:ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.indigo,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(15)
+                                      ),
+                                      elevation: 7
+                                  ),
+                                  child:const Text('登録内容を確認',style: TextStyle(fontSize: 28)),
+                                  onPressed: (){
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(builder: (context){
+                                          return StateCreateUserCheck(widget.sUserName);
+                                        })
+                                    );
+                                  },
+                                )
                             )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                        width:270,
-                        height: 85,
-                        margin: const EdgeInsets.all(10),
-                        child:OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                              side: const BorderSide(
-                                  color:Colors.blue
-                              )
-                          ),
-                          child:const Text('アレルゲンの選択\n(テンプレート)',
-                            style: TextStyle(fontSize: 25,color:Colors.indigo,fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.center,
-                          ),
-                          onPressed: (){
-                            Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context){
-                                  return const StateObligation_allergy(PageFlag : 'CreateUser');
-                                })
-                            );
-                          },
-                        )
-                    ),
-                    Container(
-                      margin:const EdgeInsets.fromLTRB(0, 0, 0, 20),
-                      child: const FittedBox(
-                        child: Text('表示義務・推奨のアレルゲンを\nお選びいただけます。',
-                          style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                    Container(
-                        width:270,
-                        height: 85,
-                        margin: const EdgeInsets.all(10),
-                        child:OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                              side: const BorderSide(
-                                  color:Colors.blue
-                              )
-                          ),
-                          child:const Text('その他の成分を\n新規追加',
-                            style: TextStyle(fontSize: 25,color:Colors.indigo,fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.center,
-                          ),
-                          onPressed: (){
-                            _selectAdd();
-                            aad.setValueList3();//移動した。お試し
-                            Future.delayed(const Duration(seconds: 1)).then((_){
-                              Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (context){
-                                    return StateAnother_ingredient(PageFlag:'CreateUser', PageCount: 0);
-                                  })
-                              );
-                            });
-                          },
-                        )
-                    ),
-                    Container(
-                      margin:const EdgeInsets.fromLTRB(0, 0, 0, 15),
-                      child:const Text('テンプレート外の成分を\nご登録いただけます。',
-                        style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    Container(
-                        width: 280,
-                        height:60,
-                        padding:const EdgeInsets.all(5),
-                        child:ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.indigo
-                          ),
-                          child:const Text('登録内容を確認',style: TextStyle(fontSize: 28)),
-                          onPressed: (){
-                            Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context){
-                                  return StateCreateUserCheck(widget.sUserName);
-                                })
-                            );
-                          },
+                          ]
                         )
                     )
                   ],
-                )
             )
+          )
         )
+      )
     );
   }
 
