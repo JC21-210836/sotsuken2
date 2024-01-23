@@ -64,6 +64,28 @@ class ChooseUser_Page extends State<StateChooseUser>{
             width: 270,
             child:DrawerMenu(),
           ),
+          //お試し
+          bottomNavigationBar: ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(40),
+              topRight:  Radius.circular(40),
+            ),
+            child:BottomNavigationBar(
+              backgroundColor: Colors.blue[400],
+              fixedColor: Colors.white,
+
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home,size: 30,color:Colors.white),
+                  label: 'home',
+                ) ,
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home,size: 30,color:Colors.white),
+                  label: 'home',
+                ) ,
+              ],
+            ),
+          ),
           body: Center(
             child:Container(
               width: 300,
