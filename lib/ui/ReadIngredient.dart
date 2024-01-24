@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../ui/ImageLoaderSelect.dart';
 import '../component/AppbarComp.dart';
 import '../component/BottomNavbarComp.dart';
 
@@ -160,11 +159,9 @@ class _ReadIngredientState extends State<ReadIngredient> {
                               elevation: 7
                           ),
                           onPressed: (){
-                            Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context){
-                                  return const StateImageLoderSelect();
-                                })
-                            );
+                            for(int n = 0; n < 3 ; n++ ){
+                              Navigator.pop(context);
+                            }
                           },
                           child: const FittedBox(
                             child: Text('他の商品をスキャンする',

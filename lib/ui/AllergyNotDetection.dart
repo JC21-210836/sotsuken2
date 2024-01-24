@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../component/AppbarComp.dart';
 import '../ui/ReadIngredient.dart';
-import '../ui/ImageLoaderSelect.dart';
 import '../component/BottomNavbarComp.dart';
 
 class StateAllergyNotDetection extends StatefulWidget{
@@ -134,11 +133,9 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                               elevation: 7
                           ),
                           onPressed: (){
-                            Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context){
-                                  return const StateImageLoderSelect();
-                                })
-                            );
+                            for(int n = 0; n < 2 ; n++ ){
+                              Navigator.pop(context);
+                            }
                           },
                           child: const FittedBox(
                             child: Text('他の商品をスキャンする',
@@ -181,73 +178,6 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                           ),
                         ),
                       ),
-                      /*
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.fromLTRB(0,0,5,30),
-                              height: 70,
-                              width: 140,
-                              child:ElevatedButton(
-                                style:ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.blue,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(15)
-                                    ),
-                                    elevation: 7
-                                ),
-                                onPressed: (){
-                                  Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
-                                },
-                                child: const FittedBox(
-                                  child:Text('他のユーザー\nを選択する',
-                                      style:TextStyle(
-                                        fontSize: 20,
-                                        color:Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      textAlign:TextAlign.center
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.fromLTRB(5,0,0,30),
-                              padding:EdgeInsets.fromLTRB(3, 0, 3, 0),
-                              height: 70,
-                              width: 130,
-                              child:ElevatedButton(
-                                  style:ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.blue,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(15)
-                                      ),
-                                      elevation: 7
-                                  ),
-                                  child: const FittedBox(
-                                    child:Text('読み取った\n成分を見る',
-                                        style:TextStyle(
-                                          fontSize: 20,
-                                          color:Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        textAlign:TextAlign.center
-                                    ),
-                                  ),
-                                  onPressed: (){
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(builder: (context){
-                                          return ReadIngredient();
-                                        })
-                                    );
-                                  }
-                              ),
-                            )
-                          ]
-                      )
-
-                       */
                     ],
                   ),
                 )
