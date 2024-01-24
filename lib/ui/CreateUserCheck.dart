@@ -57,10 +57,13 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                 child:Column(
                     mainAxisSize: MainAxisSize.min,
                     children:[
+                      Container(
+                        margin:const  EdgeInsets.all(7),
+                      ),
                       //表示義務
                       if(aod.getValueCheck().isNotEmpty)...[
                         Container(
-                          margin: const EdgeInsets.fromLTRB(0, 40, 120, 0),
+                          margin: const EdgeInsets.fromLTRB(0, 10, 120, 0),
                           decoration:BoxDecoration(
                               border:Border.all(color:Colors.red,width:1),
                           ),
@@ -82,7 +85,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                         ),
                         Container(
                           width: 280,
-                          margin: const EdgeInsets.fromLTRB(15, 5, 15, 30),
+                          margin: const EdgeInsets.fromLTRB(15, 5, 15, 10),
                           padding:const EdgeInsets.fromLTRB(25, 10, 25, 10),
                           decoration:BoxDecoration(
                               border:Border.all(color:Colors.red,width:1),
@@ -110,7 +113,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                       //表示推奨
                       if(ard.getValueCheck2().isNotEmpty)...[
                         Container(
-                          margin: const EdgeInsets.fromLTRB(0, 0, 120, 0),
+                          margin: const EdgeInsets.fromLTRB(0, 10, 120, 0),
                           decoration:BoxDecoration(
                               border:Border.all(color:Colors.blue,width:1)
                           ),
@@ -125,7 +128,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                         ),
                         Container(
                           width: 280,
-                          margin: const EdgeInsets.fromLTRB(15, 5, 15, 30),
+                          margin: const EdgeInsets.fromLTRB(15, 5, 15, 10),
                           padding:const EdgeInsets.fromLTRB(25, 10, 25, 10),
                           decoration:BoxDecoration(
                               border:Border.all(color:Colors.blue,width:1),
@@ -152,7 +155,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                       //追加成分
                       if(aad.getValueCheck3().isNotEmpty)...[
                         Container(
-                          margin: const EdgeInsets.fromLTRB(0, 0, 70, 0),
+                          margin: const EdgeInsets.fromLTRB(0, 10, 70, 0),
                           decoration:BoxDecoration(
                               border:Border.all(color:Colors.amber,width:1)
                           ),
@@ -168,7 +171,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                         ),
                         Container(
                           width: 280,
-                          margin: const EdgeInsets.fromLTRB(15, 5, 15, 30),
+                          margin: const EdgeInsets.fromLTRB(15, 5, 15, 10),
                           padding:const EdgeInsets.fromLTRB(25, 10, 25, 10),
                           decoration:BoxDecoration(
                               border:Border.all(color:Colors.amber,width:1),
@@ -191,36 +194,14 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                           )
                         ),
                       ],
-
-                      if(aod.getValueCheck().isEmpty && ard.getValueCheck2().isEmpty && aad.getValueCheck3().isEmpty)...[
-                        Container(
-                          margin: const EdgeInsets.fromLTRB(10, 50, 10, 50),
-                          child:const FittedBox(
-                              child:Text('何も登録されていません',style:TextStyle(fontSize: 25,fontWeight: FontWeight.bold))
-                          )
-                        ),
-                        Container(
-                          width:230,
-                          height:60,
-                          child: ElevatedButton(
-                            style:ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15)
-                                ),
-                                elevation: 7
-                            ),
-                            child:const Text('戻る',style:TextStyle(fontSize:30,fontWeight: FontWeight.bold)),
-                            onPressed: (){
-                              Navigator.pop(context);
-                            },
-                          ),
-                        )
-                      ],
+                      Container(
+                        margin:const  EdgeInsets.all(7),
+                      ),
                       if(aod.getValueCheck().isNotEmpty || ard.getValueCheck2().isNotEmpty || aad.getValueCheck3().isNotEmpty)...[
                         Container(
                             width:230,
                             height:60,
-                            margin:const EdgeInsets.fromLTRB(15, 0, 15, 40),
+                            margin:const EdgeInsets.fromLTRB(15, 0, 15, 30),
                             child:ElevatedButton(
                               style:ElevatedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
