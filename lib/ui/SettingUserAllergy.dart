@@ -109,10 +109,13 @@ class SettingAllergy extends State<StateSettingAllergy>{
                     child:Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children:[
+                          Container(
+                            margin:const  EdgeInsets.all(7),
+                          ),
                           //表示義務
                           if(aod.getValueCheck().isNotEmpty)...[
                             Container(
-                              margin: const EdgeInsets.fromLTRB(0, 20, 120, 0),
+                              margin: const EdgeInsets.fromLTRB(0, 10, 120, 0),
                               decoration:BoxDecoration(
                                   border:Border.all(color:Colors.red,width:1)
                               ),
@@ -135,7 +138,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
 
                             Container(
                               width: 280,
-                              margin: const EdgeInsets.fromLTRB(15, 5, 15, 30),
+                              margin: const EdgeInsets.fromLTRB(15, 5, 15, 10),
                               padding:const EdgeInsets.fromLTRB(25, 10, 25, 10),
                               decoration:BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
@@ -162,7 +165,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                           //表示推奨
                           if(ard.getValueCheck2().isNotEmpty)...[
                             Container(
-                              margin: const EdgeInsets.fromLTRB(0, 0, 120, 0),
+                              margin: const EdgeInsets.fromLTRB(0, 10, 120, 0),
                               decoration:BoxDecoration(
                                   border:Border.all(color:Colors.blue,width:1)
                               ),
@@ -177,7 +180,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                             ),
                             Container(
                               width: 280,
-                              margin: const EdgeInsets.fromLTRB(15, 5, 15, 30),
+                              margin: const EdgeInsets.fromLTRB(15, 5, 15, 10),
                               padding:const EdgeInsets.fromLTRB(25, 10, 25, 10),
                               decoration:BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
@@ -204,7 +207,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                           //追加成分
                           if(aad.getValueCheck3().isNotEmpty)...[
                             Container(
-                              margin: const EdgeInsets.fromLTRB(0, 0, 70, 0),
+                              margin: const EdgeInsets.fromLTRB(0, 10, 70, 0),
                               decoration:BoxDecoration(
                                   border:Border.all(color:Colors.amber,width:1)
                               ),
@@ -219,7 +222,7 @@ class SettingAllergy extends State<StateSettingAllergy>{
                             ),
                             Container(
                               width: 280,
-                              margin: const EdgeInsets.fromLTRB(15, 5, 15, 30),
+                              margin: const EdgeInsets.fromLTRB(15, 5, 15, 10),
                               padding:const EdgeInsets.fromLTRB(25, 10, 25, 10),
                               decoration:BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
@@ -242,6 +245,9 @@ class SettingAllergy extends State<StateSettingAllergy>{
                               ),
                             ),
                           ],
+                          Container(
+                            margin:const  EdgeInsets.all(7),
+                          ),
                           Container(
                               width:210,
                               height:55,
