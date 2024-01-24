@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/component/AppbarComp.dart';
 import '../Api/api.dart';
+import 'ImageLoaderSelect.dart';
 
 class ReadIngredient extends StatefulWidget {
   const ReadIngredient({super.key});
@@ -125,6 +126,11 @@ class _ReadIngredientState extends State<ReadIngredient> {
                           elevation: 7
                       ),
                       onPressed: (){
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context){
+                              return const StateImageLoderSelect();
+                            })
+                        );
                       },
                       child: const FittedBox(
                         child: Text('他の商品をスキャンする',
