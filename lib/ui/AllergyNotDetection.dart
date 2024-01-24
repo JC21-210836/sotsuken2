@@ -115,7 +115,7 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                       ),
 
                       Container(
-                        width: 280,
+                        width: 250,
                         margin:const EdgeInsets.fromLTRB(0, 0, 0, 0),
                         child:Image.asset('images/duck.png'),
                       ),
@@ -151,7 +151,7 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                       Container(
                         height: 55,
                         width: 260,
-                        margin: const EdgeInsets.fromLTRB(10,10,10,30),
+                        margin: const EdgeInsets.fromLTRB(10,10,10,20),
                         child:ElevatedButton(
                           style:ElevatedButton.styleFrom(
                               backgroundColor: Colors.blue[700],
