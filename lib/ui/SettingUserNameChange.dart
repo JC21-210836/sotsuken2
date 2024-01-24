@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/component/AppbarComp.dart';
 
 import '../DB/User.dart';
+
+import '../component/AppbarComp.dart';
 
 class StateSettingUserNameChange extends StatefulWidget{
   final String UserName;

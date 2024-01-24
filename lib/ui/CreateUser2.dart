@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/Data/AllAnotherData.dart';
-import 'package:sotsuken2/component/AppbarComp.dart';
-import '../DB/Add.dart';
-import 'CreateUserCheck.dart';
-import 'Obligation_allergy.dart';
-import 'Another_ingredient.dart';
 
-import 'package:sotsuken2/Data/AllRecommendationData.dart';
-import 'package:sotsuken2/Data/AllObligationData.dart';
+import '../ui/CreateUserCheck.dart';
+import '../ui/Obligation_allergy.dart';
+import '../ui/Another_ingredient.dart';
+import '../Data/AllAnotherData.dart';
+import '../component/AppbarComp.dart';
+import '../Data/AllRecommendationData.dart';
+import '../Data/AllObligationData.dart';
+
+import '../DB/Add.dart';
 
 class StateCreateUser2 extends StatefulWidget{
   final String sUserName;

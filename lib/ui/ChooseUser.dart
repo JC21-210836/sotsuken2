@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/Api/verification.dart';
-import 'package:sotsuken2/component/AppbarComp.dart';
+
 import '../DB/Add.dart';
 import '../DB/User.dart';
-import 'CreateUser1.dart';
-import 'Obligation_allergy.dart';
-import 'ImageLoaderSelect.dart';
-import 'package:sotsuken2/Data/AllObligationData.dart';
-import 'package:sotsuken2/Data/AllRecommendationData.dart';
-import 'package:sotsuken2/Data/AllAnotherData.dart';
-import 'package:sotsuken2/component/HamburgerMenu.dart';
-import 'package:sotsuken2/component/BottomNavbarComp.dart';
+
+import '../ui/CreateUser1.dart';
+import '../ui/Obligation_allergy.dart';
+import '../ui/ImageLoaderSelect.dart';
+import '../Data/AllObligationData.dart';
+import '../Data/AllRecommendationData.dart';
+import '../Data/AllAnotherData.dart';
+import '../component/HamburgerMenu.dart';
+import '../component/AppbarComp.dart';
+import '../component/BottomNavbarComp.dart';
+
+import '../Api/verification.dart';
 
 class StateChooseUser extends StatefulWidget{
   const StateChooseUser({super.key});

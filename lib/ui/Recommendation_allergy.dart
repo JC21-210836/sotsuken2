@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/Data/AllObligationData.dart';
-import 'package:sotsuken2/Data/AllAnotherData.dart';
-import 'package:sotsuken2/Data/AllRecommendationData.dart';
-import 'package:sotsuken2/component/AppbarComp.dart';
-import 'package:sotsuken2/ui/ImageLoaderSelect.dart';
-import '../DB/Add.dart';
-import 'Another_ingredient.dart';
 
+import '../DB/Add.dart';
+
+import '../ui/Another_ingredient.dart';
+import '../ui/ImageLoaderSelect.dart';
+import '../Data/AllObligationData.dart';
+import '../Data/AllAnotherData.dart';
+import '../Data/AllRecommendationData.dart';
+import '../component/AppbarComp.dart';
 
 class StateRecommendation_allergy extends StatefulWidget{
   final String PageFlag;

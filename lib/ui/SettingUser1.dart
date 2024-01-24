@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/component/AppbarComp.dart';
-import 'package:sotsuken2/component/BottomNavbarComp.dart';
 
 import '../DB/User.dart';
-import 'SettingUser2.dart';
+
+import '../ui/SettingUser2.dart';
+import '../component/AppbarComp.dart';
+import '../component/BottomNavbarComp.dart';
 
 class StateUserSettings1 extends StatefulWidget{
   const StateUserSettings1({super.key});

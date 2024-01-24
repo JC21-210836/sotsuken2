@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/component/AppbarComp.dart';
-import '../DB/List.dart';
-import 'Obligation_allergy.dart';
 
-import 'package:sotsuken2/Data/AllAnotherData.dart';
-import 'package:sotsuken2/Data/AllObligationData.dart';
-import 'package:sotsuken2/Data/AllRecommendationData.dart';
+import '../DB/List.dart';
+
+import '../ui/Obligation_allergy.dart';
+import '../Data/AllAnotherData.dart';
+import '../Data/AllObligationData.dart';
+import '../Data/AllRecommendationData.dart';
+import '../component/AppbarComp.dart';
 
 class StateSettingAllergy extends StatefulWidget{
   final String UserName;

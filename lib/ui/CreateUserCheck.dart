@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/Data/AllAnotherData.dart';
-import 'package:sotsuken2/Data/AllObligationData.dart';
-import 'package:sotsuken2/Data/AllRecommendationData.dart';
-import 'package:sotsuken2/Data/AllUserData.dart';
-import 'package:sotsuken2/component/AppbarComp.dart';
+
+import '../Data/AllAnotherData.dart';
+import '../Data/AllObligationData.dart';
+import '../Data/AllRecommendationData.dart';
+import '../Data/AllUserData.dart';
+import '../component/AppbarComp.dart';
 
 import '../DB/User.dart';
 

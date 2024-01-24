@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/component/AppbarComp.dart';
-import 'package:sotsuken2/component/BottomNavbarComp.dart';
-import 'package:sotsuken2/Api/verification.dart';
-import 'package:sotsuken2/ui/ReadIngredient.dart';
+
+import '../ui/ReadIngredient.dart';
+import '../component/AppbarComp.dart';
+import '../component/BottomNavbarComp.dart';
+
+import '../Api/verification.dart';
 
 class StateAllergyDetection extends StatefulWidget{
  const StateAllergyDetection({super.key});

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/Data/AllAnotherData.dart';
-import 'package:sotsuken2/component/AppbarComp.dart';
-import 'package:sotsuken2/component/BottomNavbarComp.dart';
 
 import '../DB/Add.dart';
 import '../DB/Food.dart';
 import '../DB/List.dart';
-import 'SettingUserNameChange.dart';
-import 'SettingUserDelete.dart';
-import 'SettingUserAllergy.dart';
 
-import 'package:sotsuken2/Data/AllRecommendationData.dart';
-import 'package:sotsuken2/Data/AllObligationData.dart';
+import '../ui/SettingUserNameChange.dart';
+import '../ui/SettingUserDelete.dart';
+import '../ui/SettingUserAllergy.dart';
+import '../Data/AllObligationData.dart';
+import '../Data/AllRecommendationData.dart';
+import '../Data/AllAnotherData.dart';
+import '../component/AppbarComp.dart';
+import '../component/BottomNavbarComp.dart';
 
 class StateUserSettings2 extends StatefulWidget{
   final String UserName;

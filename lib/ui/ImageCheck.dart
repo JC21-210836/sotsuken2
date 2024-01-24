@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sotsuken2/Api/api.dart';
-import 'package:sotsuken2/Api/verification.dart';
-import 'package:sotsuken2/component/AppbarComp.dart';
+
+import '../component/AppbarComp.dart';
 import '../component/BottomNavbarComp.dart';
-import 'package:sotsuken2/ui/AllergyNotDetection.dart';
+import '../ui/AllergyNotDetection.dart';
+import '../ui/AllergyDetection.dart';
+
 import 'dart:io';
 import '../Api/api.dart';
-import 'AllergyDetection.dart';
+import '../Api/verification.dart';
 import '../Api/crop.dart';
 
 class ImageCheck extends StatefulWidget {

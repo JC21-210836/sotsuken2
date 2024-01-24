@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'ImageCheck.dart';
+
+import '../ui/ImageCheck.dart';
 import '../component/AppbarComp.dart';
 import '../component/BottomNavbarComp.dart';
 

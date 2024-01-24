@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'ManualAnotherAdd.dart';
-import 'ManualUserAdd.dart';
-import 'ManualAddChange.dart';
-import 'ManualDeleteUser.dart';
 
+import '../ui/ManualAnotherAdd.dart';
+import '../ui/ManualUserAdd.dart';
+import '../ui/ManualAddChange.dart';
+import '../ui/ManualDeleteUser.dart';
 
 class Manual_Page extends StatelessWidget{
   @override

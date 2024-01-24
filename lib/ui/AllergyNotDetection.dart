@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/component/AppbarComp.dart';
-import 'package:sotsuken2/ui/ReadIngredient.dart';
+
+import '../component/AppbarComp.dart';
+import '../ui/ReadIngredient.dart';
 
 import 'ImageLoaderSelect.dart';
 

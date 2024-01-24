@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/Data/AllObligationData.dart';
-import 'package:sotsuken2/Data/AllRecommendationData.dart';
-import 'package:sotsuken2/component/AppbarComp.dart';
-import 'package:sotsuken2/ui/ImageLoaderSelect.dart';
+
 import '../DB/Add.dart';
-import 'AddAnotherIngredient.dart';
-import 'package:sotsuken2/Data/AllAnotherData.dart';
+
+import '../ui/AddAnotherIngredient.dart';
+import '../ui/ImageLoaderSelect.dart';
+import '../Data/AllObligationData.dart';
+import '../Data/AllRecommendationData.dart';
+import '../Data/AllAnotherData.dart';
+import '../component/AppbarComp.dart';
 
 class StateAnother_ingredient extends StatefulWidget{
   final String PageFlag;

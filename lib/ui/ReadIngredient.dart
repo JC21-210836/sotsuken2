@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/component/AppbarComp.dart';
+
+import '../ui/ImageLoaderSelect.dart';
+import '../component/AppbarComp.dart';
+
 import '../Api/api.dart';
-import 'ImageLoaderSelect.dart';
 
 class ReadIngredient extends StatefulWidget {
   const ReadIngredient({super.key});

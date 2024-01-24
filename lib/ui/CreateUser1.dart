@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'CreateUser2.dart';
 
-import 'package:sotsuken2/Data/AllUserData.dart';
-import 'package:sotsuken2/Data/AllObligationData.dart';
-import 'package:sotsuken2/Data/AllRecommendationData.dart';
-import 'package:sotsuken2/Data/AllAnotherData.dart';
+import '../ui/CreateUser2.dart';
+import '../Data/AllUserData.dart';
+import '../Data/AllObligationData.dart';
+import '../Data/AllRecommendationData.dart';
+import '../Data/AllAnotherData.dart';
 import '../component/AppbarComp.dart';
 
 class StateCreateUser1 extends StatefulWidget{

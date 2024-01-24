@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/Data/AllUserData.dart';
-import 'package:sotsuken2/component/AppbarComp.dart';
 
 import '../DB/List.dart';
 import '../DB/User.dart';
+
+import '../Data/AllUserData.dart';
+import '../component/AppbarComp.dart';
 
 class StateSettingUserDelete extends StatefulWidget{
   final String UserName;

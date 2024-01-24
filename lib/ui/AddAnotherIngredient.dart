@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sotsuken2/Data/AllAnotherData.dart';
-import 'package:sotsuken2/component/AppbarComp.dart';
 
 import '../DB/Add.dart';
+
+import '../Data/AllAnotherData.dart';
+import '../component/AppbarComp.dart';
 
 class StateAddAnotherIngredient extends StatefulWidget{
   final String PageFlag;
