@@ -43,7 +43,7 @@ class Api{
     String genStr = "";
 
     if (contentMoji.contains("原材料")) {
-      //原材料後、内容量までをString型で保持
+      //原材料後、内容量までを保持
       RegExp genNai = RegExp(r"原材料名(.*?)[內内]容量(.*)");
       RegExp gen = RegExp(r"原材料名(.*)");
       RegExpMatch? matchGenNai = genNai.firstMatch(contentMoji);

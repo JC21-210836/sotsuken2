@@ -93,6 +93,8 @@ class verifications{
 
     List<String> result = [];
 
+    select = select.where((element) => element.isNotEmpty).toList();
+    print("空箱排除後のセレクト：$select");
     select = select.toSet().toList();
     print("重複排除後のセレクト：$select");
 
