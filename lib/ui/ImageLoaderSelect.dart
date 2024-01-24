@@ -29,7 +29,21 @@ class ImageLoderSelect extends State<StateImageLoderSelect> {
         backgroundColor: Colors.transparent,
         appBar: AppbarComp(),
         body: Center(
-          child:Center(
+          child:Container(
+            width: 300,
+            margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+              boxShadow: const [
+                BoxShadow(
+                    color:Colors.black12,
+                    blurRadius: 2,
+                    spreadRadius: 2,
+                    offset: Offset(4,4)
+                )
+              ],
+            ),
             child:SingleChildScrollView(
               child:Column(
                 mainAxisAlignment: MainAxisAlignment.center,
