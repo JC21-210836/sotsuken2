@@ -125,7 +125,7 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:<Widget>[
                       Container(
-                        margin:const EdgeInsets.fromLTRB(10, 30, 10, 0),
+                        margin:const EdgeInsets.fromLTRB(10, 25, 10, 0),
                         decoration: BoxDecoration(
                             border: Border.all(color:Colors.deepOrange,width: 1)
                         ),
@@ -135,7 +135,7 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                           ),
                           margin: const EdgeInsets.all(5),
                           width: 240,
-                          height: 200,
+                          height: 180,
 
                           //ここが表示部分
                           child:ListView.builder(
@@ -144,7 +144,7 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                               return Padding(
                                 padding: const EdgeInsets.symmetric(vertical: 4.0)
                                     .copyWith(left: 5.0),
-                                child: Text('・${vals[index]}',style:const TextStyle(fontSize: 20,fontWeight: FontWeight.bold,height: 1.3)),
+                                child: Text('・${vals[index]}',style:const TextStyle(fontSize: 23,fontWeight: FontWeight.bold,height: 1.3)),
                               );
                             },
                           ),
@@ -153,7 +153,7 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                       Container(
                         height: 55,
                         width: 260,
-                        margin: const EdgeInsets.all(10),
+                        margin: const EdgeInsets.fromLTRB(8,10,8,5),
                         child:ElevatedButton(
                           style:ElevatedButton.styleFrom(
                               backgroundColor: Colors.orange[700],
@@ -181,7 +181,7 @@ class AllergyDetection_Page extends State<StateAllergyDetection>{
                       Container(
                         height: 55,
                         width: 260,
-                        margin: const EdgeInsets.fromLTRB(10,10,10,30),
+                        margin: const EdgeInsets.fromLTRB(10,10,10,20),
                         child:ElevatedButton(
                           style:ElevatedButton.styleFrom(
                               backgroundColor: Colors.blue[700],
