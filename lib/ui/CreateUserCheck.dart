@@ -194,6 +194,30 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                           )
                         ),
                       ],
+                      if(aod.getValueCheck().isEmpty && ard.getValueCheck2().isEmpty && aad.getValueCheck3().isEmpty)...[
+                        Container(
+                            margin: const EdgeInsets.fromLTRB(10, 180, 10, 50),
+                            child:const FittedBox(
+                                child:Text('何も登録されていません',style:TextStyle(fontSize: 25,fontWeight: FontWeight.bold))
+                            )
+                        ),
+                        Container(
+                          width:200,
+                          height:55,
+                          child: ElevatedButton(
+                            style:ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15)
+                                ),
+                                elevation: 7
+                            ),
+                            child:const Text('戻る',style:TextStyle(fontSize:27,fontWeight: FontWeight.bold)),
+                            onPressed: (){
+                              Navigator.pop(context);
+                            },
+                          ),
+                        )
+                      ],
                       Container(
                         margin:const  EdgeInsets.all(7),
                       ),
