@@ -5,7 +5,7 @@ class AppbarComp extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      toolbarHeight: 60,
+      toolbarHeight: 50,
       title: const Text('成分チェッカー'),
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(

@@ -23,76 +23,79 @@ class BottomNavbarComp extends State<BottomNavbarCompState> {
         topLeft: Radius.circular(40),
         topRight:  Radius.circular(40),
       ),
-      child:BottomNavigationBar(
-        backgroundColor: Colors.blue[400],
-        fixedColor: Colors.white,
-        items:  [
-          if(widget.flagName == 'main')...[
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.home,size: 30,color:Colors.white),
-              label: 'Home',
-            ),
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.sentiment_satisfied,size: 30,color:Colors.white),
-              label: 'Hello',
-            ),
-          ],
-          if(widget.flagName != 'main')...[
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.home,size: 30,color:Colors.white),
-              label: 'Home',
-            ),
-
-            if(widget.flagName != 'ChooseUser')...[
+      child:Container(
+        height: 55,
+        child:BottomNavigationBar(
+          backgroundColor: Colors.blue[400],
+          fixedColor: Colors.white,
+          items:  [
+            if(widget.flagName == 'main')...[
               const BottomNavigationBarItem(
-                icon: Icon(Icons.switch_account,size: 30,color:Colors.white),
-                label: 'User',
+                icon: Icon(Icons.home,size: 25,color:Colors.white),
+                label: 'Home',
+              ),
+              const BottomNavigationBarItem(
+                icon: Icon(Icons.sentiment_satisfied,size: 25,color:Colors.white),
+                label: 'Hello',
               ),
             ],
-          ],
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.help_outline,size: 30,color:Colors.white),
-            label: 'Hint',
-          ),
-        ],
-        onTap: (int index){
-          switch(index){
-            case 0:
-              if(widget.flagName == 'main'){
-                showDialog(
-                    context: context,
-                    builder: (_){
-                      return const DialogCompState(text:'ここのページに戻ってくるためのボタンです。覚えておきましょう。');
-                    }
-                );
-              }else{
-                Navigator.popUntil(context, (Route<dynamic> route) => route.isFirst );
-              }
-              break;
-            case 1:
+            if(widget.flagName != 'main')...[
+              const BottomNavigationBarItem(
+                icon: Icon(Icons.home,size: 25,color:Colors.white),
+                label: 'Home',
+              ),
 
-              if(widget.flagName == 'ChooseUser'){
+              if(widget.flagName != 'ChooseUser')...[
+                const BottomNavigationBarItem(
+                  icon: Icon(Icons.switch_account,size: 25,color:Colors.white),
+                  label: 'User',
+                ),
+              ],
+            ],
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.help_outline,size: 25,color:Colors.white),
+              label: 'Hint',
+            ),
+          ],
+          onTap: (int index){
+            switch(index){
+              case 0:
+                if(widget.flagName == 'main'){
+                  showDialog(
+                      context: context,
+                      builder: (_){
+                        return const DialogCompState(text:'ここのページに戻ってくるためのボタンです。覚えておきましょう。');
+                      }
+                  );
+                }else{
+                  Navigator.popUntil(context, (Route<dynamic> route) => route.isFirst );
+                }
+                break;
+              case 1:
+
+                if(widget.flagName == 'ChooseUser'){
+                  showDialog(
+                      context: context,
+                      builder: (_){
+                        return DialogCompState(text:widget.text);
+                      }
+                  );
+                }else if(widget.flagName == 'main'){
+                  //なんもかんがえてない
+                }else{
+                  Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
+                }
+                break;
+              case 2:
                 showDialog(
                     context: context,
                     builder: (_){
                       return DialogCompState(text:widget.text);
                     }
                 );
-              }else if(widget.flagName == 'main'){
-                //なんもかんがえてない
-              }else{
-                Navigator.popUntil(context,ModalRoute.withName('ChooseUser_page'));
-              }
-              break;
-            case 2:
-              showDialog(
-                  context: context,
-                  builder: (_){
-                    return DialogCompState(text:widget.text);
-                  }
-              );
-          }
-        },
+            }
+          },
+        ),
       ),
     );
   }
