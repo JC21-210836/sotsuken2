@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../ui/ImageLoaderSelect.dart';
 import '../component/AppbarComp.dart';
+import '../component/BottomNavbarComp.dart';
 
 import '../Api/api.dart';
 
@@ -51,132 +52,138 @@ class _ReadIngredientState extends State<ReadIngredient> {
       child:Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppbarComp(),
+        bottomNavigationBar: const BottomNavbarCompState(flagName: 'none', text: '画像に含まれた文字列をすべて表示しています。※精度は保証されません。',),
         body: Center(
-          child:Container(
-            width: 300,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.white,
-              boxShadow: const [
-                BoxShadow(
-                    color:Colors.black12,
-                    blurRadius: 2,
-                    spreadRadius: 2,
-                    offset: Offset(7,7)
-                )
-              ],
-            ),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(0, 30, 0, 15),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.indigoAccent)),
-                    child: Container(
-                      margin: const EdgeInsets.all(2),
-                      padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: Colors.indigoAccent)),
-                      child: const FittedBox(
-                        child: Text(
-                          '読み取った成分',
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.indigo,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+          child:Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 300,
+                margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  boxShadow: const [
+                    BoxShadow(
+                        color:Colors.black12,
+                        blurRadius: 2,
+                        spreadRadius: 2,
+                        offset: Offset(4,4)
+                    )
+                  ],
+                ),
+                child:Container(
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
+                  child:  Container(
+                    alignment: Alignment.center,
+                    width: 230,
+                    padding: const EdgeInsets.fromLTRB(0, 12, 0, 7),
+                    decoration: const BoxDecoration(
+                      border:Border(
+                          bottom: BorderSide(
+                              color: Colors.blue
+                          )
                       ),
                     ),
+
+                    child:RichText(
+                      text: const TextSpan(
+                          children: [
+                            TextSpan(
+                              text:'読み取った成分',
+                              style: TextStyle(
+                                fontSize: 28,
+                                color:Colors.indigo,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ]
+                      ),
+                    ),
+
                   ),
-                  Container(
-                      margin: EdgeInsets.fromLTRB(10, 0, 10, 7),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.indigoAccent, width: 1)),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.indigoAccent, width: 1)),
-                        margin: const EdgeInsets.all(5),
-                        width: 240,
-                        height: 180,
-                        //list形式の表示してます
-                        child: ListView.builder(
-                          itemCount: vals.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 4.0)
-                                  .copyWith(left: 5.0),
-                              child: Text('・${vals[index]}',style:const TextStyle(fontSize: 17,fontWeight: FontWeight.bold,height: 1.3)),
+                ),
+              ),
+              Container(
+                width: 300,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  boxShadow: const [
+                    BoxShadow(
+                        color:Colors.black12,
+                        blurRadius: 2,
+                        spreadRadius: 2,
+                        offset: Offset(7,7)
+                    )
+                  ],
+                ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+
+                      Container(
+                          margin: const EdgeInsets.fromLTRB(10, 30, 10, 7),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.indigoAccent, width: 1)),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.indigoAccent, width: 1)),
+                            margin: const EdgeInsets.all(5),
+                            width: 240,
+                            height: 180,
+                            //list形式の表示してます
+                            child: ListView.builder(
+                              itemCount: vals.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 4.0)
+                                      .copyWith(left: 5.0),
+                                  child: Text('・${vals[index]}',style:const TextStyle(fontSize: 17,fontWeight: FontWeight.bold,height: 1.3)),
+                                );
+                              },
+                            ),
+                          )),
+                      Container(
+                        height: 55,
+                        width: 260,
+                        margin: const EdgeInsets.fromLTRB(10,10,10,30),
+                        child:ElevatedButton(
+                          style:ElevatedButton.styleFrom(
+                              backgroundColor: Colors.orange[700],
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15)
+                              ),
+                              elevation: 7
+                          ),
+                          onPressed: (){
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context){
+                                  return const StateImageLoderSelect();
+                                })
                             );
                           },
-                        ),
-                      )),
-                  Container(
-                    height: 55,
-                    width: 260,
-                    margin: const EdgeInsets.all(10),
-                    child:ElevatedButton(
-                      style:ElevatedButton.styleFrom(
-                          backgroundColor: Colors.orange[700],
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15)
-                          ),
-                          elevation: 7
-                      ),
-                      onPressed: (){
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context){
-                              return const StateImageLoderSelect();
-                            })
-                        );
-                      },
-                      child: const FittedBox(
-                        child: Text('他の商品をスキャンする',
-                          style:TextStyle(
-                            fontSize: 24,
-                            color:Colors.white,
-                            fontWeight: FontWeight.bold,
+                          child: const FittedBox(
+                            child: Text('他の商品をスキャンする',
+                              style:TextStyle(
+                                fontSize: 24,
+                                color:Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                    ),
+
+                    ],
                   ),
-                  Container(
-                    height: 55,
-                    width: 260,
-                    margin: const EdgeInsets.fromLTRB(5,5,5,20),
-                    child:ElevatedButton(
-                      style:ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue[700],
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15)
-                          ),
-                          elevation: 7
-                      ),
-                      onPressed: () {
-                        Navigator.popUntil(
-                            context, ModalRoute.withName('ChooseUser_page'));
-                      },
-                      child: const FittedBox(
-                        child: Text(
-                          '他のユーザーを選択する',
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
-          ),
+            ],
+          )
         ),
       ),
     );
