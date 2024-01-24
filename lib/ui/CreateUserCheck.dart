@@ -40,7 +40,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
         body:  Center(
           child:Container(
             width: 320,
-            height:500,
+            height:430,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: Colors.white,
@@ -196,7 +196,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                       ],
                       if(aod.getValueCheck().isEmpty && ard.getValueCheck2().isEmpty && aad.getValueCheck3().isEmpty)...[
                         Container(
-                            margin: const EdgeInsets.fromLTRB(10, 180, 10, 50),
+                            margin: const EdgeInsets.fromLTRB(10, 150, 10, 50),
                             child:const FittedBox(
                                 child:Text('何も登録されていません',style:TextStyle(fontSize: 25,fontWeight: FontWeight.bold))
                             )
