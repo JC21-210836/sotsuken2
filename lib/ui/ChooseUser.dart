@@ -239,7 +239,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
-                                margin: const EdgeInsets.fromLTRB(5, 5, 5, 30),
+                                margin: const EdgeInsets.fromLTRB(5, 5, 5, 20),
                                 height: 55,
                                 width: 120,
                                 child:ElevatedButton(
@@ -263,7 +263,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
                                 ),
                               ),
                               Container(
-                                  margin: const EdgeInsets.fromLTRB(5, 5, 5, 30),
+                                  margin: const EdgeInsets.fromLTRB(5, 5, 5, 20),
                                   height: 55,
                                   width: 120,
                                   child:ElevatedButton(
