@@ -70,202 +70,235 @@ class ChooseUser_Page extends State<StateChooseUser>{
               flagName:'ChooseUser',
               text:'困ったときは\n「ご利用方法」をお読みください。右上のボタンからご覧になれます。'),
           body: Center(
-            child:Container(
-              width: 300,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.white,
-                boxShadow: const [
-                  BoxShadow(
-                      color:Colors.black12,
-                      blurRadius: 2,
-                      spreadRadius: 2,
-                      offset: Offset(7,7)
-                  )
-                ],
-              ),
-              child:SingleChildScrollView(
-                  child:Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children:<Widget>[
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(13, 40, 13, 20),
-                        padding: const EdgeInsets.fromLTRB(40, 13, 40, 13),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                          border: Border.all(color: Colors.indigo)
-                        ),
-                        child: const FittedBox(
-                          child:Text('ユーザーの選択',
-                            style: TextStyle(
-                                fontSize: 26,
-                                color:Colors.indigo,
-                                fontWeight: FontWeight.bold
-                            ),
-                          ),
-                        ),
-                      ),
-
-                      Container(margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color:Colors.blue,
-                            width: 1,
-                          ),
-                        ),
-                        child:Container(
-                          width: 265,
-                          padding: const EdgeInsets.all(15),
-                          margin: const EdgeInsets.all(3),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color:Colors.blue,
-                              width: 1,
-                            ),
-                          ),
-                          child:Column(
-                            children: [
-                              if(DBuser.userName.isEmpty)...[
-                                Container(
-                                    margin:const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                                    child: const FittedBox(
-                                      child:Text('ユーザーが\n登録されていません',
-                                        style:TextStyle(
-                                          fontSize: 25,color:Colors.black87,
-                                          fontWeight: FontWeight.bold,
-                                        ),textAlign: TextAlign.center,
-                                      ),
-                                    )
-                                ),
-                              ],
-                              for(String n in DBuser.userName)...[
-                                Container(
-                                  width: 240,
-                                  height: 47,
-                                  margin: const EdgeInsets.all(2),
-                                  child: OutlinedButton(
-                                    child:Text(n,style: const TextStyle(fontSize: 25),),
-                                    onPressed: () {
-                                      print("選択されたユーザ$n");
-                                      verifications.instance.selectName(n);
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(builder: (context){
-                                            return StateImageLoderSelect();
-                                          })
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ],
-
-                            ],
-                          ),
-
-
-                        ),
-                      ),
-
-                      Container(
-                        height: 55,
-                        width: 240,
-                        margin: const EdgeInsets.fromLTRB(0,10,0,5),
-                        child:ElevatedButton(
-                          style:ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue[700],
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15)
+            child:Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children:[
+                Container(
+                  width: 300,
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                          color:Colors.black12,
+                          blurRadius: 2,
+                          spreadRadius: 2,
+                          offset: Offset(4,4)
+                      )
+                    ],
+                  ),
+                  child:Container(
+                    alignment: Alignment.bottomLeft,
+                    margin: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    padding: const EdgeInsets.fromLTRB(10, 7, 0, 7),
+                    child:  FittedBox(
+                      child:RichText(
+                        text:const TextSpan(
+                          children: [
+                            TextSpan(
+                              text:'| ',
+                              style: TextStyle(
+                                  fontSize: 35,
+                                  color:Colors.indigo,
+                                  fontWeight: FontWeight.bold
                               ),
-                              elevation: 7
-                          ),
-                          onPressed: (){
-                            ReturnAndReload(0);
-                          },
-                          child: const FittedBox(
-                            child: Text('新しいユーザを登録',
-                              style:TextStyle(
-                                fontSize: 23,
-                                color:Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.center,
                             ),
-                          ),
-
+                            TextSpan(
+                              text:'ユーザーの選択',
+                              style: TextStyle(
+                                  fontSize: 27,
+                                  color:Colors.indigo,
+                                  fontWeight: FontWeight.bold
+                              ),
+                            ),
+                          ]
                         ),
+
+
                       ),
-                      Row(
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 300,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                          color:Colors.black12,
+                          blurRadius: 2,
+                          spreadRadius: 2,
+                          offset: Offset(7,7)
+                      )
+                    ],
+                  ),
+                  child:SingleChildScrollView(
+                      child:Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children:<Widget>[
+
+
+                          Container(margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color:Colors.blue,
+                                width: 1,
+                              ),
+                            ),
+                            child:Container(
+                              width: 265,
+                              padding: const EdgeInsets.all(15),
+                              margin: const EdgeInsets.all(3),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color:Colors.blue,
+                                  width: 1,
+                                ),
+                              ),
+                              child:Column(
+                                children: [
+                                  if(DBuser.userName.isEmpty)...[
+                                    Container(
+                                        margin:const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                                        child: const FittedBox(
+                                          child:Text('ユーザーが\n登録されていません',
+                                            style:TextStyle(
+                                              fontSize: 25,color:Colors.black87,
+                                              fontWeight: FontWeight.bold,
+                                            ),textAlign: TextAlign.center,
+                                          ),
+                                        )
+                                    ),
+                                  ],
+                                  for(String n in DBuser.userName)...[
+                                    Container(
+                                      width: 240,
+                                      height: 47,
+                                      margin: const EdgeInsets.all(2),
+                                      child: OutlinedButton(
+                                        child:Text(n,style: const TextStyle(fontSize: 25),),
+                                        onPressed: () {
+                                          print("選択されたユーザ$n");
+                                          verifications.instance.selectName(n);
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(builder: (context){
+                                                return StateImageLoderSelect();
+                                              })
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
+
+                                ],
+                              ),
+
+
+                            ),
+                          ),
+
                           Container(
-                            margin: const EdgeInsets.fromLTRB(5, 5, 5, 30),
                             height: 55,
-                            width: 120,
+                            width: 240,
+                            margin: const EdgeInsets.fromLTRB(0,10,0,5),
                             child:ElevatedButton(
                               style:ElevatedButton.styleFrom(
-                                backgroundColor: Colors.orange[700],
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15)
-                                ),
-                                elevation: 7
+                                  backgroundColor: Colors.blue[700],
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15)
+                                  ),
+                                  elevation: 7
                               ),
                               onPressed: (){
-                                ReturnAndReload(1);
+                                ReturnAndReload(0);
                               },
-                              child: const Text('設定',
-                                style:TextStyle(
-                                  fontSize: 23,
-                                  color:Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                              margin: const EdgeInsets.fromLTRB(5, 5, 5, 30),
-                              height: 55,
-                              width: 120,
-                              child:ElevatedButton(
-                                style:ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.lightBlue[500],
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15)
-                                    ),
-                                    elevation: 7
-                                ),
-                                child: const Text('SKIP',
+                              child: const FittedBox(
+                                child: Text('新しいユーザを登録',
                                   style:TextStyle(
                                     fontSize: 23,
                                     color:Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
+                                  textAlign: TextAlign.center,
                                 ),
-                                onPressed: (){
-                                  setState(() {
-                                    aod.AllResetObligation();
-                                    ard.AllResetRecommendation();
-                                    _selectAdd();
-                                    verifications.instance.selectName("スキップが押された");
-                                  });
-                                  Future.delayed(const Duration (seconds: 1)).then((_){
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(builder: (context){
-                                        return  StateObligation_allergy(PageFlag: 'ChooseUser');
-                                      }),
-                                    );
-                                    aad.AllResetAnother();
-                                  });
-                                },
-                              )
+                              ),
+
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.fromLTRB(5, 5, 5, 30),
+                                height: 55,
+                                width: 120,
+                                child:ElevatedButton(
+                                  style:ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.orange[700],
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15)
+                                    ),
+                                    elevation: 7
+                                  ),
+                                  onPressed: (){
+                                    ReturnAndReload(1);
+                                  },
+                                  child: const Text('設定',
+                                    style:TextStyle(
+                                      fontSize: 23,
+                                      color:Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                  margin: const EdgeInsets.fromLTRB(5, 5, 5, 30),
+                                  height: 55,
+                                  width: 120,
+                                  child:ElevatedButton(
+                                    style:ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.lightBlue[500],
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(15)
+                                        ),
+                                        elevation: 7
+                                    ),
+                                    child: const Text('SKIP',
+                                      style:TextStyle(
+                                        fontSize: 23,
+                                        color:Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    onPressed: (){
+                                      setState(() {
+                                        aod.AllResetObligation();
+                                        ard.AllResetRecommendation();
+                                        _selectAdd();
+                                        verifications.instance.selectName("スキップが押された");
+                                      });
+                                      Future.delayed(const Duration (seconds: 1)).then((_){
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(builder: (context){
+                                            return  StateObligation_allergy(PageFlag: 'ChooseUser');
+                                          }),
+                                        );
+                                        aad.AllResetAnother();
+                                      });
+                                    },
+                                  )
+                              ),
+                            ],
                           ),
                         ],
-                      ),
-                    ],
-                  )
-              ),
+                      )
+                  ),
+                ),
+              ],
             ),
-
-
           ),
         )
     );
