@@ -73,13 +73,15 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
                   ),
                   Container(
                     margin: const EdgeInsets.fromLTRB(20, 30, 20, 0),
-                    child:const Text('指定されたアレルゲンは\n見つかりませんでした。',
-                      style: TextStyle(
-                          color:Colors.indigo,
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold
+                    child:const FittedBox(
+                      child:Text('指定されたアレルゲンは\n見つかりませんでした。',
+                        style: TextStyle(
+                            color:Colors.indigo,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ),
 

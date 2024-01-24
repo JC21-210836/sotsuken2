@@ -167,12 +167,14 @@ class ImageLoderSelect extends State<StateImageLoderSelect> {
                               elevation: 7
                           ),
                           icon: Icon(Icons.photo_camera,size: 30),
-                          label: const Text('カメラで撮影する',
-                            style:TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold
+                          label:const FittedBox(
+                            child:Text('カメラで撮影する',
+                              style:TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
                           ),
                           onPressed: () async {
                             final XFile? image = await _picker.pickImage(

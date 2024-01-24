@@ -121,7 +121,7 @@ class _ImageCheckState extends State<ImageCheck> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 150,
+                                  width: 160,
                                   height: 40,
                                   margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
                                   child: ElevatedButton.icon(
