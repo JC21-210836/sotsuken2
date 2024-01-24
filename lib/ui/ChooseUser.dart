@@ -149,6 +149,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
                             ),
                             child:Container(
                               width: 265,
+                              height:180,
                               padding: const EdgeInsets.all(15),
                               margin: const EdgeInsets.all(3),
                               decoration: BoxDecoration(
@@ -159,39 +160,46 @@ class ChooseUser_Page extends State<StateChooseUser>{
                               ),
                               child:Column(
                                 children: [
-                                  if(DBuser.userName.isEmpty)...[
-                                    Container(
-                                        margin:const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                                        child: const FittedBox(
-                                          child:Text('ユーザーが\n登録されていません',
-                                            style:TextStyle(
-                                              fontSize: 25,color:Colors.black87,
-                                              fontWeight: FontWeight.bold,
-                                            ),textAlign: TextAlign.center,
-                                          ),
-                                        )
+                                  Expanded(
+                                    child:Scrollbar(
+                                      child: ListView(
+                                        children: [
+                                          if(DBuser.userName.isEmpty)...[
+                                            Container(
+                                                margin:const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                                                child: const FittedBox(
+                                                  child:Text('ユーザーが\n登録されていません',
+                                                    style:TextStyle(
+                                                      fontSize: 25,color:Colors.black87,
+                                                      fontWeight: FontWeight.bold,
+                                                    ),textAlign: TextAlign.center,
+                                                  ),
+                                                )
+                                            ),
+                                          ],
+                                          for(String n in DBuser.userName)...[
+                                            Container(
+                                              width: 240,
+                                              height: 47,
+                                              margin: const EdgeInsets.all(2),
+                                              child: OutlinedButton(
+                                                child:Text(n,style: const TextStyle(fontSize: 25),),
+                                                onPressed: () {
+                                                  print("選択されたユーザ$n");
+                                                  verifications.instance.selectName(n);
+                                                  Navigator.of(context).push(
+                                                      MaterialPageRoute(builder: (context){
+                                                        return StateImageLoderSelect();
+                                                      })
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                          ],
+                                        ],
+                                      )
                                     ),
-                                  ],
-                                  for(String n in DBuser.userName)...[
-                                    Container(
-                                      width: 240,
-                                      height: 47,
-                                      margin: const EdgeInsets.all(2),
-                                      child: OutlinedButton(
-                                        child:Text(n,style: const TextStyle(fontSize: 25),),
-                                        onPressed: () {
-                                          print("選択されたユーザ$n");
-                                          verifications.instance.selectName(n);
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(builder: (context){
-                                                return StateImageLoderSelect();
-                                              })
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                  ],
-
+                                  ),
                                 ],
                               ),
 
