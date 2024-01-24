@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sotsuken2/Data/AllAnotherData.dart';
 import 'package:sotsuken2/component/AppbarComp.dart';
+import 'package:sotsuken2/component/BottomNavbarComp.dart';
 
 import '../DB/Add.dart';
 import '../DB/Food.dart';
@@ -14,7 +15,7 @@ import 'package:sotsuken2/Data/AllObligationData.dart';
 
 class StateUserSettings2 extends StatefulWidget{
   final String UserName;
-  const StateUserSettings2(this.UserName);
+  const StateUserSettings2(this.UserName, {super.key});
 
   @override
   State<StateUserSettings2> createState(){
@@ -41,13 +42,14 @@ class UserSettings2 extends State<StateUserSettings2> {
       child:Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppbarComp(),
+        bottomNavigationBar: const BottomNavbarCompState(flagName: 'none', text: 'ユーザーごとの設定が行えます。変更したい項目を選択してください。',),
         body: Center(
           child:Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 width: 300,
-                margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                margin: const EdgeInsets.fromLTRB(0, 0, 0, 15),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
@@ -86,8 +88,6 @@ class UserSettings2 extends State<StateUserSettings2> {
                             ),
                           ]
                       ),
-
-
                     ),
                   ),
                 ),
@@ -114,7 +114,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                           Container(
                             width: 280,
                             height: 60,
-                            margin: const EdgeInsets.all(5),
+                            margin: const EdgeInsets.fromLTRB(5,10,5,5),
                             decoration: const BoxDecoration(
                               border: Border(
                                   bottom: BorderSide(
@@ -146,7 +146,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                           Container(
                             width:250,
                             height:50,
-                            margin: const EdgeInsets.fromLTRB(20, 25, 20, 15),
+                            margin: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                             child:ElevatedButton(
                               style:ElevatedButton.styleFrom(
                                   backgroundColor: Colors.deepOrangeAccent,
@@ -202,7 +202,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                           Container(
                             width:250,
                             height:50,
-                            margin: const EdgeInsets.fromLTRB(20, 0, 20, 15),
+                            margin: const EdgeInsets.fromLTRB(20, 0, 20, 30),
                             child:ElevatedButton(
                               style:ElevatedButton.styleFrom(
                                   backgroundColor: Colors.red,
@@ -222,7 +222,7 @@ class UserSettings2 extends State<StateUserSettings2> {
                             ),
 
                           ),
-
+                      /*
                           Container(
                             width:290,
                             height:80,
@@ -250,6 +250,8 @@ class UserSettings2 extends State<StateUserSettings2> {
                             ),
 
                           ),
+
+                       */
                         ]
                     )
                 )
