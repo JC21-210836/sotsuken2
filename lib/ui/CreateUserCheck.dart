@@ -65,7 +65,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                           ),
 
                           child: Container(
-                            margin:const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                            margin:const EdgeInsets.all(2),
                             padding:const EdgeInsets.fromLTRB(15, 10, 15, 10),
                             decoration:BoxDecoration(
                                 border:Border.all(color:Colors.red,width:1)
@@ -114,7 +114,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                               border:Border.all(color:Colors.blue,width:1)
                           ),
                           child:Container(
-                            margin:const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                            margin:const EdgeInsets.all(2),
                             padding:const EdgeInsets.fromLTRB(15, 10, 15, 10),
                             decoration:BoxDecoration(
                                 border:Border.all(color:Colors.blue,width:1)
@@ -156,7 +156,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
                               border:Border.all(color:Colors.amber,width:1)
                           ),
                           child:Container(
-                            margin:const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                            margin:const EdgeInsets.all(2),
                             padding:const EdgeInsets.fromLTRB(15, 10, 15, 10),
                             decoration:BoxDecoration(
                                 border:Border.all(color:Colors.amber,width:1),
