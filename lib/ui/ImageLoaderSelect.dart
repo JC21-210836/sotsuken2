@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'ImageCheck.dart';
 import '../component/AppbarComp.dart';
+import '../component/BottomNavbarComp.dart';
 
 class StateImageLoderSelect extends StatefulWidget{
   const StateImageLoderSelect({super.key});
@@ -28,6 +29,7 @@ class ImageLoderSelect extends State<StateImageLoderSelect> {
       child:Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppbarComp(),
+        bottomNavigationBar: const BottomNavbarCompState(flagName: 'none', text: '読み取りたい画像を選択してください。',),
         body: Center(
           child:Column(
             mainAxisAlignment: MainAxisAlignment.center,

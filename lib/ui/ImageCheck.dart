@@ -4,6 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sotsuken2/Api/api.dart';
 import 'package:sotsuken2/Api/verification.dart';
 import 'package:sotsuken2/component/AppbarComp.dart';
+import '../component/BottomNavbarComp.dart';
 import 'package:sotsuken2/ui/AllergyNotDetection.dart';
 import 'dart:io';
 import '../Api/api.dart';
@@ -37,6 +38,7 @@ class _ImageCheckState extends State<ImageCheck> {
         backgroundColor: Colors.transparent,
         resizeToAvoidBottomInset: false,
         appBar: AppbarComp(),
+        bottomNavigationBar: const BottomNavbarCompState(flagName: 'none', text: '画像を選択したら、成分表のみが映るようにトリミングをしてください。',),
         body: Center(
           child:Column(
             mainAxisAlignment: MainAxisAlignment.center,
