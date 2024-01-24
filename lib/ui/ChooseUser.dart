@@ -169,7 +169,7 @@ class ChooseUser_Page extends State<StateChooseUser>{
                                         children: [
                                           if(DBuser.userName.isEmpty)...[
                                             Container(
-                                                margin:const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                                                margin:const EdgeInsets.fromLTRB(0, 40, 0, 20),
                                                 child: const FittedBox(
                                                   child:Text('ユーザーが\n登録されていません',
                                                     style:TextStyle(
