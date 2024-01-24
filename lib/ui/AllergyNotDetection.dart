@@ -28,7 +28,7 @@ class AllergyNotDetection_Page extends State<StateAllergyNotDetection>{
       child:Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppbarComp(),
-        bottomNavigationBar: const BottomNavbarCompState(flagName: 'none', text: '未定',),
+        bottomNavigationBar: const BottomNavbarCompState(flagName: 'none', text: '選択したアレルゲンが含まれていないようです。閲覧後、移動したいページのボタンをクリックしてください。',),
         body: Center(
           child:Column(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -55,7 +55,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
             ),
             child:SingleChildScrollView(
                 child:Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
                     children:[
                       //表示義務
                       if(aod.getValueCheck().isNotEmpty)...[
@@ -194,7 +194,7 @@ class CreateUserCheck extends State<StateCreateUserCheck>{
 
                       if(aod.getValueCheck().isEmpty && ard.getValueCheck2().isEmpty && aad.getValueCheck3().isEmpty)...[
                         Container(
-                          margin: const EdgeInsets.fromLTRB(10, 150, 10, 50),
+                          margin: const EdgeInsets.fromLTRB(10, 50, 10, 50),
                           child:const FittedBox(
                               child:Text('何も登録されていません',style:TextStyle(fontSize: 25,fontWeight: FontWeight.bold))
                           )

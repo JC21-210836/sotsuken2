@@ -225,7 +225,7 @@ class CreateUser2_Page extends State<StateCreateUser2> {
                                           ),
                                           elevation: 7
                                       ),
-                                      child:const Text('登録内容を確認',style: TextStyle(fontSize: 28)),
+                                      child:const Text('登録内容を確認',style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold)),
                                       onPressed: (){
                                         Navigator.of(context).push(
                                             MaterialPageRoute(builder: (context){
