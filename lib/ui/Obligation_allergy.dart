@@ -96,9 +96,22 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                         ),
                       ),
                       Container(
-                        color: Colors.red,
+                        padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                         width: 320,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.orange.shade200,
+                          boxShadow: const [
+                            BoxShadow(
+                                color:Colors.black12,
+                                blurRadius: 2,
+                                spreadRadius: 2,
+                                offset: Offset(4,4)
+                            )
+                          ],
+                        ),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             for(int n = 0 ; n < 8; n = n+2)...[
                               Row(
@@ -108,11 +121,12 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                                     if(nn == 0)...[
                                       Container(
                                           width:160,
-                                          decoration: const BoxDecoration(
+                                          decoration: BoxDecoration(
                                               color: Colors.white,
-                                              borderRadius: BorderRadius.only(
-                                                bottomLeft:Radius.circular(20),
-                                                topLeft:Radius.circular(20),
+                                              border: Border.all(color: Colors.orange.shade200,width: 3),
+                                              borderRadius: const BorderRadius.only(
+                                                bottomLeft:Radius.circular(50),
+                                                topLeft:Radius.circular(50),
                                               )
                                           ),
                                           child:Transform.scale(
@@ -136,7 +150,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                                       Container(
                                         width: 160,
                                         decoration: const BoxDecoration(
-                                            color: Colors.lightBlueAccent,
+                                            color: Colors.white,
                                             /*
                                             borderRadius: BorderRadius.only(
                                               bottomRight:Radius.circular(20),
@@ -144,9 +158,10 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                                             )
 
                                              */
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(20),
-                                          )
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft:Radius.circular(50),
+                                              topLeft:Radius.circular(50),
+                                            )
                                         ),
                                         child:Transform.scale(
                                           scale:1.05,
@@ -173,107 +188,126 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                           ],
                         ),
                       ),
-
-                    Container(
-                      height: 90,
-                      width: 290,
-                      margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                      child:ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                          shape:RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          elevation: 7
-                        ),
-                        onPressed:(){
-                          aod.HanteiObligation();
-                          Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context){
-                                return StateRecommendation_allergy(PageFlag: widget.PageFlag, PageCount : pagecount);
-                              })
-                          );
-                        },
-                        child: const FittedBox(
-                          child: Text('表示推奨アレルギーを\n選択する',
-                              style: TextStyle(
-                                fontSize: 23,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.center
-                          ),
-                        ),
-
+                  Container(
+                    width: 320,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.white,
+                        boxShadow: const [
+                          BoxShadow(
+                              color:Colors.black12,
+                              blurRadius: 2,
+                              spreadRadius: 2,
+                              offset: Offset(4,4)
+                          )
+                        ],
                       ),
-                    ),
-                    if(widget.PageFlag == 'ChooseUser' || widget.PageFlag =='SettingUser')...[
-                      Container(
-                        width: 290,
-                        height: 70,
-                        padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                        child:ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue,
-                              shape:RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              elevation: 7
-                          ),
-                          onPressed:(){
-                            _selectAdd();
-                            Future.delayed(const Duration(seconds: 1)).then((_){
+                    child:Column(
+                      children: [
+                        Container(
+                          height: 90,
+                          width: 290,
+                          margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
+                          child:ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue,
+                                shape:RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                elevation: 7
+                            ),
+                            onPressed:(){
+                              aod.HanteiObligation();
                               Navigator.of(context).push(
                                   MaterialPageRoute(builder: (context){
-                                    return StateAnother_ingredient(PageFlag: widget.PageFlag, PageCount : pagecount);
+                                    return StateRecommendation_allergy(PageFlag: widget.PageFlag, PageCount : pagecount);
                                   })
                               );
-                            });
-                          },
-                          child: const Text('登録済み成分を選択',
-                              style: TextStyle(
-                                fontSize: 23,
-                                fontWeight: FontWeight.bold,
+                            },
+                            child: const FittedBox(
+                              child: Text('表示推奨アレルギーを\n選択する',
+                                  style: TextStyle(
+                                    fontSize: 23,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center
                               ),
-                              textAlign: TextAlign.center),
-                        ),
-                      ),
-                    ],
-                    Container(
-                      height: 70,
-                      width: 290,
-                      padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                      child:  ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.orange[700],
-                            shape:RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
                             ),
-                            elevation: 7
-                        ),
-                        onPressed:(){
-                          if(widget.PageFlag == 'ChooseUser'){
-                            Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context){
-                                  return const StateImageLoderSelect();
-                                })
-                            );
 
-                          }else if(widget.PageFlag == 'CreateUser' || widget.PageFlag =='SettingUser'){
-                            Navigator.of(context).pop();
-                          }
-                          debugPrint(widget.PageFlag.toString());
-                          aod.HanteiObligation();
-                          ard.HanteiRecommendation();
-                          aad.HanteiAnother();
-                        },
-                        child: const Text('決定',style: TextStyle(
-                          fontSize: 23,
-                          fontWeight: FontWeight.bold,
+                          ),
                         ),
-                            textAlign: TextAlign.center),
-                      ),
+                        if(widget.PageFlag == 'ChooseUser' || widget.PageFlag =='SettingUser')...[
+                          Container(
+                            width: 290,
+                            height: 70,
+                            padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
+                            child:ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue,
+                                  shape:RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  elevation: 7
+                              ),
+                              onPressed:(){
+                                _selectAdd();
+                                Future.delayed(const Duration(seconds: 1)).then((_){
+                                  Navigator.of(context).push(
+                                      MaterialPageRoute(builder: (context){
+                                        return StateAnother_ingredient(PageFlag: widget.PageFlag, PageCount : pagecount);
+                                      })
+                                  );
+                                });
+                              },
+                              child: const Text('登録済み成分を選択',
+                                  style: TextStyle(
+                                    fontSize: 23,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center),
+                            ),
+                          ),
+                        ],
+                        Container(
+                          height: 70,
+                          width: 290,
+                          padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
+                          child:  ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.orange[700],
+                                shape:RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                elevation: 7
+                            ),
+                            onPressed:(){
+                              if(widget.PageFlag == 'ChooseUser'){
+                                Navigator.of(context).push(
+                                    MaterialPageRoute(builder: (context){
+                                      return const StateImageLoderSelect();
+                                    })
+                                );
+
+                              }else if(widget.PageFlag == 'CreateUser' || widget.PageFlag =='SettingUser'){
+                                Navigator.of(context).pop();
+                              }
+                              debugPrint(widget.PageFlag.toString());
+                              aod.HanteiObligation();
+                              ard.HanteiRecommendation();
+                              aad.HanteiAnother();
+                            },
+                            child: const Text('決定',style: TextStyle(
+                              fontSize: 23,
+                              fontWeight: FontWeight.bold,
+                            ),
+                                textAlign: TextAlign.center),
+                          ),
+                        )
+                      ],
                     )
+                  ),
+
                   ],
                 ),
               )
