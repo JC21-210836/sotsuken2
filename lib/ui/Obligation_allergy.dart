@@ -232,7 +232,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                                   );
                                 },
                                 child: const FittedBox(
-                                  child: Text('表示推奨アレルギー',
+                                  child: Text('表示推奨\nアレルギー',
                                       style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
