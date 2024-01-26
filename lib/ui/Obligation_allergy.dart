@@ -191,7 +191,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                     width: 320,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        /*
+
                         color: Colors.white,
                         boxShadow: const [
                           BoxShadow(
@@ -203,17 +203,18 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                         ],
 
 
-                         */
+
 
                       ),
                     child:Column(
                       children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
                               height: 90,
                               width: 150,
-                              margin: const EdgeInsets.fromLTRB(0, 10, 10, 0),
+                              margin: const EdgeInsets.fromLTRB(0, 10, 5, 0),
                               padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
                               child:ElevatedButton(
                                 style: ElevatedButton.styleFrom(
@@ -247,7 +248,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                               Container(
                                 width: 150,
                                 height: 90,
-                                margin: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                                margin: const EdgeInsets.fromLTRB(5, 10, 0, 0),
                                 padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
                                 child:ElevatedButton(
                                   style: ElevatedButton.styleFrom(
