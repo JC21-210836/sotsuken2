@@ -112,7 +112,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                                   for(int nn = 0 ; nn < 2  ; nn++)...[
                                     if(nn == 0)...[
                                       Container(
-                                          width:160,
+                                          width:150,
                                           margin: const EdgeInsets.fromLTRB(0, 3, 0, 3),
                                           decoration: const BoxDecoration(
                                               color: Colors.white,
@@ -127,10 +127,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                                               scale:1.05,
                                               child:CheckboxListTile(
                                                   controlAffinity: ListTileControlAffinity.leading,
-                                                  title: Transform.translate(
-                                                    offset: const Offset(-15,0),
-                                                    child:Text(aod.getValue()[n+nn],style: const TextStyle(fontSize: 20)),
-                                                  ),
+                                                  title: Text(aod.getValue()[n+nn],style: const TextStyle(fontSize: 20)),
                                                   value: aod.getBool()[n+nn],
                                                   onChanged: (value) {
                                                     setState(() {
