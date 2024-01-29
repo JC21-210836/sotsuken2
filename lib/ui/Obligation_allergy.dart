@@ -48,7 +48,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                     children:<Widget>[
                       Container(
                         width: 300,
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                        margin: const EdgeInsets.fromLTRB(0, 15, 0, 15),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white,
