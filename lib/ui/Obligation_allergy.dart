@@ -115,7 +115,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                                       Container(
                                         height: 53,
                                         width:140,
-                                        margin: const EdgeInsets.fromLTRB(0, 3, 5, 3),
+                                        margin: const EdgeInsets.fromLTRB(0, 3, 7, 3),
                                         child:ElevatedButton(
                                           style: ElevatedButton.styleFrom(
                                               backgroundColor:  aod.getBool()[n+nn] ? Colors.lightBlueAccent : Colors.white,
@@ -132,7 +132,6 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                                           onPressed: (){
                                             setState(() {
                                               aod.getBool()[n+nn] = !aod.getBool()[n+nn];
-
                                             });
 
                                           },
@@ -145,7 +144,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                                       Container(
                                         height: 53,
                                         width:140,
-                                        margin: const EdgeInsets.fromLTRB(5, 3, 0, 3),
+                                        margin: const EdgeInsets.fromLTRB(7, 3, 0, 3),
                                         child:ElevatedButton(
                                           style: ElevatedButton.styleFrom(
                                             backgroundColor:  aod.getBool()[n+nn] ? Colors.lightBlueAccent : Colors.white,
@@ -162,7 +161,6 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                                           onPressed: (){
                                             setState(() {
                                               aod.getBool()[n+nn] = !aod.getBool()[n+nn];
-
                                             });
 
                                           },
@@ -179,7 +177,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                         ),
                       ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    margin: EdgeInsets.fromLTRB(0, 10, 0, 20),
                     width: 320,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
@@ -193,10 +191,6 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                               offset: Offset(4,4)
                           )
                         ],
-
-
-
-
                       ),
                     child:Column(
                       children: [
