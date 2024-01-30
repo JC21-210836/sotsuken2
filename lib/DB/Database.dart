@@ -46,6 +46,13 @@ class DBProvider {
     )
     ''');
     debugPrint("ユーザ表を作成しました");
+    //ユーザ2表(美容用)
+    await db.execute('''
+      CREATE TABLE user2 (
+      userid2 INTEGER PRIMARY KEY AUTOINCREMENT,
+      username2 TEXT
+      )
+    ''');debugPrint("ユーザ2表を作成しました");
     //カテゴリー表
     await db.execute('''
         CREATE TABLE category(
@@ -56,8 +63,11 @@ class DBProvider {
     //美容表
     await db.execute('''
         CREATE TABLE beauty(
-          beautyid TEXT PRIMARY KEY,
+          beautyid INTEGER PRIMARY KEY AUTOINCREMENT,
           beautyname TEXT,
+          kanji TEXT,
+          eigo TEXT,
+          otherName TEXT,
           categoryid TEXT,
           FOREIGN KEY(categoryid) REFERENCES category(categoryid)
         )
@@ -89,10 +99,12 @@ class DBProvider {
         CREATE TABLE list(
           listid INTEGER PRIMARY KEY AUTOINCREMENT,
           userid INTEGER,
+          userid2 INTEGER,
           foodid TEXT,
           beautyid INTEGER,
           addid INTEGER,
           FOREIGN KEY(userid) REFERENCES user(userid),
+          FOREIGN KEY(userid2) REFERENCES user2(userid2),
           FOREIGN KEY(foodid) REFERENCES food(foodid),
           FOREIGN KEY(beautyid) REFERENCES category(beautyid),
           FOREIGN KEY(addid) REFERENCES K_add(addid)
