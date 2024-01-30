@@ -163,7 +163,8 @@ class Another_ingredient extends State<StateAnother_ingredient>{
 
                                           if(DBadd.AddList.length % 2 == 1 && DBadd.AddList.length == n+1)...[
                                             Container(
-                                              width: 167,
+                                              margin: const EdgeInsets.fromLTRB(0, 3, 7, 3),
+                                              width:140,
                                             ),
                                           ]else...[
                                             Container(
