@@ -1,22 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:sqflite/sqflite.dart';
+import '../main.dart';
 import 'Database.dart';
 
 class DBlist{
 
-  //-list処理一覧-
   //ユーザIDセレクト用
-  int selectid = 0; // 単一のint型変数として宣言
+  int selectid = 0;
   Future<int> selectUserId(String sUserName) async {
     debugPrint("selectUserIdにきました");
     Database db = await DBProvider.instance.database;
-    final List<Map<String, dynamic>> userid =
-    await db.query('user', where: 'username = ?', whereArgs: [sUserName]);
+    List<Map<String, dynamic>> userid = [];
+    if(Home_Page.flagCategory == 'food'){
+      debugPrint("foodです");
+      userid = await db.query('user', where: 'username = ?', whereArgs: [sUserName]);
+    }else if(Home_Page.flagCategory == 'beauty'){
+      debugPrint("beautyです");
+      userid = await db.query('user2', where: 'username2 = ?', whereArgs: [sUserName]);
+    }
     for (Map<String, dynamic?> userMap in userid) {
       if (userMap.containsKey('userid')) {
         selectid = userMap['userid'] as int;
         print('useridを出力：$selectid');
-        break; // ループを抜ける
+        break; //ループを抜ける
+      }else if(userMap.containsKey('userid2')){
+        selectid = userMap['userid2'] as int;
+        print('userid2を出力：$selectid');
+        break; //ループを抜ける
       }
     }
     return selectid;
@@ -26,42 +36,56 @@ class DBlist{
   Future deletelist(int userid) async {
     debugPrint('deletelistにきました');
     Database db = await DBProvider.instance.database;
-    return await db.delete('list', where: 'userid = ?', whereArgs: [userid],);
+    if(Home_Page.flagCategory == 'food'){
+      debugPrint("foodです");
+      return await db.delete('list', where: 'userid = ?', whereArgs: [userid],);
+    }else if(Home_Page.flagCategory == 'beauty') {
+      debugPrint("beautyです");
+      Database db = await DBProvider.instance.database;
+      return await db.delete('list', where: 'userid2 = ?', whereArgs: [userid],);
+    }
   }
-
 
   //リスト表に個人追加成分の追加処理
-  Future<int> insertlistAdd(int userid ,int addid) async {
+  Future insertlistAdd(int userid ,int addid) async {
     debugPrint("insertlistAddにきました");
     Database db = await DBProvider.instance.database;
-    return await db.insert('list', {'userid': userid,'foodid': '--','beautyid': '--', 'addid': addid});
+    if(Home_Page.flagCategory == 'food'){
+      debugPrint("foodです");
+      return await db.insert('list', {'userid': userid,'userid2': '--','foodid': '--','beautyid': '--', 'addid': addid});
+    }else if(Home_Page.flagCategory == 'beauty') {
+      debugPrint("beautyです");
+      return await db.insert('list', {'userid': '--','userid2': userid,'foodid': '--','beautyid': addid, 'addid': '--'});
+    }
   }
 
-
-
-  //変更処理1-09
   int deleteid = 0; // 単一のint型変数として宣言
   Future Deletelist(String username) async {
     debugPrint("deletelistにきました");
     Database db = await DBProvider.instance.database;
-
-    //削除対象のuseridの特定
-    final List<Map<String, dynamic>> deleteuserid = await db.query('user', where: 'username = ?', whereArgs: [username]);
-    debugPrint('削除するユーザのidを特定しました$deleteuserid');
-
+    List<Map<String, dynamic>> deleteuserid = [];
+    if(Home_Page.flagCategory == 'food'){
+      debugPrint("foodです");
+      deleteuserid = await db.query('user', where: 'username = ?', whereArgs: [username]);//削除対象のuseridの特定
+      debugPrint('削除する食品ユーザのidを特定$deleteuserid');
+    }else if(Home_Page.flagCategory == 'beauty') {
+      debugPrint("beautyです");
+      deleteuserid = await db.query('user2', where: 'username2 = ?', whereArgs: [username]);//削除対象のuseridの特定
+      debugPrint('削除する美容ユーザのidを特定$deleteuserid');
+    }
     for (Map<String, dynamic?> userMap in deleteuserid) {
       if (userMap.containsKey('userid')) {
         deleteid = userMap['userid'] as int;
-        print('useridを出力：$deleteid');
-        break; // ループを抜ける
+        debugPrint('useridを出力：$deleteid');
+        await db.delete('list', where: 'userid = ?', whereArgs: [deleteid],);//ユーザidと一致するリストデータの削除
+        break; //ループを抜ける
+      }else if(userMap.containsKey('userid2')){
+        deleteid = userMap['userid2'] as int;
+        debugPrint('userid2を出力：$deleteid');
+        await db.delete('list', where: 'userid2 = ?', whereArgs: [deleteid],);//ユーザidと一致するリストデータの削除
+        break; //ループを抜ける
       }
       return deleteid;
     }
-    //ユーザidと一致するリストデータの削除
-    debugPrint('リスト削除する対象ユーザidは$deleteidです');
-    await db.delete('list', where: 'userid = ?', whereArgs: [deleteid],);
-    debugPrint('リストを削除しました');
   }
-
-
 }

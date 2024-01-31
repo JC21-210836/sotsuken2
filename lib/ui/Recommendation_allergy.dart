@@ -28,184 +28,283 @@ class Recommendation_allergy extends State<StateRecommendation_allergy> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppbarComp(),
-      body: Center(
-        child:SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child:Column(
-            children: [
-              Container(
-                margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                decoration:BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color:Colors.indigo,
-                    width: 1,
+    return Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors:[Colors.white,Color(0xFF90D4FA)],
+        )
+      ),
+      child:Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppbarComp(),
+        body: Center(
+          child:SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child:Column(
+              children: [
+                Container(
+                  width: 300,
+                  margin: const EdgeInsets.fromLTRB(0, 20, 0, 15),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                          color:Colors.black12,
+                          blurRadius: 2,
+                          spreadRadius: 2,
+                          offset: Offset(4,4)
+                      )
+                    ],
                   ),
-                ),
-                child: const Text('表示推奨アレルギー',
-                    style: TextStyle(
-                        fontSize: 25,
-                        color:Colors.indigo,
-                        fontWeight: FontWeight.bold
-                    )
-                ),
-              ),
-
-              for(int n = 0 ; n < 18; n = n+2)...[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    for(int nn = 0 ; nn < 2  ; nn++)...[
-                      if(nn == 0)...[
-                        SizedBox(
-                            width:176,
-                            child:Transform.scale(
-                                scale:1.1,
-                                child:CheckboxListTile(
-                                    controlAffinity: ListTileControlAffinity.leading,
-                                    title: Transform.translate(
-                                      offset: const Offset(-15,0),
-                                      child:Text(ard.getValue()[n+nn],style: const TextStyle(fontSize: 19)),
-                                    ),
-                                    value: ard.getBool()[n+nn],
-                                    onChanged: (value) {
-                                      setState(() {
-                                        ard.getBool()[n+nn] = value!;
-                                      });
-                                    }
-                                )
+                  child:Container(
+                    alignment: Alignment.center,
+                    margin: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
+                    child:  Container(
+                      alignment: Alignment.center,
+                      width: 250,
+                      padding: const EdgeInsets.fromLTRB(0, 12, 0, 7),
+                      decoration: const BoxDecoration(
+                        border:Border(
+                            bottom: BorderSide(
+                                color: Colors.indigo
                             )
                         ),
-                      ]else...[
-                        if(n+1 == 17)...[
-                          Container(
-                            width: 157,
-                          ),
-                        ]else...[
-                          SizedBox(
-                            width: 157,
-                            child:Transform.scale(
-                              scale:1.1,
-                              child: CheckboxListTile(
-                                  controlAffinity: ListTileControlAffinity.leading,
-                                  title: Transform.translate(
-                                    offset: const Offset(-15,0),
-                                    child:Text(ard.getValue()[n+nn],style: const TextStyle(fontSize: 20)),
+                      ),
+
+                      child:RichText(
+                        text: const TextSpan(
+                            children: [
+                              TextSpan(
+                                text:'表示推奨アレルギー',
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color:Colors.indigo,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ]
+                        ),
+                      ),
+
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                  width: 322,
+                  decoration: BoxDecoration(
+                    border: Border.all(color:Colors.white30),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      for(int n = 0 ; n < 18; n = n+2)...[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            for(int nn = 0 ; nn < 2  ; nn++)...[
+                              if(nn == 0)...[
+                                Container(
+                                  height: 53,
+                                  width:140,
+                                  margin: const EdgeInsets.fromLTRB(0, 3, 7, 3),
+                                  child:ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:  ard.getBool()[n+nn] ? Colors.lightBlueAccent : Colors.white,
+                                      foregroundColor: ard.getBool()[n+nn] ? Colors.white : Colors.black,
+                                      shape:const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft:Radius.circular(50),
+                                            topLeft:Radius.circular(50),
+                                            topRight: Radius.circular(10),
+                                            bottomRight: Radius.circular(10),
+                                          )
+                                      ),
+                                    ),
+                                    onPressed: (){
+                                      setState(() {
+                                        ard.getBool()[n+nn] = !ard.getBool()[n+nn];
+                                      });
+
+                                    },
+                                    child: Text(ard.getValue()[n+nn],style: const TextStyle(fontSize: 22,fontWeight: FontWeight.bold)),
                                   ),
-                                  value: ard.getBool()[n+nn],
-                                  onChanged: (value) {
-                                    setState(() {
-                                      ard.getBool()[n+nn] = value!;
-                                    });
-                                  }
+                                ),
+                              ]else...[
+                                if(n+1 == 17)...[
+                                  Container(
+                                    margin: const EdgeInsets.fromLTRB(7, 3, 0, 3),
+                                    height: 53,
+                                    width:140,
+                                  ),
+                                ]else...[
+                                  Container(
+                                    height: 53,
+                                    width:140,
+                                    margin: const EdgeInsets.fromLTRB(7, 3, 0, 3),
+                                    child:ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor:  ard.getBool()[n+nn] ? Colors.lightBlueAccent : Colors.white,
+                                        foregroundColor: ard.getBool()[n+nn] ? Colors.white : Colors.black,
+                                        shape:const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft:Radius.circular(50),
+                                              topLeft:Radius.circular(50),
+                                              topRight: Radius.circular(10),
+                                              bottomRight: Radius.circular(10),
+                                            )
+                                        ),
+                                      ),
+                                      onPressed: (){
+                                        setState(() {
+                                          ard.getBool()[n+nn] = !ard.getBool()[n+nn];
+                                        });
+
+                                      },
+                                      child: Text(ard.getValue()[n+nn],style: const TextStyle(fontSize: 22,fontWeight: FontWeight.bold)),
+                                    ),
+                                  ),
+                                ],
+                              ],
+                            ],
+                          ],
+                        ),
+                      ],
+                      for(int n = 17 ; n < 20 ; n++ )...[
+                        Container(
+                          height: 53,
+                          width:300,
+                          margin: const EdgeInsets.fromLTRB(0, 3, 0, 3),
+                          child:ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:  ard.getBool()[n] ? Colors.lightBlueAccent : Colors.white,
+                              foregroundColor: ard.getBool()[n] ? Colors.white : Colors.black,
+                              shape:const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft:Radius.circular(50),
+                                    topLeft:Radius.circular(50),
+                                    topRight: Radius.circular(10),
+                                    bottomRight: Radius.circular(10),
+                                  )
                               ),
                             ),
+                            onPressed: (){
+                              setState(() {
+                                ard.getBool()[n] = !ard.getBool()[n];
+                              });
+
+                            },
+                            child: Text(ard.getValue()[n],style: const TextStyle(fontSize: 22,fontWeight: FontWeight.bold)),
                           ),
-                        ],
+                        ),
                       ],
                     ],
-                  ],
-                ),
-              ],
-              for(int n = 17 ; n < 20 ; n++ )...[
-                SizedBox(
-                  width: 319,
-                  child:Transform.scale(
-                    scale:1.1,
-                    child: CheckboxListTile(
-                        controlAffinity: ListTileControlAffinity.leading,
-                        title: Transform.translate(
-                          offset: const Offset(-15,0),
-                          child:Text(ard.getValue()[n],style: const TextStyle(fontSize: 20)),
-                        ),
-                        value: ard.getBool()[n],
-                        onChanged: (value) {
-                          setState(() {
-                            ard.getBool()[n] = value!;
-                          });
-                        }
-                    ),
                   ),
                 ),
-              ],
-              if(widget.PageFlag == 'ChooseUser' || widget.PageFlag =='SettingUser')...[
                 Container(
-                  width: 290,
-                  height: 70,
-                  margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                  padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                  child:ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        shape:RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        elevation: 7
-                    ),
-                    onPressed:(){
-                      _selectAdd();
-                      Future.delayed(const Duration(seconds: 1)).then((_) {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) {
-                              return StateAnother_ingredient(
-                                  PageFlag: widget.PageFlag,PageCount: widget.PageCount+1);
-                            })
-                        );
-                      });
-                    },
-                    child: const Text('登録済み成分を選択',
-                        style: TextStyle(
-                          fontSize: 23,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center),
-                  ),
-                ),
-              ],
-              Container(
-                width: 290,
-                height: 70,
-                margin: const EdgeInsets.fromLTRB(0, 0, 0, 40),
-                padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                child:  ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orange[700],
-                      shape:RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      elevation: 7
-                  ),
-                  onPressed:(){
-                    if(widget.PageFlag == 'ChooseUser'){
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context){
-                            return const StateImageLoderSelect();
-                          })
-                      );
-                    }else if(widget.PageFlag == 'CreateUser' || widget.PageFlag =='SettingUser'){
-                      //なおしたいNamdpush
-                      Navigator.of(context).pop();
-                      Navigator.of(context).pop();
-                    }
-                    debugPrint(widget.PageFlag.toString());
-                    aod.HanteiObligation();
-                    ard.HanteiRecommendation();
-                    aad.HanteiAnother();
-                  },
-                  child: const Text('決定',style: TextStyle(
-                    fontSize: 23,
-                    fontWeight: FontWeight.bold,
-                  ),
-                      textAlign: TextAlign.center),
-                ),
-              )
-            ],
-          ),
-        ),
+                    margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+                    width: 320,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
 
+                      color: Colors.white,
+                      boxShadow: const [
+                        BoxShadow(
+                            color:Colors.black12,
+                            blurRadius: 2,
+                            spreadRadius: 2,
+                            offset: Offset(4,4)
+                        )
+                      ],
+                    ),
+                  child: Column(
+                    children: [
+                      if(widget.PageFlag == 'ChooseUser' || widget.PageFlag =='SettingUser')...[
+                        Container(
+                          width: 290,
+                          height: 55,
+                          margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          child:ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue,
+                                shape:RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                elevation: 7
+                            ),
+                            onPressed:(){
+                              _selectAdd();
+                              Future.delayed(const Duration(seconds: 1)).then((_) {
+                                Navigator.of(context).push(
+                                    MaterialPageRoute(builder: (context) {
+                                      return StateAnother_ingredient(
+                                          PageFlag: widget.PageFlag,PageCount: widget.PageCount+1);
+                                    })
+                                );
+                              });
+                            },
+                            child: const Text('登録済み成分',
+                                style: TextStyle(
+                                  fontSize: 23,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center),
+                          ),
+                        ),
+                      ],
+                      Container(
+                        width: 290,
+                        height: 55,
+                        margin:const EdgeInsets.fromLTRB(0, 12, 0, 12),
+                        child:  ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.orange[700],
+                              shape:RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              elevation: 7
+                          ),
+                          onPressed:(){
+                            if(widget.PageFlag == 'ChooseUser'){
+                              Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context){
+                                    return const StateImageLoderSelect();
+                                  })
+                              );
+                            }else if(widget.PageFlag == 'CreateUser' || widget.PageFlag =='SettingUser'){
+                              //なおしたいNamdpush
+                              Navigator.of(context).pop();
+                              Navigator.of(context).pop();
+                            }
+                            debugPrint(widget.PageFlag.toString());
+                            aod.HanteiObligation();
+                            ard.HanteiRecommendation();
+                            aad.HanteiAnother();
+                          },
+                          child: const Text('決定',style: TextStyle(
+                            fontSize: 23,
+                            fontWeight: FontWeight.bold,
+                          ),
+                              textAlign: TextAlign.center),
+                        ),
+                      )
+                    ],
+                  ),
+
+
+                ),
+
+
+              ],
+            ),
+          ),
+
+        ),
       ),
     );
   }

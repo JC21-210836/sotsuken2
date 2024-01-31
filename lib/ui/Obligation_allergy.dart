@@ -48,7 +48,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                     children:<Widget>[
                       Container(
                         width: 300,
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                        margin: const EdgeInsets.fromLTRB(0, 15, 0, 15),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white,
@@ -101,15 +101,6 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                         decoration: BoxDecoration(
                           border: Border.all(color:Colors.white30),
                           borderRadius: BorderRadius.circular(20),
-                          color: Colors.blue.shade200,
-                          boxShadow: const [
-                            BoxShadow(
-                                color:Colors.black12,
-                                blurRadius: 2,
-                                spreadRadius: 2,
-                                offset: Offset(4,4)
-                            )
-                          ],
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -120,63 +111,62 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                                 children: [
                                   for(int nn = 0 ; nn < 2  ; nn++)...[
                                     if(nn == 0)...[
+                                      //↓今テストで作ってる
                                       Container(
-                                          width:160,
-                                          decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              border: Border.all(color: Colors.blue.shade200,width: 3),
-                                              borderRadius: const BorderRadius.only(
-                                                bottomLeft:Radius.circular(50),
-                                                topLeft:Radius.circular(50),
-                                                topRight: Radius.circular(10),
-                                                bottomRight: Radius.circular(10),
-                                              )
+                                        height: 53,
+                                        width:140,
+                                        margin: const EdgeInsets.fromLTRB(0, 3, 7, 3),
+                                        child:ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                              backgroundColor:  aod.getBool()[n+nn] ? Colors.lightBlueAccent : Colors.white,
+                                              foregroundColor: aod.getBool()[n+nn] ? Colors.white : Colors.black,
+                                              shape:const RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.only(
+                                                  bottomLeft:Radius.circular(50),
+                                                  topLeft:Radius.circular(50),
+                                                  topRight: Radius.circular(10),
+                                                  bottomRight: Radius.circular(10),
+                                                )
+                                              ),
                                           ),
-                                          child:Transform.scale(
-                                              scale:1.05,
-                                              child:CheckboxListTile(
-                                                  controlAffinity: ListTileControlAffinity.leading,
-                                                  title: Transform.translate(
-                                                    offset: const Offset(-15,0),
-                                                    child:Text(aod.getValue()[n+nn],style: const TextStyle(fontSize: 20)),
-                                                  ),
-                                                  value: aod.getBool()[n+nn],
-                                                  onChanged: (value) {
-                                                    setState(() {
-                                                      aod.getBool()[n+nn] = value!;
-                                                    });
-                                                  }
-                                              )
-                                          )
+                                          onPressed: (){
+                                            setState(() {
+                                              aod.getBool()[n+nn] = !aod.getBool()[n+nn];
+                                            });
+
+                                          },
+                                          child: Text(aod.getValue()[n+nn],style: const TextStyle(fontSize: 22,fontWeight: FontWeight.bold)),
+                                        ),
+                                        //↑今テストで作ってる
                                       ),
+
                                     ]else...[
                                       Container(
-                                        width: 160,
-                                        decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.only(
-                                              bottomLeft:Radius.circular(50),
-                                              topLeft:Radius.circular(50),
-                                              topRight: Radius.circular(10),
-                                              bottomRight: Radius.circular(10),
-                                            )
-                                        ),
-                                        child:Transform.scale(
-                                          scale:1.05,
-                                          child: CheckboxListTile(
-                                              controlAffinity: ListTileControlAffinity.leading,
-                                              title: Transform.translate(
-                                                offset: const Offset(-15,0),
-                                                child:Text(aod.getValue()[n+nn],style: const TextStyle(fontSize: 20)),
-                                              ),
-                                              value: aod.getBool()[n+nn],
-                                              onChanged: (value) {
-                                                setState(() {
-                                                  aod.getBool()[n+nn] = value!;
-                                                });
-                                              }
+                                        height: 53,
+                                        width:140,
+                                        margin: const EdgeInsets.fromLTRB(7, 3, 0, 3),
+                                        child:ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:  aod.getBool()[n+nn] ? Colors.lightBlueAccent : Colors.white,
+                                            foregroundColor: aod.getBool()[n+nn] ? Colors.white : Colors.black,
+                                            shape:const RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.only(
+                                                  bottomLeft:Radius.circular(50),
+                                                  topLeft:Radius.circular(50),
+                                                  topRight: Radius.circular(10),
+                                                  bottomRight: Radius.circular(10),
+                                                )
+                                            ),
                                           ),
+                                          onPressed: (){
+                                            setState(() {
+                                              aod.getBool()[n+nn] = !aod.getBool()[n+nn];
+                                            });
+
+                                          },
+                                          child: Text(aod.getValue()[n+nn],style: const TextStyle(fontSize: 22,fontWeight: FontWeight.bold)),
                                         ),
+                                        //↑今テストで作ってる
                                       ),
                                     ]
                                   ],
@@ -187,7 +177,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                         ),
                       ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    margin: EdgeInsets.fromLTRB(0, 10, 0, 20),
                     width: 320,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
@@ -201,53 +191,83 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                               offset: Offset(4,4)
                           )
                         ],
-
-
-
-
                       ),
                     child:Column(
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Container(
-                              height: 90,
-                              width: 150,
-                              margin: const EdgeInsets.fromLTRB(0, 10, 5, 0),
-                              padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
-                              child:ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.blue,
-                                    shape:RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    elevation: 7
-                                ),
-                                onPressed:(){
-                                  aod.HanteiObligation();
-                                  Navigator.of(context).push(
-                                      MaterialPageRoute(builder: (context){
-                                        return StateRecommendation_allergy(PageFlag: widget.PageFlag, PageCount : pagecount);
-                                      })
-                                  );
-                                },
-                                child: const FittedBox(
-                                  child: Text('表示推奨\nアレルギー',
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
+                            if(widget.PageFlag == 'CreateUser')...[
+                              Container(
+                                height: 55,
+                                width: 290,
+                                margin: const EdgeInsets.fromLTRB(5, 15, 5, 10),
+                                child:ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.blue,
+                                      shape:RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
-                                      textAlign: TextAlign.center
+                                      elevation: 7
                                   ),
-                                ),
+                                  onPressed:(){
+                                    aod.HanteiObligation();
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(builder: (context){
+                                          return StateRecommendation_allergy(PageFlag: widget.PageFlag, PageCount : pagecount);
+                                        })
+                                    );
+                                  },
+                                  child: const FittedBox(
+                                    child: Text('表示推奨アレルギー',
+                                        style: TextStyle(
+                                          fontSize: 23,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        textAlign: TextAlign.center
+                                    ),
+                                  ),
 
+                                ),
                               ),
-                            ),
+                            ],
                             if(widget.PageFlag == 'ChooseUser' || widget.PageFlag =='SettingUser')...[
                               Container(
+                                height: 85,
                                 width: 150,
-                                height: 90,
+                                margin: const EdgeInsets.fromLTRB(0, 10, 5, 0),
+                                padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
+                                child:ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.blue,
+                                      shape:RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      elevation: 7
+                                  ),
+                                  onPressed:(){
+                                    aod.HanteiObligation();
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(builder: (context){
+                                          return StateRecommendation_allergy(PageFlag: widget.PageFlag, PageCount : pagecount);
+                                        })
+                                    );
+                                  },
+                                  child: const FittedBox(
+                                    child: Text('表示推奨\nアレルギー',
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        textAlign: TextAlign.center
+                                    ),
+                                  ),
+
+                                ),
+                              ),
+                              Container(
+                                width: 140,
+                                height: 85,
                                 margin: const EdgeInsets.fromLTRB(5, 10, 0, 0),
                                 padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
                                 child:ElevatedButton(
@@ -268,7 +288,7 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                                       );
                                     });
                                   },
-                                  child: const Text('登録済み成分',
+                                  child: const Text('登録済み\n成分',
                                       style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
@@ -281,9 +301,9 @@ class Obligation_allergy extends State<StateObligation_allergy>{
                         ),
 
                         Container(
-                          height: 70,
+                          height: 55,
                           width: 290,
-                          padding:const EdgeInsets.fromLTRB(0, 7, 0, 7),
+                          margin:const EdgeInsets.fromLTRB(0, 3, 0, 12),
                           child:  ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.orange[700],
